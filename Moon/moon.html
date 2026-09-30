@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width,
+                 initial-scale=1.0,
+                 maximum-scale=1.0,
+                 user-scalable=no">
+
+    <title>NASA — Moon Exhibition</title>
+
+    <link rel="stylesheet" href="moon.css">
+</head>
+
+<body>
+
+<section id="exhibition">
+
+    <!-- Interactive Moon -->
+    <div id="planetMap">
+
+        <div id="moonWorld">
+            <img
+                id="moonImage"
+                src="moon_images/moon.png"
+                alt="Moon"
+                draggable="false">
+        </div>
+
+        <div id="spacecraftLayer"></div>
+
+    </div>
+
+    <!-- Dark atmosphere / vignette -->
+    <div id="mapAtmosphere"></div>
+
+    <!-- Header -->
+    <header id="exhibitionHeader">
+
+        <div>
+            <div class="exhibition-kicker">
+                NASA EXHIBITION
+            </div>
+
+            <h1 id="exhibitionTitle">
+                MOON
+            </h1>
+
+            <div class="exhibition-status">
+                SELECT A SPACECRAFT TO DISCOVER ITS STORY
+            </div>
+        </div>
+
+        <button
+            id="exhibitionHome"
+            type="button">
+            HOME
+        </button>
+
+    </header>
+
+    <!-- Instructions -->
+    <div id="exhibitionControls">
+
+        DRAG —
+        <span>EXPLORE</span>
+
+        <br>
+
+        SCROLL —
+        <span>ZOOM</span>
+
+        <br>
+
+        CLICK —
+        <span>INSPECT SPACECRAFT</span>
+
+    </div>
+
+</section>
+
+
+<!-- Dialogue backdrop -->
+<div id="dialogueBackdrop"></div>
+
+
+<!-- Mission dialogue -->
+<div
+    id="dialogueBox"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="storyTitle">
+
+    <div class="dialogue-header">
+
+        <div id="missionId">
+            MOON · NASA ARCHIVE
+        </div>
+
+        <button
+            id="closeButton"
+            type="button"
+            aria-label="Close">
+            ×
+        </button>
+
+    </div>
+
+    <div class="dialogue-content">
+
+        <div id="storyKicker">
+            MISSION STORY
+        </div>
+
+        <h2 id="storyTitle">
+            Mission
+        </h2>
+
+        <p id="storyText">
+            Story
+        </p>
+
+    </div>
+
+    <div class="dialogue-footer">
+
+        <div id="storyCounter">
+            01 / 05
+        </div>
+
+        <button
+            id="nextButton"
+            type="button"
+            aria-label="Next story">
+            →
+        </button>
+
+    </div>
+
+</div>
+
+
+<script src="moon.js"></script>
+
+</body>
+</html>
