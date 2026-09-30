@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="theme-color"
+        content="#000814">
+
+    <title>NASA Space Journey</title>
+
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+
+<section id="spaceView" aria-label="NASA Space Journey">
+
+    <!-- =====================================================
+         BACKGROUND
+    ====================================================== -->
+
+    <div id="stars" aria-hidden="true"></div>
+
+    <div class="nebula one" aria-hidden="true"></div>
+    <div class="nebula two" aria-hidden="true"></div>
+
+
+    <!-- =====================================================
+         SOLAR SYSTEM
+    ====================================================== -->
+
+    <div id="solarWorld">
+
+        <!-- Orbits -->
+        <div class="orbit o1"></div>
+        <div class="orbit o2"></div>
+        <div class="orbit o3"></div>
+        <div class="orbit o4"></div>
+        <div class="orbit o5"></div>
+        <div class="orbit o6"></div>
+
+        <!-- Moon orbit -->
+        <div class="moon-orbit"></div>
+
+
+        <!-- Sun -->
+        <div
+            class="sun"
+            aria-label="Sun">
+        </div>
+
+
+        <!-- =================================================
+             PLANETS
+        ================================================== -->
+
+        <button
+            class="planet mercury"
+            data-planet="Mercury"
+            aria-label="Explore Mercury">
+            <span class="planet-label">MERCURY</span>
+        </button>
+
+
+        <button
+            class="planet venus"
+            data-planet="Venus"
+            aria-label="Explore Venus">
+            <span class="planet-label">VENUS</span>
+        </button>
+
+
+        <button
+            class="planet earth"
+            data-planet="Earth"
+            aria-label="Explore Earth">
+            <span class="planet-label">EARTH</span>
+        </button>
+
+
+        <button
+            class="planet moon"
+            data-planet="Moon"
+            aria-label="Explore Moon">
+            <span class="planet-label">MOON</span>
+        </button>
+
+
+        <button
+            class="planet mars"
+            data-planet="Mars"
+            aria-label="Explore Mars">
+            <span class="planet-label">MARS</span>
+        </button>
+
+
+        <button
+            class="planet jupiter"
+            data-planet="Jupiter"
+            aria-label="Explore Jupiter">
+            <span class="planet-label">JUPITER</span>
+        </button>
+
+
+        <button
+            class="planet saturn"
+            data-planet="Saturn"
+            aria-label="Explore Saturn">
+            <span class="planet-label">SATURN</span>
+        </button>
+
+    </div>
+
+
+    <!-- =====================================================
+         HUD
+    ====================================================== -->
+
+    <header id="spaceHud">
+
+        <div class="logo">
+            NASA SPACE JOURNEY
+        </div>
+
+        <div class="mode">
+            FREE SPACE EXPLORATION
+        </div>
+
+    </header>
+
+
+    <!-- =====================================================
+         DESKTOP INFORMATION BAR
+    ====================================================== -->
+
+    <div id="spaceInfo">
+
+        <span>WASD / ARROWS</span>
+        <b>FLY</b>
+
+        <span>Q / E</span>
+        <b>ZOOM</b>
+
+        <span>DRAG</span>
+        <b>PAN</b>
+
+        <span>CLICK PLANET</span>
+        <b>EXPLORE</b>
+
+    </div>
+
+
+    <!-- =====================================================
+         MOBILE CONTROLS
+    ====================================================== -->
+
+    <div
+        id="mobileControls"
+        aria-label="Mobile space controls">
+
+        <button
+            class="control-btn direction"
+            data-key="w"
+            aria-label="Move up">
+            ↑
+        </button>
+
+        <button
+            class="control-btn direction"
+            data-key="a"
+            aria-label="Move left">
+            ←
+        </button>
+
+        <button
+            class="control-btn direction"
+            data-key="s"
+            aria-label="Move down">
+            ↓
+        </button>
+
+        <button
+            class="control-btn direction"
+            data-key="d"
+            aria-label="Move right">
+            →
+        </button>
+
+        <button
+            class="control-btn zoom-btn"
+            data-action="zoom-in"
+            aria-label="Zoom in">
+            +
+        </button>
+
+        <button
+            class="control-btn zoom-btn"
+            data-action="zoom-out"
+            aria-label="Zoom out">
+            −
+        </button>
+
+        <button
+            class="control-btn reset-btn"
+            data-action="reset"
+            aria-label="Reset view">
+            ⟳
+        </button>
+
+    </div>
+
+
+    <!-- =====================================================
+         MOBILE HINT
+    ====================================================== -->
+
+    <div id="mobileHint">
+        Drag to explore • Tap a planet to learn more
+    </div>
+
+
+    <!-- =====================================================
+         PLANET INFORMATION MODAL
+    ====================================================== -->
+
+    <div
+        id="planetModal"
+        class="modal"
+        aria-hidden="true">
+
+        <div
+            class="modal-backdrop"
+            data-close-modal>
+        </div>
+
+        <div
+            class="planet-card"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="planetTitle">
+
+            <button
+                id="closeModal"
+                class="close-modal"
+                aria-label="Close planet information">
+                ×
+            </button>
+
+            <div
+                id="planetVisual"
+                class="planet-visual">
+            </div>
+
+            <div class="planet-card-content">
+
+                <div class="planet-card-kicker">
+                    SPACE JOURNEY
+                </div>
+
+                <h2 id="planetTitle">
+                    Earth
+                </h2>
+
+                <p id="planetDescription">
+                    Our home planet.
+                </p>
+
+                <div class="planet-facts">
+
+                    <div class="fact">
+                        <span>TYPE</span>
+                        <strong id="planetType">Terrestrial</strong>
+                    </div>
+
+                    <div class="fact">
+                        <span>DAY</span>
+                        <strong id="planetDay">24 hours</strong>
+                    </div>
+
+                    <div class="fact">
+                        <span>YEAR</span>
+                        <strong id="planetYear">365 days</strong>
+                    </div>
+
+                </div>
+
+                <button
+                    id="closeModalButton"
+                    class="explore-close">
+                    RETURN TO SPACE
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         LANDSCAPE MESSAGE
+    ====================================================== -->
+
+    <div id="orientationMessage">
+
+        <div class="orientation-icon">
+            ↻
+        </div>
+
+        <strong>
+            Rotate your phone
+        </strong>
+
+        <span>
+            Landscape mode gives you a better space view.
+        </span>
+
+    </div>
+
+</section>
+
+
+<script src="index.js"></script>
+
+</body>
+
+</html>
