@@ -1,0 +1,1820 @@
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+
+body {
+    background: #000;
+    color: #fff;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+}
+
+
+/* =========================================================
+   SPACE VIEW
+========================================================= */
+
+#spaceView {
+
+    position: fixed;
+
+    inset: 0;
+
+    width: 100vw;
+    height: 100vh;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #071329 0%,
+            #020711 45%,
+            #000 100%
+        );
+
+    user-select: none;
+
+    touch-action: none;
+
+    isolation: isolate;
+}
+
+
+/* =========================================================
+   STARS
+========================================================= */
+
+#stars {
+
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background-image:
+
+        radial-gradient(
+            2px 2px at 10% 20%,
+            #fff,
+            transparent
+        ),
+
+        radial-gradient(
+            1px 1px at 25% 70%,
+            #fff,
+            transparent
+        ),
+
+        radial-gradient(
+            2px 2px at 40% 30%,
+            #fff,
+            transparent
+        ),
+
+        radial-gradient(
+            1px 1px at 60% 80%,
+            #fff,
+            transparent
+        ),
+
+        radial-gradient(
+            2px 2px at 75% 25%,
+            #fff,
+            transparent
+        ),
+
+        radial-gradient(
+            1px 1px at 90% 65%,
+            #fff,
+            transparent
+        ),
+
+        radial-gradient(
+            1px 1px at 15% 90%,
+            #fff,
+            transparent
+        ),
+
+        radial-gradient(
+            2px 2px at 85% 10%,
+            #fff,
+            transparent
+        );
+
+    background-size:
+
+        250px 250px,
+        320px 320px,
+        400px 400px,
+        500px 500px,
+        350px 350px,
+        450px 450px,
+        300px 300px,
+        550px 550px;
+
+    opacity: 0.9;
+
+    pointer-events: none;
+
+    z-index: 1;
+}
+
+
+/* =========================================================
+   NEBULA
+========================================================= */
+
+.nebula {
+
+    position: absolute;
+
+    width: 900px;
+    height: 700px;
+
+    border-radius: 50%;
+
+    filter: blur(100px);
+
+    opacity: 0.15;
+
+    pointer-events: none;
+
+    z-index: 2;
+}
+
+
+.nebula.one {
+
+    left: -250px;
+    top: -150px;
+
+    background:
+        radial-gradient(
+            ellipse,
+            #244cff,
+            transparent 70%
+        );
+}
+
+
+.nebula.two {
+
+    right: -300px;
+    bottom: -200px;
+
+    background:
+        radial-gradient(
+            ellipse,
+            #7b1cff,
+            transparent 70%
+        );
+}
+
+
+/* =========================================================
+   SOLAR WORLD
+========================================================= */
+
+#solarWorld {
+
+    position: absolute;
+
+    left: 0;
+    top: 0;
+
+    width: 4200px;
+    height: 2600px;
+
+    transform-origin: 0 0;
+
+    z-index: 5;
+
+    will-change: transform;
+}
+
+
+/* =========================================================
+   ORBITS
+========================================================= */
+
+.orbit,
+.moon-orbit {
+
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    border-radius: 50%;
+
+    transform:
+        translate(-50%, -50%);
+
+    pointer-events: none;
+}
+
+
+.orbit {
+
+    border:
+        1px solid
+        rgba(120, 180, 255, 0.18);
+}
+
+
+/* Mercury */
+
+.orbit.o1 {
+
+    width: 600px;
+    height: 360px;
+}
+
+
+/* Venus */
+
+.orbit.o2 {
+
+    width: 900px;
+    height: 520px;
+}
+
+
+/* Earth */
+
+.orbit.o3 {
+
+    width: 1250px;
+    height: 710px;
+}
+
+
+/* Mars */
+
+.orbit.o4 {
+
+    width: 1650px;
+    height: 930px;
+}
+
+
+/* Jupiter */
+
+.orbit.o5 {
+
+    width: 2200px;
+    height: 1220px;
+}
+
+
+/* Saturn */
+
+.orbit.o6 {
+
+    width: 2900px;
+    height: 1580px;
+}
+
+
+/* =========================================================
+   MOON ORBIT
+========================================================= */
+
+.moon-orbit {
+
+    width: 180px;
+    height: 100px;
+
+    border:
+        1px dashed
+        rgba(190, 210, 235, 0.22);
+
+    left: 0;
+    top: 0;
+}
+
+
+/* =========================================================
+   SUN
+========================================================= */
+
+.sun {
+
+    position: absolute;
+
+    left: 2100px;
+    top: 1300px;
+
+    width: 150px;
+    height: 150px;
+
+    transform:
+        translate(-50%, -50%);
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle at 35% 35%,
+            #fffde0 0%,
+            #fff3a0 15%,
+            #ffd21c 45%,
+            #ff8c00 75%,
+            #ff4500 100%
+        );
+
+    box-shadow:
+
+        0 0 30px #ffb300,
+        0 0 70px #ff8c00,
+        0 0 130px
+        rgba(255, 140, 0, 0.7),
+        0 0 220px
+        rgba(255, 90, 0, 0.35);
+
+    z-index: 10;
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   PLANETS
+========================================================= */
+
+.planet {
+
+    position: absolute;
+
+    padding: 0;
+
+    border: 0;
+
+    appearance: none;
+
+    transform:
+        translate(-50%, -50%);
+
+    border-radius: 50%;
+
+    cursor: pointer;
+
+    z-index: 20;
+
+    transition:
+        filter 0.2s ease,
+        transform 0.2s ease;
+
+    touch-action: manipulation;
+
+    -webkit-tap-highlight-color: transparent;
+
+    outline: none;
+
+    font: inherit;
+
+    will-change: left, top;
+}
+
+
+/* =========================================================
+   PLANET LABELS
+========================================================= */
+
+.planet-label {
+
+    position: absolute;
+
+    left: 50%;
+    top: calc(100% + 12px);
+
+    transform:
+        translateX(-50%);
+
+    color: #fff;
+
+    font-size: 12px;
+
+    font-weight: bold;
+
+    letter-spacing: 2px;
+
+    white-space: nowrap;
+
+    text-shadow:
+        0 0 5px #000,
+        0 0 10px #000;
+
+    pointer-events: none;
+
+    opacity: 0.9;
+}
+
+
+/* =========================================================
+   MERCURY
+========================================================= */
+
+.planet.mercury {
+
+    width: 40px;
+    height: 40px;
+
+    background:
+        radial-gradient(
+            circle at 35% 30%,
+            #d8d8d8,
+            #888 45%,
+            #444 80%,
+            #222
+        );
+
+    box-shadow:
+        0 0 12px
+        rgba(180, 180, 180, 0.6);
+}
+
+
+/* Mercury craters */
+
+.planet.mercury::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 7px;
+    height: 7px;
+
+    left: 9px;
+    top: 10px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(40, 40, 40, 0.45);
+
+    box-shadow:
+        12px 6px 0 rgba(40, 40, 40, 0.35),
+        5px 17px 0 rgba(40, 40, 40, 0.30);
+}
+
+
+/* =========================================================
+   VENUS
+========================================================= */
+
+.planet.venus {
+
+    width: 50px;
+    height: 50px;
+
+    background:
+        radial-gradient(
+            circle at 35% 30%,
+            #fff1a8,
+            #d8a83e 45%,
+            #9c641c 80%,
+            #57330d
+        );
+
+    box-shadow:
+        0 0 15px
+        rgba(255, 190, 70, 0.5);
+}
+
+
+/* =========================================================
+   EARTH
+========================================================= */
+
+.planet.earth {
+
+    width: 68px;
+    height: 68px;
+
+    background:
+        radial-gradient(
+            circle at 35% 30%,
+            #7fdcff 0%,
+            #1876d2 38%,
+            #0751a0 65%,
+            #02244f 100%
+        );
+
+    box-shadow:
+
+        0 0 18px
+        rgba(50, 150, 255, 0.8),
+
+        0 0 35px
+        rgba(30, 100, 255, 0.35);
+}
+
+
+/* Earth land */
+
+.planet.earth::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 28px;
+    height: 20px;
+
+    left: 13px;
+    top: 15px;
+
+    background:
+        #39a852;
+
+    border-radius:
+        60% 40% 50% 35%;
+
+    transform:
+        rotate(-20deg);
+
+    opacity: 0.95;
+}
+
+
+.planet.earth::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 20px;
+    height: 14px;
+
+    right: 8px;
+    bottom: 13px;
+
+    background:
+        #4caf50;
+
+    border-radius: 50%;
+
+    transform:
+        rotate(25deg);
+}
+
+
+/* =========================================================
+   MOON
+========================================================= */
+
+.planet.moon {
+
+    width: 38px;
+    height: 38px;
+
+    background:
+        radial-gradient(
+            circle at 35% 30%,
+            #f5f5f5,
+            #aaa 55%,
+            #666 85%,
+            #333
+        );
+
+    box-shadow:
+        0 0 10px
+        rgba(220, 220, 220, 0.55);
+}
+
+
+.planet.moon::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 7px;
+    height: 7px;
+
+    left: 9px;
+    top: 10px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(70, 70, 70, 0.55);
+
+    box-shadow:
+
+        9px 5px 0
+        rgba(70, 70, 70, 0.45),
+
+        3px 13px 0
+        rgba(70, 70, 70, 0.35);
+}
+
+
+/* =========================================================
+   MARS
+========================================================= */
+
+.planet.mars {
+
+    width: 56px;
+    height: 56px;
+
+    background:
+        radial-gradient(
+            circle at 35% 30%,
+            #ffb06c,
+            #c9572b 45%,
+            #8b2e1c 75%,
+            #40130d 100%
+        );
+
+    box-shadow:
+        0 0 16px
+        rgba(255, 80, 30, 0.55);
+}
+
+
+/* =========================================================
+   JUPITER
+========================================================= */
+
+.planet.jupiter {
+
+    width: 112px;
+    height: 112px;
+
+    background:
+        linear-gradient(
+            to bottom,
+
+            #d9b38c 0%,
+            #b47c54 15%,
+            #e6c59e 28%,
+            #9b6246 42%,
+            #d9a77b 55%,
+            #f0d0a8 68%,
+            #a66b4a 82%,
+            #d0a077 100%
+        );
+
+    box-shadow:
+        0 0 20px
+        rgba(210, 150, 100, 0.45);
+
+    overflow: visible;
+}
+
+
+/* Jupiter bands */
+
+.planet.jupiter::before {
+
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    right: 0;
+
+    top: 28px;
+
+    height: 10px;
+
+    background:
+        rgba(80, 40, 20, 0.25);
+
+    box-shadow:
+        0 20px 0 rgba(255, 230, 190, 0.20),
+        0 45px 0 rgba(90, 40, 20, 0.20);
+}
+
+
+/* Jupiter Great Red Spot */
+
+.planet.jupiter::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 28px;
+    height: 18px;
+
+    right: 17px;
+    bottom: 27px;
+
+    border-radius: 50%;
+
+    background:
+        #b94b35;
+
+    box-shadow:
+        inset 0 0 5px
+        rgba(90, 20, 10, 0.6);
+}
+
+
+/* =========================================================
+   SATURN
+========================================================= */
+
+.planet.saturn {
+
+    width: 92px;
+    height: 92px;
+
+    background:
+        radial-gradient(
+            circle at 35% 30%,
+            #fff0b0,
+            #d8ae63 50%,
+            #9a7137 80%,
+            #4c3518
+        );
+
+    box-shadow:
+        0 0 20px
+        rgba(220, 180, 100, 0.45);
+
+    overflow: visible;
+}
+
+
+/* Saturn rings */
+
+.planet.saturn::before {
+
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    width: 155px;
+    height: 42px;
+
+    transform:
+        translate(-50%, -50%)
+        rotate(-12deg);
+
+    border:
+        7px solid
+        rgba(210, 180, 120, 0.8);
+
+    border-left-color:
+        rgba(150, 120, 70, 0.6);
+
+    border-right-color:
+        rgba(235, 205, 145, 0.85);
+
+    border-radius: 50%;
+
+    z-index: -1;
+}
+
+
+/* =========================================================
+   PLANET HOVER
+========================================================= */
+
+.planet:hover {
+
+    filter:
+        brightness(1.25);
+
+    transform:
+        translate(-50%, -50%)
+        scale(1.12);
+
+    z-index: 100;
+}
+
+
+/* Keyboard focus */
+
+.planet:focus-visible {
+
+    box-shadow:
+        0 0 0 4px
+        rgba(80, 190, 255, 0.8),
+        0 0 30px
+        rgba(50, 160, 255, 0.7);
+}
+
+
+/* =========================================================
+   HUD
+========================================================= */
+
+#spaceHud {
+
+    position: fixed;
+
+    left: 25px;
+    top: 25px;
+
+    z-index: 500;
+
+    pointer-events: none;
+
+    text-shadow:
+        0 0 8px #000,
+        0 0 15px #000;
+}
+
+
+.logo {
+
+    color: #fff;
+
+    font-size: 24px;
+
+    font-weight: 700;
+
+    letter-spacing: 3px;
+}
+
+
+.mode {
+
+    margin-top: 6px;
+
+    color: #62b5ff;
+
+    font-size: 12px;
+
+    letter-spacing: 3px;
+}
+
+
+/* =========================================================
+   INFORMATION BAR
+========================================================= */
+
+#spaceInfo {
+
+    position: fixed;
+
+    left: 50%;
+    bottom: 25px;
+
+    transform:
+        translateX(-50%);
+
+    z-index: 500;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    padding:
+        10px 18px;
+
+    color:
+        rgba(255, 255, 255, 0.85);
+
+    background:
+        rgba(0, 10, 25, 0.65);
+
+    border:
+        1px solid
+        rgba(100, 180, 255, 0.3);
+
+    border-radius: 8px;
+
+    font-size: 11px;
+
+    letter-spacing: 1px;
+
+    backdrop-filter:
+        blur(8px);
+
+    white-space: nowrap;
+
+    pointer-events: none;
+}
+
+
+#spaceInfo span {
+
+    color: #4db8ff;
+
+    font-weight: bold;
+
+    margin-left: 8px;
+}
+
+
+#spaceInfo b {
+
+    font-weight: normal;
+
+    color: rgba(255,255,255,0.75);
+}
+
+
+/* =========================================================
+   MOBILE CONTROLS
+========================================================= */
+
+#mobileControls {
+
+    position: fixed;
+
+    right: 20px;
+    bottom: 70px;
+
+    z-index: 600;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 50px);
+
+    grid-template-rows:
+        repeat(3, 50px);
+
+    gap: 6px;
+
+    pointer-events: auto;
+}
+
+
+/* Up */
+
+.direction[data-key="w"] {
+
+    grid-column: 2;
+    grid-row: 1;
+}
+
+
+/* Left */
+
+.direction[data-key="a"] {
+
+    grid-column: 1;
+    grid-row: 2;
+}
+
+
+/* Down */
+
+.direction[data-key="s"] {
+
+    grid-column: 2;
+    grid-row: 2;
+}
+
+
+/* Right */
+
+.direction[data-key="d"] {
+
+    grid-column: 3;
+    grid-row: 2;
+}
+
+
+/* Zoom in */
+
+.zoom-btn[data-action="zoom-in"] {
+
+    grid-column: 1;
+    grid-row: 3;
+}
+
+
+/* Zoom out */
+
+.zoom-btn[data-action="zoom-out"] {
+
+    grid-column: 2;
+    grid-row: 3;
+}
+
+
+/* Reset */
+
+.reset-btn {
+
+    grid-column: 3;
+    grid-row: 3;
+}
+
+
+/* =========================================================
+   CONTROL BUTTON
+========================================================= */
+
+.control-btn {
+
+    width: 50px;
+    height: 50px;
+
+    border:
+        1px solid
+        rgba(100, 190, 255, 0.55);
+
+    border-radius: 10px;
+
+    background:
+        rgba(5, 25, 55, 0.82);
+
+    color: #fff;
+
+    font-size: 22px;
+
+    cursor: pointer;
+
+    -webkit-tap-highlight-color:
+        transparent;
+
+    touch-action: none;
+
+    box-shadow:
+        0 0 15px
+        rgba(30, 120, 255, 0.15);
+
+    transition:
+        background 0.15s ease,
+        transform 0.1s ease;
+}
+
+
+.control-btn:hover {
+
+    background:
+        rgba(20, 70, 125, 0.9);
+}
+
+
+.control-btn:active,
+.control-btn.active {
+
+    background:
+        rgba(30, 110, 210, 0.9);
+
+    transform:
+        scale(0.94);
+}
+
+
+/* =========================================================
+   MOBILE HINT
+========================================================= */
+
+#mobileHint {
+
+    display: none;
+
+    position: fixed;
+
+    left: 50%;
+    bottom: 15px;
+
+    transform:
+        translateX(-50%);
+
+    z-index: 500;
+
+    width: max-content;
+
+    max-width: calc(100vw - 30px);
+
+    padding:
+        7px 12px;
+
+    border:
+        1px solid
+        rgba(100, 180, 255, 0.25);
+
+    border-radius: 8px;
+
+    background:
+        rgba(0, 10, 25, 0.7);
+
+    color:
+        rgba(255,255,255,0.8);
+
+    font-size: 10px;
+
+    text-align: center;
+
+    backdrop-filter:
+        blur(8px);
+}
+
+
+/* =========================================================
+   MODAL
+========================================================= */
+
+.modal {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 1000;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    visibility: hidden;
+
+    opacity: 0;
+
+    transition:
+        opacity 0.2s ease,
+        visibility 0.2s ease;
+}
+
+
+.modal.open {
+
+    visibility: visible;
+
+    opacity: 1;
+}
+
+
+/* Modal backdrop */
+
+.modal-backdrop {
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        rgba(0, 5, 15, 0.72);
+
+    backdrop-filter:
+        blur(8px);
+}
+
+
+/* =========================================================
+   PLANET CARD
+========================================================= */
+
+.planet-card {
+
+    position: relative;
+
+    z-index: 2;
+
+    width: min(520px, 100%);
+
+    max-height: 90vh;
+
+    overflow-y: auto;
+
+    border:
+        1px solid
+        rgba(100, 190, 255, 0.35);
+
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(7, 25, 52, 0.98),
+            rgba(1, 8, 20, 0.98)
+        );
+
+    box-shadow:
+        0 30px 100px
+        rgba(0,0,0,0.7),
+
+        0 0 50px
+        rgba(30, 130, 255, 0.12);
+
+    transform:
+        translateY(20px)
+        scale(0.96);
+
+    transition:
+        transform 0.25s ease;
+}
+
+
+.modal.open .planet-card {
+
+    transform:
+        translateY(0)
+        scale(1);
+}
+
+
+/* =========================================================
+   CLOSE BUTTON
+========================================================= */
+
+.close-modal {
+
+    position: absolute;
+
+    right: 15px;
+    top: 15px;
+
+    width: 38px;
+    height: 38px;
+
+    border:
+        1px solid
+        rgba(255,255,255,0.2);
+
+    border-radius: 50%;
+
+    background:
+        rgba(0,0,0,0.35);
+
+    color: #fff;
+
+    font-size: 25px;
+
+    cursor: pointer;
+
+    z-index: 10;
+}
+
+
+.close-modal:hover {
+
+    background:
+        rgba(255,255,255,0.12);
+}
+
+
+/* =========================================================
+   PLANET VISUAL
+========================================================= */
+
+.planet-visual {
+
+    height: 210px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(30, 110, 200, 0.16),
+            transparent 65%
+        );
+}
+
+
+/* Planet inside card */
+
+.planet-visual::before {
+
+    content: "";
+
+    display: block;
+
+    width: 120px;
+    height: 120px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle at 35% 30%,
+            #8fdcff,
+            #1676d2 45%,
+            #043a80 80%,
+            #001a38
+        );
+
+    box-shadow:
+        0 0 30px
+        rgba(40,150,255,0.5);
+}
+
+
+/* Dynamic classes */
+
+.planet-visual.mercury::before {
+
+    background:
+        radial-gradient(
+            circle at 35% 30%,
+            #d8d8d8,
+            #888 45%,
+            #444 80%,
+            #222
+        );
+}
+
+
+.planet-visual.venus::before {
+
+    background:
+        radial-gradient(
+            circle at 35% 30%,
+            #fff1a8,
+            #d8a83e 45%,
+            #9c641c 80%,
+            #57330d
+        );
+}
+
+
+.planet-visual.earth::before {
+
+    background:
+        radial-gradient(
+            circle at 35% 30%,
+            #7fdcff,
+            #1876d2 40%,
+            #0751a0 70%,
+            #02244f
+        );
+}
+
+
+.planet-visual.moon::before {
+
+    background:
+        radial-gradient(
+            circle at 35% 30%,
+            #f5f5f5,
+            #aaa 55%,
+            #666 85%,
+            #333
+        );
+}
+
+
+.planet-visual.mars::before {
+
+    background:
+        radial-gradient(
+            circle at 35% 30%,
+            #ffb06c,
+            #c9572b 45%,
+            #8b2e1c 75%,
+            #40130d
+        );
+}
+
+
+.planet-visual.jupiter::before {
+
+    background:
+        linear-gradient(
+            to bottom,
+            #d9b38c,
+            #b47c54 20%,
+            #e6c59e 35%,
+            #9b6246 50%,
+            #d9a77b 65%,
+            #f0d0a8 80%,
+            #a66b4a
+        );
+}
+
+
+.planet-visual.saturn::before {
+
+    background:
+        radial-gradient(
+            circle at 35% 30%,
+            #fff0b0,
+            #d8ae63 50%,
+            #9a7137 80%,
+            #4c3518
+        );
+}
+
+
+/* =========================================================
+   CARD CONTENT
+========================================================= */
+
+.planet-card-content {
+
+    padding:
+        0 30px 30px;
+}
+
+
+.planet-card-kicker {
+
+    color: #4db8ff;
+
+    font-size: 11px;
+
+    letter-spacing: 3px;
+
+    font-weight: bold;
+}
+
+
+#planetTitle {
+
+    margin-top: 7px;
+
+    font-size: 34px;
+
+    letter-spacing: 2px;
+}
+
+
+#planetDescription {
+
+    margin-top: 12px;
+
+    color:
+        rgba(255,255,255,0.75);
+
+    line-height: 1.6;
+
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   FACTS
+========================================================= */
+
+.planet-facts {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 10px;
+
+    margin-top: 22px;
+}
+
+
+.fact {
+
+    padding: 12px;
+
+    border:
+        1px solid
+        rgba(100,180,255,0.15);
+
+    border-radius: 10px;
+
+    background:
+        rgba(255,255,255,0.03);
+}
+
+
+.fact span {
+
+    display: block;
+
+    color:
+        rgba(255,255,255,0.45);
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+}
+
+
+.fact strong {
+
+    display: block;
+
+    margin-top: 5px;
+
+    color: #fff;
+
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   RETURN BUTTON
+========================================================= */
+
+.explore-close {
+
+    width: 100%;
+
+    margin-top: 20px;
+
+    padding: 13px;
+
+    border:
+        1px solid
+        rgba(80,180,255,0.4);
+
+    border-radius: 10px;
+
+    background:
+        rgba(30,110,210,0.25);
+
+    color: #fff;
+
+    font-weight: bold;
+
+    letter-spacing: 1px;
+
+    cursor: pointer;
+}
+
+
+.explore-close:hover {
+
+    background:
+        rgba(30,110,210,0.5);
+}
+
+
+/* =========================================================
+   ORIENTATION MESSAGE
+========================================================= */
+
+#orientationMessage {
+
+    display: none;
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 2000;
+
+    background:
+        #020711;
+
+    align-items: center;
+    justify-content: center;
+
+    flex-direction: column;
+
+    gap: 10px;
+
+    text-align: center;
+
+    padding: 30px;
+}
+
+
+.orientation-icon {
+
+    font-size: 45px;
+
+    color: #4db8ff;
+}
+
+
+#orientationMessage strong {
+
+    font-size: 20px;
+}
+
+
+#orientationMessage span {
+
+    color:
+        rgba(255,255,255,0.65);
+
+    font-size: 13px;
+
+    max-width: 280px;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+
+    #spaceHud {
+
+        left: 15px;
+        top: 15px;
+    }
+
+
+    .logo {
+
+        font-size: 17px;
+
+        letter-spacing: 2px;
+    }
+
+
+    .mode {
+
+        font-size: 9px;
+
+        letter-spacing: 2px;
+    }
+
+
+    #spaceInfo {
+
+        display: none;
+    }
+
+
+    #mobileControls {
+
+        right: 15px;
+
+        bottom: 58px;
+    }
+
+
+    #mobileHint {
+
+        display: block;
+
+        left: 15px;
+
+        transform: none;
+
+        bottom: 15px;
+
+        max-width:
+            calc(100vw - 145px);
+    }
+
+
+    .planet-label {
+
+        font-size: 9px;
+
+        letter-spacing: 1px;
+    }
+
+
+    .planet-card {
+
+        border-radius: 16px;
+
+        max-height: 92vh;
+    }
+
+
+    .planet-visual {
+
+        height: 150px;
+    }
+
+
+    .planet-visual::before {
+
+        width: 90px;
+        height: 90px;
+    }
+
+
+    .planet-card-content {
+
+        padding:
+            0 20px 20px;
+    }
+
+
+    #planetTitle {
+
+        font-size: 27px;
+    }
+
+
+    .planet-facts {
+
+        grid-template-columns:
+            1fr;
+
+        gap: 7px;
+    }
+
+
+    .fact {
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: space-between;
+    }
+
+
+    .fact strong {
+
+        margin-top: 0;
+    }
+}
+
+
+/* =========================================================
+   SMALL PHONES
+========================================================= */
+
+@media (max-width: 420px) {
+
+    #mobileControls {
+
+        transform:
+            scale(0.88);
+
+        transform-origin:
+            bottom right;
+    }
+
+
+    #mobileHint {
+
+        font-size: 9px;
+
+        max-width:
+            calc(100vw - 130px);
+    }
+
+
+    .logo {
+
+        font-size: 15px;
+    }
+
+
+    .mode {
+
+        font-size: 8px;
+    }
+}
+
+
+/* =========================================================
+   PORTRAIT PHONES
+========================================================= */
+
+@media
+(max-width: 700px)
+and (orientation: portrait)
+and (min-height: 600px) {
+
+    #orientationMessage {
+
+        display: flex;
+    }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+
+        animation-duration: 0.001ms !important;
+
+        transition-duration: 0.001ms !important;
+    }
+}
