@@ -1,0 +1,695 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+
+    overflow: hidden;
+
+    background: #02050b;
+    color: #fff;
+
+    font-family:
+        "Segoe UI",
+        Arial,
+        sans-serif;
+}
+
+body {
+    touch-action: none;
+}
+
+button {
+    font: inherit;
+}
+
+
+/* =========================================================
+   EXHIBITION
+========================================================= */
+
+#exhibition {
+    position: fixed;
+    inset: 0;
+
+    overflow: hidden;
+
+    background: #02050b;
+}
+
+
+/* =========================================================
+   MAP
+========================================================= */
+
+#planetMap {
+    position: absolute;
+    inset: 0;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #182532 0%,
+            #07101a 45%,
+            #02050b 100%
+        );
+
+    cursor: grab;
+
+    z-index: 1;
+}
+
+#planetMap.dragging {
+    cursor: grabbing;
+}
+
+
+/* =========================================================
+   MOON WORLD
+========================================================= */
+
+#moonWorld {
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    width: 420px;
+    height: 420px;
+
+    transform:
+        translate(-50%, -50%);
+
+    transform-origin: center center;
+
+    will-change:
+        transform;
+
+    user-select: none;
+
+    pointer-events: none;
+}
+
+#moonImage {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+
+    pointer-events: none;
+
+    user-select: none;
+
+    -webkit-user-drag: none;
+
+    filter:
+        drop-shadow(
+            0 0 35px
+            rgba(180, 210, 230, .22)
+        );
+}
+
+
+/* =========================================================
+   SPACECRAFT LAYER
+========================================================= */
+
+#spacecraftLayer {
+    position: absolute;
+    inset: 0;
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   SPACECRAFT
+========================================================= */
+
+.exhibit-spacecraft {
+    position: absolute;
+
+    width: 95px;
+    height: 65px;
+
+    padding: 0;
+
+    border: none;
+
+    background: transparent;
+
+    cursor: pointer;
+
+    transform:
+        translate(-50%, -50%);
+
+    z-index: 15;
+
+    pointer-events: auto;
+
+    transition:
+        transform .2s ease,
+        filter .2s ease;
+}
+
+.exhibit-spacecraft img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+
+    display: block;
+
+    pointer-events: none;
+
+    user-select: none;
+
+    -webkit-user-drag: none;
+
+    filter:
+        drop-shadow(
+            0 0 10px
+            rgba(100, 220, 255, .55)
+        );
+}
+
+.exhibit-spacecraft:hover {
+    filter:
+        brightness(1.25)
+        drop-shadow(
+            0 0 22px
+            rgba(100, 230, 255, .9)
+        );
+
+    transform:
+        translate(-50%, -50%)
+        scale(1.15);
+}
+
+.exhibit-label {
+    position: absolute;
+
+    left: 50%;
+    top: calc(100% + 8px);
+
+    transform:
+        translateX(-50%);
+
+    white-space: nowrap;
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+
+    color:
+        rgba(225, 245, 255, .82);
+
+    text-align: center;
+
+    pointer-events: none;
+
+    text-shadow:
+        0 0 8px
+        rgba(0, 0, 0, .95);
+}
+
+
+/* =========================================================
+   ATMOSPHERE
+========================================================= */
+
+#mapAtmosphere {
+    position: absolute;
+    inset: 0;
+
+    z-index: 12;
+
+    pointer-events: none;
+
+    background:
+        radial-gradient(
+            ellipse at center,
+            transparent 30%,
+            rgba(0, 5, 12, .12) 58%,
+            rgba(0, 0, 0, .62) 100%
+        );
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+#exhibitionHeader {
+    position: absolute;
+
+    top: 22px;
+    left: 24px;
+    right: 24px;
+
+    display: flex;
+
+    justify-content: space-between;
+    align-items: flex-start;
+
+    z-index: 20;
+
+    pointer-events: none;
+}
+
+#exhibitionHeader > * {
+    pointer-events: auto;
+}
+
+.exhibition-kicker {
+    color: #7edfff;
+
+    font-size: 9px;
+
+    letter-spacing: 4px;
+
+    margin-bottom: 7px;
+}
+
+#exhibitionTitle {
+    font-size:
+        clamp(30px, 6vw, 70px);
+
+    font-weight: 200;
+
+    letter-spacing: 10px;
+
+    text-shadow:
+        0 0 30px
+        rgba(100, 200, 255, .22);
+}
+
+.exhibition-status {
+    margin-top: 7px;
+
+    color:
+        rgba(220, 240, 255, .70);
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+}
+
+
+/* =========================================================
+   HOME BUTTON
+========================================================= */
+
+#exhibitionHome {
+    border:
+        1px solid
+        rgba(130, 210, 255, .4);
+
+    background:
+        rgba(3, 12, 25, .72);
+
+    color: #fff;
+
+    padding:
+        10px 17px;
+
+    cursor: pointer;
+
+    letter-spacing: 2px;
+
+    font-size: 10px;
+
+    backdrop-filter: blur(12px);
+
+    transition:
+        .25s ease;
+}
+
+#exhibitionHome:hover {
+    border-color: #8de8ff;
+
+    background:
+        rgba(30, 90, 120, .35);
+
+    box-shadow:
+        0 0 25px
+        rgba(80, 200, 255, .15);
+}
+
+
+/* =========================================================
+   CONTROLS
+========================================================= */
+
+#exhibitionControls {
+    position: absolute;
+
+    left: 24px;
+    bottom: 24px;
+
+    padding:
+        12px 16px;
+
+    border:
+        1px solid
+        rgba(120, 190, 230, .18);
+
+    background:
+        rgba(3, 10, 18, .72);
+
+    backdrop-filter:
+        blur(12px);
+
+    color:
+        rgba(225, 245, 255, .72);
+
+    font-size: 10px;
+
+    line-height: 1.8;
+
+    letter-spacing: 1.2px;
+
+    z-index: 20;
+
+    pointer-events: none;
+}
+
+#exhibitionControls span {
+    color: #7edfff;
+}
+
+
+/* =========================================================
+   DIALOGUE BACKDROP
+========================================================= */
+
+#dialogueBackdrop {
+    position: fixed;
+    inset: 0;
+
+    background:
+        rgba(0, 0, 0, .54);
+
+    backdrop-filter:
+        blur(7px);
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    transition:
+        opacity .35s ease;
+
+    z-index: 300;
+}
+
+#dialogueBackdrop.open {
+    opacity: 1;
+
+    pointer-events: auto;
+}
+
+
+/* =========================================================
+   DIALOGUE BOX
+========================================================= */
+
+#dialogueBox {
+    position: fixed;
+
+    left: 50%;
+    top: 50%;
+
+    width:
+        min(
+            820px,
+            calc(100vw - 35px)
+        );
+
+    max-height:
+        calc(100vh - 60px);
+
+    transform:
+        translate(-50%, -47%)
+        scale(.94);
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(7, 17, 30, .98),
+            rgba(2, 7, 14, .98)
+        );
+
+    border:
+        1px solid
+        rgba(130, 215, 255, .42);
+
+    box-shadow:
+        0 35px 110px
+        rgba(0, 0, 0, .8),
+
+        0 0 80px
+        rgba(50, 170, 255, .13);
+
+    backdrop-filter:
+        blur(25px);
+
+    overflow: hidden;
+
+    z-index: 320;
+
+    transition:
+        opacity .35s ease,
+        transform .35s
+        cubic-bezier(.2, .8, .2, 1);
+}
+
+#dialogueBox.open {
+    opacity: 1;
+
+    transform:
+        translate(-50%, -50%)
+        scale(1);
+
+    pointer-events: auto;
+}
+
+
+/* =========================================================
+   DIALOGUE HEADER
+========================================================= */
+
+.dialogue-header {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    padding:
+        17px 22px;
+
+    border-bottom:
+        1px solid
+        rgba(150, 210, 255, .13);
+}
+
+#missionId {
+    color: #78ddff;
+
+    font-size: 10px;
+
+    letter-spacing: 3px;
+}
+
+#closeButton {
+    width: 38px;
+    height: 38px;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, .16);
+
+    background:
+        rgba(255, 255, 255, .04);
+
+    color: #fff;
+
+    cursor: pointer;
+
+    font-size: 21px;
+
+    transition: .2s ease;
+}
+
+#closeButton:hover {
+    background:
+        rgba(255, 255, 255, .1);
+
+    border-color:
+        rgba(150, 220, 255, .5);
+}
+
+
+/* =========================================================
+   DIALOGUE CONTENT
+========================================================= */
+
+.dialogue-content {
+    padding:
+        38px 44px 30px;
+}
+
+#storyKicker {
+    color: #7edfff;
+
+    font-size: 10px;
+
+    letter-spacing: 4px;
+
+    margin-bottom: 13px;
+}
+
+#storyTitle {
+    font-size:
+        clamp(26px, 4vw, 43px);
+
+    font-weight: 300;
+
+    margin-bottom: 23px;
+}
+
+#storyText {
+    max-width: 700px;
+
+    color:
+        rgba(235, 245, 255, .84);
+
+    font-size:
+        clamp(15px, 2vw, 18px);
+
+    line-height: 1.85;
+}
+
+
+/* =========================================================
+   DIALOGUE FOOTER
+========================================================= */
+
+.dialogue-footer {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+    padding:
+        17px 25px;
+
+    border-top:
+        1px solid
+        rgba(150, 210, 255, .12);
+}
+
+#storyCounter {
+    color:
+        rgba(255, 255, 255, .45);
+
+    font-size: 10px;
+
+    letter-spacing: 3px;
+}
+
+#nextButton {
+    width: 54px;
+    height: 54px;
+
+    border:
+        1px solid
+        rgba(130, 220, 255, .45);
+
+    background:
+        rgba(80, 180, 230, .08);
+
+    color: #a9ecff;
+
+    font-size: 26px;
+
+    cursor: pointer;
+
+    transition: .2s ease;
+}
+
+#nextButton:hover {
+    background:
+        rgba(80, 180, 230, .2);
+
+    border-color:
+        #8de8ff;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+
+    #exhibitionHeader {
+        top: 14px;
+        left: 14px;
+        right: 14px;
+    }
+
+    #exhibitionTitle {
+        font-size: 30px;
+
+        letter-spacing: 5px;
+    }
+
+    .exhibition-status {
+        max-width: 220px;
+
+        line-height: 1.5;
+    }
+
+    #exhibitionControls {
+        display: none;
+    }
+
+    .exhibit-spacecraft {
+        width: 75px;
+        height: 52px;
+    }
+
+    .exhibit-label {
+        font-size: 8px;
+
+        letter-spacing: 1.5px;
+    }
+
+    #dialogueBox {
+        width:
+            calc(100vw - 20px);
+
+        max-height:
+            calc(100vh - 30px);
+    }
+
+    .dialogue-content {
+        padding:
+            27px 23px 22px;
+    }
+
+}
