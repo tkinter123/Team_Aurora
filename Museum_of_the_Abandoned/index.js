@@ -39,7 +39,7 @@ const introStories = [
             },
 
             {
-                src: "./Museum_of_the_Abandoned/story_images/mars.png",
+                src: "./images/mars.png",
                 title: "THE MARS",
                 description: "",
                 link: ""
