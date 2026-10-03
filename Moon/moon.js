@@ -1762,7 +1762,7 @@ if (homeButton) {
         () => {
 
             window.location.href =
-                "../Home/index.html";
+                "../Space/space.html";
 
         }
     );
