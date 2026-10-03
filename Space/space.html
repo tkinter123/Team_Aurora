@@ -1,1584 +1,486 @@
-/* =========================================================
-   RESET
-========================================================= */
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-html,
-body {
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-}
-
-body {
-    background: #000;
-    color: #fff;
-    font-family:
-        Arial,
-        Helvetica,
-        sans-serif;
-}
-
-
-/* =========================================================
-   SPACE VIEW
-========================================================= */
-
-#spaceView {
-    position: fixed;
-    inset: 0;
-
-    width: 100vw;
-    height: 100vh;
-
-    overflow: hidden;
-
-    background:
-        radial-gradient(
-            circle at 50% 50%,
-            #081832 0%,
-            #030914 42%,
-            #000 100%
-        );
-
-    user-select: none;
-    touch-action: none;
-
-    isolation: isolate;
-}
-
-
-/* =========================================================
-   STARS
-========================================================= */
-
-#stars {
-    position: absolute;
-    inset: 0;
-
-    width: 100%;
-    height: 100%;
-
-    background-image:
-        radial-gradient(2px 2px at 5% 10%, #fff, transparent),
-        radial-gradient(1px 1px at 12% 35%, #fff, transparent),
-        radial-gradient(2px 2px at 20% 75%, #fff, transparent),
-        radial-gradient(1px 1px at 27% 20%, #fff, transparent),
-        radial-gradient(2px 2px at 34% 60%, #fff, transparent),
-        radial-gradient(1px 1px at 42% 12%, #fff, transparent),
-        radial-gradient(2px 2px at 48% 85%, #fff, transparent),
-        radial-gradient(1px 1px at 55% 35%, #fff, transparent),
-        radial-gradient(2px 2px at 62% 72%, #fff, transparent),
-        radial-gradient(1px 1px at 70% 18%, #fff, transparent),
-        radial-gradient(2px 2px at 77% 55%, #fff, transparent),
-        radial-gradient(1px 1px at 84% 30%, #fff, transparent),
-        radial-gradient(2px 2px at 91% 78%, #fff, transparent),
-        radial-gradient(1px 1px at 96% 12%, #fff, transparent);
-
-    background-size:
-        240px 240px,
-        310px 310px,
-        380px 380px,
-        440px 440px,
-        520px 520px,
-        300px 300px,
-        600px 600px,
-        350px 350px,
-        450px 450px,
-        550px 550px,
-        320px 320px,
-        480px 480px,
-        700px 700px,
-        420px 420px;
-
-    opacity: .9;
-
-    pointer-events: none;
+<!DOCTYPE html>
+<html lang="en">
 
-    z-index: 1;
+<head>
+    <meta charset="UTF-8">
 
-    animation: starsDrift 60s linear infinite;
-}
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    >
 
-@keyframes starsDrift {
-    from {
-        transform: translate3d(0, 0, 0);
-    }
+    <meta
+        name="theme-color"
+        content="#000814"
+    >
 
-    to {
-        transform: translate3d(-120px, -80px, 0);
-    }
-}
+    <title>NASA Space Journey</title>
 
+    <link
+        rel="stylesheet"
+        href="./space.css"
+    >
+</head>
 
-/* =========================================================
-   NEBULA
-========================================================= */
 
-.nebula {
-    position: absolute;
+<body>
 
-    width: 900px;
-    height: 700px;
+<main
+    id="spaceView"
+    aria-label="NASA Space Journey"
+>
 
-    border-radius: 50%;
+    <!-- =====================================================
+         BACKGROUND
+    ====================================================== -->
 
-    filter: blur(110px);
+    <div
+        id="stars"
+        aria-hidden="true"
+    ></div>
 
-    pointer-events: none;
+    <div
+        class="nebula nebula-one"
+        aria-hidden="true"
+    ></div>
 
-    z-index: 2;
-}
+    <div
+        class="nebula nebula-two"
+        aria-hidden="true"
+    ></div>
 
-.nebula-one {
-    left: -300px;
-    top: -220px;
+    <div
+        class="nebula nebula-three"
+        aria-hidden="true"
+    ></div>
 
-    opacity: .16;
 
-    background:
-        radial-gradient(
-            ellipse,
-            #244cff,
-            transparent 70%
-        );
-}
+    <!-- =====================================================
+         SOLAR SYSTEM
+    ====================================================== -->
 
-.nebula-two {
-    right: -300px;
-    bottom: -250px;
+    <div id="solarWorld">
 
-    opacity: .15;
+        <!-- ORBITS -->
 
-    background:
-        radial-gradient(
-            ellipse,
-            #8a24ff,
-            transparent 70%
-        );
-}
+        <div class="orbit orbit-mercury"></div>
+        <div class="orbit orbit-venus"></div>
+        <div class="orbit orbit-earth"></div>
+        <div class="orbit orbit-mars"></div>
+        <div class="orbit orbit-jupiter"></div>
+        <div class="orbit orbit-saturn"></div>
 
-.nebula-three {
-    left: 35%;
-    top: 25%;
+        <div
+            class="moon-orbit"
+            aria-hidden="true"
+        ></div>
 
-    opacity: .07;
 
-    background:
-        radial-gradient(
-            ellipse,
-            #008cff,
-            transparent 70%
-        );
-}
+        <!-- SUN -->
 
+        <div
+            class="sun"
+            aria-label="The Sun"
+        ></div>
 
-/* =========================================================
-   SOLAR WORLD
-========================================================= */
 
-#solarWorld {
-    position: absolute;
+        <!-- MERCURY -->
 
-    left: 0;
-    top: 0;
+        <button
+            class="planet mercury"
+            data-planet="Mercury"
+            aria-label="Explore Mercury"
+            type="button"
+        >
 
-    width: 4200px;
-    height: 2600px;
+            <span class="planet-body"></span>
 
-    transform-origin: 0 0;
+            <span class="planet-label">
+                MERCURY
+            </span>
 
-    z-index: 5;
+        </button>
 
-    will-change: transform;
-}
 
+        <!-- VENUS -->
 
-/* =========================================================
-   ORBITS
-========================================================= */
+        <button
+            class="planet venus"
+            data-planet="Venus"
+            aria-label="Explore Venus"
+            type="button"
+        >
 
-.orbit {
-    position: absolute;
+            <span class="planet-body"></span>
 
-    left: 2100px;
-    top: 1300px;
+            <span class="planet-label">
+                VENUS
+            </span>
 
-    border-radius: 50%;
+        </button>
 
-    transform:
-        translate(-50%, -50%);
 
-    border:
-        1px solid
-        rgba(100, 180, 255, .18);
+        <!-- EARTH -->
 
-    pointer-events: none;
-}
+        <button
+            class="planet earth"
+            data-planet="Earth"
+            aria-label="Explore Earth"
+            type="button"
+        >
 
-.orbit-mercury {
-    width: 600px;
-    height: 360px;
-}
+            <span class="planet-body"></span>
 
-.orbit-venus {
-    width: 900px;
-    height: 520px;
-}
+            <span class="planet-label">
+                EARTH
+            </span>
 
-.orbit-earth {
-    width: 1250px;
-    height: 710px;
-}
+        </button>
 
-.orbit-mars {
-    width: 1650px;
-    height: 930px;
-}
 
-.orbit-jupiter {
-    width: 2200px;
-    height: 1220px;
-}
+        <!-- MOON -->
 
-.orbit-saturn {
-    width: 2900px;
-    height: 1580px;
-}
+        <button
+            class="planet moon"
+            data-planet="Moon"
+            aria-label="Explore Moon"
+            type="button"
+        >
 
+            <span class="planet-body"></span>
 
-/* =========================================================
-   MOON ORBIT
-========================================================= */
+            <span class="planet-label">
+                MOON
+            </span>
 
-.moon-orbit {
-    position: absolute;
+        </button>
 
-    width: 180px;
-    height: 100px;
 
-    left: 2400px;
-    top: 1070px;
+        <!-- MARS -->
 
-    border:
-        1px dashed
-        rgba(200, 220, 240, .25);
+        <button
+            class="planet mars"
+            data-planet="Mars"
+            aria-label="Explore Mars"
+            type="button"
+        >
 
-    border-radius: 50%;
+            <span class="planet-body"></span>
 
-    transform:
-        translate(-50%, -50%);
+            <span class="planet-label">
+                MARS
+            </span>
 
-    pointer-events: none;
-}
+        </button>
 
 
-/* =========================================================
-   SUN
-========================================================= */
+        <!-- JUPITER -->
 
-.sun {
-    position: absolute;
+        <button
+            class="planet jupiter"
+            data-planet="Jupiter"
+            aria-label="Explore Jupiter"
+            type="button"
+        >
 
-    left: 2100px;
-    top: 1300px;
+            <span class="planet-body"></span>
 
-    width: 170px;
-    height: 170px;
+            <span class="planet-label">
+                JUPITER
+            </span>
 
-    transform:
-        translate(-50%, -50%);
+        </button>
 
-    background-image:
-        url("../images/sun.png");
 
-    background-size: contain;
-    background-position: center;
-    background-repeat: no-repeat;
+        <!-- SATURN -->
 
-    filter:
-        drop-shadow(0 0 15px #ffb300)
-        drop-shadow(0 0 35px #ff8c00)
-        drop-shadow(0 0 70px rgba(255, 140, 0, .7))
-        drop-shadow(0 0 120px rgba(255, 80, 0, .35));
+        <button
+            class="planet saturn"
+            data-planet="Saturn"
+            aria-label="Explore Saturn"
+            type="button"
+        >
 
-    z-index: 10;
+            <span class="planet-body"></span>
 
-    pointer-events: none;
+            <span class="planet-label">
+                SATURN
+            </span>
 
-    animation:
-        sunPulse 4s ease-in-out infinite;
-}
+        </button>
 
-@keyframes sunPulse {
-    0%,
-    100% {
-        filter:
-            drop-shadow(0 0 15px #ffb300)
-            drop-shadow(0 0 35px #ff8c00)
-            drop-shadow(0 0 70px rgba(255, 140, 0, .7));
-    }
+    </div>
 
-    50% {
-        filter:
-            drop-shadow(0 0 22px #ffd000)
-            drop-shadow(0 0 50px #ff8c00)
-            drop-shadow(0 0 100px rgba(255, 120, 0, .8));
-    }
-}
 
+    <!-- =====================================================
+         HUD
+    ====================================================== -->
 
-/* =========================================================
-   PLANETS
-========================================================= */
+    <header id="spaceHud">
 
-.planet {
-    position: absolute;
+        <div class="logo">
+            NASA SPACE JOURNEY
+        </div>
 
-    padding: 0;
+        <div class="mode">
+            FREE SPACE EXPLORATION
+        </div>
 
-    border: 0;
+    </header>
 
-    background: transparent !important;
 
-    transform:
-        translate(-50%, -50%);
+    <!-- =====================================================
+         CAMERA STATUS
+    ====================================================== -->
 
-    cursor: pointer;
+    <div id="cameraStatus">
 
-    z-index: 20;
+        <div>
+            X:
+            <span id="cameraX">2100</span>
+        </div>
 
-    outline: none;
+        <div>
+            Y:
+            <span id="cameraY">1300</span>
+        </div>
 
-    font: inherit;
+        <div>
+            ZOOM:
+            <span id="cameraZoom">100%</span>
+        </div>
 
-    touch-action: manipulation;
+    </div>
 
-    -webkit-tap-highlight-color: transparent;
 
-    will-change: left, top;
+    <!-- =====================================================
+         DESKTOP INFORMATION
+    ====================================================== -->
 
-    overflow: visible;
-}
+    <div id="spaceInfo">
 
+        <span>WASD / ARROWS</span>
+        <b>MOVE</b>
 
-/* =========================================================
-   PLANET BODY
-========================================================= */
+        <span>Q / E</span>
+        <b>ZOOM</b>
 
-.planet-body {
-    position: absolute;
+        <span>DRAG</span>
+        <b>PAN</b>
 
-    left: 50%;
-    top: 50%;
+        <span>CLICK PLANET</span>
+        <b>EXPLORE</b>
 
-    transform:
-        translate(-50%, -50%);
+    </div>
 
-    width: 100%;
-    height: 100%;
 
-    border-radius: 50%;
+    <!-- =====================================================
+         MOBILE CONTROLS
+    ====================================================== -->
 
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: contain;
+    <div
+        id="mobileControls"
+        aria-label="Space navigation controls"
+    >
 
-    pointer-events: none;
+        <button
+            class="control-btn direction"
+            data-key="w"
+            type="button"
+            aria-label="Move up"
+        >
+            ↑
+        </button>
 
-    animation:
-        axialRotation
-        10s
-        linear
-        infinite;
+        <button
+            class="control-btn direction"
+            data-key="a"
+            type="button"
+            aria-label="Move left"
+        >
+            ←
+        </button>
 
-    transition:
-        filter .2s ease,
-        scale .2s ease;
-}
+        <button
+            class="control-btn direction"
+            data-key="s"
+            type="button"
+            aria-label="Move down"
+        >
+            ↓
+        </button>
 
-@keyframes axialRotation {
-    from {
-        transform:
-            translate(-50%, -50%)
-            rotate(0deg);
-    }
+        <button
+            class="control-btn direction"
+            data-key="d"
+            type="button"
+            aria-label="Move right"
+        >
+            →
+        </button>
 
-    to {
-        transform:
-            translate(-50%, -50%)
-            rotate(360deg);
-    }
-}
+        <button
+            class="control-btn zoom-btn"
+            data-action="zoom-in"
+            type="button"
+            aria-label="Zoom in"
+        >
+            +
+        </button>
 
+        <button
+            class="control-btn zoom-btn"
+            data-action="zoom-out"
+            type="button"
+            aria-label="Zoom out"
+        >
+            −
+        </button>
 
-/* =========================================================
-   PLANET SIZES
-========================================================= */
+        <button
+            class="control-btn reset-btn"
+            data-action="reset"
+            type="button"
+            aria-label="Reset camera"
+        >
+            ⟳
+        </button>
 
-.planet.mercury,
-.planet.mercury .planet-body {
-    width: 40px;
-    height: 40px;
-}
+    </div>
 
-.planet.venus,
-.planet.venus .planet-body {
-    width: 48px;
-    height: 48px;
-}
 
-.planet.earth,
-.planet.earth .planet-body {
-    width: 68px;
-    height: 68px;
-}
+    <!-- =====================================================
+         MOBILE HINT
+    ====================================================== -->
 
-.planet.moon,
-.planet.moon .planet-body {
-    width: 38px;
-    height: 38px;
-}
+    <div id="mobileHint">
+        Drag to explore • Tap a planet to learn more
+    </div>
 
-.planet.mars,
-.planet.mars .planet-body {
-    width: 58px;
-    height: 58px;
-}
 
-.planet.jupiter,
-.planet.jupiter .planet-body {
-    width: 105px;
-    height: 105px;
-}
+    <!-- =====================================================
+         PLANET MODAL
+    ====================================================== -->
 
-.planet.saturn,
-.planet.saturn .planet-body {
-    width: 95px;
-    height: 95px;
-}
+    <div
+        id="planetModal"
+        class="modal"
+        aria-hidden="true"
+    >
 
+        <div
+            class="modal-backdrop"
+            data-close-modal
+        ></div>
 
-/* =========================================================
-   PLANET IMAGES
-========================================================= */
 
-.planet.mercury .planet-body {
-    background-image:
-        url("../images/mercury.png");
-}
+        <article
+            class="planet-card"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="planetTitle"
+        >
 
-.planet.venus .planet-body {
-    background-image:
-        url("../images/venus.png");
-}
+            <button
+                id="closeModal"
+                class="close-modal"
+                type="button"
+                aria-label="Close planet information"
+            >
+                ×
+            </button>
 
-.planet.earth .planet-body {
-    background-image:
-        url("../images/earth.png");
-}
 
-.planet.moon .planet-body {
-    background-image:
-        url("../images/moon.png");
-}
+            <div
+                id="planetVisual"
+                class="planet-visual"
+            >
 
-.planet.mars .planet-body {
-    background-image:
-        url("../images/mars.png");
-}
+                <div class="visual-planet"></div>
 
-.planet.jupiter .planet-body {
-    background-image:
-        url("../images/jupiter.png");
-}
+            </div>
 
-.planet.saturn .planet-body {
-    background-image:
-        url("../images/saturn.png");
-}
 
+            <div class="planet-card-content">
 
-/* =========================================================
-   PLANET ROTATION SPEED
-========================================================= */
+                <div class="planet-card-kicker">
+                    SPACE JOURNEY
+                </div>
 
-.planet.mercury .planet-body {
-    animation-duration: 10s;
-}
+                <h2 id="planetTitle">
+                    Earth
+                </h2>
 
-.planet.venus .planet-body {
-    animation-duration: 12s;
-}
+                <p id="planetDescription">
+                    Our home planet.
+                </p>
 
-.planet.earth .planet-body {
-    animation-duration: 9s;
-}
 
-.planet.moon .planet-body {
-    animation-duration: 10s;
-}
+                <div class="planet-facts">
 
-.planet.mars .planet-body {
-    animation-duration: 10s;
-}
+                    <div class="fact">
+                        <span>TYPE</span>
+                        <strong id="planetType">
+                            Terrestrial
+                        </strong>
+                    </div>
 
-.planet.jupiter .planet-body {
-    animation-duration: 15s;
-}
+                    <div class="fact">
+                        <span>DAY</span>
+                        <strong id="planetDay">
+                            24 hours
+                        </strong>
+                    </div>
 
-.planet.saturn .planet-body {
-    animation-duration: 16s;
-}
+                    <div class="fact">
+                        <span>YEAR</span>
+                        <strong id="planetYear">
+                            365 days
+                        </strong>
+                    </div>
 
+                </div>
 
-/* =========================================================
-   SATURN RINGS
-========================================================= */
 
-.planet.saturn .planet-body::before {
-    content: "";
+                <button
+                    id="closeModalButton"
+                    class="explore-close"
+                    type="button"
+                >
+                    RETURN TO SPACE
+                </button>
 
-    position: absolute;
+            </div>
 
-    left: 50%;
-    top: 50%;
+        </article>
 
-    width: 155px;
-    height: 42px;
+    </div>
 
-    transform:
-        translate(-50%, -50%)
-        rotate(-12deg);
 
-    border:
-        7px solid
-        rgba(220, 190, 130, .75);
+    <!-- =====================================================
+         ORIENTATION MESSAGE
+    ====================================================== -->
 
-    border-left-color:
-        rgba(150, 120, 70, .55);
+    <div id="orientationMessage">
 
-    border-right-color:
-        rgba(245, 215, 155, .9);
+        <div class="orientation-icon">
+            ↻
+        </div>
 
-    border-radius: 50%;
+        <strong>
+            Rotate your phone
+        </strong>
 
-    z-index: -1;
-}
+        <span>
+            Landscape mode gives you a better space view.
+        </span>
 
+    </div>
 
-/* =========================================================
-   PLANET HOVER
-========================================================= */
+</main>
 
-.planet:hover .planet-body,
-.planet:focus-visible .planet-body {
-    filter:
-        brightness(1.3)
-        drop-shadow(0 0 14px rgba(70, 180, 255, .65));
 
-    scale: 1.12;
-}
+<script src="./space.js"></script>
 
-.planet:focus-visible {
-    outline:
-        2px solid
-        #55c5ff;
-
-    outline-offset: 8px;
-
-    border-radius: 50%;
-}
-
-
-/* =========================================================
-   LABEL
-========================================================= */
-
-.planet-label {
-    position: absolute;
-
-    left: 50%;
-
-    top:
-        calc(50% + 55px);
-
-    transform:
-        translateX(-50%);
-
-    color: #fff;
-
-    font-size: 12px;
-
-    font-weight: 700;
-
-    letter-spacing: 2px;
-
-    white-space: nowrap;
-
-    text-shadow:
-        0 0 5px #000,
-        0 0 10px #000,
-        0 0 15px #000;
-
-    pointer-events: none;
-
-    opacity: .9;
-}
-
-.planet.jupiter .planet-label {
-    top:
-        calc(50% + 70px);
-}
-
-.planet.saturn .planet-label {
-    top:
-        calc(50% + 68px);
-}
-
-
-/* =========================================================
-   HUD
-========================================================= */
-
-#spaceHud {
-    position: fixed;
-
-    left: 25px;
-    top: 25px;
-
-    z-index: 500;
-
-    pointer-events: none;
-
-    text-shadow:
-        0 0 8px #000,
-        0 0 15px #000;
-}
-
-.logo {
-    color: #fff;
-
-    font-size: 24px;
-
-    font-weight: 700;
-
-    letter-spacing: 3px;
-}
-
-.mode {
-    margin-top: 6px;
-
-    color: #62b5ff;
-
-    font-size: 12px;
-
-    letter-spacing: 3px;
-}
-
-
-/* =========================================================
-   CAMERA STATUS
-========================================================= */
-
-#cameraStatus {
-    position: fixed;
-
-    right: 25px;
-    top: 25px;
-
-    z-index: 500;
-
-    display: flex;
-
-    gap: 15px;
-
-    padding:
-        9px 13px;
-
-    border:
-        1px solid
-        rgba(100, 190, 255, .2);
-
-    border-radius: 8px;
-
-    background:
-        rgba(0, 10, 25, .55);
-
-    color:
-        rgba(255, 255, 255, .5);
-
-    font-size: 9px;
-
-    letter-spacing: 1px;
-
-    backdrop-filter:
-        blur(8px);
-
-    pointer-events: none;
-}
-
-#cameraStatus span {
-    color: #4db8ff;
-    font-weight: 700;
-}
-
-
-/* =========================================================
-   INFORMATION BAR
-========================================================= */
-
-#spaceInfo {
-    position: fixed;
-
-    left: 50%;
-    bottom: 25px;
-
-    transform:
-        translateX(-50%);
-
-    z-index: 500;
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 8px;
-
-    padding:
-        10px 18px;
-
-    color:
-        rgba(255, 255, 255, .85);
-
-    background:
-        rgba(0, 10, 25, .65);
-
-    border:
-        1px solid
-        rgba(100, 180, 255, .3);
-
-    border-radius: 8px;
-
-    font-size: 11px;
-
-    letter-spacing: 1px;
-
-    backdrop-filter:
-        blur(8px);
-
-    white-space: nowrap;
-
-    pointer-events: none;
-}
-
-#spaceInfo span {
-    color: #4db8ff;
-
-    font-weight: 700;
-
-    margin-left: 8px;
-}
-
-#spaceInfo b {
-    font-weight: 400;
-
-    color:
-        rgba(255, 255, 255, .7);
-}
-
-
-/* =========================================================
-   MOBILE CONTROLS
-========================================================= */
-
-#mobileControls {
-    position: fixed;
-
-    right: 20px;
-    bottom: 70px;
-
-    z-index: 600;
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(3, 50px);
-
-    grid-template-rows:
-        repeat(3, 50px);
-
-    gap: 6px;
-}
-
-.direction[data-key="w"] {
-    grid-column: 2;
-    grid-row: 1;
-}
-
-.direction[data-key="a"] {
-    grid-column: 1;
-    grid-row: 2;
-}
-
-.direction[data-key="s"] {
-    grid-column: 2;
-    grid-row: 2;
-}
-
-.direction[data-key="d"] {
-    grid-column: 3;
-    grid-row: 2;
-}
-
-.zoom-btn[data-action="zoom-in"] {
-    grid-column: 1;
-    grid-row: 3;
-}
-
-.zoom-btn[data-action="zoom-out"] {
-    grid-column: 2;
-    grid-row: 3;
-}
-
-.reset-btn {
-    grid-column: 3;
-    grid-row: 3;
-}
-
-
-/* =========================================================
-   CONTROL BUTTON
-========================================================= */
-
-.control-btn {
-    width: 50px;
-    height: 50px;
-
-    border:
-        1px solid
-        rgba(100, 190, 255, .55);
-
-    border-radius: 10px;
-
-    background:
-        rgba(5, 25, 55, .82);
-
-    color: #fff;
-
-    font-size: 22px;
-
-    cursor: pointer;
-
-    touch-action: none;
-
-    box-shadow:
-        0 0 15px
-        rgba(30, 120, 255, .15);
-
-    backdrop-filter:
-        blur(8px);
-
-    transition:
-        background .15s ease,
-        transform .1s ease;
-}
-
-.control-btn:hover {
-    background:
-        rgba(20, 70, 125, .9);
-}
-
-.control-btn:active,
-.control-btn.active {
-    background:
-        rgba(30, 110, 210, .9);
-
-    transform:
-        scale(.94);
-}
-
-
-/* =========================================================
-   MOBILE HINT
-========================================================= */
-
-#mobileHint {
-    display: none;
-
-    position: fixed;
-
-    left: 50%;
-    bottom: 15px;
-
-    transform:
-        translateX(-50%);
-
-    z-index: 500;
-
-    width: max-content;
-
-    max-width:
-        calc(100vw - 30px);
-
-    padding:
-        7px 12px;
-
-    border:
-        1px solid
-        rgba(100, 180, 255, .25);
-
-    border-radius: 8px;
-
-    background:
-        rgba(0, 10, 25, .7);
-
-    color:
-        rgba(255, 255, 255, .8);
-
-    font-size: 10px;
-
-    text-align: center;
-
-    backdrop-filter:
-        blur(8px);
-}
-
-
-/* =========================================================
-   MODAL
-========================================================= */
-
-.modal {
-    position: fixed;
-
-    inset: 0;
-
-    z-index: 1000;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    padding: 20px;
-
-    visibility: hidden;
-
-    opacity: 0;
-
-    pointer-events: none;
-
-    transition:
-        opacity .25s ease,
-        visibility .25s ease;
-}
-
-.modal.open {
-    visibility: visible;
-
-    opacity: 1;
-
-    pointer-events: auto;
-}
-
-.modal-backdrop {
-    position: absolute;
-
-    inset: 0;
-
-    background:
-        rgba(0, 5, 15, .75);
-
-    backdrop-filter:
-        blur(10px);
-}
-
-
-/* =========================================================
-   PLANET CARD
-========================================================= */
-
-.planet-card {
-    position: relative;
-
-    z-index: 2;
-
-    width:
-        min(520px, 100%);
-
-    max-height:
-        90vh;
-
-    overflow-y: auto;
-
-    border:
-        1px solid
-        rgba(100, 190, 255, .35);
-
-    border-radius: 20px;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(7, 25, 52, .98),
-            rgba(1, 8, 20, .98)
-        );
-
-    box-shadow:
-        0 30px 100px
-        rgba(0, 0, 0, .7),
-
-        0 0 50px
-        rgba(30, 130, 255, .12);
-
-    animation:
-        modalEnter .25s ease;
-}
-
-@keyframes modalEnter {
-    from {
-        transform:
-            translateY(20px)
-            scale(.96);
-
-        opacity: 0;
-    }
-
-    to {
-        transform:
-            translateY(0)
-            scale(1);
-
-        opacity: 1;
-    }
-}
-
-
-/* =========================================================
-   CLOSE BUTTON
-========================================================= */
-
-.close-modal {
-    position: absolute;
-
-    right: 15px;
-    top: 15px;
-
-    width: 38px;
-    height: 38px;
-
-    border:
-        1px solid
-        rgba(255, 255, 255, .2);
-
-    border-radius: 50%;
-
-    background:
-        rgba(0, 0, 0, .35);
-
-    color: #fff;
-
-    font-size: 25px;
-
-    cursor: pointer;
-
-    z-index: 10;
-}
-
-.close-modal:hover {
-    background:
-        rgba(255, 255, 255, .12);
-}
-
-
-/* =========================================================
-   PLANET VISUAL
-========================================================= */
-
-.planet-visual {
-    height: 230px;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(30, 110, 200, .18),
-            transparent 65%
-        );
-
-    overflow: hidden;
-}
-
-.visual-planet {
-    width: 125px;
-    height: 125px;
-
-    border-radius: 50%;
-
-    background:
-        radial-gradient(
-            circle at 35% 30%,
-            #8fdcff,
-            #1676d2 45%,
-            #043a80 80%,
-            #001a38
-        );
-
-    box-shadow:
-        0 0 30px
-        rgba(40, 150, 255, .5);
-
-    transition:
-        background .2s ease;
-
-    animation:
-        modalPlanetSpin 20s linear infinite;
-}
-
-@keyframes modalPlanetSpin {
-    from {
-        transform: rotate(0deg);
-    }
-
-    to {
-        transform: rotate(360deg);
-    }
-}
-
-
-/* =========================================================
-   MODAL PLANET COLORS
-========================================================= */
-
-.planet-visual.mercury .visual-planet {
-    background:
-        radial-gradient(
-            circle at 35% 30%,
-            #ddd,
-            #888 45%,
-            #444 80%,
-            #222
-        );
-}
-
-.planet-visual.venus .visual-planet {
-    background:
-        radial-gradient(
-            circle at 35% 30%,
-            #fff1a8,
-            #d8a83e 45%,
-            #9c641c 80%,
-            #57330d
-        );
-}
-
-.planet-visual.earth .visual-planet {
-    background:
-        radial-gradient(
-            circle at 35% 30%,
-            #7fdcff,
-            #1876d2 40%,
-            #0751a0 70%,
-            #02244f
-        );
-}
-
-.planet-visual.moon .visual-planet {
-    background:
-        radial-gradient(
-            circle at 35% 30%,
-            #f5f5f5,
-            #aaa 55%,
-            #666 85%,
-            #333
-        );
-}
-
-.planet-visual.mars .visual-planet {
-    background:
-        radial-gradient(
-            circle at 35% 30%,
-            #ffb06c,
-            #c9572b 45%,
-            #8b2e1c 75%,
-            #40130d
-        );
-}
-
-.planet-visual.jupiter .visual-planet {
-    background:
-        linear-gradient(
-            to bottom,
-            #d9b38c,
-            #b47c54 20%,
-            #e6c59e 35%,
-            #9b6246 50%,
-            #d9a77b 65%,
-            #f0d0a8 80%,
-            #a66b4a
-        );
-}
-
-.planet-visual.saturn .visual-planet {
-    background:
-        radial-gradient(
-            circle at 35% 30%,
-            #fff0b0,
-            #d8ae63 50%,
-            #9a7137 80%,
-            #4c3518
-        );
-}
-
-
-/* =========================================================
-   CARD CONTENT
-========================================================= */
-
-.planet-card-content {
-    padding:
-        0 30px 30px;
-}
-
-.planet-card-kicker {
-    color: #4db8ff;
-
-    font-size: 11px;
-
-    letter-spacing: 3px;
-
-    font-weight: 700;
-}
-
-#planetTitle {
-    margin-top: 7px;
-
-    font-size: 34px;
-
-    letter-spacing: 2px;
-}
-
-#planetDescription {
-    margin-top: 12px;
-
-    color:
-        rgba(255, 255, 255, .75);
-
-    line-height: 1.6;
-
-    font-size: 14px;
-}
-
-
-/* =========================================================
-   FACTS
-========================================================= */
-
-.planet-facts {
-    display: grid;
-
-    grid-template-columns:
-        repeat(3, 1fr);
-
-    gap: 10px;
-
-    margin-top: 22px;
-}
-
-.fact {
-    padding: 12px;
-
-    border:
-        1px solid
-        rgba(100, 180, 255, .15);
-
-    border-radius: 10px;
-
-    background:
-        rgba(255, 255, 255, .03);
-}
-
-.fact span {
-    display: block;
-
-    color:
-        rgba(255, 255, 255, .45);
-
-    font-size: 9px;
-
-    letter-spacing: 2px;
-}
-
-.fact strong {
-    display: block;
-
-    margin-top: 5px;
-
-    color: #fff;
-
-    font-size: 12px;
-}
-
-
-/* =========================================================
-   RETURN BUTTON
-========================================================= */
-
-.explore-close {
-    width: 100%;
-
-    margin-top: 20px;
-
-    padding: 13px;
-
-    border:
-        1px solid
-        rgba(80, 180, 255, .4);
-
-    border-radius: 10px;
-
-    background:
-        rgba(30, 110, 210, .25);
-
-    color: #fff;
-
-    font-weight: 700;
-
-    letter-spacing: 1px;
-
-    cursor: pointer;
-}
-
-.explore-close:hover {
-    background:
-        rgba(30, 110, 210, .45);
-}
-
-
-/* =========================================================
-   ORIENTATION MESSAGE
-========================================================= */
-
-#orientationMessage {
-    display: none;
-
-    position: fixed;
-
-    inset: 0;
-
-    z-index: 2000;
-
-    background:
-        #020711;
-
-    align-items: center;
-    justify-content: center;
-
-    flex-direction: column;
-
-    gap: 10px;
-
-    text-align: center;
-
-    padding: 30px;
-}
-
-.orientation-icon {
-    font-size: 45px;
-
-    color: #4db8ff;
-}
-
-#orientationMessage strong {
-    font-size: 20px;
-}
-
-#orientationMessage span {
-    color:
-        rgba(255, 255, 255, .65);
-
-    font-size: 13px;
-
-    max-width: 280px;
-
-    line-height: 1.5;
-}
-
-
-/* =========================================================
-   MOBILE
-========================================================= */
-
-@media (max-width: 700px) {
-
-    #spaceHud {
-        left: 15px;
-        top: 15px;
-    }
-
-    .logo {
-        font-size: 17px;
-        letter-spacing: 2px;
-    }
-
-    .mode {
-        font-size: 9px;
-        letter-spacing: 2px;
-    }
-
-    #cameraStatus {
-        right: 15px;
-        top: 15px;
-
-        gap: 8px;
-
-        font-size: 7px;
-    }
-
-    #spaceInfo {
-        display: none;
-    }
-
-    #mobileControls {
-        right: 15px;
-        bottom: 58px;
-    }
-
-    #mobileHint {
-        display: block;
-
-        left: 15px;
-
-        transform: none;
-
-        bottom: 15px;
-
-        max-width:
-            calc(100vw - 145px);
-    }
-
-    .planet-label {
-        font-size: 9px;
-        letter-spacing: 1px;
-    }
-
-    .planet-card {
-        border-radius: 16px;
-        max-height: 92vh;
-    }
-
-    .planet-visual {
-        height: 160px;
-    }
-
-    .visual-planet {
-        width: 90px;
-        height: 90px;
-    }
-
-    .planet-card-content {
-        padding:
-            0 20px 20px;
-    }
-
-    #planetTitle {
-        font-size: 27px;
-    }
-
-    .planet-facts {
-        grid-template-columns: 1fr;
-        gap: 7px;
-    }
-
-    .fact {
-        display: flex;
-
-        align-items: center;
-        justify-content: space-between;
-    }
-
-    .fact strong {
-        margin-top: 0;
-    }
-}
-
-
-/* =========================================================
-   SMALL PHONES
-========================================================= */
-
-@media (max-width: 420px) {
-
-    #mobileControls {
-        transform:
-            scale(.88);
-
-        transform-origin:
-            bottom right;
-    }
-
-    #mobileHint {
-        font-size: 9px;
-
-        max-width:
-            calc(100vw - 130px);
-    }
-
-    .logo {
-        font-size: 15px;
-    }
-
-    .mode {
-        font-size: 8px;
-    }
-
-    #cameraStatus {
-        display: none;
-    }
-}
-
-
-/* =========================================================
-   PORTRAIT PHONE
-========================================================= */
-
-@media
-(max-width: 700px)
-and (orientation: portrait)
-and (min-height: 600px) {
-
-    #orientationMessage {
-        display: flex;
-    }
-}
-
-
-/* =========================================================
-   REDUCED MOTION
-========================================================= */
-
-@media (prefers-reduced-motion: reduce) {
-
-    *,
-    *::before,
-    *::after {
-        animation-duration:
-            .001ms !important;
-
-        animation-iteration-count:
-            1 !important;
-
-        transition-duration:
-            .001ms !important;
-    }
-}
+</body>
+</html>
