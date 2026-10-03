@@ -61,8 +61,11 @@ body {
     position: absolute;
     inset: 0;
 
-    width: 100%;
-    height: 100%;
+    z-index: 1;
+
+    pointer-events: none;
+
+    opacity: .9;
 
     background-image:
         radial-gradient(2px 2px at 5% 10%, #fff, transparent),
@@ -96,13 +99,8 @@ body {
         700px 700px,
         420px 420px;
 
-    opacity: .9;
-
-    pointer-events: none;
-
-    z-index: 1;
-
-    animation: starsDrift 60s linear infinite;
+    animation:
+        starsDrift 60s linear infinite;
 }
 
 @keyframes starsDrift {
@@ -209,14 +207,14 @@ body {
     left: 2100px;
     top: 1300px;
 
+    border:
+        1px solid
+        rgba(100, 180, 255, .18);
+
     border-radius: 50%;
 
     transform:
         translate(-50%, -50%);
-
-    border:
-        1px solid
-        rgba(100, 180, 255, .18);
 
     pointer-events: none;
 }
@@ -304,8 +302,10 @@ body {
     filter:
         drop-shadow(0 0 15px #ffb300)
         drop-shadow(0 0 35px #ff8c00)
-        drop-shadow(0 0 70px rgba(255, 140, 0, .7))
-        drop-shadow(0 0 120px rgba(255, 80, 0, .35));
+        drop-shadow(
+            0 0 70px
+            rgba(255, 140, 0, .7)
+        );
 
     z-index: 10;
 
@@ -321,14 +321,20 @@ body {
         filter:
             drop-shadow(0 0 15px #ffb300)
             drop-shadow(0 0 35px #ff8c00)
-            drop-shadow(0 0 70px rgba(255, 140, 0, .7));
+            drop-shadow(
+                0 0 70px
+                rgba(255, 140, 0, .7)
+            );
     }
 
     50% {
         filter:
             drop-shadow(0 0 22px #ffd000)
             drop-shadow(0 0 50px #ff8c00)
-            drop-shadow(0 0 100px rgba(255, 120, 0, .8));
+            drop-shadow(
+                0 0 100px
+                rgba(255, 120, 0, .8)
+            );
     }
 }
 
@@ -344,7 +350,7 @@ body {
 
     border: 0;
 
-    background: transparent !important;
+    background: transparent;
 
     transform:
         translate(-50%, -50%);
@@ -365,11 +371,6 @@ body {
 
     overflow: visible;
 }
-
-
-/* =========================================================
-   PLANET BODY
-========================================================= */
 
 .planet-body {
     position: absolute;
@@ -392,10 +393,7 @@ body {
     pointer-events: none;
 
     animation:
-        axialRotation
-        10s
-        linear
-        infinite;
+        axialRotation 10s linear infinite;
 
     transition:
         filter .2s ease,
@@ -466,6 +464,9 @@ body {
 
 /* =========================================================
    PLANET IMAGES
+   IMPORTANT:
+   These paths are relative to Space/space.css.
+   ../images/ means Team_Aurora/images/
 ========================================================= */
 
 .planet.mercury .planet-body {
@@ -505,7 +506,7 @@ body {
 
 
 /* =========================================================
-   PLANET ROTATION SPEED
+   ROTATION SPEEDS
 ========================================================= */
 
 .planet.mercury .planet-body {
@@ -580,7 +581,10 @@ body {
 .planet:focus-visible .planet-body {
     filter:
         brightness(1.3)
-        drop-shadow(0 0 14px rgba(70, 180, 255, .65));
+        drop-shadow(
+            0 0 14px
+            rgba(70, 180, 255, .65)
+        );
 
     scale: 1.12;
 }
@@ -604,7 +608,6 @@ body {
     position: absolute;
 
     left: 50%;
-
     top:
         calc(50% + 55px);
 
@@ -614,7 +617,6 @@ body {
     color: #fff;
 
     font-size: 12px;
-
     font-weight: 700;
 
     letter-spacing: 2px;
@@ -665,7 +667,6 @@ body {
     color: #fff;
 
     font-size: 24px;
-
     font-weight: 700;
 
     letter-spacing: 3px;
@@ -756,40 +757,25 @@ body {
     color:
         rgba(255, 255, 255, .85);
 
-    background:
-        rgba(0, 10, 25, .65);
-
-    border:
-        1px solid
-        rgba(100, 180, 255, .3);
-
-    border-radius: 8px;
-
-    font-size: 11px;
+    font-size: 9px;
 
     letter-spacing: 1px;
 
+    border:
+        1px solid
+        rgba(100, 180, 255, .2);
+
+    border-radius: 8px;
+
+    background:
+        rgba(0, 10, 25, .5);
+
     backdrop-filter:
         blur(8px);
-
-    white-space: nowrap;
-
-    pointer-events: none;
-}
-
-#spaceInfo span {
-    color: #4db8ff;
-
-    font-weight: 700;
-
-    margin-left: 8px;
 }
 
 #spaceInfo b {
-    font-weight: 400;
-
-    color:
-        rgba(255, 255, 255, .7);
+    color: #55c5ff;
 }
 
 
@@ -801,75 +787,32 @@ body {
     position: fixed;
 
     right: 20px;
-    bottom: 70px;
+    bottom: 20px;
 
     z-index: 600;
 
-    display: grid;
+    display: none;
 
     grid-template-columns:
-        repeat(3, 50px);
+        repeat(3, 48px);
 
-    grid-template-rows:
-        repeat(3, 50px);
-
-    gap: 6px;
+    gap: 7px;
 }
-
-.direction[data-key="w"] {
-    grid-column: 2;
-    grid-row: 1;
-}
-
-.direction[data-key="a"] {
-    grid-column: 1;
-    grid-row: 2;
-}
-
-.direction[data-key="s"] {
-    grid-column: 2;
-    grid-row: 2;
-}
-
-.direction[data-key="d"] {
-    grid-column: 3;
-    grid-row: 2;
-}
-
-.zoom-btn[data-action="zoom-in"] {
-    grid-column: 1;
-    grid-row: 3;
-}
-
-.zoom-btn[data-action="zoom-out"] {
-    grid-column: 2;
-    grid-row: 3;
-}
-
-.reset-btn {
-    grid-column: 3;
-    grid-row: 3;
-}
-
-
-/* =========================================================
-   CONTROL BUTTON
-========================================================= */
 
 .control-btn {
-    width: 50px;
-    height: 50px;
+    width: 48px;
+    height: 48px;
 
     border:
         1px solid
-        rgba(100, 190, 255, .55);
+        rgba(90, 190, 255, .35);
 
     border-radius: 10px;
 
     background:
-        rgba(5, 25, 55, .82);
+        rgba(0, 20, 45, .7);
 
-    color: #fff;
+    color: #9bdcff;
 
     font-size: 22px;
 
@@ -877,30 +820,21 @@ body {
 
     touch-action: none;
 
-    box-shadow:
-        0 0 15px
-        rgba(30, 120, 255, .15);
-
     backdrop-filter:
         blur(8px);
 
     transition:
         background .15s ease,
-        transform .1s ease;
-}
-
-.control-btn:hover {
-    background:
-        rgba(20, 70, 125, .9);
+        transform .15s ease;
 }
 
 .control-btn:active,
 .control-btn.active {
     background:
-        rgba(30, 110, 210, .9);
+        rgba(30, 120, 200, .45);
 
     transform:
-        scale(.94);
+        scale(.92);
 }
 
 
@@ -969,7 +903,6 @@ body {
     padding: 20px;
 
     visibility: hidden;
-
     opacity: 0;
 
     pointer-events: none;
@@ -993,7 +926,7 @@ body {
     inset: 0;
 
     background:
-        rgba(0, 5, 15, .75);
+        rgba(0, 5, 15, .78);
 
     backdrop-filter:
         blur(10px);
@@ -1135,148 +1068,49 @@ body {
         );
 
     box-shadow:
-        0 0 30px
-        rgba(40, 150, 255, .5);
-
-    transition:
-        background .2s ease;
-
-    animation:
-        modalPlanetSpin 20s linear infinite;
-}
-
-@keyframes modalPlanetSpin {
-    from {
-        transform: rotate(0deg);
-    }
-
-    to {
-        transform: rotate(360deg);
-    }
+        0 0 35px
+        rgba(60, 170, 255, .35);
 }
 
 
 /* =========================================================
-   MODAL PLANET COLORS
-========================================================= */
-
-.planet-visual.mercury .visual-planet {
-    background:
-        radial-gradient(
-            circle at 35% 30%,
-            #ddd,
-            #888 45%,
-            #444 80%,
-            #222
-        );
-}
-
-.planet-visual.venus .visual-planet {
-    background:
-        radial-gradient(
-            circle at 35% 30%,
-            #fff1a8,
-            #d8a83e 45%,
-            #9c641c 80%,
-            #57330d
-        );
-}
-
-.planet-visual.earth .visual-planet {
-    background:
-        radial-gradient(
-            circle at 35% 30%,
-            #7fdcff,
-            #1876d2 40%,
-            #0751a0 70%,
-            #02244f
-        );
-}
-
-.planet-visual.moon .visual-planet {
-    background:
-        radial-gradient(
-            circle at 35% 30%,
-            #f5f5f5,
-            #aaa 55%,
-            #666 85%,
-            #333
-        );
-}
-
-.planet-visual.mars .visual-planet {
-    background:
-        radial-gradient(
-            circle at 35% 30%,
-            #ffb06c,
-            #c9572b 45%,
-            #8b2e1c 75%,
-            #40130d
-        );
-}
-
-.planet-visual.jupiter .visual-planet {
-    background:
-        linear-gradient(
-            to bottom,
-            #d9b38c,
-            #b47c54 20%,
-            #e6c59e 35%,
-            #9b6246 50%,
-            #d9a77b 65%,
-            #f0d0a8 80%,
-            #a66b4a
-        );
-}
-
-.planet-visual.saturn .visual-planet {
-    background:
-        radial-gradient(
-            circle at 35% 30%,
-            #fff0b0,
-            #d8ae63 50%,
-            #9a7137 80%,
-            #4c3518
-        );
-}
-
-
-/* =========================================================
-   CARD CONTENT
+   PLANET CARD CONTENT
 ========================================================= */
 
 .planet-card-content {
     padding:
-        0 30px 30px;
+        25px 30px 30px;
 }
 
 .planet-card-kicker {
-    color: #4db8ff;
+    color: #58c8ff;
 
-    font-size: 11px;
+    font-size: 9px;
 
-    letter-spacing: 3px;
+    letter-spacing: 4px;
 
-    font-weight: 700;
+    margin-bottom: 8px;
 }
 
 #planetTitle {
-    margin-top: 7px;
+    font-size: 38px;
 
-    font-size: 34px;
+    font-weight: 300;
 
-    letter-spacing: 2px;
+    letter-spacing: -1px;
+
+    margin-bottom: 12px;
 }
 
 #planetDescription {
-    margin-top: 12px;
-
     color:
-        rgba(255, 255, 255, .75);
-
-    line-height: 1.6;
+        rgba(220, 235, 250, .7);
 
     font-size: 14px;
+
+    line-height: 1.7;
+
+    margin-bottom: 25px;
 }
 
 
@@ -1291,42 +1125,39 @@ body {
         repeat(3, 1fr);
 
     gap: 10px;
-
-    margin-top: 22px;
 }
 
 .fact {
-    padding: 12px;
+    padding:
+        13px;
 
     border:
         1px solid
-        rgba(100, 180, 255, .15);
+        rgba(100, 190, 255, .14);
 
-    border-radius: 10px;
+    border-radius: 8px;
 
     background:
-        rgba(255, 255, 255, .03);
+        rgba(40, 120, 180, .06);
 }
 
 .fact span {
     display: block;
 
     color:
-        rgba(255, 255, 255, .45);
+        rgba(180, 220, 245, .45);
 
-    font-size: 9px;
+    font-size: 8px;
 
     letter-spacing: 2px;
+
+    margin-bottom: 5px;
 }
 
 .fact strong {
-    display: block;
+    color: #b8e8ff;
 
-    margin-top: 5px;
-
-    color: #fff;
-
-    font-size: 12px;
+    font-size: 11px;
 }
 
 
@@ -1339,34 +1170,35 @@ body {
 
     margin-top: 20px;
 
-    padding: 13px;
+    padding:
+        13px;
 
     border:
         1px solid
-        rgba(80, 180, 255, .4);
+        rgba(90, 190, 255, .3);
 
-    border-radius: 10px;
+    border-radius: 8px;
 
     background:
-        rgba(30, 110, 210, .25);
+        rgba(50, 150, 220, .1);
 
-    color: #fff;
-
-    font-weight: 700;
-
-    letter-spacing: 1px;
+    color: #9cddff;
 
     cursor: pointer;
+
+    letter-spacing: 2px;
+
+    font-size: 9px;
 }
 
 .explore-close:hover {
     background:
-        rgba(30, 110, 210, .45);
+        rgba(50, 150, 220, .2);
 }
 
 
 /* =========================================================
-   ORIENTATION MESSAGE
+   ORIENTATION
 ========================================================= */
 
 #orientationMessage {
@@ -1378,48 +1210,50 @@ body {
 
     z-index: 2000;
 
-    background:
-        #020711;
-
     align-items: center;
     justify-content: center;
 
     flex-direction: column;
 
-    gap: 10px;
+    gap: 12px;
+
+    padding: 30px;
 
     text-align: center;
 
-    padding: 30px;
+    background:
+        #020812;
 }
 
 .orientation-icon {
     font-size: 45px;
 
-    color: #4db8ff;
+    color: #65d0ff;
 }
 
 #orientationMessage strong {
-    font-size: 20px;
+    color: #fff;
+
+    font-size: 18px;
 }
 
 #orientationMessage span {
+    max-width: 300px;
+
     color:
-        rgba(255, 255, 255, .65);
+        rgba(220, 240, 255, .55);
 
-    font-size: 13px;
+    font-size: 12px;
 
-    max-width: 280px;
-
-    line-height: 1.5;
+    line-height: 1.6;
 }
 
 
 /* =========================================================
-   MOBILE
+   RESPONSIVE
 ========================================================= */
 
-@media (max-width: 700px) {
+@media (max-width: 800px) {
 
     #spaceHud {
         left: 15px;
@@ -1427,12 +1261,12 @@ body {
     }
 
     .logo {
-        font-size: 17px;
+        font-size: 15px;
         letter-spacing: 2px;
     }
 
     .mode {
-        font-size: 9px;
+        font-size: 8px;
         letter-spacing: 2px;
     }
 
@@ -1440,7 +1274,7 @@ body {
         right: 15px;
         top: 15px;
 
-        gap: 8px;
+        gap: 7px;
 
         font-size: 7px;
     }
@@ -1450,116 +1284,52 @@ body {
     }
 
     #mobileControls {
-        right: 15px;
-        bottom: 58px;
+        display: grid;
     }
 
     #mobileHint {
         display: block;
 
-        left: 15px;
-
-        transform: none;
-
         bottom: 15px;
+        left: 50%;
 
-        max-width:
-            calc(100vw - 145px);
-    }
-
-    .planet-label {
-        font-size: 9px;
-        letter-spacing: 1px;
-    }
-
-    .planet-card {
-        border-radius: 16px;
-        max-height: 92vh;
-    }
-
-    .planet-visual {
-        height: 160px;
-    }
-
-    .visual-planet {
-        width: 90px;
-        height: 90px;
-    }
-
-    .planet-card-content {
-        padding:
-            0 20px 20px;
-    }
-
-    #planetTitle {
-        font-size: 27px;
-    }
-
-    .planet-facts {
-        grid-template-columns: 1fr;
-        gap: 7px;
-    }
-
-    .fact {
-        display: flex;
-
-        align-items: center;
-        justify-content: space-between;
-    }
-
-    .fact strong {
-        margin-top: 0;
+        transform:
+            translateX(-50%);
     }
 }
 
 
-/* =========================================================
-   SMALL PHONES
-========================================================= */
+@media (max-width: 500px) {
 
-@media (max-width: 420px) {
-
-    #mobileControls {
-        transform:
-            scale(.88);
-
-        transform-origin:
-            bottom right;
-    }
-
-    #mobileHint {
-        font-size: 9px;
-
-        max-width:
-            calc(100vw - 130px);
-    }
-
-    .logo {
-        font-size: 15px;
-    }
-
-    .mode {
+    .planet-label {
         font-size: 8px;
+        letter-spacing: 1px;
     }
 
     #cameraStatus {
         display: none;
     }
-}
 
-
-/* =========================================================
-   PORTRAIT PHONE
-========================================================= */
-
-@media
-(max-width: 700px)
-and (orientation: portrait)
-and (min-height: 600px) {
-
-    #orientationMessage {
-        display: flex;
+    .planet-card {
+        border-radius: 14px;
     }
+
+    .planet-visual {
+        height: 180px;
+    }
+
+    .planet-card-content {
+        padding: 20px;
+    }
+
+    #planetTitle {
+        font-size: 30px;
+    }
+
+    .planet-facts {
+        grid-template-columns: 1fr;
+    }
+
 }
 
 
@@ -1572,13 +1342,8 @@ and (min-height: 600px) {
     *,
     *::before,
     *::after {
-        animation-duration:
-            .001ms !important;
-
-        animation-iteration-count:
-            1 !important;
-
-        transition-duration:
-            .001ms !important;
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
     }
 }
