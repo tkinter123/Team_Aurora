@@ -198,7 +198,7 @@ const introStories = [
 ========================================================= */
 
 const Home_MAP_PAGE =
-    "../space/space.html";
+    "../Space/space.html";
 
 
 /*
