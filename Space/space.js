@@ -1,8 +1,7 @@
 /* =========================================================
    NASA SPACE JOURNEY
+   Main JavaScript
 ========================================================= */
-
-"use strict";
 
 
 /* =========================================================
@@ -15,54 +14,13 @@ const spaceView =
 const solarWorld =
     document.getElementById("solarWorld");
 
-const cameraXElement =
-    document.getElementById("cameraX");
-
-const cameraYElement =
-    document.getElementById("cameraY");
-
-const cameraZoomElement =
-    document.getElementById("cameraZoom");
-
-const planetModal =
-    document.getElementById("planetModal");
-
-const planetVisual =
-    document.getElementById("planetVisual");
-
-const planetTitle =
-    document.getElementById("planetTitle");
-
-const planetDescription =
-    document.getElementById("planetDescription");
-
-const planetType =
-    document.getElementById("planetType");
-
-const planetDay =
-    document.getElementById("planetDay");
-
-const planetYear =
-    document.getElementById("planetYear");
-
-const closeModal =
-    document.getElementById("closeModal");
-
-const closeModalButton =
-    document.getElementById("closeModalButton");
-
-
-/* =========================================================
-   PLANETS
-========================================================= */
-
-const planetElements = {};
+const planetEls = {};
 
 document
     .querySelectorAll(".planet")
     .forEach(planet => {
 
-        planetElements[
+        planetEls[
             planet.dataset.planet
         ] = planet;
 
@@ -70,7 +28,7 @@ document
 
 
 /* =========================================================
-   SOLAR WORLD
+   SOLAR SYSTEM CONSTANTS
 ========================================================= */
 
 const SOLAR_WIDTH = 4200;
@@ -84,29 +42,20 @@ const SUN_Y = 1300;
    CAMERA
 ========================================================= */
 
-let cameraX = SUN_X;
-let cameraY = SUN_Y;
+let solarX = SUN_X;
+let solarY = SUN_Y;
 
-let zoom = 1;
+let solarZoom = 1;
 
 const MIN_ZOOM = 0.45;
 const MAX_ZOOM = 3.2;
 
 
 /* =========================================================
-   INPUT
+   KEYBOARD STATE
 ========================================================= */
 
 const keys = {};
-
-let dragging = false;
-
-let dragPointerId = null;
-
-let previousPointerX = 0;
-let previousPointerY = 0;
-
-let dragDistance = 0;
 
 
 /* =========================================================
@@ -116,132 +65,232 @@ let dragDistance = 0;
 const planetData = {
 
     Mercury: {
+
         description:
             "Mercury is the smallest planet in the Solar System and the closest planet to the Sun.",
-        type: "Terrestrial",
-        day: "59 Earth days",
-        year: "88 Earth days"
+
+        type:
+            "Terrestrial",
+
+        day:
+            "59 Earth days",
+
+        year:
+            "88 Earth days"
+
     },
 
+
     Venus: {
+
         description:
             "Venus is a rocky planet with a thick atmosphere and extremely high surface temperatures.",
-        type: "Terrestrial",
-        day: "243 Earth days",
-        year: "225 Earth days"
+
+        type:
+            "Terrestrial",
+
+        day:
+            "243 Earth days",
+
+        year:
+            "225 Earth days"
+
     },
 
+
     Earth: {
+
         description:
-            "Earth is the only known planet to support life and is our home world.",
-        type: "Terrestrial",
-        day: "24 hours",
-        year: "365 days"
+            "Earth is our home planet and the only world currently known to support life.",
+
+        type:
+            "Terrestrial",
+
+        day:
+            "24 hours",
+
+        year:
+            "365 days"
+
     },
+
 
     Moon: {
+
         description:
-            "Earth's natural satellite and humanity's first destination beyond our planet.",
-        type: "Natural satellite",
-        day: "29.5 Earth days",
-        year: "27.3 Earth days"
+            "The Moon is Earth's natural satellite and the fifth-largest moon in the Solar System.",
+
+        type:
+            "Natural satellite",
+
+        day:
+            "27.3 Earth days",
+
+        year:
+            "27.3 Earth days"
+
     },
+
 
     Mars: {
+
         description:
-            "Mars is a cold desert world and one of humanity's most important targets for exploration.",
-        type: "Terrestrial",
-        day: "24.6 hours",
-        year: "687 Earth days"
+            "Mars is a cold, rocky planet known for its reddish surface and enormous volcanic and canyon systems.",
+
+        type:
+            "Terrestrial",
+
+        day:
+            "24.6 hours",
+
+        year:
+            "687 Earth days"
+
     },
+
 
     Jupiter: {
+
         description:
-            "Jupiter is the largest planet in the Solar System and a massive gas giant.",
-        type: "Gas giant",
-        day: "9.9 hours",
-        year: "11.86 Earth years"
+            "Jupiter is the largest planet in the Solar System and is famous for its powerful storms and Great Red Spot.",
+
+        type:
+            "Gas giant",
+
+        day:
+            "9.9 hours",
+
+        year:
+            "11.86 Earth years"
+
     },
 
+
     Saturn: {
+
         description:
-            "Saturn is a gas giant famous for its spectacular system of icy rings.",
-        type: "Gas giant",
-        day: "10.7 hours",
-        year: "29.45 Earth years"
+            "Saturn is a gas giant best known for its spectacular system of icy rings.",
+
+        type:
+            "Gas giant",
+
+        day:
+            "10.7 hours",
+
+        year:
+            "29.45 Earth years"
+
     }
 
 };
 
 
 /* =========================================================
-   PLANET DESTINATIONS
+   ORBIT CONFIGURATION
 ========================================================= */
 
-const planetPages = {
-
-    Moon:
-        "../Moon/moon.html",
-
-    Mars:
-        "../Mars/mars.html"
-
-};
-
-
-/* =========================================================
-   ORBIT DATA
-========================================================= */
-
-const orbitData = {
+const orbitConfig = {
 
     Mercury: {
+
         rx: 300,
         ry: 180,
-        angle: 0,
-        speed: 0.00075
+
+        speed: 0.00200,
+
+        angle:
+            Math.atan2(
+                (1150 - SUN_Y) / 180,
+                (1450 - SUN_X) / 300
+            )
+
     },
+
 
     Venus: {
+
         rx: 450,
         ry: 260,
-        angle: 1.1,
-        speed: 0.00048
+
+        speed: 0.00150,
+
+        angle:
+            Math.atan2(
+                (1470 - SUN_Y) / 260,
+                (1700 - SUN_X) / 450
+            )
+
     },
+
 
     Earth: {
+
         rx: 625,
         ry: 355,
-        angle: 2.2,
-        speed: 0.00030
+
+        speed: 0.00110,
+
+        angle:
+            Math.atan2(
+                (1070 - SUN_Y) / 355,
+                (2400 - SUN_X) / 625
+            )
+
     },
+
 
     Mars: {
+
         rx: 825,
         ry: 465,
-        angle: 3.1,
-        speed: 0.00022
+
+        speed: 0.00090,
+
+        angle:
+            Math.atan2(
+                (1430 - SUN_Y) / 465,
+                (2800 - SUN_X) / 825
+            )
+
     },
+
 
     Jupiter: {
+
         rx: 1100,
         ry: 610,
-        angle: 4.2,
-        speed: 0.00011
+
+        speed: 0.00050,
+
+        angle:
+            Math.atan2(
+                (1000 - SUN_Y) / 610,
+                (3300 - SUN_X) / 1100
+            )
+
     },
 
+
     Saturn: {
+
         rx: 1450,
         ry: 790,
-        angle: 5.0,
-        speed: 0.00007
+
+        speed: 0.00030,
+
+        angle:
+            Math.atan2(
+                (1500 - SUN_Y) / 790,
+                (3850 - SUN_X) / 1450
+            )
+
     }
 
 };
 
 
 /* =========================================================
-   MOON DATA
+   MOON ORBIT
 ========================================================= */
 
 const moonOrbit = {
@@ -249,23 +298,19 @@ const moonOrbit = {
     rx: 90,
     ry: 50,
 
-    angle: 0,
+    speed: 0.00450,
 
-    speed: 0.0022
+    angle:
+        Math.atan2(
+            (930 - 1070) / 50,
+            (2530 - 2400) / 90
+        )
 
 };
 
 
 /* =========================================================
-   EARTH POSITION
-========================================================= */
-
-let earthX = SUN_X;
-let earthY = SUN_Y;
-
-
-/* =========================================================
-   CLAMP
+   UTILITY
 ========================================================= */
 
 function clamp(
@@ -286,93 +331,70 @@ function clamp(
 
 
 /* =========================================================
-   CAMERA
+   CAMERA STATUS
 ========================================================= */
 
-function applyCamera() {
+const cameraX =
+    document.getElementById("cameraX");
 
-    if (!solarWorld) {
-        return;
+const cameraY =
+    document.getElementById("cameraY");
+
+const cameraZoom =
+    document.getElementById("cameraZoom");
+
+
+function updateCameraStatus() {
+
+    if (cameraX) {
+        cameraX.textContent =
+            Math.round(solarX);
     }
 
-
-    const viewportWidth =
-        window.innerWidth;
-
-    const viewportHeight =
-        window.innerHeight;
-
-
-    /*
-     * Keep the selected camera coordinate
-     * approximately in the center of the screen.
-     */
-
-    const offsetX =
-        viewportWidth / 2 -
-        cameraX * zoom;
-
-    const offsetY =
-        viewportHeight / 2 -
-        cameraY * zoom;
-
-
-    solarWorld.style.transform =
-        `translate3d(${offsetX}px, ${offsetY}px, 0) scale(${zoom})`;
-
-
-    if (cameraXElement) {
-
-        cameraXElement.textContent =
-            Math.round(cameraX);
-
+    if (cameraY) {
+        cameraY.textContent =
+            Math.round(solarY);
     }
 
-
-    if (cameraYElement) {
-
-        cameraYElement.textContent =
-            Math.round(cameraY);
-
-    }
-
-
-    if (cameraZoomElement) {
-
-        cameraZoomElement.textContent =
-            `${Math.round(zoom * 100)}%`;
-
+    if (cameraZoom) {
+        cameraZoom.textContent =
+            `${Math.round(solarZoom * 100)}%`;
     }
 
 }
 
 
 /* =========================================================
-   CAMERA LIMITS
+   APPLY CAMERA
 ========================================================= */
 
-function constrainCamera() {
+function applySolarCamera() {
 
-    cameraX =
-        clamp(
-            cameraX,
-            0,
-            SOLAR_WIDTH
-        );
+    const centerX =
+        window.innerWidth / 2;
 
-    cameraY =
-        clamp(
-            cameraY,
-            0,
-            SOLAR_HEIGHT
-        );
+    const centerY =
+        window.innerHeight / 2;
 
-    zoom =
-        clamp(
-            zoom,
-            MIN_ZOOM,
-            MAX_ZOOM
-        );
+
+    const screenX =
+        centerX -
+        solarX * solarZoom;
+
+    const screenY =
+        centerY -
+        solarY * solarZoom;
+
+
+    solarWorld.style.transform =
+        `translate3d(
+            ${screenX}px,
+            ${screenY}px,
+            0
+        ) scale(${solarZoom})`;
+
+
+    updateCameraStatus();
 
 }
 
@@ -383,106 +405,85 @@ function constrainCamera() {
 
 function resetCamera() {
 
-    cameraX = SUN_X;
-    cameraY = SUN_Y;
+    solarX = SUN_X;
+    solarY = SUN_Y;
 
-    zoom = 1;
+    solarZoom = 1;
 
-    constrainCamera();
-
-    applyCamera();
+    applySolarCamera();
 
 }
 
 
 /* =========================================================
-   PLANET ANIMATION
+   UPDATE PLANET ORBITS
 ========================================================= */
 
-let lastFrameTime =
-    performance.now();
+function updateOrbits(dt) {
+
+    let earthX = SUN_X;
+    let earthY = SUN_Y;
 
 
-function updatePlanets(
-    deltaTime
-) {
+    for (
+        const name in orbitConfig
+    ) {
 
-    let currentEarthX =
-        SUN_X;
-
-    let currentEarthY =
-        SUN_Y;
+        const orbit =
+            orbitConfig[name];
 
 
-    Object.entries(
-        orbitData
-    ).forEach(
-        ([name, orbit]) => {
-
-            orbit.angle +=
-                orbit.speed *
-                deltaTime;
+        orbit.angle +=
+            orbit.speed * dt;
 
 
-            const x =
-                SUN_X +
-                orbit.rx *
-                Math.cos(
-                    orbit.angle
-                );
+        const x =
+            SUN_X +
+            orbit.rx *
+            Math.cos(
+                orbit.angle
+            );
 
 
-            const y =
-                SUN_Y +
-                orbit.ry *
-                Math.sin(
-                    orbit.angle
-                );
+        const y =
+            SUN_Y +
+            orbit.ry *
+            Math.sin(
+                orbit.angle
+            );
 
 
-            const planet =
-                planetElements[name];
+        const planet =
+            planetEls[name];
 
 
-            if (planet) {
+        if (planet) {
 
-                planet.style.left =
-                    `${x}px`;
+            planet.style.left =
+                `${x}px`;
 
-                planet.style.top =
-                    `${y}px`;
-
-            }
-
-
-            if (name === "Earth") {
-
-                currentEarthX =
-                    x;
-
-                currentEarthY =
-                    y;
-
-            }
+            planet.style.top =
+                `${y}px`;
 
         }
-    );
 
 
-    earthX =
-        currentEarthX;
+        if (name === "Earth") {
 
-    earthY =
-        currentEarthY;
+            earthX = x;
+            earthY = y;
+
+        }
+
+    }
 
 
-    /*
-     * Moon
-     */
+    /* =====================================================
+       MOON
+    ====================================================== */
 
     moonOrbit.angle +=
-        moonOrbit.speed *
-        deltaTime;
+        moonOrbit.speed * dt;
 
 
     const moonX =
@@ -501,24 +502,20 @@ function updatePlanets(
         );
 
 
-    const moon =
-        planetElements.Moon;
+    if (planetEls.Moon) {
 
-
-    if (moon) {
-
-        moon.style.left =
+        planetEls.Moon.style.left =
             `${moonX}px`;
 
-        moon.style.top =
+        planetEls.Moon.style.top =
             `${moonY}px`;
 
     }
 
 
-    /*
-     * Moon orbit visual follows Earth.
-     */
+    /* =====================================================
+       MOON ORBIT VISUAL
+    ====================================================== */
 
     const moonOrbitElement =
         document.querySelector(
@@ -540,19 +537,17 @@ function updatePlanets(
 
 
 /* =========================================================
-   KEYBOARD CAMERA
+   CAMERA MOVEMENT
 ========================================================= */
 
-function updateKeyboard(
-    deltaTime
-) {
+function updateSolarMovement(dt) {
 
-    const speed =
+    const movementSpeed =
         4 *
-        deltaTime *
+        dt *
         Math.max(
-            0.7,
-            zoom
+            .7,
+            solarZoom
         );
 
 
@@ -561,7 +556,8 @@ function updateKeyboard(
         keys.arrowup
     ) {
 
-        cameraY -= speed;
+        solarY -=
+            movementSpeed;
 
     }
 
@@ -571,7 +567,8 @@ function updateKeyboard(
         keys.arrowdown
     ) {
 
-        cameraY += speed;
+        solarY +=
+            movementSpeed;
 
     }
 
@@ -581,7 +578,8 @@ function updateKeyboard(
         keys.arrowleft
     ) {
 
-        cameraX -= speed;
+        solarX -=
+            movementSpeed;
 
     }
 
@@ -591,75 +589,83 @@ function updateKeyboard(
         keys.arrowright
     ) {
 
-        cameraX += speed;
+        solarX +=
+            movementSpeed;
 
     }
 
 
+    /* =====================================================
+       KEYBOARD ZOOM
+    ====================================================== */
+
     if (keys.q) {
 
-        zoom +=
-            0.0015 *
-            deltaTime;
+        solarZoom +=
+            .015 * dt;
 
     }
 
 
     if (keys.e) {
 
-        zoom -=
-            0.0015 *
-            deltaTime;
+        solarZoom -=
+            .015 * dt;
 
     }
 
 
-    constrainCamera();
-
-    applyCamera();
-
-}
-
-
-/* =========================================================
-   ANIMATION LOOP
-========================================================= */
-
-function animationLoop(
-    timestamp
-) {
-
-    const deltaTime =
-        Math.min(
-            timestamp -
-            lastFrameTime,
-            50
+    solarZoom =
+        clamp(
+            solarZoom,
+            MIN_ZOOM,
+            MAX_ZOOM
         );
 
 
-    lastFrameTime =
-        timestamp;
+    solarX =
+        clamp(
+            solarX,
+            0,
+            SOLAR_WIDTH
+        );
 
 
-    updatePlanets(
-        deltaTime
-    );
+    solarY =
+        clamp(
+            solarY,
+            0,
+            SOLAR_HEIGHT
+        );
 
-    updateKeyboard(
-        deltaTime
-    );
 
-
-    requestAnimationFrame(
-        animationLoop
-    );
+    applySolarCamera();
 
 }
 
 
 /* =========================================================
-   KEYBOARD EVENTS
+   KEYBOARD CONTROLS
 ========================================================= */
+
+const movementKeys =
+    new Set([
+
+        "w",
+        "a",
+        "s",
+        "d",
+
+        "arrowup",
+        "arrowdown",
+        "arrowleft",
+        "arrowright",
+
+        "q",
+        "e"
+
+    ]);
+
 
 window.addEventListener(
     "keydown",
@@ -670,18 +676,7 @@ window.addEventListener(
 
 
         if (
-            [
-                "arrowup",
-                "arrowdown",
-                "arrowleft",
-                "arrowright",
-                "w",
-                "a",
-                "s",
-                "d",
-                "q",
-                "e"
-            ].includes(key)
+            movementKeys.has(key)
         ) {
 
             event.preventDefault();
@@ -690,18 +685,9 @@ window.addEventListener(
 
         }
 
-
-        if (
-            key === "escape" &&
-            planetModal.classList.contains(
-                "open"
-            )
-        ) {
-
-            closePlanetModal();
-
-        }
-
+    },
+    {
+        passive: false
     }
 );
 
@@ -713,29 +699,84 @@ window.addEventListener(
         const key =
             event.key.toLowerCase();
 
-        keys[key] = false;
 
+        if (
+            movementKeys.has(key)
+        ) {
+
+            event.preventDefault();
+
+            keys[key] = false;
+
+        }
+
+    },
+    {
+        passive: false
     }
 );
 
 
 /* =========================================================
-   POINTER DRAG
+   CLEAR KEYS
+========================================================= */
+
+function clearKeys() {
+
+    Object.keys(keys)
+        .forEach(key => {
+
+            keys[key] = false;
+
+        });
+
+
+    document
+        .querySelectorAll(".control-btn")
+        .forEach(button => {
+
+            button.classList.remove(
+                "active"
+            );
+
+        });
+
+}
+
+
+window.addEventListener(
+    "blur",
+    clearKeys
+);
+
+
+/* =========================================================
+   DRAG / PAN
+========================================================= */
+
+let dragging = false;
+
+let dragPointerId = null;
+
+let previousX = 0;
+let previousY = 0;
+
+let dragDistance = 0;
+
+
+/* =========================================================
+   POINTER DOWN
 ========================================================= */
 
 spaceView.addEventListener(
     "pointerdown",
     event => {
 
-        /*
-         * Don't begin camera dragging from a planet
-         * or control button.
-         */
-
         if (
-            event.target.closest(
-                ".planet, button, .modal"
-            )
+            event.target.closest(".planet") ||
+            event.target.closest("#mobileControls") ||
+            event.target.closest(".modal") ||
+            event.target.closest("#spaceHud")
         ) {
 
             return;
@@ -748,11 +789,13 @@ spaceView.addEventListener(
         dragPointerId =
             event.pointerId;
 
-        previousPointerX =
+
+        previousX =
             event.clientX;
 
-        previousPointerY =
+        previousY =
             event.clientY;
+
 
         dragDistance = 0;
 
@@ -768,6 +811,10 @@ spaceView.addEventListener(
     }
 );
 
+
+/* =========================================================
+   POINTER MOVE
+========================================================= */
 
 spaceView.addEventListener(
     "pointermove",
@@ -786,18 +833,18 @@ spaceView.addEventListener(
 
         const dx =
             event.clientX -
-            previousPointerX;
+            previousX;
 
 
         const dy =
             event.clientY -
-            previousPointerY;
+            previousY;
 
 
-        previousPointerX =
+        previousX =
             event.clientX;
 
-        previousPointerY =
+        previousY =
             event.clientY;
 
 
@@ -806,27 +853,56 @@ spaceView.addEventListener(
             Math.abs(dy);
 
 
-        cameraX -=
-            dx / zoom;
+        solarX -=
+            dx /
+            solarZoom *
+            1.3;
 
 
-        cameraY -=
-            dy / zoom;
+        solarY -=
+            dy /
+            solarZoom *
+            1.3;
 
 
-        constrainCamera();
+        solarX =
+            clamp(
+                solarX,
+                0,
+                SOLAR_WIDTH
+            );
 
-        applyCamera();
+
+        solarY =
+            clamp(
+                solarY,
+                0,
+                SOLAR_HEIGHT
+            );
+
+
+        applySolarCamera();
 
     }
 );
 
 
-function stopDragging() {
+/* =========================================================
+   STOP DRAG
+========================================================= */
 
-    dragging = false;
+function stopDragging(event) {
 
-    dragPointerId = null;
+    if (
+        event.pointerId ===
+        dragPointerId
+    ) {
+
+        dragging = false;
+
+        dragPointerId = null;
+
+    }
 
 }
 
@@ -841,22 +917,6 @@ spaceView.addEventListener(
     stopDragging
 );
 
-spaceView.addEventListener(
-    "pointerleave",
-    event => {
-
-        if (
-            event.pointerType ===
-            "mouse"
-        ) {
-
-            stopDragging();
-
-        }
-
-    }
-);
-
 
 /* =========================================================
    WHEEL ZOOM
@@ -869,26 +929,21 @@ spaceView.addEventListener(
         event.preventDefault();
 
 
-        const direction =
-            event.deltaY < 0
-                ? 1
-                : -1;
-
-
         const amount =
-            0.08 *
-            direction;
+            event.deltaY < 0
+                ? .08
+                : -.08;
 
 
-        zoom =
+        solarZoom =
             clamp(
-                zoom + amount,
+                solarZoom + amount,
                 MIN_ZOOM,
                 MAX_ZOOM
             );
 
 
-        applyCamera();
+        applySolarCamera();
 
     },
     {
@@ -902,184 +957,227 @@ spaceView.addEventListener(
 ========================================================= */
 
 document
-    .querySelectorAll(
-        ".direction"
-    )
-    .forEach(
-        button => {
+    .querySelectorAll(".direction")
+    .forEach(button => {
 
-            const key =
-                button.dataset.key;
+        const key =
+            button.dataset.key;
 
 
-            function startMove(
-                event
-            ) {
+        function startMove(event) {
 
-                event.preventDefault();
-                event.stopPropagation();
+            event.preventDefault();
+            event.stopPropagation();
 
 
-                keys[key] =
-                    true;
+            keys[key] = true;
+
+            button.classList.add(
+                "active"
+            );
 
 
-                button.classList.add(
-                    "active"
+            try {
+
+                button.setPointerCapture(
+                    event.pointerId
                 );
 
+            } catch (error) {}
 
-                try {
-
-                    button.setPointerCapture(
-                        event.pointerId
-                    );
-
-                } catch (error) {}
-
-            }
+        }
 
 
-            function stopMove(
-                event
-            ) {
+        function stopMove(event) {
 
-                event.preventDefault();
-                event.stopPropagation();
+            event.preventDefault();
+            event.stopPropagation();
 
 
-                keys[key] =
-                    false;
+            keys[key] = false;
 
+            button.classList.remove(
+                "active"
+            );
+
+        }
+
+
+        button.addEventListener(
+            "pointerdown",
+            startMove
+        );
+
+
+        button.addEventListener(
+            "pointerup",
+            stopMove
+        );
+
+
+        button.addEventListener(
+            "pointercancel",
+            stopMove
+        );
+
+
+        button.addEventListener(
+            "lostpointercapture",
+            () => {
+
+                keys[key] = false;
 
                 button.classList.remove(
                     "active"
                 );
 
             }
+        );
 
-
-            button.addEventListener(
-                "pointerdown",
-                startMove
-            );
-
-
-            button.addEventListener(
-                "pointerup",
-                stopMove
-            );
-
-
-            button.addEventListener(
-                "pointercancel",
-                stopMove
-            );
-
-
-            button.addEventListener(
-                "lostpointercapture",
-                () => {
-
-                    keys[key] =
-                        false;
-
-                    button.classList.remove(
-                        "active"
-                    );
-
-                }
-            );
-
-        }
-    );
+    });
 
 
 /* =========================================================
-   MOBILE ZOOM / RESET
+   MOBILE ACTION BUTTONS
 ========================================================= */
 
 document
     .querySelectorAll(
         ".zoom-btn, .reset-btn"
     )
-    .forEach(
-        button => {
+    .forEach(button => {
 
-            button.addEventListener(
-                "click",
-                event => {
+        button.addEventListener(
+            "pointerdown",
+            event => {
 
-                    event.preventDefault();
-                    event.stopPropagation();
-
-
-                    const action =
-                        button.dataset.action;
+                event.preventDefault();
+                event.stopPropagation();
 
 
-                    if (
-                        action ===
-                        "zoom-in"
-                    ) {
-
-                        zoom =
-                            clamp(
-                                zoom + .2,
-                                MIN_ZOOM,
-                                MAX_ZOOM
-                            );
-
-                    }
+                const action =
+                    button.dataset.action;
 
 
-                    if (
-                        action ===
-                        "zoom-out"
-                    ) {
+                if (
+                    action === "zoom-in"
+                ) {
 
-                        zoom =
-                            clamp(
-                                zoom - .2,
-                                MIN_ZOOM,
-                                MAX_ZOOM
-                            );
-
-                    }
-
-
-                    if (
-                        action ===
-                        "reset"
-                    ) {
-
-                        resetCamera();
-
-                        return;
-
-                    }
-
-
-                    applyCamera();
+                    solarZoom =
+                        clamp(
+                            solarZoom + .15,
+                            MIN_ZOOM,
+                            MAX_ZOOM
+                        );
 
                 }
-            );
 
-        }
-    );
+
+                if (
+                    action === "zoom-out"
+                ) {
+
+                    solarZoom =
+                        clamp(
+                            solarZoom - .15,
+                            MIN_ZOOM,
+                            MAX_ZOOM
+                        );
+
+                }
+
+
+                if (
+                    action === "reset"
+                ) {
+
+                    resetCamera();
+
+                    return;
+
+                }
+
+
+                applySolarCamera();
+
+            }
+        );
+
+    });
 
 
 /* =========================================================
-   PLANET MODAL
+   PLANET MODAL DOM
 ========================================================= */
 
-let lastFocusedPlanet =
-    null;
+const planetModal =
+    document.getElementById(
+        "planetModal"
+    );
+
+const planetTitle =
+    document.getElementById(
+        "planetTitle"
+    );
+
+const planetDescription =
+    document.getElementById(
+        "planetDescription"
+    );
+
+const planetType =
+    document.getElementById(
+        "planetType"
+    );
+
+const planetDay =
+    document.getElementById(
+        "planetDay"
+    );
+
+const planetYear =
+    document.getElementById(
+        "planetYear"
+    );
+
+const planetVisual =
+    document.getElementById(
+        "planetVisual"
+    );
+
+const closeModal =
+    document.getElementById(
+        "closeModal"
+    );
+
+const closeModalButton =
+    document.getElementById(
+        "closeModalButton"
+    );
+
+let lastFocusedPlanet = null;
 
 
-function openPlanetModal(
-    name
-) {
+/* =========================================================
+   PLANET PAGES
+========================================================= */
+
+const planetPages = {
+
+    Moon:
+        "../Moon/moon.html",
+
+    Mars:
+        "../Mars/mars.html"
+
+};
+
+
+/* =========================================================
+   OPEN PLANET MODAL
+========================================================= */
+
+function openPlanetModal(name) {
 
     const data =
         planetData[name];
@@ -1129,19 +1227,21 @@ function openPlanetModal(
         document.activeElement;
 
 
-    requestAnimationFrame(
-        () => {
+    document.body.style.overflow =
+        "hidden";
 
-            closeModal.focus();
 
-        }
-    );
+    requestAnimationFrame(() => {
+
+        closeModal.focus();
+
+    });
 
 }
 
 
 /* =========================================================
-   CLOSE MODAL
+   CLOSE PLANET MODAL
 ========================================================= */
 
 function closePlanetModal() {
@@ -1155,6 +1255,10 @@ function closePlanetModal() {
         "aria-hidden",
         "true"
     );
+
+
+    document.body.style.overflow =
+        "";
 
 
     if (
@@ -1175,43 +1279,62 @@ function closePlanetModal() {
 ========================================================= */
 
 document
-    .querySelectorAll(
-        ".planet"
-    )
-    .forEach(
-        planet => {
+    .querySelectorAll(".planet")
+    .forEach(planet => {
 
-            planet.addEventListener(
-                "click",
-                event => {
+        planet.addEventListener(
+            "click",
+            event => {
 
-                    event.stopPropagation();
+                event.stopPropagation();
 
 
-                    /*
-                     * Ignore a click that was actually
-                     * a camera drag.
-                     */
+                /*
+                 * Prevent a planet from opening
+                 * when the user was dragging.
+                 */
+                if (dragDistance > 12) {
+                    return;
+                }
 
-                    if (
-                        dragDistance > 12
-                    ) {
 
-                        dragDistance = 0;
+                const name =
+                    planet.dataset.planet;
 
-                        return;
 
-                    }
+                if (
+                    planetPages[name]
+                ) {
+
+                    window.location.href =
+                        planetPages[name];
+
+                    return;
+
+                }
+
+
+                openPlanetModal(name);
+
+            }
+        );
+
+
+        planet.addEventListener(
+            "keydown",
+            event => {
+
+                if (
+                    event.key === "Enter" ||
+                    event.key === " "
+                ) {
+
+                    event.preventDefault();
 
 
                     const name =
                         planet.dataset.planet;
 
-
-                    /*
-                     * Moon and Mars have dedicated
-                     * pages.
-                     */
 
                     if (
                         planetPages[name]
@@ -1225,57 +1348,18 @@ document
                     }
 
 
-                    openPlanetModal(
-                        name
-                    );
+                    openPlanetModal(name);
 
                 }
-            );
 
+            }
+        );
 
-            planet.addEventListener(
-                "keydown",
-                event => {
-
-                    if (
-                        event.key === "Enter" ||
-                        event.key === " "
-                    ) {
-
-                        event.preventDefault();
-
-
-                        const name =
-                            planet.dataset.planet;
-
-
-                        if (
-                            planetPages[name]
-                        ) {
-
-                            window.location.href =
-                                planetPages[name];
-
-                            return;
-
-                        }
-
-
-                        openPlanetModal(
-                            name
-                        );
-
-                    }
-
-                }
-            );
-
-        }
-    );
+    });
 
 
 /* =========================================================
-   MODAL EVENTS
+   CLOSE MODAL
 ========================================================= */
 
 closeModal.addEventListener(
@@ -1290,79 +1374,110 @@ closeModalButton.addEventListener(
 );
 
 
-document
-    .querySelectorAll(
-        "[data-close-modal]"
-    )
-    .forEach(
-        element => {
+/* =========================================================
+   BACKDROP CLOSE
+========================================================= */
 
-            element.addEventListener(
-                "click",
-                closePlanetModal
-            );
+document
+    .querySelector(".modal-backdrop")
+    .addEventListener(
+        "click",
+        closePlanetModal
+    );
+
+
+/* =========================================================
+   ESCAPE
+========================================================= */
+
+window.addEventListener(
+    "keydown",
+    event => {
+
+        if (
+            event.key === "Escape" &&
+            planetModal.classList.contains(
+                "open"
+            )
+        ) {
+
+            closePlanetModal();
 
         }
+
+    }
+);
+
+
+/* =========================================================
+   ANIMATION LOOP
+========================================================= */
+
+let lastTime =
+    performance.now();
+
+
+function animationLoop(time) {
+
+    const delta =
+        Math.min(
+            (time - lastTime) / 16.67,
+            3
+        );
+
+
+    lastTime =
+        time;
+
+
+    updateOrbits(delta);
+
+    updateSolarMovement(delta);
+
+
+    requestAnimationFrame(
+        animationLoop
     );
+
+}
 
 
 /* =========================================================
    INITIALIZATION
 ========================================================= */
 
-function initializeSpace() {
+updateOrbits(0);
 
-    /*
-     * Make sure the initial camera is valid.
-     */
+applySolarCamera();
 
-    constrainCamera();
-
-    applyCamera();
-
-
-    /*
-     * Put all planets in their initial positions.
-     */
-
-    updatePlanets(0);
-
-
-    /*
-     * Start animation.
-     */
-
-    requestAnimationFrame(
-        animationLoop
-    );
-
-
-    console.log(
-        "NASA Space Journey initialized."
-    );
-
-}
+requestAnimationFrame(
+    animationLoop
+);
 
 
 /* =========================================================
-   START
+   RESIZE
 ========================================================= */
 
-if (
-    document.readyState ===
-    "loading"
-) {
+window.addEventListener(
+    "resize",
+    () => {
 
-    document.addEventListener(
-        "DOMContentLoaded",
-        initializeSpace,
-        {
-            once: true
-        }
-    );
+        applySolarCamera();
 
-} else {
+    }
+);
 
-    initializeSpace();
 
-}
+/* =========================================================
+   CONTEXT MENU
+========================================================= */
+
+spaceView.addEventListener(
+    "contextmenu",
+    event => {
+
+        event.preventDefault();
+
+    }
+);
