@@ -6,32 +6,53 @@
 
     <meta
         name="viewport"
-        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    >
 
     <meta
         name="theme-color"
-        content="#000814">
+        content="#000814"
+    >
 
     <title>NASA Space Journey</title>
 
-    <link rel="stylesheet" href="space.css">
+    <link
+        rel="stylesheet"
+        href="./space.css"
+    >
 </head>
+
 
 <body>
 
 <main
     id="spaceView"
-    aria-label="NASA Space Journey">
+    aria-label="NASA Space Journey"
+>
 
     <!-- =====================================================
          BACKGROUND
     ====================================================== -->
 
-    <div id="stars" aria-hidden="true"></div>
+    <div
+        id="stars"
+        aria-hidden="true"
+    ></div>
 
-    <div class="nebula nebula-one" aria-hidden="true"></div>
-    <div class="nebula nebula-two" aria-hidden="true"></div>
-    <div class="nebula nebula-three" aria-hidden="true"></div>
+    <div
+        class="nebula nebula-one"
+        aria-hidden="true"
+    ></div>
+
+    <div
+        class="nebula nebula-two"
+        aria-hidden="true"
+    ></div>
+
+    <div
+        class="nebula nebula-three"
+        aria-hidden="true"
+    ></div>
 
 
     <!-- =====================================================
@@ -40,7 +61,8 @@
 
     <div id="solarWorld">
 
-        <!-- Orbits -->
+        <!-- ORBITS -->
+
         <div class="orbit orbit-mercury"></div>
         <div class="orbit orbit-venus"></div>
         <div class="orbit orbit-earth"></div>
@@ -48,22 +70,28 @@
         <div class="orbit orbit-jupiter"></div>
         <div class="orbit orbit-saturn"></div>
 
-        <!-- Moon orbit -->
-        <div class="moon-orbit"></div>
+        <div
+            class="moon-orbit"
+            aria-hidden="true"
+        ></div>
 
 
-        <!-- Sun -->
+        <!-- SUN -->
+
         <div
             class="sun"
-            aria-label="The Sun">
-        </div>
+            aria-label="The Sun"
+        ></div>
 
 
-        <!-- Mercury -->
+        <!-- MERCURY -->
+
         <button
             class="planet mercury"
             data-planet="Mercury"
-            aria-label="Explore Mercury">
+            aria-label="Explore Mercury"
+            type="button"
+        >
 
             <span class="planet-body"></span>
 
@@ -74,11 +102,14 @@
         </button>
 
 
-        <!-- Venus -->
+        <!-- VENUS -->
+
         <button
             class="planet venus"
             data-planet="Venus"
-            aria-label="Explore Venus">
+            aria-label="Explore Venus"
+            type="button"
+        >
 
             <span class="planet-body"></span>
 
@@ -89,11 +120,14 @@
         </button>
 
 
-        <!-- Earth -->
+        <!-- EARTH -->
+
         <button
             class="planet earth"
             data-planet="Earth"
-            aria-label="Explore Earth">
+            aria-label="Explore Earth"
+            type="button"
+        >
 
             <span class="planet-body"></span>
 
@@ -104,11 +138,14 @@
         </button>
 
 
-        <!-- Moon -->
+        <!-- MOON -->
+
         <button
             class="planet moon"
             data-planet="Moon"
-            aria-label="Explore Moon">
+            aria-label="Explore Moon"
+            type="button"
+        >
 
             <span class="planet-body"></span>
 
@@ -119,11 +156,14 @@
         </button>
 
 
-        <!-- Mars -->
+        <!-- MARS -->
+
         <button
             class="planet mars"
             data-planet="Mars"
-            aria-label="Explore Mars">
+            aria-label="Explore Mars"
+            type="button"
+        >
 
             <span class="planet-body"></span>
 
@@ -134,11 +174,14 @@
         </button>
 
 
-        <!-- Jupiter -->
+        <!-- JUPITER -->
+
         <button
             class="planet jupiter"
             data-planet="Jupiter"
-            aria-label="Explore Jupiter">
+            aria-label="Explore Jupiter"
+            type="button"
+        >
 
             <span class="planet-body"></span>
 
@@ -149,11 +192,14 @@
         </button>
 
 
-        <!-- Saturn -->
+        <!-- SATURN -->
+
         <button
             class="planet saturn"
             data-planet="Saturn"
-            aria-label="Explore Saturn">
+            aria-label="Explore Saturn"
+            type="button"
+        >
 
             <span class="planet-body"></span>
 
@@ -234,54 +280,69 @@
 
     <div
         id="mobileControls"
-        aria-label="Space navigation controls">
+        aria-label="Space navigation controls"
+    >
 
         <button
             class="control-btn direction"
             data-key="w"
-            aria-label="Move up">
+            type="button"
+            aria-label="Move up"
+        >
             ↑
         </button>
 
         <button
             class="control-btn direction"
             data-key="a"
-            aria-label="Move left">
+            type="button"
+            aria-label="Move left"
+        >
             ←
         </button>
 
         <button
             class="control-btn direction"
             data-key="s"
-            aria-label="Move down">
+            type="button"
+            aria-label="Move down"
+        >
             ↓
         </button>
 
         <button
             class="control-btn direction"
             data-key="d"
-            aria-label="Move right">
+            type="button"
+            aria-label="Move right"
+        >
             →
         </button>
 
         <button
             class="control-btn zoom-btn"
             data-action="zoom-in"
-            aria-label="Zoom in">
+            type="button"
+            aria-label="Zoom in"
+        >
             +
         </button>
 
         <button
             class="control-btn zoom-btn"
             data-action="zoom-out"
-            aria-label="Zoom out">
+            type="button"
+            aria-label="Zoom out"
+        >
             −
         </button>
 
         <button
             class="control-btn reset-btn"
             data-action="reset"
-            aria-label="Reset camera">
+            type="button"
+            aria-label="Reset camera"
+        >
             ⟳
         </button>
 
@@ -304,31 +365,36 @@
     <div
         id="planetModal"
         class="modal"
-        aria-hidden="true">
+        aria-hidden="true"
+    >
 
         <div
             class="modal-backdrop"
-            data-close-modal>
-        </div>
+            data-close-modal
+        ></div>
 
 
         <article
             class="planet-card"
             role="dialog"
             aria-modal="true"
-            aria-labelledby="planetTitle">
+            aria-labelledby="planetTitle"
+        >
 
             <button
                 id="closeModal"
                 class="close-modal"
-                aria-label="Close planet information">
+                type="button"
+                aria-label="Close planet information"
+            >
                 ×
             </button>
 
 
             <div
                 id="planetVisual"
-                class="planet-visual">
+                class="planet-visual"
+            >
 
                 <div class="visual-planet"></div>
 
@@ -341,11 +407,9 @@
                     SPACE JOURNEY
                 </div>
 
-
                 <h2 id="planetTitle">
                     Earth
                 </h2>
-
 
                 <p id="planetDescription">
                     Our home planet.
@@ -355,35 +419,24 @@
                 <div class="planet-facts">
 
                     <div class="fact">
-
                         <span>TYPE</span>
-
                         <strong id="planetType">
                             Terrestrial
                         </strong>
-
                     </div>
 
-
                     <div class="fact">
-
                         <span>DAY</span>
-
                         <strong id="planetDay">
                             24 hours
                         </strong>
-
                     </div>
 
-
                     <div class="fact">
-
                         <span>YEAR</span>
-
                         <strong id="planetYear">
                             365 days
                         </strong>
-
                     </div>
 
                 </div>
@@ -391,7 +444,9 @@
 
                 <button
                     id="closeModalButton"
-                    class="explore-close">
+                    class="explore-close"
+                    type="button"
+                >
                     RETURN TO SPACE
                 </button>
 
@@ -425,7 +480,7 @@
 </main>
 
 
-<script src="space.js"></script>
+<script src="./space.js"></script>
 
 </body>
 </html>
