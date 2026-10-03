@@ -1,5 +1,6 @@
 /* =========================================================
    MOON EXHIBITION — STORY SYSTEM
+   Team_Aurora folder structure
 ========================================================= */
 
 
@@ -31,14 +32,14 @@ const introStories = [
         images: [
 
             {
-                src: "../Museum of the Abandoned/story_images/moon.png",
+                src: "./Museum_of_the_Abandoned/story_images/moon.png",
                 title: "THE MOON",
                 description: "",
                 link: ""
             },
 
             {
-                src: "../images/mars.png",
+                src: "./Mars/mars.png",
                 title: "THE MARS",
                 description: "",
                 link: ""
@@ -65,9 +66,14 @@ const introStories = [
         images: [
 
             {
-                src: "../Museum of the Abandoned/story_images/NASA stepped on the Moon.jpg",
-                title: "NASA's Step on the Moon",
+                src:
+                    "./Museum_of_the_Abandoned/story_images/NASA_stepped_on_the_Moon.jpg",
+
+                title:
+                    "NASA's Step on the Moon",
+
                 description: "",
+
                 link:
                     "https://www.nasa.gov/history/flag-day-flying-high-the-stars-and-stripes-in-space/"
             }
@@ -93,7 +99,7 @@ const introStories = [
             And about 62 years ago, in 1964, NASA began its journey towards
             Mars with <b>Mariner 3</b>, its first Mars attempt.<br>
 
-            Soon after, <b>Mariner 4</b> followed and successfully reached Mars<br>
+            Soon after, <b>Mariner 4</b> followed and successfully reached Mars.<br>
 
             Since then, mission after mission, NASA has continued sending
             spacecraft to explore these worlds.
@@ -104,17 +110,27 @@ const introStories = [
         images: [
 
             {
-                src: "../Museum of the Abandoned/story_images/Pioneer_1.jpg",
-                title: "PIONEER 1",
+                src:
+                    "./Museum_of_the_Abandoned/story_images/Pioneer_1.jpg",
+
+                title:
+                    "PIONEER 1",
+
                 description: "",
+
                 link:
                     "https://science.nasa.gov/mission/pioneer-1-able-2/"
             },
 
             {
-                src: "../Museum of the Abandoned/story_images/Mariner 3.jpg",
-                title: "Mariner 3",
+                src:
+                    "./Museum_of_the_Abandoned/story_images/Mariner 3.jpg",
+
+                title:
+                    "MARINER 3",
+
                 description: "",
+
                 link:
                     "https://science.nasa.gov/mission/mariner-3/"
             }
@@ -143,10 +159,14 @@ const introStories = [
         images: [
 
             {
-                src: "../Museum of the Abandoned/story_images/Progressing.png",
+                src:
+                    "./Museum_of_the_Abandoned/story_images/Progressing.png",
+
                 title: "",
-                description:
-                    ""
+
+                description: "",
+
+                link: ""
             }
 
         ]
@@ -161,31 +181,33 @@ const introStories = [
         kicker:
             "YOUR JOURNEY BEGINS",
 
-        title:
-            "",
+        title: "",
 
         text: `
+            <b>
+                But some machines have stopped responding, and some are about to.
 
-            <b>But some machines have stopped responding, and some are about to.
+                We can't let their contributions be forgotten.<br><br>
 
-            We can’t let their contributions be forgotten.<br><br>
-
-            **We believe you are the one who can conquer space. Your journey begins here.**</b>?
-
+                We believe you are the one who can conquer space.
+                Your journey begins here.
+            </b>
         `,
 
-        footer:
-            "",
+        footer: "",
 
         images: [
 
             {
-                src: "../Museum of the Abandoned/story_images/Inspiring.png",
-                title: "",
-                description:
-                    ""
-            }
+                src:
+                    "./Museum_of_the_Abandoned/story_images/Inspiring.png",
 
+                title: "",
+
+                description: "",
+
+                link: ""
+            }
 
         ]
     }
@@ -197,113 +219,218 @@ const introStories = [
    CONFIGURATION
 ========================================================= */
 
-const Home_MAP_PAGE =
-    "../Space/space.html";
+
+/*
+   IMPORTANT:
+
+   index.html is already INSIDE Team_Aurora.
+
+   Therefore:
+
+   WRONG:
+   ../Team_Aurora/...
+
+   CORRECT:
+   ./Museum_of_the_Abandoned/...
+*/
+
+
+const HOME_MAP_PAGE =
+    "./Space/space.html";
 
 
 /*
-    IMPORTANT:
+   Image rotation.
 
-    This is the time between images.
-
-    3500 = 3.5 seconds
-    5000 = 5 seconds
-    2000 = 2 seconds
+   3500 = 3.5 seconds
 */
 
-const IMAGE_ROTATION_TIME = 3500;
+const IMAGE_ROTATION_TIME =
+    3500;
 
-const STORY_EXIT_TIME = 250;
 
-const STORY_ENTER_TIME = 450;
+/*
+   Story transition.
+*/
+
+const STORY_EXIT_TIME =
+    250;
+
+const STORY_ENTER_TIME =
+    450;
 
 
 /* =========================================================
    STATE
 ========================================================= */
 
-let currentStory = 0;
+let currentStory =
+    0;
 
-let currentImage = 0;
+let currentImage =
+    0;
 
-let isAnimating = false;
+let isAnimating =
+    false;
 
-let imageTimer = null;
+let imageTimer =
+    null;
 
-let touchStartX = 0;
 
-let touchStartY = 0;
+/*
+   General touch state.
+*/
 
-let touchStartedInImagePanel = false;
+let touchStartX =
+    0;
 
-let imageTouchStartX = 0;
+let touchStartY =
+    0;
 
-let imageTouchStartY = 0;
+let touchStartedInImagePanel =
+    false;
+
+
+/*
+   Image touch state.
+*/
+
+let imageTouchStartX =
+    0;
+
+let imageTouchStartY =
+    0;
 
 
 /* =========================================================
-   ELEMENTS
+   DOM ELEMENTS
+=========================================================
+
+   IMPORTANT:
+
+   These are declared here but assigned AFTER
+   DOMContentLoaded.
+
 ========================================================= */
 
-const storyPanel =
-    document.getElementById("storyPanel");
+let storyPanel;
+let imagePanel;
 
-const imagePanel =
-    document.getElementById("imagePanel");
+let storyKicker;
+let storyTitle;
+let storyText;
+let storyFooterText;
+let storyProgress;
 
-const storyKicker =
-    document.getElementById("storyKicker");
+let imageTrack;
+let imageCounter;
+let imageTitle;
+let imageDescription;
+let imageDots;
 
-const storyTitle =
-    document.getElementById("storyTitle");
+let nextButton;
+let nextButtonText;
 
-const storyText =
-    document.getElementById("storyText");
+let backButton;
+let skipButton;
 
-const storyFooterText =
-    document.getElementById("storyFooterText");
-
-const storyProgress =
-    document.getElementById("storyProgress");
-
-const imageTrack =
-    document.getElementById("imageTrack");
-
-const imageCounter =
-    document.getElementById("imageCounter");
-
-const imageTitle =
-    document.getElementById("imageTitle");
-
-const imageDescription =
-    document.getElementById("imageDescription");
-
-const imageDots =
-    document.getElementById("imageDots");
-
-const nextButton =
-    document.getElementById("nextButton");
-
-const nextButtonText =
-    document.getElementById("nextButtonText");
-
-const backButton =
-    document.getElementById("backButton");
-
-const skipButton =
-    document.getElementById("skipButton");
-
-const progressBar =
-    document.getElementById("progressBar");
+let progressBar;
 
 
 /* =========================================================
-   HELPER — PAD NUMBER
+   GET DOM ELEMENTS
+========================================================= */
+
+function getDOMElements() {
+
+    storyPanel =
+        document.getElementById("storyPanel");
+
+    imagePanel =
+        document.getElementById("imagePanel");
+
+    storyKicker =
+        document.getElementById("storyKicker");
+
+    storyTitle =
+        document.getElementById("storyTitle");
+
+    storyText =
+        document.getElementById("storyText");
+
+    storyFooterText =
+        document.getElementById("storyFooterText");
+
+    storyProgress =
+        document.getElementById("storyProgress");
+
+    imageTrack =
+        document.getElementById("imageTrack");
+
+    imageCounter =
+        document.getElementById("imageCounter");
+
+    imageTitle =
+        document.getElementById("imageTitle");
+
+    imageDescription =
+        document.getElementById("imageDescription");
+
+    imageDots =
+        document.getElementById("imageDots");
+
+    nextButton =
+        document.getElementById("nextButton");
+
+    nextButtonText =
+        document.getElementById("nextButtonText");
+
+    backButton =
+        document.getElementById("backButton");
+
+    skipButton =
+        document.getElementById("skipButton");
+
+    progressBar =
+        document.getElementById("progressBar");
+
+
+    /*
+       Debug information.
+
+       Open browser console with F12 if needed.
+    */
+
+    console.log(
+        "Moon Exhibition DOM initialized."
+    );
+
+    console.log(
+        "storyPanel:",
+        storyPanel
+    );
+
+    console.log(
+        "imagePanel:",
+        imagePanel
+    );
+
+    console.log(
+        "imageTrack:",
+        imageTrack
+    );
+
+}
+
+
+/* =========================================================
+   PAD NUMBER
 ========================================================= */
 
 function padNumber(number) {
 
-    return String(number).padStart(2, "0");
+    return String(number)
+        .padStart(2, "0");
 
 }
 
@@ -349,9 +476,9 @@ function updateStoryText() {
         getCurrentStory();
 
 
-    /*
-        Kicker
-    */
+    /* -----------------------------------------------------
+       KICKER
+    ----------------------------------------------------- */
 
     if (storyKicker) {
 
@@ -361,9 +488,9 @@ function updateStoryText() {
     }
 
 
-    /*
-        Title
-    */
+    /* -----------------------------------------------------
+       TITLE
+    ----------------------------------------------------- */
 
     if (storyTitle) {
 
@@ -373,9 +500,9 @@ function updateStoryText() {
     }
 
 
-    /*
-        Main text
-    */
+    /* -----------------------------------------------------
+       MAIN TEXT
+    ----------------------------------------------------- */
 
     if (storyText) {
 
@@ -385,9 +512,9 @@ function updateStoryText() {
     }
 
 
-    /*
-        Footer
-    */
+    /* -----------------------------------------------------
+       FOOTER
+    ----------------------------------------------------- */
 
     if (storyFooterText) {
 
@@ -397,9 +524,9 @@ function updateStoryText() {
     }
 
 
-    /*
-        Story progress
-    */
+    /* -----------------------------------------------------
+       STORY PROGRESS
+    ----------------------------------------------------- */
 
     if (storyProgress) {
 
@@ -409,9 +536,9 @@ function updateStoryText() {
     }
 
 
-    /*
-        Panel numbers
-    */
+    /* -----------------------------------------------------
+       PANEL NUMBERS
+    ----------------------------------------------------- */
 
     const panelNumbers =
         document.querySelectorAll(
@@ -430,15 +557,17 @@ function updateStoryText() {
     }
 
 
-    /*
-        Progress bar
-    */
+    /* -----------------------------------------------------
+       PROGRESS BAR
+    ----------------------------------------------------- */
 
     if (progressBar) {
 
         const progress =
-            ((currentStory + 1) /
-                introStories.length) * 100;
+            (
+                (currentStory + 1) /
+                introStories.length
+            ) * 100;
 
         progressBar.style.width =
             `${progress}%`;
@@ -446,20 +575,25 @@ function updateStoryText() {
     }
 
 
-    /*
-        Back button
-    */
+    /* -----------------------------------------------------
+       BACK BUTTON
+    ----------------------------------------------------- */
 
     if (backButton) {
 
+        const disabled =
+            currentStory === 0;
+
+
         backButton.classList.toggle(
             "disabled",
-            currentStory === 0
+            disabled
         );
+
 
         backButton.setAttribute(
             "aria-disabled",
-            currentStory === 0
+            disabled
                 ? "true"
                 : "false"
         );
@@ -467,9 +601,9 @@ function updateStoryText() {
     }
 
 
-    /*
-        Next button
-    */
+    /* -----------------------------------------------------
+       NEXT BUTTON
+    ----------------------------------------------------- */
 
     const isFinalStory =
         currentStory ===
@@ -501,7 +635,7 @@ function updateStoryText() {
 
 
 /* =========================================================
-   IMAGE DESCRIPTION
+   CREATE IMAGE DESCRIPTION
 ========================================================= */
 
 function createImageDescription(image) {
@@ -513,20 +647,25 @@ function createImageDescription(image) {
     }
 
 
-    imageDescription.innerHTML = "";
+    imageDescription.innerHTML =
+        "";
 
 
     /*
-        Description
+       Description.
     */
 
     if (image.description) {
 
         const description =
-            document.createElement("span");
+            document.createElement(
+                "span"
+            );
+
 
         description.textContent =
             image.description;
+
 
         imageDescription.appendChild(
             description
@@ -536,22 +675,28 @@ function createImageDescription(image) {
 
 
     /*
-        External link
+       External source link.
     */
 
     if (image.link) {
 
         const link =
-            document.createElement("a");
+            document.createElement(
+                "a"
+            );
+
 
         link.href =
             image.link;
 
+
         link.textContent =
             "Explore source ↗";
 
+
         link.target =
             "_blank";
+
 
         link.rel =
             "noopener noreferrer";
@@ -585,6 +730,10 @@ function updateImageInformation() {
         getCurrentImages();
 
 
+    /*
+       No images.
+    */
+
     if (!images.length) {
 
         if (imageCounter) {
@@ -594,6 +743,7 @@ function updateImageInformation() {
 
         }
 
+
         if (imageTitle) {
 
             imageTitle.textContent =
@@ -601,12 +751,14 @@ function updateImageInformation() {
 
         }
 
+
         if (imageDescription) {
 
             imageDescription.innerHTML =
                 "";
 
         }
+
 
         return;
 
@@ -625,7 +777,7 @@ function updateImageInformation() {
 
 
     /*
-        Counter
+       Counter.
     */
 
     if (imageCounter) {
@@ -637,7 +789,7 @@ function updateImageInformation() {
 
 
     /*
-        Title
+       Title.
     */
 
     if (imageTitle) {
@@ -649,35 +801,51 @@ function updateImageInformation() {
 
 
     /*
-        Description
+       Description.
     */
 
-    createImageDescription(image);
+    createImageDescription(
+        image
+    );
 
 }
 
 
 /* =========================================================
-   START / RESET IMAGE TIMER
+   STOP IMAGE TIMER
+========================================================= */
+
+function stopImageTimer() {
+
+    if (imageTimer !== null) {
+
+        clearTimeout(
+            imageTimer
+        );
+
+        imageTimer =
+            null;
+
+    }
+
+}
+
+
+/* =========================================================
+   START IMAGE TIMER
 ========================================================= */
 
 function startImageTimer() {
 
     /*
-        ALWAYS clear the previous timer first.
+       Always remove previous timer.
     */
 
-    if (imageTimer !== null) {
-
-        clearTimeout(imageTimer);
-
-        imageTimer = null;
-
-    }
+    stopImageTimer();
 
 
     /*
-        Don't start during story animation.
+       Don't run while story is changing.
     */
 
     if (isAnimating) {
@@ -692,7 +860,7 @@ function startImageTimer() {
 
 
     /*
-        No images or only one image.
+       One image doesn't need rotation.
     */
 
     if (images.length <= 1) {
@@ -703,19 +871,12 @@ function startImageTimer() {
 
 
     /*
-        Use setTimeout instead of setInterval.
-
-        This creates a fresh 3.5-second countdown
-        after EVERY image.
+       Start fresh timer.
     */
 
     imageTimer =
         setTimeout(
-            () => {
-
-                /*
-                    Move to next image.
-                */
+            function () {
 
                 showImage(
                     currentImage + 1
@@ -724,23 +885,6 @@ function startImageTimer() {
             },
             IMAGE_ROTATION_TIME
         );
-
-}
-
-
-/* =========================================================
-   STOP IMAGE TIMER
-========================================================= */
-
-function stopImageTimer() {
-
-    if (imageTimer !== null) {
-
-        clearTimeout(imageTimer);
-
-        imageTimer = null;
-
-    }
 
 }
 
@@ -756,46 +900,49 @@ function loadStoryImages() {
 
 
     /*
-        Stop old timer.
+       Stop previous timer.
     */
 
     stopImageTimer();
 
 
     /*
-        Reset image.
+       Start at first image.
     */
 
-    currentImage = 0;
+    currentImage =
+        0;
 
 
     /*
-        Reset track.
+       Clear old images.
     */
 
     if (imageTrack) {
 
+        imageTrack.innerHTML =
+            "";
+
         imageTrack.style.transform =
             "translateX(0)";
-
-        imageTrack.innerHTML = "";
 
     }
 
 
     /*
-        Reset dots.
+       Clear old dots.
     */
 
     if (imageDots) {
 
-        imageDots.innerHTML = "";
+        imageDots.innerHTML =
+            "";
 
     }
 
 
     /*
-        No images.
+       No images.
     */
 
     if (!images.length) {
@@ -808,14 +955,20 @@ function loadStoryImages() {
 
 
     /*
-        Create slides.
+       Create each image.
     */
 
     images.forEach(
-        (image, index) => {
+        function (image, index) {
+
+            /*
+               SLIDE
+            */
 
             const slide =
-                document.createElement("div");
+                document.createElement(
+                    "div"
+                );
 
 
             slide.className =
@@ -832,50 +985,83 @@ function loadStoryImages() {
 
 
             /*
-                Image.
+               IMAGE
             */
 
             const img =
-                document.createElement("img");
+                document.createElement(
+                    "img"
+                );
 
 
             img.src =
                 image.src;
 
+
             img.alt =
                 image.title ||
                 "Moon exhibition image";
 
-            img.loading =
-                index === 0
-                    ? "eager"
-                    : "lazy";
 
             img.draggable =
                 false;
 
 
             /*
-                Image error.
+               First image loads immediately.
+            */
+
+            img.loading =
+                index === 0
+                    ? "eager"
+                    : "lazy";
+
+
+            /*
+               Debug image path.
+            */
+
+            console.log(
+                "Loading image:",
+                image.src
+            );
+
+
+            /*
+               Image error.
             */
 
             img.addEventListener(
                 "error",
                 function () {
 
+                    console.error(
+                        "IMAGE FAILED TO LOAD:",
+                        image.src
+                    );
+
+
+                    console.error(
+                        "Check that this file exists relative to index.html."
+                    );
+
+
                     this.remove();
+
 
                     slide.classList.add(
                         "image-error"
                     );
 
-                    slide.style.background = `
+
+                    slide.style.background =
+                        `
                         radial-gradient(
                             circle at center,
                             rgba(70,170,205,.28),
                             rgba(2,7,11,.96)
                         )
-                    `;
+                        `;
 
                 },
                 {
@@ -884,7 +1070,29 @@ function loadStoryImages() {
             );
 
 
-            slide.appendChild(img);
+            /*
+               Image loaded.
+            */
+
+            img.addEventListener(
+                "load",
+                function () {
+
+                    console.log(
+                        "IMAGE LOADED:",
+                        image.src
+                    );
+
+                },
+                {
+                    once: true
+                }
+            );
+
+
+            slide.appendChild(
+                img
+            );
 
 
             if (imageTrack) {
@@ -897,17 +1105,20 @@ function loadStoryImages() {
 
 
             /*
-                Dot.
+               DOT
             */
 
             if (imageDots) {
 
                 const dot =
-                    document.createElement("button");
+                    document.createElement(
+                        "button"
+                    );
 
 
                 dot.type =
                     "button";
+
 
                 dot.className =
                     "image-dot";
@@ -937,16 +1148,18 @@ function loadStoryImages() {
 
 
                 /*
-                    Dot click.
+                   Dot click.
                 */
 
                 dot.addEventListener(
                     "click",
-                    event => {
+                    function (event) {
 
                         event.stopPropagation();
 
-                        showImage(index);
+                        showImage(
+                            index
+                        );
 
                     }
                 );
@@ -963,14 +1176,14 @@ function loadStoryImages() {
 
 
     /*
-        Show first image information.
+       Update information.
     */
 
     updateImageInformation();
 
 
     /*
-        Start fresh 3.5 second countdown.
+       Start timer.
     */
 
     startImageTimer();
@@ -988,6 +1201,10 @@ function showImage(index) {
         getCurrentImages();
 
 
+    /*
+       No images.
+    */
+
     if (!images.length) {
 
         return;
@@ -996,17 +1213,26 @@ function showImage(index) {
 
 
     /*
-        Wrap around.
+       Wrap forward.
     */
 
-    if (index >= images.length) {
+    if (
+        index >= images.length
+    ) {
 
-        index = 0;
+        index =
+            0;
 
     }
 
 
-    if (index < 0) {
+    /*
+       Wrap backward.
+    */
+
+    if (
+        index < 0
+    ) {
 
         index =
             images.length - 1;
@@ -1015,7 +1241,7 @@ function showImage(index) {
 
 
     /*
-        Update current image.
+       Current image.
     */
 
     currentImage =
@@ -1023,7 +1249,7 @@ function showImage(index) {
 
 
     /*
-        Move slider.
+       Move track.
     */
 
     if (imageTrack) {
@@ -1035,7 +1261,7 @@ function showImage(index) {
 
 
     /*
-        Update slide classes.
+       Update slides.
     */
 
     if (imageTrack) {
@@ -1047,7 +1273,7 @@ function showImage(index) {
 
 
         slides.forEach(
-            (slide, slideIndex) => {
+            function (slide, slideIndex) {
 
                 slide.classList.toggle(
                     "active",
@@ -1061,7 +1287,7 @@ function showImage(index) {
 
 
     /*
-        Update dots.
+       Update dots.
     */
 
     if (imageDots) {
@@ -1073,7 +1299,7 @@ function showImage(index) {
 
 
         dots.forEach(
-            (dot, dotIndex) => {
+            function (dot, dotIndex) {
 
                 const active =
                     dotIndex === index;
@@ -1099,19 +1325,14 @@ function showImage(index) {
 
 
     /*
-        Update text.
+       Update information.
     */
 
     updateImageInformation();
 
 
     /*
-        IMPORTANT:
-
-        Reset the timer AFTER changing image.
-
-        So every image gets a complete
-        3.5 second display time.
+       Restart timer.
     */
 
     startImageTimer();
@@ -1126,7 +1347,7 @@ function showImage(index) {
 function changeStory(direction) {
 
     /*
-        Prevent double clicks.
+       Prevent multiple actions.
     */
 
     if (isAnimating) {
@@ -1137,7 +1358,7 @@ function changeStory(direction) {
 
 
     /*
-        Going beyond final story.
+       Next after final story.
     */
 
     if (
@@ -1154,7 +1375,7 @@ function changeStory(direction) {
 
 
     /*
-        Going before first story.
+       Previous before first story.
     */
 
     if (
@@ -1168,21 +1389,22 @@ function changeStory(direction) {
 
 
     /*
-        Lock animation.
+       Lock.
     */
 
-    isAnimating = true;
+    isAnimating =
+        true;
 
 
     /*
-        Stop image timer.
+       Stop image timer.
     */
 
     stopImageTimer();
 
 
     /*
-        Remove old enter classes.
+       Remove old enter classes.
     */
 
     if (storyPanel) {
@@ -1204,7 +1426,7 @@ function changeStory(direction) {
 
 
     /*
-        Animate out.
+       Start exit animation.
     */
 
     if (storyPanel) {
@@ -1226,32 +1448,36 @@ function changeStory(direction) {
 
 
     /*
-        Change story.
+       Wait.
     */
 
     setTimeout(
-        () => {
+        function () {
+
+            /*
+               Change story number.
+            */
 
             currentStory +=
                 direction;
 
 
             /*
-                Update text.
+               Update text.
             */
 
             updateStoryText();
 
 
             /*
-                Load images.
+               Load images.
             */
 
             loadStoryImages();
 
 
             /*
-                Remove changing class.
+               Remove changing.
             */
 
             if (storyPanel) {
@@ -1273,7 +1499,7 @@ function changeStory(direction) {
 
 
             /*
-                Enter animation.
+               Start enter animation.
             */
 
             if (storyPanel) {
@@ -1295,11 +1521,11 @@ function changeStory(direction) {
 
 
             /*
-                Finish animation.
+               Finish.
             */
 
             setTimeout(
-                () => {
+                function () {
 
                     if (storyPanel) {
 
@@ -1319,17 +1545,13 @@ function changeStory(direction) {
                     }
 
 
-                    /*
-                        Unlock.
-
-                        loadStoryImages() was called
-                        while isAnimating was true,
-                        so start the timer again here.
-                    */
-
                     isAnimating =
                         false;
 
+
+                    /*
+                       Restart image timer.
+                    */
 
                     startImageTimer();
 
@@ -1345,69 +1567,14 @@ function changeStory(direction) {
 
 
 /* =========================================================
-   NEXT BUTTON
-========================================================= */
-
-if (nextButton) {
-
-    nextButton.addEventListener(
-        "click",
-        () => {
-
-            changeStory(1);
-
-        }
-    );
-
-}
-
-
-/* =========================================================
-   BACK BUTTON
-========================================================= */
-
-if (backButton) {
-
-    backButton.addEventListener(
-        "click",
-        () => {
-
-            if (
-                currentStory === 0 ||
-                isAnimating
-            ) {
-
-                return;
-
-            }
-
-            changeStory(-1);
-
-        }
-    );
-
-}
-
-
-/* =========================================================
-   SKIP INTRO
-========================================================= */
-
-if (skipButton) {
-
-    skipButton.addEventListener(
-        "click",
-        enterMoonMap
-    );
-
-}
-
-
-/* =========================================================
    ENTER MOON MAP
 ========================================================= */
 
 function enterMoonMap() {
+
+    /*
+       Don't navigate twice.
+    */
 
     if (
         document.body.classList.contains(
@@ -1421,21 +1588,22 @@ function enterMoonMap() {
 
 
     /*
-        Stop timer.
+       Stop timer.
     */
 
     stopImageTimer();
 
 
     /*
-        Lock.
+       Lock.
     */
 
-    isAnimating = true;
+    isAnimating =
+        true;
 
 
     /*
-        Leaving animation.
+       Leaving animation.
     */
 
     document.body.classList.add(
@@ -1444,14 +1612,14 @@ function enterMoonMap() {
 
 
     /*
-        Navigate.
+       Navigate.
     */
 
     setTimeout(
-        () => {
+        function () {
 
             window.location.href =
-                Home_MAP_PAGE;
+                HOME_MAP_PAGE;
 
         },
         350
@@ -1461,288 +1629,403 @@ function enterMoonMap() {
 
 
 /* =========================================================
-   KEYBOARD NAVIGATION
+   NEXT BUTTON
 ========================================================= */
 
-document.addEventListener(
-    "keydown",
-    event => {
+function setupNextButton() {
 
-        const target =
-            event.target;
+    if (!nextButton) {
 
+        return;
 
-        const tagName =
-            target &&
-            target.tagName
-                ? target.tagName.toUpperCase()
-                : "";
+    }
 
 
-        const isInteractive =
-            tagName === "BUTTON" ||
-            tagName === "A" ||
-            tagName === "INPUT" ||
-            tagName === "TEXTAREA" ||
-            tagName === "SELECT" ||
-            tagName === "OPTION";
-
-
-        /*
-            Next.
-        */
-
-        if (
-            event.key === "ArrowRight"
-        ) {
-
-            if (isInteractive) {
-
-                return;
-
-            }
+    nextButton.addEventListener(
+        "click",
+        function (event) {
 
             event.preventDefault();
 
             changeStory(1);
 
-            return;
-
         }
+    );
+
+}
 
 
-        /*
-            Previous.
-        */
+/* =========================================================
+   BACK BUTTON
+========================================================= */
 
-        if (
-            event.key === "ArrowLeft"
-        ) {
+function setupBackButton() {
 
-            if (isInteractive) {
+    if (!backButton) {
+
+        return;
+
+    }
+
+
+    backButton.addEventListener(
+        "click",
+        function (event) {
+
+            event.preventDefault();
+
+
+            if (
+                currentStory === 0 ||
+                isAnimating
+            ) {
 
                 return;
 
             }
 
-            event.preventDefault();
 
             changeStory(-1);
 
-            return;
-
         }
+    );
+
+}
 
 
-        /*
-            Enter.
-        */
+/* =========================================================
+   SKIP BUTTON
+========================================================= */
 
-        if (
-            event.key === "Enter"
-        ) {
+function setupSkipButton() {
 
-            if (isInteractive) {
+    if (!skipButton) {
 
-                return;
+        return;
 
-            }
-
-            event.preventDefault();
-
-            changeStory(1);
-
-            return;
-
-        }
+    }
 
 
-        /*
-            Space.
-        */
-
-        if (
-            event.key === " "
-        ) {
-
-            if (isInteractive) {
-
-                return;
-
-            }
-
-            event.preventDefault();
-
-            changeStory(1);
-
-            return;
-
-        }
-
-
-        /*
-            Escape.
-        */
-
-        if (
-            event.key === "Escape"
-        ) {
+    skipButton.addEventListener(
+        "click",
+        function (event) {
 
             event.preventDefault();
 
             enterMoonMap();
 
         }
+    );
 
-    }
-);
+}
+
+
+/* =========================================================
+   KEYBOARD NAVIGATION
+========================================================= */
+
+function setupKeyboardNavigation() {
+
+    document.addEventListener(
+        "keydown",
+        function (event) {
+
+            const target =
+                event.target;
+
+
+            const tagName =
+                target &&
+                target.tagName
+                    ? target.tagName.toUpperCase()
+                    : "";
+
+
+            const isInteractive =
+                tagName === "BUTTON" ||
+                tagName === "A" ||
+                tagName === "INPUT" ||
+                tagName === "TEXTAREA" ||
+                tagName === "SELECT" ||
+                tagName === "OPTION";
+
+
+            /*
+               Arrow Right.
+            */
+
+            if (
+                event.key === "ArrowRight"
+            ) {
+
+                if (isInteractive) {
+
+                    return;
+
+                }
+
+
+                event.preventDefault();
+
+                changeStory(1);
+
+                return;
+
+            }
+
+
+            /*
+               Arrow Left.
+            */
+
+            if (
+                event.key === "ArrowLeft"
+            ) {
+
+                if (isInteractive) {
+
+                    return;
+
+                }
+
+
+                event.preventDefault();
+
+                changeStory(-1);
+
+                return;
+
+            }
+
+
+            /*
+               Enter.
+            */
+
+            if (
+                event.key === "Enter"
+            ) {
+
+                if (isInteractive) {
+
+                    return;
+
+                }
+
+
+                event.preventDefault();
+
+                changeStory(1);
+
+                return;
+
+            }
+
+
+            /*
+               Space.
+            */
+
+            if (
+                event.key === " "
+            ) {
+
+                if (isInteractive) {
+
+                    return;
+
+                }
+
+
+                event.preventDefault();
+
+                changeStory(1);
+
+                return;
+
+            }
+
+
+            /*
+               Escape.
+            */
+
+            if (
+                event.key === "Escape"
+            ) {
+
+                event.preventDefault();
+
+                enterMoonMap();
+
+            }
+
+        }
+    );
+
+}
 
 
 /* =========================================================
    GENERAL TOUCH START
 ========================================================= */
 
-document.addEventListener(
-    "touchstart",
-    event => {
+function setupGeneralTouch() {
 
-        if (
-            event.touches.length !== 1
-        ) {
+    document.addEventListener(
+        "touchstart",
+        function (event) {
 
-            return;
+            if (
+                event.touches.length !== 1
+            ) {
 
-        }
+                return;
 
-
-        const touch =
-            event.touches[0];
+            }
 
 
-        touchStartX =
-            touch.clientX;
-
-        touchStartY =
-            touch.clientY;
+            const touch =
+                event.touches[0];
 
 
-        /*
-            Remember whether touch started
-            inside image panel.
-        */
-
-        touchStartedInImagePanel =
-            imagePanel
-                ? imagePanel.contains(
-                    event.target
-                )
-                : false;
-
-    },
-    {
-        passive: true
-    }
-);
+            touchStartX =
+                touch.clientX;
 
 
-/* =========================================================
-   GENERAL TOUCH END
-========================================================= */
-
-document.addEventListener(
-    "touchend",
-    event => {
-
-        if (
-            event.changedTouches.length !== 1
-        ) {
-
-            return;
-
-        }
+            touchStartY =
+                touch.clientY;
 
 
-        /*
-            Image panel has its own swipe handler.
-        */
-
-        if (
-            touchStartedInImagePanel
-        ) {
+            /*
+               Determine if touch started
+               inside image panel.
+            */
 
             touchStartedInImagePanel =
-                false;
+                imagePanel
+                    ? imagePanel.contains(
+                        event.target
+                    )
+                    : false;
 
-            return;
-
+        },
+        {
+            passive: true
         }
+    );
 
 
-        const touch =
-            event.changedTouches[0];
+    document.addEventListener(
+        "touchend",
+        function (event) {
+
+            if (
+                event.changedTouches.length !== 1
+            ) {
+
+                return;
+
+            }
 
 
-        const deltaX =
-            touch.clientX -
-            touchStartX;
+            /*
+               Image panel has its own swipe.
+            */
+
+            if (
+                touchStartedInImagePanel
+            ) {
+
+                touchStartedInImagePanel =
+                    false;
+
+                return;
+
+            }
 
 
-        const deltaY =
-            touch.clientY -
-            touchStartY;
+            const touch =
+                event.changedTouches[0];
 
 
-        /*
-            Ignore vertical gestures.
-        */
+            const deltaX =
+                touch.clientX -
+                touchStartX;
 
-        if (
-            Math.abs(deltaX) < 50 ||
-            Math.abs(deltaX) <
-                Math.abs(deltaY)
-        ) {
 
-            return;
+            const deltaY =
+                touch.clientY -
+                touchStartY;
 
+
+            /*
+               Ignore vertical movement.
+            */
+
+            if (
+                Math.abs(deltaX) < 50 ||
+                Math.abs(deltaX) <
+                    Math.abs(deltaY)
+            ) {
+
+                return;
+
+            }
+
+
+            /*
+               Swipe left = next story.
+            */
+
+            if (
+                deltaX < 0
+            ) {
+
+                changeStory(1);
+
+            }
+
+
+            /*
+               Swipe right = previous story.
+            */
+
+            else {
+
+                changeStory(-1);
+
+            }
+
+        },
+        {
+            passive: true
         }
+    );
 
-
-        /*
-            Swipe left.
-        */
-
-        if (deltaX < 0) {
-
-            changeStory(1);
-
-        }
-
-        /*
-            Swipe right.
-        */
-
-        else {
-
-            changeStory(-1);
-
-        }
-
-    },
-    {
-        passive: true
-    }
-);
+}
 
 
 /* =========================================================
-   IMAGE TOUCH START
+   IMAGE TOUCH
 ========================================================= */
 
-if (imagePanel) {
+function setupImageTouch() {
+
+    if (!imagePanel) {
+
+        return;
+
+    }
+
+
+    /*
+       Touch start.
+    */
 
     imagePanel.addEventListener(
         "touchstart",
-        event => {
+        function (event) {
 
             if (
                 event.touches.length !== 1
@@ -1760,6 +2043,7 @@ if (imagePanel) {
             imageTouchStartX =
                 touch.clientX;
 
+
             imageTouchStartY =
                 touch.clientY;
 
@@ -1769,18 +2053,14 @@ if (imagePanel) {
         }
     );
 
-}
 
-
-/* =========================================================
-   IMAGE TOUCH END
-========================================================= */
-
-if (imagePanel) {
+    /*
+       Touch end.
+    */
 
     imagePanel.addEventListener(
         "touchend",
-        event => {
+        function (event) {
 
             if (
                 event.changedTouches.length !== 1
@@ -1806,7 +2086,7 @@ if (imagePanel) {
 
 
             /*
-                Ignore vertical.
+               Ignore vertical movement.
             */
 
             if (
@@ -1832,19 +2112,23 @@ if (imagePanel) {
 
 
             /*
-                Change image.
-
-                showImage() automatically
-                restarts the 3.5 second timer.
+               Swipe left = next image.
             */
 
-            if (deltaX < 0) {
+            if (
+                deltaX < 0
+            ) {
 
                 showImage(
                     currentImage + 1
                 );
 
             }
+
+
+            /*
+               Swipe right = previous image.
+            */
 
             else {
 
@@ -1864,48 +2148,42 @@ if (imagePanel) {
 
 
 /* =========================================================
-   REMOVE IMAGE PANEL CLICK TIMER LOGIC
-=========================================================
-
-   IMPORTANT:
-
-   Do NOT add an imagePanel click handler
-   that clears/restarts the timer.
-
-   showImage() already handles the timer.
-
+   IMAGE DRAG PROTECTION
 ========================================================= */
 
+function setupImageProtection() {
 
-/* =========================================================
-   PREVENT IMAGE DRAGGING
-========================================================= */
+    if (!imagePanel) {
 
-if (imagePanel) {
+        return;
+
+    }
+
+
+    /*
+       Prevent image dragging.
+    */
 
     imagePanel.addEventListener(
         "dragstart",
-        event => {
+        function (event) {
 
             event.preventDefault();
 
         }
     );
 
-}
 
-
-/* =========================================================
-   PREVENT IMAGE CONTEXT MENU
-========================================================= */
-
-if (imagePanel) {
+    /*
+       Prevent right-click on images.
+    */
 
     imagePanel.addEventListener(
         "contextmenu",
-        event => {
+        function (event) {
 
             if (
+                event.target &&
                 event.target.tagName === "IMG"
             ) {
 
@@ -1923,39 +2201,61 @@ if (imagePanel) {
    VISIBILITY CHANGE
 ========================================================= */
 
-document.addEventListener(
-    "visibilitychange",
-    () => {
+function setupVisibilityChange() {
 
-        /*
-            Browser hidden.
-        */
+    document.addEventListener(
+        "visibilitychange",
+        function () {
 
-        if (document.hidden) {
+            if (
+                document.hidden
+            ) {
 
-            stopImageTimer();
+                stopImageTimer();
 
-        }
+            }
 
-        /*
-            Browser visible.
-        */
+            else {
 
-        else {
+                startImageTimer();
 
-            startImageTimer();
+            }
 
         }
+    );
 
-    }
-);
+}
 
 
 /* =========================================================
-   INITIALIZE
+   INITIALIZE STORY SYSTEM
 ========================================================= */
 
 function initializeStorySystem() {
+
+    console.log(
+        "================================="
+    );
+
+    console.log(
+        "MOON EXHIBITION STARTING"
+    );
+
+    console.log(
+        "================================="
+    );
+
+
+    /*
+       Get DOM elements AFTER HTML exists.
+    */
+
+    getDOMElements();
+
+
+    /*
+       Make sure story index is valid.
+    */
 
     currentStory =
         Math.max(
@@ -1968,17 +2268,94 @@ function initializeStorySystem() {
 
 
     /*
-        Story text.
+       Check important elements.
+    */
+
+    if (!storyPanel) {
+
+        console.warn(
+            'Missing HTML element: #storyPanel'
+        );
+
+    }
+
+
+    if (!imagePanel) {
+
+        console.warn(
+            'Missing HTML element: #imagePanel'
+        );
+
+    }
+
+
+    if (!imageTrack) {
+
+        console.warn(
+            'Missing HTML element: #imageTrack'
+        );
+
+    }
+
+
+    /*
+       Story text.
     */
 
     updateStoryText();
 
 
     /*
-        Images.
+       Images.
     */
 
     loadStoryImages();
+
+
+    /*
+       Buttons.
+    */
+
+    setupNextButton();
+
+    setupBackButton();
+
+    setupSkipButton();
+
+
+    /*
+       Keyboard.
+    */
+
+    setupKeyboardNavigation();
+
+
+    /*
+       Touch.
+    */
+
+    setupGeneralTouch();
+
+    setupImageTouch();
+
+
+    /*
+       Image protection.
+    */
+
+    setupImageProtection();
+
+
+    /*
+       Browser tab visibility.
+    */
+
+    setupVisibilityChange();
+
+
+    console.log(
+        "Moon Exhibition initialized successfully."
+    );
 
 }
 
