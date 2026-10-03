@@ -160,7 +160,7 @@ const introStories = [
 
             {
                 src:
-                    "./Museum_of_the_Abandoned/story_images/Inspiring.png",
+                    "./Museum_of_the_Abandoned/story_images/inspiring.png",
 
                 title: "",
 
