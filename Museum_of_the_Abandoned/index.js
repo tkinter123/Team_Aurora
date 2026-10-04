@@ -39,7 +39,7 @@ const introStories = [
             },
 
             {
-                src: "../images/mars.png",
+                src: "./Museum_of_the_Abandoned/story_images/mars.png",
                 title: "THE MARS",
                 description: "",
                 link: ""
@@ -67,7 +67,7 @@ const introStories = [
 
             {
                 src:
-                    "..images/NASA_stepped_on_the_Moon.jpg",
+                    "./Museum_of_the_Abandoned/story_images/NASA_stepped_on_the_Moon.jpg",
 
                 title:
                     "NASA's Step on the Moon",
@@ -160,7 +160,7 @@ const introStories = [
 
             {
                 src:
-                    "../images/Progressing.png",
+                    "./Museum_of_the_Abandoned/story_images/Progressing.png",
 
                 title: "",
 
