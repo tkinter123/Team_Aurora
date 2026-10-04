@@ -32,14 +32,14 @@ const introStories = [
         images: [
 
             {
-                src: "./Museum_of_the_Abandoned/story_images/moon.png",
+                src: "./story_images/moon.png",
                 title: "THE MOON",
                 description: "",
                 link: ""
             },
 
             {
-                src: "./Museum_of_the_Abandoned/story_images/mars.png",
+                src: "./mars.png",
                 title: "THE MARS",
                 description: "",
                 link: ""
@@ -67,7 +67,7 @@ const introStories = [
 
             {
                 src:
-                    "./Museum_of_the_Abandoned/story_images/NASA_stepped_on_the_Moon.jpg",
+                    "./story_images/NASA_stepped_on_the_Moon.jpg",
 
                 title:
                     "NASA's Step on the Moon",
@@ -111,7 +111,7 @@ const introStories = [
 
             {
                 src:
-                    "./Museum_of_the_Abandoned/story_images/Pioneer_1.jpg",
+                    "./story_images/Pioneer_1.jpg",
 
                 title:
                     "PIONEER 1",
@@ -124,7 +124,7 @@ const introStories = [
 
             {
                 src:
-                    "./Museum_of_the_Abandoned/story_images/Mariner 3.jpg",
+                    "./story_images/Mariner 3.jpg",
 
                 title:
                     "MARINER 3",
@@ -160,7 +160,7 @@ const introStories = [
 
             {
                 src:
-                    "./Museum_of_the_Abandoned/story_images/Progressing.png",
+                    "./story_images/Progressing.png",
 
                 title: "",
 
@@ -200,7 +200,7 @@ const introStories = [
 
             {
                 src:
-                    "./Museum_of_the_Abandoned/story_images/Inspiring.png",
+                    "./story_images/Inspiring.png",
 
                 title: "",
 
