@@ -124,7 +124,7 @@ const introStories = [
 
             {
                 src:
-                    "./Museum_of_the_Abandoned/story_images/Mariner_3.jpg",
+                    "./images/Mariner_3.jpg",
 
                 title:
                     "MARINER 3",
@@ -160,7 +160,7 @@ const introStories = [
 
             {
                 src:
-                    "./Museum_of_the_Abandoned/story_images/Progressing.png",
+                    "./images/Progressing.png",
 
                 title: "",
 
@@ -200,7 +200,7 @@ const introStories = [
 
             {
                 src:
-                    "./Museum_of_the_Abandoned/story_images/Inspiring.png",
+                    "./images/Inspiring.png",
 
                 title: "",
 
