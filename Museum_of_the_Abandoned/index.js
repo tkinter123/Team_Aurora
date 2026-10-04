@@ -67,7 +67,7 @@ const introStories = [
 
             {
                 src:
-                    "../images/NASA_Stepped_on_the_Moon.jpg",
+                    "./Museum_of_the_Abandoned/NASA's_Stepped_on_the_Moon.jpg",
 
                 title:
                     "NASA's Step on the Moon",
