@@ -1,6 +1,6 @@
 /* =========================================================
    MOON EXHIBITION — STORY SYSTEM
-   Team_Aurora folder structure
+   Team_Aurora
 ========================================================= */
 
 
@@ -32,14 +32,14 @@ const introStories = [
         images: [
 
             {
-                src: "./story_images/moon.png",
+                src: "./Museum_of_the_Abandoned/story_images/moon.png",
                 title: "THE MOON",
                 description: "",
                 link: ""
             },
 
             {
-                src: "./mars.png",
+                src: "./Museum_of_the_Abandoned/story_images/mars.png",
                 title: "THE MARS",
                 description: "",
                 link: ""
@@ -67,7 +67,7 @@ const introStories = [
 
             {
                 src:
-                    "./story_images/NASA_stepped_on_the_Moon.jpg",
+                    "./Museum_of_the_Abandoned/story_images/NASA_stepped_on_the_Moon.jpg",
 
                 title:
                     "NASA's Step on the Moon",
@@ -111,7 +111,7 @@ const introStories = [
 
             {
                 src:
-                    "./story_images/Pioneer_1.jpg",
+                    "./Museum_of_the_Abandoned/story_images/Pioneer_1.jpg",
 
                 title:
                     "PIONEER 1",
@@ -124,7 +124,7 @@ const introStories = [
 
             {
                 src:
-                    "./story_images/Mariner 3.jpg",
+                    "./Museum_of_the_Abandoned/story_images/Mariner_3.jpg",
 
                 title:
                     "MARINER 3",
@@ -160,7 +160,7 @@ const introStories = [
 
             {
                 src:
-                    "./story_images/Progressing.png",
+                    "./Museum_of_the_Abandoned/story_images/Progressing.png",
 
                 title: "",
 
@@ -200,7 +200,7 @@ const introStories = [
 
             {
                 src:
-                    "./story_images/Inspiring.png",
+                    "./Museum_of_the_Abandoned/story_images/Inspiring.png",
 
                 title: "",
 
@@ -223,17 +223,12 @@ const introStories = [
 /*
    IMPORTANT:
 
-   index.html is already INSIDE Team_Aurora.
+   The main index.html is in the Team_Aurora ROOT.
 
-   Therefore:
+   Therefore all exhibition images use:
 
-   WRONG:
-   ../Team_Aurora/...
-
-   CORRECT:
-   ./Museum_of_the_Abandoned/...
+   ./Museum_of_the_Abandoned/story_images/...
 */
-
 
 const HOME_MAP_PAGE =
     "./Space/space.html";
@@ -241,8 +236,6 @@ const HOME_MAP_PAGE =
 
 /*
    Image rotation.
-
-   3500 = 3.5 seconds
 */
 
 const IMAGE_ROTATION_TIME =
@@ -304,13 +297,6 @@ let imageTouchStartY =
 
 /* =========================================================
    DOM ELEMENTS
-=========================================================
-
-   IMPORTANT:
-
-   These are declared here but assigned AFTER
-   DOMContentLoaded.
-
 ========================================================= */
 
 let storyPanel;
@@ -395,14 +381,12 @@ function getDOMElements() {
         document.getElementById("progressBar");
 
 
-    /*
-       Debug information.
-
-       Open browser console with F12 if needed.
-    */
+    console.log(
+        "================================="
+    );
 
     console.log(
-        "Moon Exhibition DOM initialized."
+        "MOON EXHIBITION DOM INITIALIZED"
     );
 
     console.log(
@@ -476,9 +460,9 @@ function updateStoryText() {
         getCurrentStory();
 
 
-    /* -----------------------------------------------------
-       KICKER
-    ----------------------------------------------------- */
+    /*
+       Kicker
+    */
 
     if (storyKicker) {
 
@@ -488,9 +472,9 @@ function updateStoryText() {
     }
 
 
-    /* -----------------------------------------------------
-       TITLE
-    ----------------------------------------------------- */
+    /*
+       Title
+    */
 
     if (storyTitle) {
 
@@ -500,9 +484,9 @@ function updateStoryText() {
     }
 
 
-    /* -----------------------------------------------------
-       MAIN TEXT
-    ----------------------------------------------------- */
+    /*
+       Main text
+    */
 
     if (storyText) {
 
@@ -512,9 +496,9 @@ function updateStoryText() {
     }
 
 
-    /* -----------------------------------------------------
-       FOOTER
-    ----------------------------------------------------- */
+    /*
+       Footer
+    */
 
     if (storyFooterText) {
 
@@ -524,9 +508,9 @@ function updateStoryText() {
     }
 
 
-    /* -----------------------------------------------------
-       STORY PROGRESS
-    ----------------------------------------------------- */
+    /*
+       Story progress
+    */
 
     if (storyProgress) {
 
@@ -536,9 +520,9 @@ function updateStoryText() {
     }
 
 
-    /* -----------------------------------------------------
-       PANEL NUMBERS
-    ----------------------------------------------------- */
+    /*
+       Panel numbers
+    */
 
     const panelNumbers =
         document.querySelectorAll(
@@ -557,9 +541,9 @@ function updateStoryText() {
     }
 
 
-    /* -----------------------------------------------------
-       PROGRESS BAR
-    ----------------------------------------------------- */
+    /*
+       Progress bar
+    */
 
     if (progressBar) {
 
@@ -575,9 +559,9 @@ function updateStoryText() {
     }
 
 
-    /* -----------------------------------------------------
-       BACK BUTTON
-    ----------------------------------------------------- */
+    /*
+       Back button
+    */
 
     if (backButton) {
 
@@ -601,9 +585,9 @@ function updateStoryText() {
     }
 
 
-    /* -----------------------------------------------------
-       NEXT BUTTON
-    ----------------------------------------------------- */
+    /*
+       Next button
+    */
 
     const isFinalStory =
         currentStory ===
@@ -652,7 +636,7 @@ function createImageDescription(image) {
 
 
     /*
-       Description.
+       Description
     */
 
     if (image.description) {
@@ -675,7 +659,7 @@ function createImageDescription(image) {
 
 
     /*
-       External source link.
+       External source link
     */
 
     if (image.link) {
@@ -731,7 +715,7 @@ function updateImageInformation() {
 
 
     /*
-       No images.
+       No images
     */
 
     if (!images.length) {
@@ -777,7 +761,7 @@ function updateImageInformation() {
 
 
     /*
-       Counter.
+       Counter
     */
 
     if (imageCounter) {
@@ -789,7 +773,7 @@ function updateImageInformation() {
 
 
     /*
-       Title.
+       Title
     */
 
     if (imageTitle) {
@@ -801,7 +785,7 @@ function updateImageInformation() {
 
 
     /*
-       Description.
+       Description
     */
 
     createImageDescription(
@@ -837,16 +821,8 @@ function stopImageTimer() {
 
 function startImageTimer() {
 
-    /*
-       Always remove previous timer.
-    */
-
     stopImageTimer();
 
-
-    /*
-       Don't run while story is changing.
-    */
 
     if (isAnimating) {
 
@@ -859,20 +835,12 @@ function startImageTimer() {
         getCurrentImages();
 
 
-    /*
-       One image doesn't need rotation.
-    */
-
     if (images.length <= 1) {
 
         return;
 
     }
 
-
-    /*
-       Start fresh timer.
-    */
 
     imageTimer =
         setTimeout(
@@ -900,14 +868,14 @@ function loadStoryImages() {
 
 
     /*
-       Stop previous timer.
+       Stop previous timer
     */
 
     stopImageTimer();
 
 
     /*
-       Start at first image.
+       Reset current image
     */
 
     currentImage =
@@ -915,7 +883,7 @@ function loadStoryImages() {
 
 
     /*
-       Clear old images.
+       Clear image track
     */
 
     if (imageTrack) {
@@ -930,7 +898,7 @@ function loadStoryImages() {
 
 
     /*
-       Clear old dots.
+       Clear dots
     */
 
     if (imageDots) {
@@ -942,7 +910,7 @@ function loadStoryImages() {
 
 
     /*
-       No images.
+       No images
     */
 
     if (!images.length) {
@@ -955,14 +923,14 @@ function loadStoryImages() {
 
 
     /*
-       Create each image.
+       Create images
     */
 
     images.forEach(
         function (image, index) {
 
             /*
-               SLIDE
+               Slide
             */
 
             const slide =
@@ -985,7 +953,7 @@ function loadStoryImages() {
 
 
             /*
-               IMAGE
+               Image
             */
 
             const img =
@@ -993,6 +961,13 @@ function loadStoryImages() {
                     "img"
                 );
 
+
+            /*
+               IMPORTANT:
+
+               These paths are relative to
+               the ROOT index.html.
+            */
 
             img.src =
                 image.src;
@@ -1007,10 +982,6 @@ function loadStoryImages() {
                 false;
 
 
-            /*
-               First image loads immediately.
-            */
-
             img.loading =
                 index === 0
                     ? "eager"
@@ -1018,7 +989,7 @@ function loadStoryImages() {
 
 
             /*
-               Debug image path.
+               Debug
             */
 
             console.log(
@@ -1028,7 +999,7 @@ function loadStoryImages() {
 
 
             /*
-               Image error.
+               Image error
             */
 
             img.addEventListener(
@@ -1036,32 +1007,31 @@ function loadStoryImages() {
                 function () {
 
                     console.error(
-                        "IMAGE FAILED TO LOAD:",
+                        "================================="
+                    );
+
+                    console.error(
+                        "IMAGE FAILED TO LOAD"
+                    );
+
+                    console.error(
+                        "Path:",
                         image.src
                     );
 
-
                     console.error(
-                        "Check that this file exists relative to index.html."
+                        "Full URL:",
+                        img.src
                     );
 
-
-                    this.remove();
+                    console.error(
+                        "================================="
+                    );
 
 
                     slide.classList.add(
                         "image-error"
                     );
-
-
-                    slide.style.background =
-                        `
-                        radial-gradient(
-                            circle at center,
-                            rgba(70,170,205,.28),
-                            rgba(2,7,11,.96)
-                        )
-                        `;
 
                 },
                 {
@@ -1071,7 +1041,7 @@ function loadStoryImages() {
 
 
             /*
-               Image loaded.
+               Image loaded
             */
 
             img.addEventListener(
@@ -1105,7 +1075,7 @@ function loadStoryImages() {
 
 
             /*
-               DOT
+               Create dot
             */
 
             if (imageDots) {
@@ -1147,10 +1117,6 @@ function loadStoryImages() {
                 );
 
 
-                /*
-                   Dot click.
-                */
-
                 dot.addEventListener(
                     "click",
                     function (event) {
@@ -1176,14 +1142,14 @@ function loadStoryImages() {
 
 
     /*
-       Update information.
+       Update information
     */
 
     updateImageInformation();
 
 
     /*
-       Start timer.
+       Start rotation
     */
 
     startImageTimer();
@@ -1201,10 +1167,6 @@ function showImage(index) {
         getCurrentImages();
 
 
-    /*
-       No images.
-    */
-
     if (!images.length) {
 
         return;
@@ -1213,7 +1175,7 @@ function showImage(index) {
 
 
     /*
-       Wrap forward.
+       Wrap forward
     */
 
     if (
@@ -1227,7 +1189,7 @@ function showImage(index) {
 
 
     /*
-       Wrap backward.
+       Wrap backward
     */
 
     if (
@@ -1240,16 +1202,12 @@ function showImage(index) {
     }
 
 
-    /*
-       Current image.
-    */
-
     currentImage =
         index;
 
 
     /*
-       Move track.
+       Move slider
     */
 
     if (imageTrack) {
@@ -1261,7 +1219,7 @@ function showImage(index) {
 
 
     /*
-       Update slides.
+       Update slides
     */
 
     if (imageTrack) {
@@ -1287,7 +1245,7 @@ function showImage(index) {
 
 
     /*
-       Update dots.
+       Update dots
     */
 
     if (imageDots) {
@@ -1325,14 +1283,14 @@ function showImage(index) {
 
 
     /*
-       Update information.
+       Update information
     */
 
     updateImageInformation();
 
 
     /*
-       Restart timer.
+       Restart timer
     */
 
     startImageTimer();
@@ -1347,7 +1305,7 @@ function showImage(index) {
 function changeStory(direction) {
 
     /*
-       Prevent multiple actions.
+       Prevent multiple actions
     */
 
     if (isAnimating) {
@@ -1358,7 +1316,7 @@ function changeStory(direction) {
 
 
     /*
-       Next after final story.
+       Final story
     */
 
     if (
@@ -1375,7 +1333,7 @@ function changeStory(direction) {
 
 
     /*
-       Previous before first story.
+       Before first story
     */
 
     if (
@@ -1389,7 +1347,7 @@ function changeStory(direction) {
 
 
     /*
-       Lock.
+       Lock animation
     */
 
     isAnimating =
@@ -1397,14 +1355,14 @@ function changeStory(direction) {
 
 
     /*
-       Stop image timer.
+       Stop image timer
     */
 
     stopImageTimer();
 
 
     /*
-       Remove old enter classes.
+       Remove old enter classes
     */
 
     if (storyPanel) {
@@ -1426,7 +1384,7 @@ function changeStory(direction) {
 
 
     /*
-       Start exit animation.
+       Exit animation
     */
 
     if (storyPanel) {
@@ -1448,14 +1406,14 @@ function changeStory(direction) {
 
 
     /*
-       Wait.
+       Wait for exit
     */
 
     setTimeout(
         function () {
 
             /*
-               Change story number.
+               Change story
             */
 
             currentStory +=
@@ -1463,21 +1421,21 @@ function changeStory(direction) {
 
 
             /*
-               Update text.
+               Update text
             */
 
             updateStoryText();
 
 
             /*
-               Load images.
+               Load new images
             */
 
             loadStoryImages();
 
 
             /*
-               Remove changing.
+               Remove changing
             */
 
             if (storyPanel) {
@@ -1499,7 +1457,7 @@ function changeStory(direction) {
 
 
             /*
-               Start enter animation.
+               Enter animation
             */
 
             if (storyPanel) {
@@ -1521,7 +1479,7 @@ function changeStory(direction) {
 
 
             /*
-               Finish.
+               Finish
             */
 
             setTimeout(
@@ -1549,10 +1507,6 @@ function changeStory(direction) {
                         false;
 
 
-                    /*
-                       Restart image timer.
-                    */
-
                     startImageTimer();
 
                 },
@@ -1573,7 +1527,7 @@ function changeStory(direction) {
 function enterMoonMap() {
 
     /*
-       Don't navigate twice.
+       Don't navigate twice
     */
 
     if (
@@ -1588,14 +1542,14 @@ function enterMoonMap() {
 
 
     /*
-       Stop timer.
+       Stop timer
     */
 
     stopImageTimer();
 
 
     /*
-       Lock.
+       Lock
     */
 
     isAnimating =
@@ -1603,7 +1557,7 @@ function enterMoonMap() {
 
 
     /*
-       Leaving animation.
+       Animation
     */
 
     document.body.classList.add(
@@ -1612,7 +1566,7 @@ function enterMoonMap() {
 
 
     /*
-       Navigate.
+       Navigate
     */
 
     setTimeout(
@@ -1751,7 +1705,7 @@ function setupKeyboardNavigation() {
 
 
             /*
-               Arrow Right.
+               Right
             */
 
             if (
@@ -1775,7 +1729,7 @@ function setupKeyboardNavigation() {
 
 
             /*
-               Arrow Left.
+               Left
             */
 
             if (
@@ -1799,7 +1753,7 @@ function setupKeyboardNavigation() {
 
 
             /*
-               Enter.
+               Enter
             */
 
             if (
@@ -1823,7 +1777,7 @@ function setupKeyboardNavigation() {
 
 
             /*
-               Space.
+               Space
             */
 
             if (
@@ -1847,7 +1801,7 @@ function setupKeyboardNavigation() {
 
 
             /*
-               Escape.
+               Escape
             */
 
             if (
@@ -1867,7 +1821,7 @@ function setupKeyboardNavigation() {
 
 
 /* =========================================================
-   GENERAL TOUCH START
+   GENERAL TOUCH
 ========================================================= */
 
 function setupGeneralTouch() {
@@ -1897,11 +1851,6 @@ function setupGeneralTouch() {
                 touch.clientY;
 
 
-            /*
-               Determine if touch started
-               inside image panel.
-            */
-
             touchStartedInImagePanel =
                 imagePanel
                     ? imagePanel.contains(
@@ -1930,7 +1879,7 @@ function setupGeneralTouch() {
 
 
             /*
-               Image panel has its own swipe.
+               Image panel has separate swipe
             */
 
             if (
@@ -1960,7 +1909,7 @@ function setupGeneralTouch() {
 
 
             /*
-               Ignore vertical movement.
+               Ignore vertical swipe
             */
 
             if (
@@ -1975,7 +1924,7 @@ function setupGeneralTouch() {
 
 
             /*
-               Swipe left = next story.
+               Swipe left
             */
 
             if (
@@ -1988,7 +1937,7 @@ function setupGeneralTouch() {
 
 
             /*
-               Swipe right = previous story.
+               Swipe right
             */
 
             else {
@@ -2020,7 +1969,7 @@ function setupImageTouch() {
 
 
     /*
-       Touch start.
+       Touch start
     */
 
     imagePanel.addEventListener(
@@ -2055,7 +2004,7 @@ function setupImageTouch() {
 
 
     /*
-       Touch end.
+       Touch end
     */
 
     imagePanel.addEventListener(
@@ -2086,7 +2035,7 @@ function setupImageTouch() {
 
 
             /*
-               Ignore vertical movement.
+               Ignore vertical movement
             */
 
             if (
@@ -2112,7 +2061,7 @@ function setupImageTouch() {
 
 
             /*
-               Swipe left = next image.
+               Swipe left
             */
 
             if (
@@ -2127,7 +2076,7 @@ function setupImageTouch() {
 
 
             /*
-               Swipe right = previous image.
+               Swipe right
             */
 
             else {
@@ -2148,7 +2097,7 @@ function setupImageTouch() {
 
 
 /* =========================================================
-   IMAGE DRAG PROTECTION
+   IMAGE PROTECTION
 ========================================================= */
 
 function setupImageProtection() {
@@ -2161,7 +2110,7 @@ function setupImageProtection() {
 
 
     /*
-       Prevent image dragging.
+       Prevent dragging
     */
 
     imagePanel.addEventListener(
@@ -2175,7 +2124,7 @@ function setupImageProtection() {
 
 
     /*
-       Prevent right-click on images.
+       Prevent right-click on images
     */
 
     imagePanel.addEventListener(
@@ -2228,7 +2177,7 @@ function setupVisibilityChange() {
 
 
 /* =========================================================
-   INITIALIZE STORY SYSTEM
+   INITIALIZE
 ========================================================= */
 
 function initializeStorySystem() {
@@ -2247,14 +2196,14 @@ function initializeStorySystem() {
 
 
     /*
-       Get DOM elements AFTER HTML exists.
+       Get DOM
     */
 
     getDOMElements();
 
 
     /*
-       Make sure story index is valid.
+       Validate story index
     */
 
     currentStory =
@@ -2268,13 +2217,13 @@ function initializeStorySystem() {
 
 
     /*
-       Check important elements.
+       Check important elements
     */
 
     if (!storyPanel) {
 
         console.warn(
-            'Missing HTML element: #storyPanel'
+            "Missing HTML element: #storyPanel"
         );
 
     }
@@ -2283,7 +2232,7 @@ function initializeStorySystem() {
     if (!imagePanel) {
 
         console.warn(
-            'Missing HTML element: #imagePanel'
+            "Missing HTML element: #imagePanel"
         );
 
     }
@@ -2292,28 +2241,28 @@ function initializeStorySystem() {
     if (!imageTrack) {
 
         console.warn(
-            'Missing HTML element: #imageTrack'
+            "Missing HTML element: #imageTrack"
         );
 
     }
 
 
     /*
-       Story text.
+       Initial story
     */
 
     updateStoryText();
 
 
     /*
-       Images.
+       Initial images
     */
 
     loadStoryImages();
 
 
     /*
-       Buttons.
+       Buttons
     */
 
     setupNextButton();
@@ -2324,14 +2273,14 @@ function initializeStorySystem() {
 
 
     /*
-       Keyboard.
+       Keyboard
     */
 
     setupKeyboardNavigation();
 
 
     /*
-       Touch.
+       Touch
     */
 
     setupGeneralTouch();
@@ -2340,14 +2289,14 @@ function initializeStorySystem() {
 
 
     /*
-       Image protection.
+       Image protection
     */
 
     setupImageProtection();
 
 
     /*
-       Browser tab visibility.
+       Visibility
     */
 
     setupVisibilityChange();
