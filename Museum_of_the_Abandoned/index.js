@@ -32,14 +32,14 @@ const introStories = [
         images: [
 
             {
-                src: "./Museum_of_the_Abandoned/story_images/moon.png",
+                src: "./images/moon.png",
                 title: "THE MOON",
                 description: "",
                 link: ""
             },
 
             {
-                src: "./Museum_of_the_Abandoned/story_images/mars.png",
+                src: "./images/mars.png",
                 title: "THE MARS",
                 description: "",
                 link: ""
