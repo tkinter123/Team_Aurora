@@ -200,7 +200,7 @@ const introStories = [
 
             {
                 src:
-                    "./images/Inspiring.png",
+                    "./images/inspiring.png",
 
                 title: "",
 
