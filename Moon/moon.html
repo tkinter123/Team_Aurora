@@ -2,149 +2,529 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
 
     <meta
         name="viewport"
-        content="width=device-width,
-                 initial-scale=1.0,
-                 maximum-scale=1.0,
-                 user-scalable=no">
+        content="width=device-width, initial-scale=1.0"
+    >
 
-    <title>NASA — Moon Exhibition</title>
+    <meta
+        name="description"
+        content="NASA Lunar Space Museum — explore the hardware NASA left behind on the Moon."
+    >
 
-    <link rel="stylesheet" href="moon.css">
+    <title>
+        NASA Lunar Space Museum
+    </title>
+
+    <!-- Fonts -->
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- Main stylesheet -->
+
+    <link
+        rel="stylesheet"
+        href="./moon.css"
+    >
+
 </head>
+
 
 <body>
 
-<section id="exhibition">
 
-    <!-- Interactive Moon -->
-    <div id="planetMap">
+    <!-- =====================================================
+         PAGE
+    ====================================================== -->
 
-        <div id="moonWorld">
-            <img
-                id="moonImage"
-                src="moon_images/moon.png"
-                alt="Moon"
-                draggable="false">
-        </div>
+    <div class="moon-page">
 
-        <div id="spacecraftLayer"></div>
 
-    </div>
+        <!-- =================================================
+             HEADER
+        ================================================== -->
 
-    <!-- Dark atmosphere / vignette -->
-    <div id="mapAtmosphere"></div>
+        <header class="museum-header">
 
-    <!-- Header -->
-    <header id="exhibitionHeader">
-
-        <div>
-            <div class="exhibition-kicker">
-                NASA EXHIBITION
+            <div class="museum-kicker">
+                NASA SPACE JOURNEY // TEAM AURORA
             </div>
 
-            <h1 id="exhibitionTitle">
-                MOON
+            <h1 class="museum-title">
+                NASA LUNAR SPACE MUSEUM
             </h1>
 
+            <p class="museum-subtitle">
+                ABANDONED HARDWARE // LUNAR ARCHIVE
+            </p>
+
+        </header>
+
+
+        <!-- =================================================
+             EXHIBITION BAR
+        ================================================== -->
+
+        <div class="exhibition-bar">
+
             <div class="exhibition-status">
-                SELECT A SPACECRAFT TO DISCOVER ITS STORY
+                EXHIBITION OPEN
             </div>
+
+            <a
+                class="back-link"
+                href="../Space/space.html"
+            >
+                ← BACK TO SOLAR SYSTEM
+            </a>
+
         </div>
 
-        <button
-            id="exhibitionHome"
-            type="button">
-            HOME
-        </button>
 
-    </header>
+        <!-- =================================================
+             MAIN
+        ================================================== -->
 
-    <!-- Instructions -->
-    <div id="exhibitionControls">
+        <main class="museum-main">
 
-        DRAG —
-        <span>EXPLORE</span>
 
-        <br>
+            <!-- =============================================
+                 EXHIBITION HEADING
+            ============================================== -->
 
-        SCROLL —
-        <span>ZOOM</span>
+            <section class="moon-exhibition">
 
-        <br>
+                <div class="exhibition-heading">
 
-        CLICK —
-        <span>INSPECT SPACECRAFT</span>
+                    <div>
+
+                        <h2>
+                            Lunar Hardware Archive
+                        </h2>
+
+                        <p>
+                            Explore the places where NASA missions
+                            landed, impacted, or came to rest.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =========================================
+                     TIMELINE
+                ========================================== -->
+
+                <div id="timeline">
+
+                    <div class="timeline-header">
+
+                        <div class="timeline-title">
+                            Mission Timeline
+                        </div>
+
+                        <div id="timelineYear">
+                            2009
+                        </div>
+
+                        <div class="timeline-controls">
+
+                            <button
+                                id="timelinePlay"
+                                type="button"
+                                aria-label="Play mission timeline"
+                            >
+                                ▶
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="timeline-track">
+
+                        <div class="timeline-line"></div>
+
+                        <div
+                            id="timelineProgress"
+                        ></div>
+
+                        <div
+                            id="timelineCursor"
+                        ></div>
+
+                        <div
+                            id="timelineEvents"
+                        ></div>
+
+                        <input
+                            id="timelineRange"
+                            type="range"
+                            min="1958"
+                            max="2009"
+                            step="1"
+                            value="2009"
+                            aria-label="Mission timeline year"
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <!-- =========================================
+                     MOON MAP
+                ========================================== -->
+
+                <div id="moonMap">
+
+
+                    <!-- MAP VIEWPORT -->
+
+                    <div id="moonMapViewport">
+
+
+                        <!-- WORLD -->
+
+                        <div id="moonMapLayer">
+
+
+                            <!-- NASA MOON IMAGE -->
+
+                            <img
+                                id="moonSurfaceImage"
+                                src="./data/moon_surface.jpg"
+                                alt="NASA global lunar surface mosaic"
+                                draggable="false"
+                            >
+
+
+                            <!-- HARDWARE MARKERS -->
+
+                            <div
+                                id="hardwareLayer"
+                            ></div>
+
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- =====================================
+                         MAP HUD
+                    ====================================== -->
+
+                    <div class="map-hud">
+                        NASA LUNAR ARCHIVE
+                    </div>
+
+
+                    <div class="map-instruction">
+
+                        DRAG TO EXPLORE
+                        &nbsp; • &nbsp;
+                        SCROLL TO ZOOM
+                        &nbsp; • &nbsp;
+                        CLICK HARDWARE TO INVESTIGATE
+
+                    </div>
+
+
+                    <!-- =====================================
+                         ZOOM
+                    ====================================== -->
+
+                    <div class="map-zoom-controls">
+
+                        <button
+                            id="zoomIn"
+                            type="button"
+                            aria-label="Zoom in"
+                        >
+                            +
+                        </button>
+
+                        <div id="zoomValue">
+                            140%
+                        </div>
+
+                        <button
+                            id="zoomOut"
+                            type="button"
+                            aria-label="Zoom out"
+                        >
+                            −
+                        </button>
+
+                    </div>
+
+
+                    <!-- =====================================
+                         HOME
+                    ====================================== -->
+
+                    <button
+                        id="homeButton"
+                        type="button"
+                        aria-label="Reset lunar map"
+                    >
+                        ⌂
+                    </button>
+
+
+                    <!-- =====================================
+                         MINI MAP
+                    ====================================== -->
+
+                    <div class="mini-map">
+
+                        <canvas
+                            id="miniMapCanvas"
+                            width="460"
+                            height="230"
+                            aria-label="Lunar map overview"
+                        ></canvas>
+
+                    </div>
+
+
+                    <!-- =====================================
+                         LEGEND
+                    ====================================== -->
+
+                    <div class="map-legend">
+
+                        <span class="legend-item landed">
+
+                            <span class="legend-dot"></span>
+
+                            LANDED
+
+                        </span>
+
+
+                        <span class="legend-item impacted">
+
+                            <span class="legend-dot"></span>
+
+                            IMPACTED
+
+                        </span>
+
+
+                        <span class="legend-item orbital">
+
+                            <span class="legend-dot"></span>
+
+                            ORBITAL
+
+                        </span>
+
+                    </div>
+
+
+                    <!-- =====================================
+                         STATUS
+                    ====================================== -->
+
+                    <div
+                        id="mapStatus"
+                        class="map-status"
+                    >
+                        0 hardware sites
+                    </div>
+
+
+                </div>
+
+            </section>
+
+
+        </main>
+
 
     </div>
 
-</section>
+
+    <!-- =====================================================
+         MISSION STORY DIALOGUE
+    ====================================================== -->
+
+    <div
+        id="storyOverlay"
+        class="hidden"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="storyTitle"
+    >
 
 
-<!-- Dialogue backdrop -->
-<div id="dialogueBackdrop"></div>
+        <div id="storyPanel">
 
 
-<!-- Mission dialogue -->
-<div
-    id="dialogueBox"
-    role="dialog"
-    aria-modal="true"
-    aria-labelledby="storyTitle">
+            <!-- =============================================
+                 CLOSE
+            ============================================== -->
 
-    <div class="dialogue-header">
+            <button
+                id="storyClose"
+                type="button"
+                aria-label="Close mission story"
+            >
+                ×
+            </button>
 
-        <div id="missionId">
-            MOON · NASA ARCHIVE
+
+            <!-- =============================================
+                 IMAGE
+            ============================================== -->
+
+            <div class="story-image-wrap">
+
+                <img
+                    id="storyImage"
+                    src=""
+                    alt=""
+                    draggable="false"
+                >
+
+            </div>
+
+
+            <!-- =============================================
+                 STORY CONTENT
+            ============================================== -->
+
+            <div class="story-content">
+
+
+                <div id="storyGreeting">
+                    NASA ARCHIVE
+                </div>
+
+
+                <h2 id="storyTitle">
+                    Mission
+                </h2>
+
+
+                <div id="storyMeta">
+                    NASA MISSION
+                </div>
+
+
+                <p id="storyText">
+                    Mission story.
+                </p>
+
+
+                <!-- =========================================
+                     SCIENCE
+                ========================================== -->
+
+                <section class="story-science">
+
+                    <h3 class="story-section-title">
+                        Scientific Contribution
+                    </h3>
+
+                    <ul id="storyScienceList"></ul>
+
+                </section>
+
+
+                <!-- =========================================
+                     INFO
+                ========================================== -->
+
+                <div class="story-info-grid">
+
+
+                    <div class="story-info-box">
+
+                        <span class="story-info-label">
+                            Lunar Coordinates
+                        </span>
+
+                        <div id="storyLocation">
+                            —
+                        </div>
+
+                    </div>
+
+
+                    <div class="story-info-box">
+
+                        <span class="story-info-label">
+                            Mission Status
+                        </span>
+
+                        <div id="storyStatus">
+                            —
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+                <!-- =========================================
+                     SOURCE
+                ========================================== -->
+
+                <a
+                    id="storySource"
+                    href="#"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    NASA SOURCE ↗
+                </a>
+
+
+            </div>
+
+
         </div>
-
-        <button
-            id="closeButton"
-            type="button"
-            aria-label="Close">
-            ×
-        </button>
 
     </div>
 
-    <div class="dialogue-content">
 
-        <div id="storyKicker">
-            MISSION STORY
-        </div>
+    <!-- =====================================================
+         DATA
+    ====================================================== -->
 
-        <h2 id="storyTitle">
-            Mission
-        </h2>
-
-        <p id="storyText">
-            Story
-        </p>
-
-    </div>
-
-    <div class="dialogue-footer">
-
-        <div id="storyCounter">
-            01 / 05
-        </div>
-
-        <button
-            id="nextButton"
-            type="button"
-            aria-label="Next story">
-            →
-        </button>
-
-    </div>
-
-</div>
+    <script src="./moon_data.js"></script>
 
 
-<script src="moon.js"></script>
+    <!-- =====================================================
+         APPLICATION
+    ====================================================== -->
+
+    <script src="./moon.js"></script>
+
 
 </body>
+
 </html>
