@@ -1,6 +1,3 @@
-/* =========================================================
-   RESET
-========================================================= */
 
 * {
     margin: 0;
@@ -23,11 +20,6 @@ body {
         Helvetica,
         sans-serif;
 }
-
-
-/* =========================================================
-   SPACE VIEW
-========================================================= */
 
 #spaceView {
     position: fixed;
@@ -52,10 +44,124 @@ body {
     isolation: isolate;
 }
 
+#spaceTravelEffect {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    overflow: hidden;
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+    background:
+        radial-gradient(
+            circle at center,
+            #09132c 0,
+            #020510 22%,
+            #01020a 100%
+        );
+}
 
-/* =========================================================
-   STARS
-========================================================= */
+#spaceTravelEffect::before {
+    position: absolute;
+    inset: 0;
+    content: "";
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(255, 255, 255, 0.98) 0,
+            rgba(100, 220, 255, 0.7) 1%,
+            rgba(63, 91, 255, 0.2) 6%,
+            transparent 17%
+        );
+    transform: scale(0.08);
+    opacity: 0;
+}
+
+#spaceTravelEffect::after {
+    position: absolute;
+    inset: -80%;
+    content: "";
+    background:
+        repeating-conic-gradient(
+            from 0deg,
+            transparent 0deg 7deg,
+            rgba(184, 218, 255, 0.3) 7.15deg 7.4deg,
+            transparent 7.6deg 18deg,
+            rgba(119, 171, 255, 0.2) 18.15deg 18.4deg,
+            transparent 18.6deg 31deg
+        );
+    mask-image:
+        radial-gradient(
+            circle,
+            transparent 0 3%,
+            #000 8% 100%
+        );
+    opacity: 0;
+    transform: scale(0.12) rotate(0deg);
+}
+
+#spaceTravelEffect.active {
+    visibility: visible;
+    animation: spaceJumpFlash 4s ease-in forwards;
+}
+
+#spaceTravelEffect.active::before {
+    animation: spaceWarpCore 4s ease-in forwards;
+}
+
+#spaceTravelEffect.active::after {
+    animation: spaceTunnelRush 3.8s cubic-bezier(0.16, 0.72, 0.25, 1) forwards;
+}
+
+@keyframes spaceJumpFlash {
+    0% {
+        opacity: 1;
+    }
+
+    82% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes spaceWarpCore {
+    0% {
+        opacity: 0;
+        transform: scale(0.04);
+    }
+
+    24% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(5);
+    }
+}
+
+@keyframes spaceTunnelRush {
+    0% {
+        opacity: 0.85;
+        transform: scale(0.08) rotate(0deg);
+    }
+
+    58% {
+        opacity: 1;
+    }
+
+    84% {
+        opacity: 0.72;
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(4.2) rotate(540deg);
+    }
+}
 
 #stars {
     position: absolute;
@@ -115,11 +221,6 @@ body {
     }
 }
 
-
-/* =========================================================
-   NEBULA
-========================================================= */
-
 .nebula {
     position: absolute;
 
@@ -177,11 +278,6 @@ body {
         );
 }
 
-
-/* =========================================================
-   SOLAR WORLD
-========================================================= */
-
 #solarWorld {
     position: absolute;
 
@@ -197,11 +293,6 @@ body {
 
     will-change: transform;
 }
-
-
-/* =========================================================
-   ORBITS
-========================================================= */
 
 .orbit {
     position: absolute;
@@ -251,11 +342,6 @@ body {
     height: 1580px;
 }
 
-
-/* =========================================================
-   MOON ORBIT
-========================================================= */
-
 .moon-orbit {
     position: absolute;
 
@@ -276,11 +362,6 @@ body {
 
     pointer-events: none;
 }
-
-
-/* =========================================================
-   SUN
-========================================================= */
 
 .sun {
     position: absolute;
@@ -332,11 +413,6 @@ body {
     }
 }
 
-
-/* =========================================================
-   PLANETS
-========================================================= */
-
 .planet {
     position: absolute;
 
@@ -365,11 +441,6 @@ body {
 
     overflow: visible;
 }
-
-
-/* =========================================================
-   PLANET BODY
-========================================================= */
 
 .planet-body {
     position: absolute;
@@ -416,11 +487,6 @@ body {
     }
 }
 
-
-/* =========================================================
-   PLANET SIZES
-========================================================= */
-
 .planet.mercury,
 .planet.mercury .planet-body {
     width: 40px;
@@ -463,11 +529,6 @@ body {
     height: 95px;
 }
 
-
-/* =========================================================
-   PLANET IMAGES
-========================================================= */
-
 .planet.mercury .planet-body {
     background-image:
         url("../images/mercury.png");
@@ -503,11 +564,6 @@ body {
         url("../images/saturn.png");
 }
 
-
-/* =========================================================
-   PLANET ROTATION SPEED
-========================================================= */
-
 .planet.mercury .planet-body {
     animation-duration: 10s;
 }
@@ -535,11 +591,6 @@ body {
 .planet.saturn .planet-body {
     animation-duration: 16s;
 }
-
-
-/* =========================================================
-   SATURN RINGS
-========================================================= */
 
 .planet.saturn .planet-body::before {
     content: "";
@@ -571,11 +622,6 @@ body {
     z-index: -1;
 }
 
-
-/* =========================================================
-   PLANET HOVER
-========================================================= */
-
 .planet:hover .planet-body,
 .planet:focus-visible .planet-body {
     filter:
@@ -594,11 +640,6 @@ body {
 
     border-radius: 50%;
 }
-
-
-/* =========================================================
-   LABEL
-========================================================= */
 
 .planet-label {
     position: absolute;
@@ -641,11 +682,6 @@ body {
         calc(50% + 68px);
 }
 
-
-/* =========================================================
-   HUD
-========================================================= */
-
 #spaceHud {
     position: fixed;
 
@@ -680,11 +716,6 @@ body {
 
     letter-spacing: 3px;
 }
-
-
-/* =========================================================
-   CAMERA STATUS
-========================================================= */
 
 #cameraStatus {
     position: fixed;
@@ -727,11 +758,6 @@ body {
     color: #4db8ff;
     font-weight: 700;
 }
-
-
-/* =========================================================
-   INFORMATION BAR
-========================================================= */
 
 #spaceInfo {
     position: fixed;
@@ -792,11 +818,6 @@ body {
         rgba(255, 255, 255, .7);
 }
 
-
-/* =========================================================
-   MOBILE CONTROLS
-========================================================= */
-
 #mobileControls {
     position: fixed;
 
@@ -851,11 +872,6 @@ body {
     grid-row: 3;
 }
 
-
-/* =========================================================
-   CONTROL BUTTON
-========================================================= */
-
 .control-btn {
     width: 50px;
     height: 50px;
@@ -903,11 +919,6 @@ body {
         scale(.94);
 }
 
-
-/* =========================================================
-   MOBILE HINT
-========================================================= */
-
 #mobileHint {
     display: none;
 
@@ -948,11 +959,6 @@ body {
     backdrop-filter:
         blur(8px);
 }
-
-
-/* =========================================================
-   MODAL
-========================================================= */
 
 .modal {
     position: fixed;
@@ -998,11 +1004,6 @@ body {
     backdrop-filter:
         blur(10px);
 }
-
-
-/* =========================================================
-   PLANET CARD
-========================================================= */
 
 .planet-card {
     position: relative;
@@ -1059,11 +1060,6 @@ body {
     }
 }
 
-
-/* =========================================================
-   CLOSE BUTTON
-========================================================= */
-
 .close-modal {
     position: absolute;
 
@@ -1095,11 +1091,6 @@ body {
     background:
         rgba(255, 255, 255, .12);
 }
-
-
-/* =========================================================
-   PLANET VISUAL
-========================================================= */
 
 .planet-visual {
     height: 230px;
@@ -1154,11 +1145,6 @@ body {
         transform: rotate(360deg);
     }
 }
-
-
-/* =========================================================
-   MODAL PLANET COLORS
-========================================================= */
 
 .planet-visual.mercury .visual-planet {
     background:
@@ -1240,11 +1226,6 @@ body {
         );
 }
 
-
-/* =========================================================
-   CARD CONTENT
-========================================================= */
-
 .planet-card-content {
     padding:
         0 30px 30px;
@@ -1278,11 +1259,6 @@ body {
 
     font-size: 14px;
 }
-
-
-/* =========================================================
-   FACTS
-========================================================= */
 
 .planet-facts {
     display: grid;
@@ -1329,11 +1305,6 @@ body {
     font-size: 12px;
 }
 
-
-/* =========================================================
-   RETURN BUTTON
-========================================================= */
-
 .explore-close {
     width: 100%;
 
@@ -1363,11 +1334,6 @@ body {
     background:
         rgba(30, 110, 210, .45);
 }
-
-
-/* =========================================================
-   ORIENTATION MESSAGE
-========================================================= */
 
 #orientationMessage {
     display: none;
@@ -1413,11 +1379,6 @@ body {
 
     line-height: 1.5;
 }
-
-
-/* =========================================================
-   MOBILE
-========================================================= */
 
 @media (max-width: 700px) {
 
@@ -1512,11 +1473,6 @@ body {
     }
 }
 
-
-/* =========================================================
-   SMALL PHONES
-========================================================= */
-
 @media (max-width: 420px) {
 
     #mobileControls {
@@ -1547,11 +1503,6 @@ body {
     }
 }
 
-
-/* =========================================================
-   PORTRAIT PHONE
-========================================================= */
-
 @media
 (max-width: 700px)
 and (orientation: portrait)
@@ -1562,12 +1513,14 @@ and (min-height: 600px) {
     }
 }
 
-
-/* =========================================================
-   REDUCED MOTION
-========================================================= */
-
 @media (prefers-reduced-motion: reduce) {
+
+    #spaceTravelEffect.active,
+    #spaceTravelEffect.active::before,
+    #spaceTravelEffect.active::after {
+        animation-duration:
+            .001ms !important;
+    }
 
     *,
     *::before,
