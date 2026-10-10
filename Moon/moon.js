@@ -1,5 +1,3 @@
-
-
 const MAP_WIDTH = 4096;
 const MAP_HEIGHT = 2048;
 
