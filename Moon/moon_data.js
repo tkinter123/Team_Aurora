@@ -1,24 +1,4 @@
-/* =========================================================
-   NASA LUNAR SPACE MUSEUM
-   Team Aurora — NASA Space Apps Challenge 2026
-
-   moon_data.js
-
-   IMPORTANT:
-   - archiveOnly = true means NO lunar coordinates/marker
-   - latitude / longitude use degrees
-   - status controls marker color:
-       landed   = green
-       impacted = red
-       orbital  = yellow
-========================================================= */
-
-
 const moonMissions = [
-
-    /* =====================================================
-       01 — PIONEER 1
-    ====================================================== */
 
     {
         id: "pioneer-1",
@@ -41,9 +21,12 @@ const moonMissions = [
 
         landingSite: "Did not reach the Moon",
 
-        image: null,
+        image:
+            "./moon stories/moon stories/1958_november_pioneer_1.jpg",
 
-        images: [],
+        images: [
+            "./moon stories/moon stories/1958_november_pioneer_1.jpg"
+        ],
 
         source:
             "https://science.nasa.gov/mission/pioneer-1-able-2/",
@@ -77,13 +60,9 @@ I may not have touched the lunar surface, but I helped clear the path for those 
         leftBehind:
             "Pioneer 1 did not reach the Moon and later reentered Earth's atmosphere.",
 
-
         slides: [
 
             {
-                kicker: "NASA ARCHIVE // FIRST ATTEMPTS",
-
-                title: "The Brave First Try",
 
                 text:
 `Hi! I’m Pioneer 1.
@@ -101,7 +80,6 @@ My goal was to fly close to the Moon, study space along the way, and send inform
                     "Designed to study the space environment near Earth and the Moon."
                 ]
             },
-
 
             {
                 kicker: "THE JOURNEY",
@@ -125,7 +103,6 @@ Instead of flying all the way to the Moon, I reached a highest point of about 11
                 ]
             },
 
-
             {
                 kicker: "DATA FROM THE JOURNEY",
 
@@ -145,7 +122,6 @@ This information helped scientists understand the region we now call the Van All
                     "Contributed early observations of the Van Allen radiation belts."
                 ]
             },
-
 
             {
                 kicker: "MISSION END",
@@ -167,7 +143,6 @@ I showed what could go wrong and what could be learned, even from a mission that
                 ]
             },
 
-
             {
                 kicker: "LEGACY",
 
@@ -188,11 +163,6 @@ I may not have touched the lunar surface, but I helped clear the path for those 
 
         ]
     },
-
-
-    /* =====================================================
-       02 — RANGER 7
-    ====================================================== */
 
     {
         id: "ranger-7",
@@ -216,15 +186,13 @@ I may not have touched the lunar surface, but I helped clear the path for those 
         landingSite: "Mare Nubium",
 
         image:
-            "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/solar/2023/07/1378_Ranger_768.jpg?w=768&h=534&fit=clip&crop=faces%2Cfocalpoint",
+            "./moon stories/moon stories/ranger_1.jpg",
 
         images: [
 
-            "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/solar/2023/07/1378_Ranger_768.jpg?w=768&h=534&fit=clip&crop=faces%2Cfocalpoint",
-
-            "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/solar/internal_resources/3632/Cratered_surface_of_the_Moon_from_above-1.jpeg?w=1280&h=1259&fit=clip&crop=faces%2Cfocalpoint",
-
-            "https://www.nasa.gov/wp-content/uploads/2019/07/ranger_1_spacecraft.jpg"
+            "./moon stories/moon stories/ranger_1.jpg",
+            "./moon stories/moon stories/ranger_2.jpeg",
+            "./moon stories/moon stories/ranger_3.webp"
 
         ],
 
@@ -256,7 +224,6 @@ I did not simply reach the Moon. I helped humanity see it clearly for the first 
         leftBehind:
             "Ranger 7 impacted the Moon after transmitting its final image.",
 
-
         slides: [
 
             {
@@ -283,7 +250,6 @@ NASA launched me on July 28, 1964, with one important job: fly close to the Moon
                 ]
             },
 
-
             {
                 kicker: "APPROACHING THE MOON",
 
@@ -307,7 +273,6 @@ The Moon’s craters and dusty ground became clearer with every image.`,
                     "Returned imagery useful for understanding surface morphology."
                 ]
             },
-
 
             {
                 kicker: "THE FINAL MINUTES",
@@ -333,7 +298,6 @@ My mission ended with an impact—but the information I sent home survived.`,
                 ]
             },
 
-
             {
                 kicker: "WHY IT MATTERED",
 
@@ -355,7 +319,6 @@ The details I revealed helped turn an unknown landscape into a place future spac
                     "Supported planning for later lunar missions."
                 ]
             },
-
 
             {
                 kicker: "LEFT BEHIND",
@@ -384,11 +347,6 @@ I helped humanity see it clearly for the first time.`,
         ]
     },
 
-
-    /* =====================================================
-       03 — SURVEYOR 3
-    ====================================================== */
-
     {
         id: "surveyor-3",
 
@@ -411,14 +369,12 @@ I helped humanity see it clearly for the first time.`,
         landingSite: "Ocean of Storms",
 
         image:
-            "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/lunar-science/2023/08/detail_as12-48-7121_orig.jpg?w=1200&h=1200&fit=clip&crop=faces%2Cfocalpoint",
+            "./moon stories/moon stories/apollo12 (2).jpg",
 
         images: [
-
-            "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/lunar-science/2023/08/detail_as12-48-7121_orig.jpg?w=1200&h=1200&fit=clip&crop=faces%2Cfocalpoint",
-
-            "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/solar/2023/07/as12-48-7134_1280.jpg?w=1280&h=1280&fit=clip&crop=faces%2Cfocalpoint"
-
+            "./moon stories/moon stories/apollo12 (2).jpg",
+            "./moon stories/moon stories/apollo12 (3).jpg",
+            "./moon stories/moon stories/apollo12 (4).jpg"
         ],
 
         source:
@@ -449,7 +405,6 @@ Even a bumpy landing can lead to an important mission.`,
         leftBehind:
             "Surveyor 3 remains on the Moon; Apollo 12 later recovered several components.",
 
-
         slides: [
 
             {
@@ -476,7 +431,6 @@ My job was to land gently, take pictures, and test the lunar soil.`,
                 ]
             },
 
-
             {
                 kicker: "ARRIVAL",
 
@@ -501,7 +455,6 @@ Once I was steady, I began working.`,
                 ]
             },
 
-
             {
                 kicker: "LUNAR SCIENCE",
 
@@ -524,7 +477,6 @@ My tests showed that the ground was strong enough to support an Apollo lunar mod
                     "Provided evidence that the surface could support Apollo landing hardware."
                 ]
             },
-
 
             {
                 kicker: "APOLLO 12",
@@ -549,7 +501,6 @@ My silent body became something scientists could examine directly after years on
                     "Returned hardware provided evidence of the effects of the lunar environment."
                 ]
             },
-
 
             {
                 kicker: "LEFT BEHIND",
@@ -576,11 +527,6 @@ Even a bumpy landing can lead to an important mission.`,
         ]
     },
 
-
-    /* =====================================================
-       04 — LUNAR ORBITER 5
-    ====================================================== */
-
     {
         id: "lunar-orbiter-5",
 
@@ -602,9 +548,13 @@ Even a bumpy landing can lead to an important mission.`,
 
         landingSite: "Lunar surface impact site",
 
-        image: null,
+        image:
+            "./moon stories/moon stories/lunar-orbiter-moon-jf.webp",
 
-        images: [],
+        images: [
+            "./moon stories/moon stories/lunar-orbiter-moon-jf.webp",
+            "./moon stories/moon stories/lunar_orbiter_1_launch_7_first_view_of_earth_from_moon.webp"
+        ],
 
         source:
             "https://www.nasa.gov/gallery/lunar-orbiter/",
@@ -636,7 +586,6 @@ I helped draw the first detailed maps of the Moon. Every map I left behind point
         leftBehind:
             "Lunar Orbiter 5 was deliberately sent into the Moon at the end of its mission.",
 
-
         slides: [
 
             {
@@ -661,7 +610,6 @@ NASA launched me on August 1, 1967, to help prepare for the Apollo missions.`,
                 ]
             },
 
-
             {
                 kicker: "FROM ORBIT",
 
@@ -681,7 +629,6 @@ The Moon was becoming a place scientists could study in detail rather than a dis
                     "Expanded knowledge of the lunar far side."
                 ]
             },
-
 
             {
                 kicker: "PREPARING APOLLO",
@@ -703,7 +650,6 @@ One of my most famous images showed Earth floating in space like a bright blue h
                 ]
             },
 
-
             {
                 kicker: "MISSION END",
 
@@ -723,7 +669,6 @@ I descended toward the lunar surface, my signals faded, and my orbit ended.`,
                     "Ended its mission with a controlled lunar impact."
                 ]
             },
-
 
             {
                 kicker: "LEGACY",
@@ -748,11 +693,6 @@ Every map I left behind pointed the way to new adventures.`,
         ]
     },
 
-
-    /* =====================================================
-       05 — SURVEYOR 7
-    ====================================================== */
-
     {
         id: "surveyor-7",
 
@@ -775,14 +715,12 @@ Every map I left behind pointed the way to new adventures.`,
         landingSite: "Near Tycho Crater",
 
         image:
-            "https://www.nasa.gov/wp-content/uploads/2018/01/surveyor_7_landing_site.png",
+            "./moon stories/moon stories/surveyor_7_2.webp",
 
         images: [
-
-            "https://www.nasa.gov/wp-content/uploads/2018/01/surveyor_7_landing_site.png",
-
-            "https://www.nasa.gov/wp-content/uploads/2018/01/surveyor_7_panorama.jpg"
-
+            "./moon stories/moon stories/surveyor_7_2.webp",
+            "./moon stories/moon stories/surveyor_7_3.webp",
+            "./moon stories/moon stories/image3_lunarhighlands.webp"
         ],
 
         source:
@@ -815,7 +753,6 @@ I went to the Moon to learn its secrets—and I brought some of them home.`,
         leftBehind:
             "Surveyor 7 remains at its landing site near Tycho Crater.",
 
-
         slides: [
 
             {
@@ -842,7 +779,6 @@ My mission was to explore a new kind of lunar landscape and study its soil.`,
                 ]
             },
 
-
             {
                 kicker: "ARRIVAL",
 
@@ -864,7 +800,6 @@ The area was filled with rocks, slopes, and distant hills.`,
                     "Expanded exploration beyond the smoother lunar plains."
                 ]
             },
-
 
             {
                 kicker: "OBSERVATION",
@@ -888,7 +823,6 @@ Every image gave scientists another piece of the lunar landscape.`,
                 ]
             },
 
-
             {
                 kicker: "LUNAR GEOLOGY",
 
@@ -908,7 +842,6 @@ This helped scientists understand that different parts of the Moon were made of 
                     "Improved understanding of the Moon's geological diversity."
                 ]
             },
-
 
             {
                 kicker: "LEFT BEHIND",
@@ -939,11 +872,6 @@ I went to the Moon to learn its secrets—and I brought some of them home.`,
         ]
     },
 
-
-    /* =====================================================
-       06 — APOLLO 10
-    ====================================================== */
-
     {
         id: "apollo-10",
 
@@ -966,9 +894,20 @@ I went to the Moon to learn its secrets—and I brought some of them home.`,
         landingSite:
             "Did not land on the Moon",
 
-        image: null,
+        image:
+            "./moon stories/moon stories/apollo10.jpg",
 
-        images: [],
+        images: [
+            "./moon stories/moon stories/apollo10.jpg",
+            "./moon stories/moon stories/apollo10.webp",
+            "./moon stories/moon stories/apollo10 (2).jpg",
+            "./moon stories/moon stories/apollo10 (3).jpg",
+            "./moon stories/moon stories/apollo10 (4).jpg",
+            "./moon stories/moon stories/apollo10 (5).jpg",
+            "./moon stories/moon stories/apollo10 (6).jpg",
+            "./moon stories/moon stories/apollo10 (7).jpg",
+            "./moon stories/moon stories/apollo_10_patch_s69-31959.webp"
+        ],
 
         source:
             "https://www.nasa.gov/gallery/apollo-10/",
@@ -1000,7 +939,6 @@ I was not the mission that made the first footprints. I was the rehearsal that h
         leftBehind:
             "Apollo 10 returned to Earth; it did not leave hardware on the Moon.",
 
-
         slides: [
 
             {
@@ -1023,7 +961,6 @@ My job was to test the final steps before humans landed on the Moon.`,
                 ]
             },
 
-
             {
                 kicker: "LAUNCH",
 
@@ -1044,7 +981,6 @@ Young stayed in the command module, Charlie Brown, orbiting above them.`,
                 ]
             },
 
-
             {
                 kicker: "LUNAR DESCENT",
 
@@ -1064,7 +1000,6 @@ We descended to about nine miles above the ground while testing the spacecraft, 
                     "Evaluated navigation and landing procedures close to the lunar surface."
                 ]
             },
-
 
             {
                 kicker: "RENDEZVOUS",
@@ -1087,7 +1022,6 @@ The practice had worked.`,
                     "Confirmed critical procedures before Apollo 11."
                 ]
             },
-
 
             {
                 kicker: "LEGACY",
@@ -1113,11 +1047,6 @@ I was the rehearsal that helped make those footprints possible.`,
 
         ]
     },
-
-
-    /* =====================================================
-       07 — APOLLO 11
-    ====================================================== */
 
     {
         id: "apollo-11",
@@ -1181,7 +1110,6 @@ My mission proved that a dream once thought impossible could become real.`,
         leftBehind:
             "The Apollo 11 lunar module descent stage, scientific equipment, and other hardware remain at Tranquility Base.",
 
-
         slides: [
 
             {
@@ -1203,7 +1131,6 @@ On July 16, 1969, a Saturn V rocket launched astronauts Neil Armstrong, Buzz Ald
                     "Established a new milestone in human space exploration."
                 ]
             },
-
 
             {
                 kicker: "THE LANDING",
@@ -1229,7 +1156,6 @@ Armstrong took control and guided Eagle toward a safer place.`,
                 ]
             },
 
-
             {
                 kicker: "JULY 20, 1969",
 
@@ -1252,7 +1178,6 @@ For the first time, humans had walked on another world.`,
                 ]
             },
 
-
             {
                 kicker: "SCIENCE ON THE MOON",
 
@@ -1273,7 +1198,6 @@ The mission was not only about reaching the Moon—it was about learning from it
                     "Returned extensive photographic and observational data."
                 ]
             },
-
 
             {
                 kicker: "LEFT BEHIND",
@@ -1302,11 +1226,6 @@ My mission proved that a dream once thought impossible could become real.`,
         ]
     },
 
-
-    /* =====================================================
-       08 — APOLLO 12
-    ====================================================== */
-
     {
         id: "apollo-12",
 
@@ -1330,14 +1249,12 @@ My mission proved that a dream once thought impossible could become real.`,
             "Ocean of Storms",
 
         image:
-            "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/lunar-science/2023/08/detail_as12-48-7121_orig.jpg?w=1200&h=1200&fit=clip&crop=faces%2Cfocalpoint",
+            "./moon stories/moon stories/apollo12.jpg",
 
         images: [
-
-            "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/lunar-science/2023/08/detail_as12-48-7121_orig.jpg?w=1200&h=1200&fit=clip&crop=faces%2Cfocalpoint",
-
-            "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/solar/2023/07/as12-48-7134_1280.jpg?w=1280&h=1280&fit=clip&crop=faces%2Cfocalpoint"
-
+            "./moon stories/moon stories/apollo12.jpg",
+            "./moon stories/moon stories/apollo12 (4).jpg",
+            "./moon stories/moon stories/apollo12 (5).jpg"
         ],
 
         source:
@@ -1374,7 +1291,6 @@ Sometimes, exploration means discovering something new. Sometimes, it means visi
         leftBehind:
             "Apollo 12 left its lunar module descent stage, experiments, equipment, and other hardware near Surveyor 3.",
 
-
         slides: [
 
             {
@@ -1399,7 +1315,6 @@ I had two goals: land accurately on the Moon and visit a spacecraft that had arr
                 ]
             },
 
-
             {
                 kicker: "NOVEMBER 1969",
 
@@ -1421,7 +1336,6 @@ We landed in the Ocean of Storms, close to the planned location.`,
                     "Separated surface and orbital operations between crew members."
                 ]
             },
-
 
             {
                 kicker: "SURVEYOR 3",
@@ -1445,7 +1359,6 @@ Conrad and Bean walked across the surface to meet it.`,
                 ]
             },
 
-
             {
                 kicker: "HARDWARE RECOVERY",
 
@@ -1468,7 +1381,6 @@ The astronauts also collected rocks, carried out experiments, and explored the s
                     "Studied the effects of the lunar environment on spacecraft materials."
                 ]
             },
-
 
             {
                 kicker: "LEGACY",
@@ -1499,11 +1411,6 @@ Sometimes, it means visiting someone who arrived before you.`,
         ]
     },
 
-
-    /* =====================================================
-       09 — APOLLO 15
-    ====================================================== */
-
     {
         id: "apollo-15",
 
@@ -1526,9 +1433,20 @@ Sometimes, it means visiting someone who arrived before you.`,
         landingSite:
             "Hadley–Apennine region",
 
-        image: null,
+        image:
+            "./moon stories/moon stories/apollo15.jpg",
 
-        images: [],
+        images: [
+            "./moon stories/moon stories/apollo15.jpg",
+            "./moon stories/moon stories/apollo15.webp",
+            "./moon stories/moon stories/apollo15 (2).jpg",
+            "./moon stories/moon stories/apollo15 (2).webp",
+            "./moon stories/moon stories/apollo15 (3).webp",
+            "./moon stories/moon stories/apollo15 (4).webp",
+            "./moon stories/moon stories/apollo15lunarrover2.webp",
+            "./moon stories/moon stories/apollo_15.jpg",
+            "./moon stories/moon stories/apollo_15_moon_landing_29_eva3_irwin_w_us_flag_as15-88-11866hr.webp"
+        ],
 
         source:
             "https://www.nasa.gov/gallery/apollo-15/",
@@ -1564,7 +1482,6 @@ I helped turn the Moon into a place humans could travel across—not just a plac
         leftBehind:
             "The Lunar Roving Vehicle, lunar module descent stage, experiments, and other equipment remain on the Moon.",
 
-
         slides: [
 
             {
@@ -1586,7 +1503,6 @@ On July 26, 1971, a Saturn V rocket carried astronauts David Scott, James Irwin,
                     "Expanded the range of human exploration on the lunar surface."
                 ]
             },
-
 
             {
                 kicker: "HADLEY–APENNINE",
@@ -1610,7 +1526,6 @@ Walking everywhere would have taken too long.`,
                 ]
             },
 
-
             {
                 kicker: "LUNAR ROVING VEHICLE",
 
@@ -1631,7 +1546,6 @@ For the first time, humans travelled far from their landing site on another worl
                 ]
             },
 
-
             {
                 kicker: "FIELD SCIENCE",
 
@@ -1650,7 +1564,6 @@ The rover allowed them to carry more tools and samples than they could have mana
                     "Carried scientific equipment and samples across the surface."
                 ]
             },
-
 
             {
                 kicker: "LEFT BEHIND",
@@ -1677,11 +1590,6 @@ I helped turn the Moon into a place humans could travel across—not just a plac
         ]
     },
 
-
-    /* =====================================================
-       10 — APOLLO 17
-    ====================================================== */
-
     {
         id: "apollo-17",
 
@@ -1704,9 +1612,18 @@ I helped turn the Moon into a place humans could travel across—not just a plac
         landingSite:
             "Taurus–Littrow Valley",
 
-        image: null,
+        image:
+            "./moon stories/moon stories/apollo17.jpg",
 
-        images: [],
+        images: [
+            "./moon stories/moon stories/apollo17.jpg",
+            "./moon stories/moon stories/apollo17 (2).jpg",
+            "./moon stories/moon stories/apollo17 (3).jpg",
+            "./moon stories/moon stories/apollo17 (4).jpg",
+            "./moon stories/moon stories/apollo17 (5).jpg",
+            "./moon stories/moon stories/apollo17 (6).jpg",
+            "./moon stories/moon stories/apollo17 (7).jpg"
+        ],
 
         source:
             "https://www.nasa.gov/gallery/apollo-17/",
@@ -1744,7 +1661,6 @@ Apollo 17 was the final Apollo landing—but curiosity did not end there. The sa
         leftBehind:
             "The Apollo 17 lunar module descent stage, Lunar Roving Vehicle, experiments, equipment, and astronaut footprints remain at Taurus–Littrow.",
 
-
         slides: [
 
             {
@@ -1769,7 +1685,6 @@ Others become farewells.`,
                 ]
             },
 
-
             {
                 kicker: "DECEMBER 1972",
 
@@ -1792,7 +1707,6 @@ Evans remained in orbit inside America.`,
                 ]
             },
 
-
             {
                 kicker: "LUNAR FIELD WORK",
 
@@ -1813,7 +1727,6 @@ They gathered more lunar material than any previous Apollo crew.`,
                     "Used the rover to reach a wider range of sampling locations."
                 ]
             },
-
 
             {
                 kicker: "LONG AFTER THE CREW",
@@ -1836,7 +1749,6 @@ The instruments stayed behind to continue collecting information.`,
                     "Extended scientific observations beyond the crew's surface stay."
                 ]
             },
-
 
             {
                 kicker: "LEFT BEHIND",
@@ -1868,11 +1780,6 @@ The samples and discoveries from the mission still help scientists understand th
         ]
     },
 
-
-    /* =====================================================
-       11 — LCROSS
-    ====================================================== */
-
     {
         id: "lcross",
 
@@ -1896,12 +1803,11 @@ The samples and discoveries from the mission still help scientists understand th
             "Cabeus Crater",
 
         image:
-            "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/solar/2023/07/226580main_2007-08-02_On_Way_In.jpg?w=1280&h=1280&fit=clip&crop=faces%2Cfocalpoint",
+            "./moon stories/moon stories/lcross.jpg",
 
         images: [
-
-            "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/solar/2023/07/226580main_2007-08-02_On_Way_In.jpg?w=1280&h=1280&fit=clip&crop=faces%2Cfocalpoint"
-
+            "./moon stories/moon stories/lcross.jpg",
+            "./moon stories/moon stories/hayn-crater-large-for-lunar-hydrogen-story.webp"
         ],
 
         source:
@@ -1940,7 +1846,6 @@ Sometimes, one final act can open the door to a brand-new adventure.`,
         leftBehind:
             "The LCROSS spacecraft and Centaur upper stage impacted the Moon at Cabeus Crater.",
 
-
         slides: [
 
             {
@@ -1967,7 +1872,6 @@ I was built for a one-way mission.`,
                 ]
             },
 
-
             {
                 kicker: "THE MYSTERY",
 
@@ -1991,7 +1895,6 @@ Sunlight barely reaches its deepest regions, so frozen water might survive there
                     "Investigated a region where volatile materials could survive."
                 ]
             },
-
 
             {
                 kicker: "OCTOBER 9, 2009",
@@ -2017,7 +1920,6 @@ I had only a few minutes to work.`,
                 ]
             },
 
-
             {
                 kicker: "THE FINAL OBSERVATIONS",
 
@@ -2039,7 +1941,6 @@ Scientists studied the information and found evidence of water in the lunar soil
                     "Returned data supporting the detection of water in the lunar polar region."
                 ]
             },
-
 
             {
                 kicker: "LEGACY",
@@ -2071,11 +1972,6 @@ Sometimes, one final act can open the door to a brand-new adventure.`,
     }
 
 ];
-
-
-/* =========================================================
-   OPTIONAL GLOBAL ALIASES
-========================================================= */
 
 /*
  * These make the dataset compatible with older versions
