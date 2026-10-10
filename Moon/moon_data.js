@@ -1973,10 +1973,6 @@ Sometimes, one final act can open the door to a brand-new adventure.`,
 
 ];
 
-/*
- * These make the dataset compatible with older versions
- * of the Moon application as well.
- */
 
 const moonData =
     moonMissions;
