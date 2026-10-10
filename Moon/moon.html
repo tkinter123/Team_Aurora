@@ -19,8 +19,6 @@
         NASA Lunar Space Museum
     </title>
 
-    <!-- Fonts -->
-
     <link
         rel="preconnect"
         href="https://fonts.googleapis.com"
@@ -33,11 +31,9 @@
     >
 
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Lora:wght@400;500;600&display=swap"
         rel="stylesheet"
     >
-
-    <!-- Main stylesheet -->
 
     <link
         rel="stylesheet"
@@ -46,20 +42,19 @@
 
 </head>
 
+<body class="moon-arrival-active">
 
-<body>
-
-
-    <!-- =====================================================
-         PAGE
-    ====================================================== -->
+    <div
+        id="moonTravelEffect"
+        aria-hidden="true"
+    >
+        <div class="moon-arrival-stars"></div>
+        <span class="moon-arrival-caption">
+            APPROACHING THE MOON
+        </span>
+    </div>
 
     <div class="moon-page">
-
-
-        <!-- =================================================
-             HEADER
-        ================================================== -->
 
         <header class="museum-header">
 
@@ -71,16 +66,7 @@
                 NASA LUNAR SPACE MUSEUM
             </h1>
 
-            <p class="museum-subtitle">
-                ABANDONED HARDWARE // LUNAR ARCHIVE
-            </p>
-
         </header>
-
-
-        <!-- =================================================
-             EXHIBITION BAR
-        ================================================== -->
 
         <div class="exhibition-bar">
 
@@ -97,48 +83,20 @@
 
         </div>
 
-
-        <!-- =================================================
-             MAIN
-        ================================================== -->
-
         <main class="museum-main">
-
-
-            <!-- =============================================
-                 EXHIBITION HEADING
-            ============================================== -->
 
             <section class="moon-exhibition">
 
                 <div class="exhibition-heading">
 
-                    <div>
-
-                        <h2>
-                            Lunar Hardware Archive
-                        </h2>
-
-                        <p>
-                            Explore the places where NASA missions
-                            landed, impacted, or came to rest.
-                        </p>
-
-                    </div>
-
                 </div>
-
-
-                <!-- =========================================
-                     TIMELINE
-                ========================================== -->
 
                 <div id="timeline">
 
                     <div class="timeline-header">
 
                         <div class="timeline-title">
-                            Mission Timeline
+                            Scroll the timeline to explore NASA's Lunar missions.
                         </div>
 
                         <div id="timelineYear">
@@ -158,7 +116,6 @@
                         </div>
 
                     </div>
-
 
                     <div class="timeline-track">
 
@@ -190,25 +147,11 @@
 
                 </div>
 
-
-                <!-- =========================================
-                     MOON MAP
-                ========================================== -->
-
                 <div id="moonMap">
-
-
-                    <!-- MAP VIEWPORT -->
 
                     <div id="moonMapViewport">
 
-
-                        <!-- WORLD -->
-
                         <div id="moonMapLayer">
-
-
-                            <!-- NASA MOON IMAGE -->
 
                             <img
                                 id="moonSurfaceImage"
@@ -217,27 +160,17 @@
                                 draggable="false"
                             >
 
-
-                            <!-- HARDWARE MARKERS -->
-
                             <div
                                 id="hardwareLayer"
                             ></div>
-
 
                         </div>
 
                     </div>
 
-
-                    <!-- =====================================
-                         MAP HUD
-                    ====================================== -->
-
                     <div class="map-hud">
-                        NASA LUNAR ARCHIVE
-                    </div>
 
+                    </div>
 
                     <div class="map-instruction">
 
@@ -248,11 +181,6 @@
                         CLICK HARDWARE TO INVESTIGATE
 
                     </div>
-
-
-                    <!-- =====================================
-                         ZOOM
-                    ====================================== -->
 
                     <div class="map-zoom-controls">
 
@@ -278,11 +206,6 @@
 
                     </div>
 
-
-                    <!-- =====================================
-                         HOME
-                    ====================================== -->
-
                     <button
                         id="homeButton"
                         type="button"
@@ -290,11 +213,6 @@
                     >
                         ⌂
                     </button>
-
-
-                    <!-- =====================================
-                         MINI MAP
-                    ====================================== -->
 
                     <div class="mini-map">
 
@@ -307,11 +225,6 @@
 
                     </div>
 
-
-                    <!-- =====================================
-                         LEGEND
-                    ====================================== -->
-
                     <div class="map-legend">
 
                         <span class="legend-item landed">
@@ -322,7 +235,6 @@
 
                         </span>
 
-
                         <span class="legend-item impacted">
 
                             <span class="legend-dot"></span>
@@ -331,60 +243,35 @@
 
                         </span>
 
-
-                        <span class="legend-item orbital">
-
-                            <span class="legend-dot"></span>
-
-                            ORBITAL
-
-                        </span>
-
                     </div>
 
-
-                    <!-- =====================================
-                         STATUS
-                    ====================================== -->
+                    <button id="archiveBtn" class="archive-btn">
+                        <span class="archive-icon">▣</span>
+                        <span>Mission Archive</span>
+                    </button>
 
                     <div
                         id="mapStatus"
                         class="map-status"
-                    >
-                        0 hardware sites
-                    </div>
-
+                    ></div>
 
                 </div>
 
             </section>
 
-
         </main>
 
-
     </div>
-
-
-    <!-- =====================================================
-         MISSION STORY DIALOGUE
-    ====================================================== -->
 
     <div
         id="storyOverlay"
         class="hidden"
         role="dialog"
         aria-modal="true"
-        aria-labelledby="storyTitle"
+        aria-label="Mission story"
     >
 
-
         <div id="storyPanel">
-
-
-            <!-- =============================================
-                 CLOSE
-            ============================================== -->
 
             <button
                 id="storyClose"
@@ -393,11 +280,6 @@
             >
                 ×
             </button>
-
-
-            <!-- =============================================
-                 IMAGE
-            ============================================== -->
 
             <div class="story-image-wrap">
 
@@ -410,37 +292,23 @@
 
             </div>
 
-
-            <!-- =============================================
-                 STORY CONTENT
-            ============================================== -->
-
             <div class="story-content">
-
 
                 <div id="storyGreeting">
                     NASA ARCHIVE
                 </div>
 
-
                 <h2 id="storyTitle">
                     Mission
                 </h2>
-
 
                 <div id="storyMeta">
                     NASA MISSION
                 </div>
 
-
                 <p id="storyText">
                     Mission story.
                 </p>
-
-
-                <!-- =========================================
-                     SCIENCE
-                ========================================== -->
 
                 <section class="story-science">
 
@@ -452,13 +320,7 @@
 
                 </section>
 
-
-                <!-- =========================================
-                     INFO
-                ========================================== -->
-
                 <div class="story-info-grid">
-
 
                     <div class="story-info-box">
 
@@ -472,7 +334,6 @@
 
                     </div>
 
-
                     <div class="story-info-box">
 
                         <span class="story-info-label">
@@ -485,13 +346,7 @@
 
                     </div>
 
-
                 </div>
-
-
-                <!-- =========================================
-                     SOURCE
-                ========================================== -->
 
                 <a
                     id="storySource"
@@ -502,28 +357,36 @@
                     NASA SOURCE ↗
                 </a>
 
-
             </div>
-
 
         </div>
 
     </div>
 
+    <div id="archivePanel" class="archive-panel">
 
-    <!-- =====================================================
-         DATA
-    ====================================================== -->
+    <div class="archive-header">
+        <div>
+            <span class="archive-kicker">NASA ARCHIVE</span>
+            <h2>Archived Missions</h2>
+        </div>
+
+        <button id="closeArchive" class="archive-close">
+            ×
+        </button>
+    </div>
+
+    <div id="archiveMissions" class="archive-missions"></div>
+
+</div>
+
+    <script src="../language.js"></script>
 
     <script src="./moon_data.js"></script>
 
-
-    <!-- =====================================================
-         APPLICATION
-    ====================================================== -->
+    <script src="./moon_data_bn.js"></script>
 
     <script src="./moon.js"></script>
-
 
 </body>
 
