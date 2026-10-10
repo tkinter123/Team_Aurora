@@ -14,7 +14,7 @@ Stories are text-only; spoken narration is disabled.
 
 ## Languages
 
-Use the **বাংলা / English** control in the upper-right corner to switch languages. The selection is saved in the browser and carried between pages. The introduction story, Solar System interface and planet details, Moon museum controls and mission stories, and Mars placeholder page are available in English and Bangla. Bengali fonts are loaded from Google Fonts when online; compatible system fonts are used as a fallback.
+Use the **বাংলা / English** control in the upper-right corner to switch languages. The selection is saved in the browser and carried between pages. The introduction story, Solar System interface and planet details, Moon museum controls and mission stories, and Mars placeholder page are available in English and Bangla. The Bengali font is bundled locally, so it works without an internet connection.
 
 ## Open the project
 
@@ -24,7 +24,7 @@ No package installation, build step, or local server is required.
 2. Open `index.html` directly in a web browser (for example, double-click it in File Explorer).
 3. Use the on-page controls to continue into the Solar System, Moon, and Mars pages.
 
-The site uses relative file paths for its pages and local assets. Google Fonts and external NASA links require an internet connection; if a browser restricts local files, try another browser or use a local server as an optional fallback.
+The site uses relative file paths for its pages and local assets. External NASA links require an internet connection; if a browser restricts local files, try another browser or use a local server as an optional fallback.
 
 ## Files to review before sharing
 
@@ -65,4 +65,4 @@ Team_Aurora/
 └── Space/                      # Solar System page, styles, and behavior
 ```
 
-The Moon page loads its typefaces from Google Fonts, so those fonts require an internet connection. The rest of the project is a static site and does not require a backend.
+The Moon page and its Bengali font are served from local project files. The font and its SIL Open Font License are in `Moon/fonts/`. The rest of the project is a static site and does not require a backend.
