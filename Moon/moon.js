@@ -1,16 +1,4 @@
-/* =========================================================
-   NASA LUNAR SPACE MUSEUM
-   Team Aurora — NASA Space Apps Challenge 2026
 
-   moon.js
-
-   CLEAN RESET VERSION
-========================================================= */
-
-
-/* =========================================================
-   CONFIG
-========================================================= */
 
 const MAP_WIDTH = 4096;
 const MAP_HEIGHT = 2048;
@@ -22,11 +10,6 @@ const IMAGE_ROTATION_TIME = 3500;
 const STORY_EXIT_TIME = 250;
 
 const STORY_ENTER_TIME = 450;
-
-
-/* =========================================================
-   MAP STATE
-========================================================= */
 
 const state = {
 
@@ -58,12 +41,9 @@ const state = {
 
 };
 
-
-/* =========================================================
-   STORY STATE
-========================================================= */
-
 let currentMission = null;
+
+const STORY_VOICE_ENABLED = false;
 
 let currentSlide = 0;
 
@@ -81,177 +61,102 @@ let touchStartX = 0;
 
 let touchStartY = 0;
 
-
-/* =========================================================
-   DOM
-========================================================= */
-
 const mapContainer =
-    document.getElementById(
-        "moonMap"
-    );
+    document.getElementById("moonMap");
 
 const mapViewport =
-    document.getElementById(
-        "moonMapViewport"
-    );
+    document.getElementById("moonMapViewport");
 
 const mapLayer =
-    document.getElementById(
-        "moonMapLayer"
-    );
+    document.getElementById("moonMapLayer");
 
 const moonSurfaceImage =
-    document.getElementById(
-        "moonSurfaceImage"
-    );
+    document.getElementById("moonSurfaceImage");
 
 const hardwareLayer =
-    document.getElementById(
-        "hardwareLayer"
-    );
+    document.getElementById("hardwareLayer");
 
 const zoomInButton =
-    document.getElementById(
-        "zoomIn"
-    );
+    document.getElementById("zoomIn");
 
 const zoomOutButton =
-    document.getElementById(
-        "zoomOut"
-    );
+    document.getElementById("zoomOut");
 
 const zoomValue =
-    document.getElementById(
-        "zoomValue"
-    );
+    document.getElementById("zoomValue");
 
 const homeButton =
-    document.getElementById(
-        "homeButton"
-    );
+    document.getElementById("homeButton");
 
 const miniMapCanvas =
-    document.getElementById(
-        "miniMapCanvas"
-    );
+    document.getElementById("miniMapCanvas");
 
 const mapStatus =
-    document.getElementById(
-        "mapStatus"
-    );
-
-
-/* =========================================================
-   STORY DOM
-========================================================= */
+    document.getElementById("mapStatus");
 
 const storyOverlay =
-    document.getElementById(
-        "storyOverlay"
-    );
+    document.getElementById("storyOverlay");
 
 const storyPanel =
-    document.getElementById(
-        "storyPanel"
-    );
+    document.getElementById("storyPanel");
 
 const storyClose =
-    document.getElementById(
-        "storyClose"
-    );
+    document.getElementById("storyClose");
 
 const storyImage =
-    document.getElementById(
-        "storyImage"
-    );
+    document.getElementById("storyImage");
 
 const storyGreeting =
-    document.getElementById(
-        "storyGreeting"
-    );
+    document.getElementById("storyGreeting");
 
 const storyTitle =
-    document.getElementById(
-        "storyTitle"
-    );
+    document.getElementById("storyTitle");
 
 const storyMeta =
-    document.getElementById(
-        "storyMeta"
-    );
+    document.getElementById("storyMeta");
 
 const storyText =
-    document.getElementById(
-        "storyText"
-    );
+    document.getElementById("storyText");
 
 const storyScienceList =
-    document.getElementById(
-        "storyScienceList"
-    );
+    document.getElementById("storyScienceList");
 
 const storyLocation =
-    document.getElementById(
-        "storyLocation"
-    );
+    document.getElementById("storyLocation");
 
 const storyStatus =
-    document.getElementById(
-        "storyStatus"
-    );
+    document.getElementById("storyStatus");
 
 const storySource =
-    document.getElementById(
-        "storySource"
-    );
-
-
-/* =========================================================
-   TIMELINE DOM
-========================================================= */
+    document.getElementById("storySource");
 
 const timelineYear =
-    document.getElementById(
-        "timelineYear"
-    );
+    document.getElementById("timelineYear");
 
 const timelineRange =
-    document.getElementById(
-        "timelineRange"
-    );
+    document.getElementById("timelineRange");
 
 const timelineProgress =
-    document.getElementById(
-        "timelineProgress"
-    );
+    document.getElementById("timelineProgress");
 
 const timelineCursor =
-    document.getElementById(
-        "timelineCursor"
-    );
+    document.getElementById("timelineCursor");
 
 const timelineEvents =
-    document.getElementById(
-        "timelineEvents"
-    );
+    document.getElementById("timelineEvents");
 
 const timelinePlay =
-    document.getElementById(
-        "timelinePlay"
-    );
+    document.getElementById("timelinePlay");
 
+let archiveBtn = null;
 
-/* =========================================================
-   DATA
-========================================================= */
+let archivePanel = null;
+
+let closeArchive = null;
+
+let archiveMissions = null;
 
 function getAllMissions() {
-
-    /*
-     * Your current moon_data.js should expose
-     * one of these common variable names.
-     */
 
     if (
         typeof moonMissions !== "undefined" &&
@@ -297,11 +202,6 @@ function getAllMissions() {
 
 }
 
-
-/* =========================================================
-   MAPPABLE MISSIONS
-========================================================= */
-
 function getMappableMissions() {
 
     return getAllMissions().filter(
@@ -316,14 +216,10 @@ function getMappableMissions() {
             }
 
             const latitude =
-                Number(
-                    mission.latitude
-                );
+                Number(mission.latitude);
 
             const longitude =
-                Number(
-                    mission.longitude
-                );
+                Number(mission.longitude);
 
             return (
                 Number.isFinite(latitude) &&
@@ -339,11 +235,6 @@ function getMappableMissions() {
 
 }
 
-
-/* =========================================================
-   FIND MISSION
-========================================================= */
-
 function getMissionById(id) {
 
     return getAllMissions().find(
@@ -353,11 +244,6 @@ function getMissionById(id) {
     );
 
 }
-
-
-/* =========================================================
-   MAP DIMENSIONS
-========================================================= */
 
 function initializeMapDimensions() {
 
@@ -372,11 +258,6 @@ function initializeMapDimensions() {
         `${MAP_HEIGHT}px`;
 
 }
-
-
-/* =========================================================
-   FIT ZOOM
-========================================================= */
 
 function calculateFitZoom() {
 
@@ -406,24 +287,14 @@ function calculateFitZoom() {
 
 }
 
-
-/* =========================================================
-   RESET MAP
-========================================================= */
-
 function resetMapPosition() {
 
     const fitZoom =
         calculateFitZoom();
 
-    /*
-     * 140% minimum zoom.
-     */
-
     state.minZoom =
         Math.max(
-            fitZoom *
-            MIN_ZOOM_MULTIPLIER,
+            fitZoom * MIN_ZOOM_MULTIPLIER,
             0.01
         );
 
@@ -436,11 +307,9 @@ function resetMapPosition() {
     state.zoom =
         state.minZoom;
 
-    state.posX =
-        0;
+    state.posX = 0;
 
-    state.posY =
-        0;
+    state.posY = 0;
 
     clampMapPosition();
 
@@ -451,11 +320,6 @@ function resetMapPosition() {
     drawMiniMap();
 
 }
-
-
-/* =========================================================
-   APPLY TRANSFORM
-========================================================= */
 
 function applyMapTransform() {
 
@@ -471,11 +335,6 @@ function applyMapTransform() {
         ) scale(${state.zoom})`;
 
 }
-
-
-/* =========================================================
-   CLAMP
-========================================================= */
 
 function clampMapPosition() {
 
@@ -498,15 +357,13 @@ function clampMapPosition() {
     const maxX =
         Math.max(
             0,
-            (scaledWidth -
-                viewportWidth) / 2
+            (scaledWidth - viewportWidth) / 2
         );
 
     const maxY =
         Math.max(
             0,
-            (scaledHeight -
-                viewportHeight) / 2
+            (scaledHeight - viewportHeight) / 2
         );
 
     state.posX =
@@ -529,11 +386,6 @@ function clampMapPosition() {
 
 }
 
-
-/* =========================================================
-   ZOOM DISPLAY
-========================================================= */
-
 function updateZoomDisplay() {
 
     if (!zoomValue) {
@@ -542,21 +394,13 @@ function updateZoomDisplay() {
 
     const percentage =
         Math.round(
-            (
-                state.zoom /
-                state.minZoom
-            ) * 140
+            (state.zoom / state.minZoom) * 140
         );
 
     zoomValue.textContent =
         `${percentage}%`;
 
 }
-
-
-/* =========================================================
-   ZOOM AT POINT
-========================================================= */
 
 function zoomAtPoint(
     clientX,
@@ -594,10 +438,8 @@ function zoomAtPoint(
         );
 
     if (
-        Math.abs(
-            newZoom -
-            oldZoom
-        ) < 0.00001
+        Math.abs(newZoom - oldZoom) <
+        0.00001
     ) {
 
         return;
@@ -605,22 +447,15 @@ function zoomAtPoint(
     }
 
     const scale =
-        newZoom /
-        oldZoom;
+        newZoom / oldZoom;
 
     state.posX =
         pointerX -
-        (
-            pointerX -
-            state.posX
-        ) * scale;
+        (pointerX - state.posX) * scale;
 
     state.posY =
         pointerY -
-        (
-            pointerY -
-            state.posY
-        ) * scale;
+        (pointerY - state.posY) * scale;
 
     state.zoom =
         newZoom;
@@ -635,11 +470,6 @@ function zoomAtPoint(
 
 }
 
-
-/* =========================================================
-   WHEEL
-========================================================= */
-
 function handleWheel(event) {
 
     event.preventDefault();
@@ -653,11 +483,6 @@ function handleWheel(event) {
     );
 
 }
-
-
-/* =========================================================
-   DRAG START
-========================================================= */
 
 function handlePointerDown(event) {
 
@@ -696,11 +521,6 @@ function handlePointerDown(event) {
 
 }
 
-
-/* =========================================================
-   DRAG MOVE
-========================================================= */
-
 function handlePointerMove(event) {
 
     if (!state.dragging) {
@@ -729,11 +549,6 @@ function handlePointerMove(event) {
 
 }
 
-
-/* =========================================================
-   DRAG END
-========================================================= */
-
 function handlePointerUp(event) {
 
     state.dragging =
@@ -749,18 +564,12 @@ function handlePointerUp(event) {
 
 }
 
-
-/* =========================================================
-   CATEGORY
-========================================================= */
-
 function getMarkerCategory(mission) {
 
     const status =
         String(
             mission.status || ""
-        )
-        .toLowerCase();
+        ).toLowerCase();
 
     if (
         status.includes("impact")
@@ -782,32 +591,52 @@ function getMarkerCategory(mission) {
 
 }
 
-
-/* =========================================================
-   NAME
-========================================================= */
-
 function getMissionName(mission) {
 
-    return (
+    const name = (
         mission.name ||
         mission.mission ||
         "NASA Hardware"
     );
 
+    return window.ProjectLanguage?.translate(name) || name;
+
 }
 
+function getMissionText(mission, field) {
 
-/* =========================================================
-   CREATE MARKER
-========================================================= */
+    if (
+        mission &&
+        window.ProjectLanguage?.isBangla &&
+        window.moonMissionTranslations?.[mission.id]?.[field]
+    ) {
+
+        return window.moonMissionTranslations[mission.id][field];
+
+    }
+
+    if (
+        mission &&
+        window.ProjectLanguage?.isBangla &&
+        field === "name"
+    ) {
+
+        return window.ProjectLanguage.translate(
+            mission.name ||
+            mission.mission ||
+            "NASA Hardware"
+        );
+
+    }
+
+    return mission[field];
+
+}
 
 function createMarker(mission) {
 
     const marker =
-        document.createElement(
-            "button"
-        );
+        document.createElement("button");
 
     marker.type =
         "button";
@@ -816,9 +645,7 @@ function createMarker(mission) {
         "hardware-marker";
 
     marker.classList.add(
-        getMarkerCategory(
-            mission
-        )
+        getMarkerCategory(mission)
     );
 
     marker.dataset.missionId =
@@ -826,37 +653,20 @@ function createMarker(mission) {
 
     marker.setAttribute(
         "aria-label",
-        `Investigate ${getMissionName(mission)}`
+        `${window.ProjectLanguage?.isBangla ? "অনুসন্ধান করুন" : "Investigate"} ${getMissionName(mission)}`
     );
 
-
-    /*
-     * Equirectangular mapping.
-     */
-
     const latitude =
-        Number(
-            mission.latitude
-        );
+        Number(mission.latitude);
 
     const longitude =
-        Number(
-            mission.longitude
-        );
-
+        Number(mission.longitude);
 
     const x =
-        (
-            (longitude + 180) /
-            360
-        ) * 100;
+        ((longitude + 180) / 360) * 100;
 
     const y =
-        (
-            (90 - latitude) /
-            180
-        ) * 100;
-
+        ((90 - latitude) / 180) * 100;
 
     marker.style.left =
         `${x}%`;
@@ -864,50 +674,24 @@ function createMarker(mission) {
     marker.style.top =
         `${y}%`;
 
-
-    /*
-     * DOT
-     */
-
     const dot =
-        document.createElement(
-            "span"
-        );
+        document.createElement("span");
 
     dot.className =
         "hardware-dot";
 
-
-    /*
-     * LABEL
-     */
-
     const label =
-        document.createElement(
-            "span"
-        );
+        document.createElement("span");
 
     label.className =
         "hardware-label";
 
     label.textContent =
-        getMissionName(
-            mission
-        );
+        getMissionName(mission);
 
+    marker.appendChild(dot);
 
-    marker.appendChild(
-        dot
-    );
-
-    marker.appendChild(
-        label
-    );
-
-
-    /*
-     * OPEN STORY
-     */
+    marker.appendChild(label);
 
     marker.addEventListener(
         "click",
@@ -915,22 +699,14 @@ function createMarker(mission) {
 
             event.stopPropagation();
 
-            openMissionStory(
-                mission
-            );
+            openMissionStory(mission);
 
         }
     );
 
-
     return marker;
 
 }
-
-
-/* =========================================================
-   RENDER MARKERS
-========================================================= */
 
 function renderMarkers() {
 
@@ -944,8 +720,7 @@ function renderMarkers() {
 
     }
 
-    hardwareLayer.innerHTML =
-        "";
+    hardwareLayer.innerHTML = "";
 
     const missions =
         getMappableMissions();
@@ -954,9 +729,7 @@ function renderMarkers() {
         mission => {
 
             hardwareLayer.appendChild(
-                createMarker(
-                    mission
-                )
+                createMarker(mission)
             );
 
         }
@@ -972,11 +745,6 @@ function renderMarkers() {
     );
 
 }
-
-
-/* =========================================================
-   MARKER VISIBILITY
-========================================================= */
 
 function updateMarkerVisibility() {
 
@@ -1002,12 +770,8 @@ function updateMarkerVisibility() {
             }
 
             const visible =
-                Number(
-                    mission.year
-                ) <=
-                Number(
-                    state.timelineYear
-                );
+                Number(mission.year) <=
+                Number(state.timelineYear);
 
             marker.classList.toggle(
                 "timeline-hidden",
@@ -1019,11 +783,6 @@ function updateMarkerVisibility() {
 
 }
 
-
-/* =========================================================
-   MAP STATUS
-========================================================= */
-
 function updateMapStatus() {
 
     if (!mapStatus) {
@@ -1034,24 +793,17 @@ function updateMapStatus() {
         getMappableMissions()
             .filter(
                 mission =>
-                    Number(
-                        mission.year
-                    ) <=
-                    Number(
-                        state.timelineYear
-                    )
+                    Number(mission.year) <=
+                    Number(state.timelineYear)
             )
             .length;
 
     mapStatus.textContent =
-        `${count} hardware sites`;
+        window.ProjectLanguage?.isBangla
+            ? `${window.ProjectLanguage.formatNumber(count)}টি সরঞ্জাম স্থল`
+            : `${count} hardware sites`;
 
 }
-
-
-/* =========================================================
-   TIMELINE
-========================================================= */
 
 function renderTimeline() {
 
@@ -1064,9 +816,7 @@ function renderTimeline() {
             .filter(
                 mission =>
                     Number.isFinite(
-                        Number(
-                            mission.year
-                        )
+                        Number(mission.year)
                     )
             )
             .sort(
@@ -1075,33 +825,21 @@ function renderTimeline() {
                     Number(b.year)
             );
 
-
     if (!missions.length) {
-
         return;
-
     }
-
 
     const years =
         missions.map(
             mission =>
-                Number(
-                    mission.year
-                )
+                Number(mission.year)
         );
-
 
     const minYear =
-        Math.min(
-            ...years
-        );
+        Math.min(...years);
 
     const maxYear =
-        Math.max(
-            ...years
-        );
-
+        Math.max(...years);
 
     timelineRange.min =
         String(minYear);
@@ -1112,35 +850,28 @@ function renderTimeline() {
     timelineRange.value =
         String(maxYear);
 
-
     state.timelineYear =
         maxYear;
-
 
     if (timelineYear) {
 
         timelineYear.textContent =
-            String(maxYear);
+            window.ProjectLanguage?.formatNumber(maxYear) || String(maxYear);
 
     }
-
 
     if (!timelineEvents) {
         return;
     }
 
-
     timelineEvents.innerHTML =
         "";
-
 
     missions.forEach(
         mission => {
 
             const year =
-                Number(
-                    mission.year
-                );
+                Number(mission.year);
 
             const percentage =
                 (
@@ -1151,11 +882,8 @@ function renderTimeline() {
                     )
                 ) * 100;
 
-
             const event =
-                document.createElement(
-                    "button"
-                );
+                document.createElement("button");
 
             event.type =
                 "button";
@@ -1174,7 +902,6 @@ function renderTimeline() {
                 `${getMissionName(mission)}, ${year}`
             );
 
-
             event.addEventListener(
                 "click",
                 () => {
@@ -1187,23 +914,14 @@ function renderTimeline() {
                 }
             );
 
-
-            timelineEvents.appendChild(
-                event
-            );
+            timelineEvents.appendChild(event);
 
         }
     );
 
-
     updateTimeline();
 
 }
-
-
-/* =========================================================
-   UPDATE TIMELINE
-========================================================= */
 
 function updateTimeline() {
 
@@ -1212,24 +930,16 @@ function updateTimeline() {
     }
 
     const min =
-        Number(
-            timelineRange.min
-        );
+        Number(timelineRange.min);
 
     const max =
-        Number(
-            timelineRange.max
-        );
+        Number(timelineRange.max);
 
     const year =
-        Number(
-            timelineRange.value
-        );
-
+        Number(timelineRange.value);
 
     state.timelineYear =
         year;
-
 
     const percentage =
         (
@@ -1240,14 +950,12 @@ function updateTimeline() {
             )
         ) * 100;
 
-
     if (timelineYear) {
 
         timelineYear.textContent =
-            String(year);
+            window.ProjectLanguage?.formatNumber(year) || String(year);
 
     }
-
 
     if (timelineProgress) {
 
@@ -1256,14 +964,12 @@ function updateTimeline() {
 
     }
 
-
     if (timelineCursor) {
 
         timelineCursor.style.left =
             `${percentage}%`;
 
     }
-
 
     updateMarkerVisibility();
 
@@ -1272,11 +978,6 @@ function updateTimeline() {
     drawMiniMap();
 
 }
-
-
-/* =========================================================
-   TIMELINE SETUP
-========================================================= */
 
 function setupTimeline() {
 
@@ -1289,7 +990,6 @@ function setupTimeline() {
 
     }
 
-
     if (timelinePlay) {
 
         timelinePlay.addEventListener(
@@ -1301,16 +1001,9 @@ function setupTimeline() {
 
 }
 
-
-/* =========================================================
-   TIMELINE PLAY
-========================================================= */
-
 function toggleTimelinePlayback() {
 
-    if (
-        state.playing
-    ) {
+    if (state.playing) {
 
         stopTimelinePlayback();
 
@@ -1321,11 +1014,6 @@ function toggleTimelinePlayback() {
     }
 
 }
-
-
-/* =========================================================
-   START PLAYBACK
-========================================================= */
 
 function startTimelinePlayback() {
 
@@ -1343,7 +1031,6 @@ function startTimelinePlayback() {
 
     }
 
-
     state.playTimer =
         setInterval(
             () => {
@@ -1360,17 +1047,13 @@ function startTimelinePlayback() {
 
                 year++;
 
-
-                if (
-                    year > max
-                ) {
+                if (year > max) {
 
                     stopTimelinePlayback();
 
                     return;
 
                 }
-
 
                 timelineRange.value =
                     String(year);
@@ -1382,11 +1065,6 @@ function startTimelinePlayback() {
         );
 
 }
-
-
-/* =========================================================
-   STOP PLAYBACK
-========================================================= */
 
 function stopTimelinePlayback() {
 
@@ -1413,11 +1091,6 @@ function stopTimelinePlayback() {
 
 }
 
-
-/* =========================================================
-   MINI MAP
-========================================================= */
-
 function drawMiniMap() {
 
     if (!miniMapCanvas) {
@@ -1425,14 +1098,11 @@ function drawMiniMap() {
     }
 
     const ctx =
-        miniMapCanvas.getContext(
-            "2d"
-        );
+        miniMapCanvas.getContext("2d");
 
     if (!ctx) {
         return;
     }
-
 
     const width =
         miniMapCanvas.width;
@@ -1440,18 +1110,12 @@ function drawMiniMap() {
     const height =
         miniMapCanvas.height;
 
-
     ctx.clearRect(
         0,
         0,
         width,
         height
     );
-
-
-    /*
-     * Background.
-     */
 
     ctx.fillStyle =
         "#05070d";
@@ -1462,11 +1126,6 @@ function drawMiniMap() {
         width,
         height
     );
-
-
-    /*
-     * Moon image.
-     */
 
     if (
         moonSurfaceImage &&
@@ -1501,67 +1160,47 @@ function drawMiniMap() {
 
     }
 
-
-    /*
-     * Hardware.
-     */
-
     getMappableMissions()
         .forEach(
             mission => {
 
                 if (
-                    Number(
-                        mission.year
-                    ) >
-                    Number(
-                        state.timelineYear
-                    )
+                    Number(mission.year) >
+                    Number(state.timelineYear)
                 ) {
 
                     return;
 
                 }
 
-
                 const x =
                     (
                         (
-                            Number(
-                                mission.longitude
-                            ) + 180
+                            Number(mission.longitude) +
+                            180
                         ) / 360
                     ) * width;
-
 
                 const y =
                     (
                         (
                             90 -
-                            Number(
-                                mission.latitude
-                            )
+                            Number(mission.latitude)
                         ) / 180
                     ) * height;
 
-
                 const category =
-                    getMarkerCategory(
-                        mission
-                    );
-
+                    getMarkerCategory(mission);
 
                 if (
-                    category ===
-                    "impacted"
+                    category === "impacted"
                 ) {
 
                     ctx.fillStyle =
                         "#ff4545";
 
                 } else if (
-                    category ===
-                    "orbital"
+                    category === "orbital"
                 ) {
 
                     ctx.fillStyle =
@@ -1573,7 +1212,6 @@ function drawMiniMap() {
                         "#39ff88";
 
                 }
-
 
                 ctx.beginPath();
 
@@ -1590,14 +1228,8 @@ function drawMiniMap() {
             }
         );
 
-
-    /*
-     * Viewport.
-     */
-
     const viewport =
         calculateMiniViewport();
-
 
     if (viewport) {
 
@@ -1618,11 +1250,6 @@ function drawMiniMap() {
 
 }
 
-
-/* =========================================================
-   MINI VIEWPORT
-========================================================= */
-
 function calculateMiniViewport() {
 
     if (!mapViewport) {
@@ -1635,26 +1262,19 @@ function calculateMiniViewport() {
     const viewportHeight =
         mapViewport.clientHeight;
 
-
     const visibleWorldWidth =
-        viewportWidth /
-        state.zoom;
+        viewportWidth / state.zoom;
 
     const visibleWorldHeight =
-        viewportHeight /
-        state.zoom;
-
+        viewportHeight / state.zoom;
 
     const centerX =
         MAP_WIDTH / 2 -
-        state.posX /
-        state.zoom;
+        state.posX / state.zoom;
 
     const centerY =
         MAP_HEIGHT / 2 -
-        state.posY /
-        state.zoom;
-
+        state.posY / state.zoom;
 
     return {
 
@@ -1688,11 +1308,6 @@ function calculateMiniViewport() {
 
 }
 
-
-/* =========================================================
-   MINI MAP CLICK
-========================================================= */
-
 function handleMiniMapClick(event) {
 
     if (!miniMapCanvas) {
@@ -1702,22 +1317,17 @@ function handleMiniMapClick(event) {
     const rect =
         miniMapCanvas.getBoundingClientRect();
 
-
     const x =
         (
             event.clientX -
             rect.left
-        ) /
-        rect.width;
-
+        ) / rect.width;
 
     const y =
         (
             event.clientY -
             rect.top
-        ) /
-        rect.height;
-
+        ) / rect.height;
 
     const worldX =
         x * MAP_WIDTH;
@@ -1725,20 +1335,17 @@ function handleMiniMapClick(event) {
     const worldY =
         y * MAP_HEIGHT;
 
-
     state.posX =
         (
             MAP_WIDTH / 2 -
             worldX
         ) * state.zoom;
 
-
     state.posY =
         (
             MAP_HEIGHT / 2 -
             worldY
         ) * state.zoom;
-
 
     clampMapPosition();
 
@@ -1748,17 +1355,11 @@ function handleMiniMapClick(event) {
 
 }
 
-
-/* =========================================================
-   MAP SETUP
-========================================================= */
-
 function setupMapInteractions() {
 
     if (!mapViewport) {
         return;
     }
-
 
     mapViewport.addEventListener(
         "wheel",
@@ -1768,30 +1369,25 @@ function setupMapInteractions() {
         }
     );
 
-
     mapViewport.addEventListener(
         "pointerdown",
         handlePointerDown
     );
-
 
     mapViewport.addEventListener(
         "pointermove",
         handlePointerMove
     );
 
-
     mapViewport.addEventListener(
         "pointerup",
         handlePointerUp
     );
 
-
     mapViewport.addEventListener(
         "pointercancel",
         handlePointerUp
     );
-
 
     if (miniMapCanvas) {
 
@@ -1801,7 +1397,6 @@ function setupMapInteractions() {
         );
 
     }
-
 
     if (zoomInButton) {
 
@@ -1826,7 +1421,6 @@ function setupMapInteractions() {
         );
 
     }
-
 
     if (zoomOutButton) {
 
@@ -1854,11 +1448,6 @@ function setupMapInteractions() {
 
 }
 
-
-/* =========================================================
-   HOME
-========================================================= */
-
 function setupHomeButton() {
 
     if (!homeButton) {
@@ -1872,21 +1461,149 @@ function setupHomeButton() {
 
 }
 
-
-/* =========================================================
-   STORY SLIDES
-========================================================= */
-
 function getStorySlides(mission) {
 
-    /*
-     * Preferred format.
-     */
+    const missionStory =
+        getMissionText(mission, "story");
 
     if (
-        Array.isArray(
-            mission.slides
-        ) &&
+        mission &&
+        typeof missionStory === "string" &&
+        missionStory.trim()
+    ) {
+
+        const paragraphs =
+            missionStory
+                .trim()
+                .split(/\n\s*\n+/)
+                .map(
+                    paragraph =>
+                        paragraph
+                            .trim()
+                            .replace(/\s+/g, " ")
+                )
+                .filter(Boolean);
+
+        const storySlides = [];
+
+        paragraphs.forEach(
+            paragraph => {
+
+                let textBuffer = "";
+                const sentences =
+                    paragraph.split(
+                        /(?<=[.!?])\s+/
+                    );
+
+                sentences.forEach(
+                    sentence => {
+
+                        if (sentence.length > 200) {
+
+                            if (textBuffer) {
+                                storySlides.push(textBuffer);
+                                textBuffer = "";
+                            }
+
+                            let sentenceBuffer = "";
+
+                            sentence
+                                .split(/\s+/)
+                                .forEach(
+                                    word => {
+
+                                        const candidate =
+                                            sentenceBuffer
+                                                ? `${sentenceBuffer} ${word}`
+                                                : word;
+
+                                        if (
+                                            candidate.length > 200 &&
+                                            sentenceBuffer
+                                        ) {
+
+                                            storySlides.push(
+                                                sentenceBuffer
+                                            );
+
+                                            sentenceBuffer = word;
+
+                                        } else {
+
+                                            sentenceBuffer =
+                                                candidate;
+
+                                        }
+
+                                    }
+                                );
+
+                            if (sentenceBuffer) {
+                                storySlides.push(sentenceBuffer);
+                            }
+
+                            return;
+
+                        }
+
+                        const candidate =
+                            textBuffer
+                                ? `${textBuffer} ${sentence}`
+                                : sentence;
+
+                        if (
+                            candidate.length > 200 &&
+                            textBuffer
+                        ) {
+
+                            storySlides.push(textBuffer);
+                            textBuffer = sentence;
+
+                        } else {
+
+                            textBuffer = candidate;
+
+                        }
+
+                    }
+                );
+
+                if (textBuffer) {
+                    storySlides.push(textBuffer);
+                }
+
+            }
+        );
+
+        return [
+            {
+                text:
+                    getMissionText(mission, "greeting") ||
+                    (window.ProjectLanguage?.isBangla ? "নাসা সংরক্ষণাগার" : "NASA ARCHIVE"),
+                science: [],
+                images:
+                    getSlideImages(
+                        mission,
+                        null
+                    )
+            },
+            ...storySlides.map(
+                text => ({
+                    text,
+                    science: [],
+                    images:
+                        getSlideImages(
+                            mission,
+                            null
+                        )
+                })
+            )
+        ];
+
+    }
+
+    if (
+        Array.isArray(mission.slides) &&
         mission.slides.length
     ) {
 
@@ -1894,21 +1611,11 @@ function getStorySlides(mission) {
 
     }
 
-
-    /*
-     * Fallback.
-     */
-
     return createFallbackSlides(
         mission
     );
 
 }
-
-
-/* =========================================================
-   FALLBACK SLIDES
-========================================================= */
 
 function createFallbackSlides(mission) {
 
@@ -1917,7 +1624,6 @@ function createFallbackSlides(mission) {
             mission.story || ""
         ).trim();
 
-
     const images =
         mission.images ||
         (
@@ -1925,7 +1631,6 @@ function createFallbackSlides(mission) {
                 ? [mission.image]
                 : []
         );
-
 
     if (!story) {
 
@@ -1936,9 +1641,7 @@ function createFallbackSlides(mission) {
                     "NASA ARCHIVE",
 
                 title:
-                    getMissionName(
-                        mission
-                    ),
+                    getMissionName(mission),
 
                 text:
                     "Mission archive record.",
@@ -1950,7 +1653,6 @@ function createFallbackSlides(mission) {
 
     }
 
-
     const paragraphs =
         story
             .split(/\n+/)
@@ -1960,24 +1662,10 @@ function createFallbackSlides(mission) {
             )
             .filter(Boolean);
 
-
-    /*
-     * Use paragraphs if available.
-     */
-
-    if (
-        paragraphs.length >= 3
-    ) {
-
-        const max =
-            5;
+    if (paragraphs.length >= 3) {
 
         const selected =
-            paragraphs.slice(
-                0,
-                max
-            );
-
+            paragraphs.slice(0, 5);
 
         return selected.map(
             (text, index) => {
@@ -1994,9 +1682,7 @@ function createFallbackSlides(mission) {
 
                     title:
                         index === 0
-                            ? getMissionName(
-                                mission
-                            )
+                            ? getMissionName(mission)
                             : `${getMissionName(mission)} — ${index + 1}`,
 
                     text,
@@ -2010,21 +1696,14 @@ function createFallbackSlides(mission) {
 
     }
 
-
-    /*
-     * Sentence fallback.
-     */
-
     const sentences =
         story.split(
             /(?<=[.!?])\s+/
         );
 
-
     const chunks = [];
 
     let buffer = "";
-
 
     sentences.forEach(
         sentence => {
@@ -2036,7 +1715,6 @@ function createFallbackSlides(mission) {
                         : ""
                 ) +
                 sentence;
-
 
             if (
                 buffer.length >= 330
@@ -2054,7 +1732,6 @@ function createFallbackSlides(mission) {
         }
     );
 
-
     if (buffer) {
 
         chunks.push(
@@ -2062,7 +1739,6 @@ function createFallbackSlides(mission) {
         );
 
     }
-
 
     return chunks
         .slice(0, 5)
@@ -2081,9 +1757,7 @@ function createFallbackSlides(mission) {
 
                     title:
                         index === 0
-                            ? getMissionName(
-                                mission
-                            )
+                            ? getMissionName(mission)
                             : `${getMissionName(mission)} — ${index + 1}`,
 
                     text,
@@ -2097,11 +1771,6 @@ function createFallbackSlides(mission) {
 
 }
 
-
-/* =========================================================
-   SLIDE IMAGES
-========================================================= */
-
 function getSlideImages(
     mission,
     slide
@@ -2109,16 +1778,13 @@ function getSlideImages(
 
     if (
         slide &&
-        Array.isArray(
-            slide.images
-        ) &&
+        Array.isArray(slide.images) &&
         slide.images.length
     ) {
 
         return slide.images;
 
     }
-
 
     if (
         slide &&
@@ -2131,19 +1797,15 @@ function getSlideImages(
 
     }
 
-
     if (
         mission &&
-        Array.isArray(
-            mission.images
-        ) &&
+        Array.isArray(mission.images) &&
         mission.images.length
     ) {
 
         return mission.images;
 
     }
-
 
     if (
         mission &&
@@ -2156,22 +1818,15 @@ function getSlideImages(
 
     }
 
-
     return [];
 
 }
-
-
-/* =========================================================
-   STORY CONTROLS
-========================================================= */
 
 function createStoryControls() {
 
     if (!storyPanel) {
         return;
     }
-
 
     if (
         document.getElementById(
@@ -2183,32 +1838,21 @@ function createStoryControls() {
 
     }
 
-
     const controls =
-        document.createElement(
-            "div"
-        );
-
+        document.createElement("div");
 
     controls.id =
         "missionStoryControls";
 
-
     controls.innerHTML = `
-
         <button
-            id="missionStoryBack"
+            id="missionStoryPrevious"
             class="mission-story-arrow"
             type="button"
             aria-label="Previous story slide"
         >
             ←
         </button>
-
-        <div
-            id="missionStoryProgress"
-            class="mission-story-progress"
-        ></div>
 
         <button
             id="missionStoryNext"
@@ -2221,22 +1865,19 @@ function createStoryControls() {
 
     `;
 
-
     storyPanel.appendChild(
         controls
     );
 
-
     document
         .getElementById(
-            "missionStoryBack"
+            "missionStoryPrevious"
         )
         ?.addEventListener(
             "click",
             () =>
                 changeMissionSlide(-1)
         );
-
 
     document
         .getElementById(
@@ -2250,11 +1891,6 @@ function createStoryControls() {
 
 }
 
-
-/* =========================================================
-   IMAGE INFORMATION
-========================================================= */
-
 function createImageInfo() {
 
     const imageWrap =
@@ -2262,11 +1898,9 @@ function createImageInfo() {
             ".story-image-wrap"
         );
 
-
     if (!imageWrap) {
         return;
     }
-
 
     if (
         document.getElementById(
@@ -2278,16 +1912,11 @@ function createImageInfo() {
 
     }
 
-
     const info =
-        document.createElement(
-            "div"
-        );
-
+        document.createElement("div");
 
     info.id =
         "missionImageInfo";
-
 
     info.innerHTML = `
 
@@ -2301,17 +1930,11 @@ function createImageInfo() {
 
     `;
 
-
     imageWrap.appendChild(
         info
     );
 
 }
-
-
-/* =========================================================
-   UPDATE IMAGE
-========================================================= */
 
 function updateStoryImage() {
 
@@ -2324,18 +1947,13 @@ function updateStoryImage() {
 
     }
 
-
     const slides =
         getStorySlides(
             currentMission
         );
 
-
     const slide =
-        slides[
-            currentSlide
-        ];
-
+        slides[currentSlide];
 
     const images =
         getSlideImages(
@@ -2343,6 +1961,17 @@ function updateStoryImage() {
             slide
         );
 
+    const counter =
+        document.getElementById(
+            "missionImageCounter"
+        );
+
+    if (counter) {
+
+        counter.textContent =
+            `${window.ProjectLanguage?.formatNumber(currentSlide + 1) || currentSlide + 1} / ${window.ProjectLanguage?.formatNumber(slides.length) || slides.length}`;
+
+    }
 
     if (!images.length) {
 
@@ -2354,7 +1983,6 @@ function updateStoryImage() {
 
     }
 
-
     if (
         currentImage >=
         images.length
@@ -2365,52 +1993,25 @@ function updateStoryImage() {
 
     }
 
-
     storyImage.src =
-        images[
-            currentImage
-        ];
-
+        images[currentImage];
 
     storyImage.alt =
         `${getMissionName(currentMission)} NASA archive image`;
-
-
-    const counter =
-        document.getElementById(
-            "missionImageCounter"
-        );
-
-
-    if (counter) {
-
-        counter.textContent =
-            `${currentImage + 1} / ${images.length}`;
-
-    }
-
 
     const title =
         document.getElementById(
             "missionImageTitle"
         );
 
-
     if (title) {
 
         title.textContent =
-            getMissionName(
-                currentMission
-            );
+            getMissionName(currentMission);
 
     }
 
 }
-
-
-/* =========================================================
-   CHANGE IMAGE
-========================================================= */
 
 function changeMissionImage(
     direction
@@ -2420,25 +2021,19 @@ function changeMissionImage(
         return;
     }
 
-
     const slides =
         getStorySlides(
             currentMission
         );
 
-
     const slide =
-        slides[
-            currentSlide
-        ];
-
+        slides[currentSlide];
 
     const images =
         getSlideImages(
             currentMission,
             slide
         );
-
 
     if (
         images.length <= 1
@@ -2448,10 +2043,8 @@ function changeMissionImage(
 
     }
 
-
     currentImage +=
         direction;
-
 
     if (
         currentImage < 0
@@ -2462,7 +2055,6 @@ function changeMissionImage(
 
     }
 
-
     if (
         currentImage >=
         images.length
@@ -2473,17 +2065,11 @@ function changeMissionImage(
 
     }
 
-
     updateStoryImage();
 
     restartImageTimer();
 
 }
-
-
-/* =========================================================
-   IMAGE TIMER
-========================================================= */
 
 function stopImageTimer() {
 
@@ -2500,39 +2086,27 @@ function stopImageTimer() {
 
 }
 
-
-/* =========================================================
-   START IMAGE TIMER
-========================================================= */
-
 function restartImageTimer() {
 
     stopImageTimer();
 
-
     if (!currentMission) {
         return;
     }
-
 
     const slides =
         getStorySlides(
             currentMission
         );
 
-
     const slide =
-        slides[
-            currentSlide
-        ];
-
+        slides[currentSlide];
 
     const images =
         getSlideImages(
             currentMission,
             slide
         );
-
 
     if (
         images.length <= 1
@@ -2542,14 +2116,11 @@ function restartImageTimer() {
 
     }
 
-
     imageTimer =
         setInterval(
             () => {
 
-                changeMissionImage(
-                    1
-                );
+                changeMissionImage(1);
 
             },
             IMAGE_ROTATION_TIME
@@ -2557,78 +2128,11 @@ function restartImageTimer() {
 
 }
 
-
-/* =========================================================
-   UPDATE STORY PROGRESS
-========================================================= */
-
-function updateStoryProgress() {
-
-    const progress =
-        document.getElementById(
-            "missionStoryProgress"
-        );
-
-
-    if (!progress) {
-        return;
-    }
-
-
-    const slides =
-        getStorySlides(
-            currentMission
-        );
-
-
-    progress.innerHTML =
-        "";
-
-
-    slides.forEach(
-        (_, index) => {
-
-            const dot =
-                document.createElement(
-                    "span"
-                );
-
-
-            dot.className =
-                "mission-story-progress-dot";
-
-
-            if (
-                index ===
-                currentSlide
-            ) {
-
-                dot.classList.add(
-                    "active"
-                );
-
-            }
-
-
-            progress.appendChild(
-                dot
-            );
-
-        }
-    );
-
-}
-
-
-/* =========================================================
-   UPDATE STORY ARROWS
-========================================================= */
-
 function updateStoryArrows() {
 
-    const back =
+    const previous =
         document.getElementById(
-            "missionStoryBack"
+            "missionStoryPrevious"
         );
 
     const next =
@@ -2636,29 +2140,21 @@ function updateStoryArrows() {
             "missionStoryNext"
         );
 
-
-    if (
-        !currentMission
-    ) {
-
+    if (!currentMission) {
         return;
-
     }
-
 
     const slides =
         getStorySlides(
             currentMission
         );
 
+    if (previous) {
 
-    if (back) {
-
-        back.disabled =
-            currentSlide <= 0;
+        previous.disabled =
+            currentSlide === 0;
 
     }
-
 
     if (next) {
 
@@ -2666,17 +2162,10 @@ function updateStoryArrows() {
             currentSlide >=
             slides.length - 1;
 
-
-        next.textContent =
-            last
-                ? "×"
-                : "→";
-
-
         next.setAttribute(
             "aria-label",
             last
-                ? "Close mission story"
+                ? "Finish mission story"
                 : "Next story slide"
         );
 
@@ -2684,87 +2173,49 @@ function updateStoryArrows() {
 
 }
 
-
-/* =========================================================
-   UPDATE STORY
-========================================================= */
-
 function updateStoryContent() {
 
     if (!currentMission) {
         return;
     }
 
-
     const slides =
         getStorySlides(
             currentMission
         );
 
-
     const slide =
-        slides[
-            currentSlide
-        ];
-
+        slides[currentSlide];
 
     if (!slide) {
         return;
     }
 
-
-    /*
-     * Greeting
-     */
-
     if (storyGreeting) {
 
-        storyGreeting.textContent =
-            slide.kicker ||
-            slide.greeting ||
-            currentMission.greeting ||
-            "NASA ARCHIVE";
+        storyGreeting.textContent = "";
 
     }
-
-
-    /*
-     * Title
-     */
 
     if (storyTitle) {
 
         storyTitle.textContent =
-            slide.title ||
-            getMissionName(
-                currentMission
-            );
+            "";
+
+        storyTitle.style.display =
+            "none";
 
     }
-
-
-    /*
-     * Meta
-     */
 
     if (storyMeta) {
 
         storyMeta.textContent =
-            [
-                "NASA MISSION",
-                currentMission.year,
-                currentMission.status
-            ]
-                .filter(Boolean)
-                .join(" • ")
-                .toUpperCase();
+            "";
+
+        storyMeta.style.display =
+            "none";
 
     }
-
-
-    /*
-     * Story
-     */
 
     if (storyText) {
 
@@ -2775,16 +2226,15 @@ function updateStoryContent() {
 
     }
 
-
-    /*
-     * Scientific contribution
-     */
-
     if (storyScienceList) {
 
         storyScienceList.innerHTML =
             "";
 
+        const scienceSection =
+            storyScienceList.closest(
+                ".story-science"
+            );
 
         let science =
             slide.science ||
@@ -2792,6 +2242,14 @@ function updateStoryContent() {
             currentMission.majorResults ||
             [];
 
+        const translatedScience =
+            window.ProjectLanguage?.isBangla
+                ? window.moonMissionScienceBangla?.[currentMission.id]
+                : null;
+
+        if (translatedScience?.length) {
+            science = translatedScience;
+        }
 
         if (
             typeof science ===
@@ -2803,18 +2261,20 @@ function updateStoryContent() {
 
         }
 
-
         if (
-            Array.isArray(science)
+            Array.isArray(science) &&
+            science.length
         ) {
+
+            if (scienceSection) {
+                scienceSection.style.display = "block";
+            }
 
             science.forEach(
                 item => {
 
                     const li =
-                        document.createElement(
-                            "li"
-                        );
+                        document.createElement("li");
 
                     li.textContent =
                         item;
@@ -2826,14 +2286,13 @@ function updateStoryContent() {
                 }
             );
 
+        } else if (scienceSection) {
+
+            scienceSection.style.display = "none";
+
         }
 
     }
-
-
-    /*
-     * Coordinates
-     */
 
     if (storyLocation) {
 
@@ -2847,53 +2306,49 @@ function updateStoryContent() {
                 currentMission.longitude
             );
 
-
         if (
             Number.isFinite(lat) &&
             Number.isFinite(lon)
         ) {
 
             storyLocation.textContent =
-                `${lat.toFixed(4)}°, ${lon.toFixed(4)}°`;
+                `${window.ProjectLanguage?.formatNumber(lat.toFixed(4)) || lat.toFixed(4)}°, ${window.ProjectLanguage?.formatNumber(lon.toFixed(4)) || lon.toFixed(4)}°`;
 
         } else {
 
             storyLocation.textContent =
-                "Archive record — no lunar coordinates";
+                window.ProjectLanguage?.isBangla
+                    ? "সংরক্ষণাগারের নথি — চন্দ্র স্থানাঙ্ক নেই"
+                    : "Archive record — no lunar coordinates";
 
         }
 
     }
 
-
-    /*
-     * Status
-     */
-
     if (storyStatus) {
 
         storyStatus.textContent =
+            window.ProjectLanguage?.translate(currentMission.status || "ARCHIVE") ||
             currentMission.status ||
             "ARCHIVE";
 
     }
 
-
-    /*
-     * NASA source
-     */
-
     if (storySource) {
 
         if (
-            currentMission.source
+            currentMission.source &&
+            currentSlide === slides.length - 1
         ) {
 
             storySource.href =
                 currentMission.source;
 
+            storySource.textContent =
+                `${window.ProjectLanguage?.formatNumber(1) || 1}. ${currentMission.source}`;
+
             storySource.style.display =
-                "";
+                "inline-block";
 
         } else {
 
@@ -2904,19 +2359,11 @@ function updateStoryContent() {
 
     }
 
-
     updateStoryImage();
-
-    updateStoryProgress();
 
     updateStoryArrows();
 
 }
-
-
-/* =========================================================
-   VOICE
-========================================================= */
 
 function loadStoryVoices() {
 
@@ -2928,35 +2375,29 @@ function loadStoryVoices() {
 
     }
 
-
     storyVoices =
-        window.speechSynthesis
-            .getVoices();
-
+        window.speechSynthesis.getVoices();
 
     storyVoice =
-        storyVoices.find(
-            voice =>
-                voice.name
-                    .toLowerCase()
-                    .includes(
-                        "microsoft zira"
-                    )
-        ) ||
-        storyVoices.find(
-            voice =>
-                voice.lang ===
-                "en-US"
-        ) ||
-        storyVoices[0] ||
-        null;
+        window.ProjectLanguage?.isBangla
+            ? storyVoices.find(
+                voice =>
+                    voice.lang.toLowerCase().startsWith("bn")
+            ) || null
+            : storyVoices.find(
+                voice =>
+                    voice.name
+                        .toLowerCase()
+                        .includes("microsoft zira")
+            ) ||
+            storyVoices.find(
+                voice =>
+                    voice.lang === "en-US"
+            ) ||
+            storyVoices[0] ||
+            null;
 
 }
-
-
-/* =========================================================
-   STOP VOICE
-========================================================= */
 
 function stopStoryVoice() {
 
@@ -2970,14 +2411,10 @@ function stopStoryVoice() {
 
 }
 
-
-/* =========================================================
-   SPEAK CURRENT SLIDE
-========================================================= */
-
 function speakCurrentSlide() {
 
     if (
+        !STORY_VOICE_ENABLED ||
         !("speechSynthesis" in window)
     ) {
 
@@ -2985,71 +2422,57 @@ function speakCurrentSlide() {
 
     }
 
-
     if (!currentMission) {
         return;
     }
-
 
     const slides =
         getStorySlides(
             currentMission
         );
 
-
     const slide =
-        slides[
-            currentSlide
-        ];
-
+        slides[currentSlide];
 
     if (!slide) {
         return;
     }
 
-
     const text =
-        [
-            slide.kicker ||
-            currentMission.greeting ||
-            "",
-
-            slide.title ||
-            "",
-
+        String(
             slide.text ||
+            slide.story ||
             ""
-        ]
-            .filter(Boolean)
-            .join(". ")
-            .replace(
-                /\s+/g,
-                " "
-            )
+        )
+            .replace(/\s+/g, " ")
             .trim();
-
 
     if (!text) {
         return;
     }
 
-
     stopStoryVoice();
-
 
     const utterance =
         new SpeechSynthesisUtterance(
             text
         );
 
+    utterance.lang =
+        window.ProjectLanguage?.isBangla
+            ? "bn-BD"
+            : "en-US";
 
     if (storyVoice) {
 
         utterance.voice =
             storyVoice;
 
-    }
+        if (!window.ProjectLanguage?.isBangla) {
+            utterance.lang = storyVoice.lang;
+        }
 
+    }
 
     utterance.rate =
         0.88;
@@ -3063,18 +2486,14 @@ function speakCurrentSlide() {
     utterance.lang =
         "en-US";
 
-
     setTimeout(
         () => {
 
-            if (
-                currentMission
-            ) {
+            if (currentMission) {
 
-                window.speechSynthesis
-                    .speak(
-                        utterance
-                    );
+                window.speechSynthesis.speak(
+                    utterance
+                );
 
             }
 
@@ -3083,11 +2502,6 @@ function speakCurrentSlide() {
     );
 
 }
-
-
-/* =========================================================
-   OPEN STORY
-========================================================= */
 
 function openMissionStory(
     mission
@@ -3102,7 +2516,6 @@ function openMissionStory(
 
     }
 
-
     currentMission =
         mission;
 
@@ -3115,7 +2528,6 @@ function openMissionStory(
     storyAnimating =
         false;
 
-
     createStoryControls();
 
     createImageInfo();
@@ -3124,14 +2536,11 @@ function openMissionStory(
 
     stopImageTimer();
 
-
     updateStoryContent();
-
 
     storyOverlay.classList.remove(
         "hidden"
     );
-
 
     requestAnimationFrame(
         () => {
@@ -3143,11 +2552,9 @@ function openMissionStory(
         }
     );
 
-
     speakCurrentSlide();
 
     restartImageTimer();
-
 
     console.log(
         "Opened mission:",
@@ -3156,32 +2563,23 @@ function openMissionStory(
 
 }
 
-
-/* =========================================================
-   CLOSE STORY
-========================================================= */
-
 function closeMissionStory() {
 
     if (!storyOverlay) {
         return;
     }
 
-
     stopStoryVoice();
 
     stopImageTimer();
-
 
     storyOverlay.classList.add(
         "hidden"
     );
 
-
     storyPanel?.classList.remove(
         "active"
     );
-
 
     currentMission =
         null;
@@ -3193,11 +2591,6 @@ function closeMissionStory() {
         0;
 
 }
-
-
-/* =========================================================
-   CHANGE SLIDE
-========================================================= */
 
 function changeMissionSlide(
     direction
@@ -3212,21 +2605,14 @@ function changeMissionSlide(
 
     }
 
-
     const slides =
         getStorySlides(
             currentMission
         );
 
-
     const newIndex =
         currentSlide +
         direction;
-
-
-    /*
-     * Previous
-     */
 
     if (
         newIndex < 0
@@ -3235,11 +2621,6 @@ function changeMissionSlide(
         return;
 
     }
-
-
-    /*
-     * End of story
-     */
 
     if (
         newIndex >=
@@ -3252,20 +2633,16 @@ function changeMissionSlide(
 
     }
 
-
     storyAnimating =
         true;
-
 
     stopStoryVoice();
 
     stopImageTimer();
 
-
     storyPanel?.classList.add(
         "story-slide-exit"
     );
-
 
     setTimeout(
         () => {
@@ -3276,24 +2653,19 @@ function changeMissionSlide(
             currentImage =
                 0;
 
-
             updateStoryContent();
-
 
             storyPanel?.classList.remove(
                 "story-slide-exit"
             );
 
-
             storyPanel?.classList.add(
                 "story-slide-enter"
             );
 
-
             speakCurrentSlide();
 
             restartImageTimer();
-
 
             setTimeout(
                 () => {
@@ -3315,17 +2687,11 @@ function changeMissionSlide(
 
 }
 
-
-/* =========================================================
-   STORY TOUCH
-========================================================= */
-
 function setupStoryTouch() {
 
     if (!storyPanel) {
         return;
     }
-
 
     storyPanel.addEventListener(
         "touchstart",
@@ -3339,7 +2705,6 @@ function setupStoryTouch() {
 
             }
 
-
             touchStartX =
                 event.touches[0].clientX;
 
@@ -3351,7 +2716,6 @@ function setupStoryTouch() {
             passive: true
         }
     );
-
 
     storyPanel.addEventListener(
         "touchend",
@@ -3365,13 +2729,11 @@ function setupStoryTouch() {
 
             }
 
-
             const endX =
                 event.changedTouches[0].clientX;
 
             const endY =
                 event.changedTouches[0].clientY;
-
 
             const dx =
                 endX -
@@ -3381,7 +2743,6 @@ function setupStoryTouch() {
                 endY -
                 touchStartY;
 
-
             if (
                 Math.abs(dx) < 45
             ) {
@@ -3389,7 +2750,6 @@ function setupStoryTouch() {
                 return;
 
             }
-
 
             if (
                 Math.abs(dx) <
@@ -3400,20 +2760,15 @@ function setupStoryTouch() {
 
             }
 
-
             if (
                 dx < 0
             ) {
 
-                changeMissionSlide(
-                    1
-                );
+                changeMissionSlide(1);
 
             } else {
 
-                changeMissionSlide(
-                    -1
-                );
+                changeMissionSlide(-1);
 
             }
 
@@ -3425,21 +2780,13 @@ function setupStoryTouch() {
 
 }
 
-
-/* =========================================================
-   IMAGE TOUCH
-========================================================= */
-
 function setupImageTouch() {
 
     if (!storyImage) {
         return;
     }
 
-
-    let startX =
-        0;
-
+    let startX = 0;
 
     storyImage.addEventListener(
         "touchstart",
@@ -3460,7 +2807,6 @@ function setupImageTouch() {
         }
     );
 
-
     storyImage.addEventListener(
         "touchend",
         event => {
@@ -3473,15 +2819,12 @@ function setupImageTouch() {
 
             }
 
-
             const endX =
                 event.changedTouches[0].clientX;
-
 
             const dx =
                 endX -
                 startX;
-
 
             if (
                 Math.abs(dx) < 40
@@ -3490,7 +2833,6 @@ function setupImageTouch() {
                 return;
 
             }
-
 
             changeMissionImage(
                 dx < 0
@@ -3506,11 +2848,6 @@ function setupImageTouch() {
 
 }
 
-
-/* =========================================================
-   STORY SYSTEM
-========================================================= */
-
 function setupStorySystem() {
 
     createStoryControls();
@@ -3521,7 +2858,6 @@ function setupStorySystem() {
 
     setupImageTouch();
 
-
     if (storyClose) {
 
         storyClose.addEventListener(
@@ -3530,7 +2866,6 @@ function setupStorySystem() {
         );
 
     }
-
 
     if (storyOverlay) {
 
@@ -3552,7 +2887,6 @@ function setupStorySystem() {
 
     }
 
-
     document.addEventListener(
         "keydown",
         event => {
@@ -3568,7 +2902,6 @@ function setupStorySystem() {
 
             }
 
-
             if (
                 event.key ===
                 "ArrowRight"
@@ -3576,12 +2909,9 @@ function setupStorySystem() {
 
                 event.preventDefault();
 
-                changeMissionSlide(
-                    1
-                );
+                changeMissionSlide(1);
 
             }
-
 
             if (
                 event.key ===
@@ -3590,12 +2920,9 @@ function setupStorySystem() {
 
                 event.preventDefault();
 
-                changeMissionSlide(
-                    -1
-                );
+                changeMissionSlide(-1);
 
             }
-
 
             if (
                 event.key ===
@@ -3611,25 +2938,324 @@ function setupStorySystem() {
         }
     );
 
-
     if (
+        STORY_VOICE_ENABLED &&
         "speechSynthesis" in window
     ) {
 
         loadStoryVoices();
 
-        window.speechSynthesis
-            .onvoiceschanged =
+        window.speechSynthesis.onvoiceschanged =
             loadStoryVoices;
 
     }
 
+    window.addEventListener(
+        "languagechange",
+        () => {
+
+            loadStoryVoices();
+
+            if (currentMission) {
+                stopStoryVoice();
+                speakCurrentSlide();
+            }
+
+        }
+    );
+
 }
 
+function setupArchive() {
 
-/* =========================================================
-   RESIZE
-========================================================= */
+    archiveBtn =
+        document.getElementById(
+            "archiveBtn"
+        );
+
+    archivePanel =
+        document.getElementById(
+            "archivePanel"
+        );
+
+    closeArchive =
+        document.getElementById(
+            "closeArchive"
+        );
+
+    archiveMissions =
+        document.getElementById(
+            "archiveMissions"
+        );
+
+    if (!archiveBtn) {
+
+        console.warn(
+            "Archive button #archiveBtn not found."
+        );
+
+        return;
+
+    }
+
+    if (!archivePanel) {
+
+        console.warn(
+            "Archive panel #archivePanel not found."
+        );
+
+        return;
+
+    }
+
+    if (!archiveMissions) {
+
+        console.warn(
+            "Archive container #archiveMissions not found."
+        );
+
+        return;
+
+    }
+
+    function loadArchiveMissions() {
+
+        archiveMissions.innerHTML =
+            "";
+
+        const missions =
+            getAllMissions();
+
+        const archived =
+            missions.filter(
+                mission =>
+                    mission.archiveOnly === true
+            );
+
+        if (!archived.length) {
+
+            archiveMissions.innerHTML = `
+                <p class="archive-empty">
+                    ${window.ProjectLanguage?.isBangla
+                        ? "কোনো সংরক্ষিত অভিযান পাওয়া যায়নি।"
+                        : "No archived missions found."}
+                </p>
+            `;
+
+            return;
+
+        }
+
+        archived.forEach(
+            mission => {
+
+                const card =
+                    document.createElement(
+                        "button"
+                    );
+
+                card.type =
+                    "button";
+
+                card.className =
+                    "archive-mission";
+
+                const name =
+                    getMissionName(
+                        mission
+                    );
+
+                const date =
+                    mission.date ||
+                    mission.year ||
+                    "Unknown date";
+
+                const description =
+                    getMissionText(mission, "landingSite") ||
+                    getMissionText(mission, "description") ||
+                    getMissionText(mission, "story") ||
+                    (window.ProjectLanguage?.isBangla
+                        ? "নাসার সংরক্ষণাগারের নথি।"
+                        : "NASA archive record.");
+
+                const localizedDate =
+                    window.ProjectLanguage?.translate(String(date)) ||
+                    String(date);
+
+                const localizedStorySlides =
+                    getStorySlides(mission);
+
+                const localizedStoryText =
+                    localizedStorySlides
+                        .map(slide => slide.text || slide.story || "")
+                        .filter(Boolean)
+                        .join("\n\n");
+
+                const archiveSummary =
+                    window.ProjectLanguage?.isBangla &&
+                    !window.moonMissionTranslations?.[mission.id]?.landingSite
+                        ? localizedStoryText
+                        : description;
+
+                card.innerHTML = `
+
+                    <span class="archive-mission-name">
+                        ${escapeHTML(name)}
+                    </span>
+
+                    <span class="archive-mission-date">
+                        ${escapeHTML(localizedDate)}
+                    </span>
+
+                    <span class="archive-mission-description">
+                        ${escapeHTML(String(archiveSummary))}
+                    </span>
+
+                `;
+
+                card.addEventListener(
+                    "click",
+                    () => {
+
+                        console.log(
+                            "Archive mission selected:",
+                            name
+                        );
+
+                        /*
+                         * Close archive first.
+                         */
+
+                        archivePanel.classList.remove(
+                            "open"
+                        );
+
+                        /*
+                         * Open the existing
+                         * mission story viewer.
+                         */
+
+                        openMissionStory(
+                            mission
+                        );
+
+                    }
+                );
+
+                archiveMissions.appendChild(
+                    card
+                );
+
+            }
+        );
+
+    }
+
+    archiveBtn.addEventListener(
+        "click",
+        event => {
+
+            event.preventDefault();
+
+            event.stopPropagation();
+
+            console.log(
+                "Archive button clicked"
+            );
+
+            loadArchiveMissions();
+
+            archivePanel.classList.add(
+                "open"
+            );
+
+        }
+    );
+
+    if (closeArchive) {
+
+        closeArchive.addEventListener(
+            "click",
+            event => {
+
+                event.preventDefault();
+
+                event.stopPropagation();
+
+                archivePanel.classList.remove(
+                    "open"
+                );
+
+            }
+        );
+
+    }
+
+    archivePanel.addEventListener(
+        "click",
+        event => {
+
+            if (
+                event.target ===
+                archivePanel
+            ) {
+
+                archivePanel.classList.remove(
+                    "open"
+                );
+
+            }
+
+        }
+    );
+
+    document.addEventListener(
+        "keydown",
+        event => {
+
+            if (
+                event.key === "Escape" &&
+                archivePanel.classList.contains(
+                    "open"
+                )
+            ) {
+
+                archivePanel.classList.remove(
+                    "open"
+                );
+
+            }
+
+        }
+    );
+
+}
+
+function escapeHTML(value) {
+
+    return String(value)
+        .replace(
+            /&/g,
+            "&amp;"
+        )
+        .replace(
+            /</g,
+            "&lt;"
+        )
+        .replace(
+            />/g,
+            "&gt;"
+        )
+        .replace(
+            /"/g,
+            "&quot;"
+        )
+        .replace(
+            /'/g,
+            "&#039;"
+        );
+
+}
 
 function handleResize() {
 
@@ -3638,22 +3264,17 @@ function handleResize() {
 
     const ratio =
         oldMin > 0
-            ? state.zoom /
-              oldMin
+            ? state.zoom / oldMin
             : 1;
-
 
     const fit =
         calculateFitZoom();
 
-
     state.minZoom =
         Math.max(
-            fit *
-            MIN_ZOOM_MULTIPLIER,
+            fit * MIN_ZOOM_MULTIPLIER,
             0.01
         );
-
 
     state.maxZoom =
         Math.max(
@@ -3661,17 +3282,14 @@ function handleResize() {
             state.minZoom * 4
         );
 
-
     state.zoom =
         Math.max(
             state.minZoom,
             Math.min(
                 state.maxZoom,
-                state.minZoom *
-                ratio
+                state.minZoom * ratio
             )
         );
-
 
     clampMapPosition();
 
@@ -3683,28 +3301,19 @@ function handleResize() {
 
 }
 
-
-/* =========================================================
-   VISIBILITY
-========================================================= */
-
 function setupVisibility() {
 
     document.addEventListener(
         "visibilitychange",
         () => {
 
-            if (
-                document.hidden
-            ) {
+            if (document.hidden) {
 
                 stopStoryVoice();
 
                 stopImageTimer();
 
-            } else if (
-                currentMission
-            ) {
+            } else if (currentMission) {
 
                 restartImageTimer();
 
@@ -3715,17 +3324,11 @@ function setupVisibility() {
 
 }
 
-
-/* =========================================================
-   MOON IMAGE
-========================================================= */
-
 function setupMoonImage() {
 
     if (!moonSurfaceImage) {
         return;
     }
-
 
     const refresh =
         () => {
@@ -3735,7 +3338,6 @@ function setupMoonImage() {
             drawMiniMap();
 
         };
-
 
     if (
         moonSurfaceImage.complete
@@ -3760,21 +3362,11 @@ function setupMoonImage() {
 
 }
 
-
-/* =========================================================
-   INITIALIZE
-========================================================= */
-
 function initializeMoonMuseum() {
 
     console.log(
         "NASA Lunar Space Museum initializing..."
     );
-
-
-    /*
-     * Critical checks.
-     */
 
     if (!mapContainer) {
 
@@ -3786,7 +3378,6 @@ function initializeMoonMuseum() {
 
     }
 
-
     if (!mapViewport) {
 
         console.error(
@@ -3796,7 +3387,6 @@ function initializeMoonMuseum() {
         return;
 
     }
-
 
     if (!mapLayer) {
 
@@ -3808,7 +3398,6 @@ function initializeMoonMuseum() {
 
     }
 
-
     if (!hardwareLayer) {
 
         console.error(
@@ -3819,76 +3408,41 @@ function initializeMoonMuseum() {
 
     }
 
-
-    /*
-     * Map.
-     */
-
     initializeMapDimensions();
 
-
-    /*
-     * IMPORTANT:
-     *
-     * Markers are rendered before the story
-     * system. Therefore a story problem cannot
-     * prevent the hardware from appearing.
-     */
-
     renderMarkers();
-
-
-    /*
-     * Timeline.
-     */
 
     renderTimeline();
 
     setupTimeline();
 
-
-    /*
-     * Map interactions.
-     */
-
     setupMapInteractions();
 
     setupHomeButton();
-
-
-    /*
-     * Story.
-     */
 
     setupStorySystem();
 
     setupVisibility();
 
-
     /*
-     * Image.
+     * Archive.
+     *
+     * IMPORTANT:
+     * This is now initialized as part
+     * of the main application startup.
      */
+
+    setupArchive();
 
     setupMoonImage();
 
-
-    /*
-     * Initial map.
-     */
-
     resetMapPosition();
-
-
-    /*
-     * Final refresh.
-     */
 
     updateMarkerVisibility();
 
     updateMapStatus();
 
     drawMiniMap();
-
 
     console.log(
         "--------------------------------"
@@ -3914,20 +3468,10 @@ function initializeMoonMuseum() {
 
 }
 
-
-/* =========================================================
-   EVENTS
-========================================================= */
-
 window.addEventListener(
     "resize",
     handleResize
 );
-
-
-/* =========================================================
-   START
-========================================================= */
 
 if (
     document.readyState ===
@@ -3944,3 +3488,41 @@ if (
     initializeMoonMuseum();
 
 }
+
+window.addEventListener(
+    "languagechange",
+    () => {
+
+        renderMarkers();
+        const selectedYear =
+            Number(timelineRange?.value || state.timelineYear);
+
+        renderTimeline();
+
+        if (timelineRange) {
+            timelineRange.value =
+                String(selectedYear);
+        }
+
+        updateTimeline();
+
+        if (currentMission) {
+            updateStoryContent();
+            stopStoryVoice();
+            speakCurrentSlide();
+        }
+
+        if (
+            archivePanel?.classList.contains("open") &&
+            archiveBtn
+        ) {
+            archiveBtn.dispatchEvent(
+                new MouseEvent("click", {
+                    bubbles: true,
+                    cancelable: true
+                })
+            );
+        }
+
+    }
+);
