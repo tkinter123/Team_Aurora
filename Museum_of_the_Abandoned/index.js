@@ -1,67 +1,53 @@
-/* =========================================================
-   MOON EXHIBITION — STORY SYSTEM
-   Team_Aurora
-========================================================= */
 
-
-/* =========================================================
-   STORY DATA
-========================================================= */
 
 const introStories = [
 
-    /* =====================================================
-       PAGE 01
-    ====================================================== */
-
     {
-        kicker: "",
+        kicker: "THE BEGINNING",
 
         title: "Hi, Explorer!",
 
         text: `
             Do you know the average distances between the Moon and Earth,
             and Mars and Earth, are respectively <b>384,400 km</b> and
-            <b>225 million km</b>?<br><br>
-
+            <b>225 million km</b>?
+            <br><br>
             But today, we are on our way to conquer them.
         `,
 
-        footer: "",
+        footer: "BEGINNING OF LUNAR EXPLORATION",
 
         images: [
 
             {
                 src: "./images/moon.png",
                 title: "THE MOON",
-                description: "",
+                description: "Our closest celestial neighbor.",
                 link: ""
             },
 
             {
                 src: "./images/mars.png",
-                title: "THE MARS",
-                description: "",
+                title: "MARS",
+                description: "The next frontier beyond the Moon.",
                 link: ""
             }
 
         ]
     },
 
-
-    /* =====================================================
-       PAGE 02
-    ====================================================== */
-
     {
-        kicker: "",
+        kicker: "THE IMPOSSIBLE",
 
         title:
             "Have you ever thought about what turned the impossible into possible?",
 
-        text: "",
+        text: `
+            Every great journey begins with someone willing to look beyond
+            what seems impossible.
+        `,
 
-        footer: "",
+        footer: "THE FIRST GIANT STEP",
 
         images: [
 
@@ -70,9 +56,10 @@ const introStories = [
                     "./images/NASA_stepped_on_the_Moon.jpg",
 
                 title:
-                    "NASA's Step on the Moon",
+                    "NASA'S STEP ON THE MOON",
 
-                description: "",
+                description:
+                    "Humanity's historic journey to the lunar surface.",
 
                 link:
                     "https://www.nasa.gov/history/flag-day-flying-high-the-stars-and-stripes-in-space/"
@@ -81,31 +68,30 @@ const introStories = [
         ]
     },
 
-
-    /* =====================================================
-       PAGE 03
-    ====================================================== */
-
     {
-        kicker: "",
+        kicker: "THE FIRST MISSIONS",
 
-        title: "",
+        title:
+            "The Journey Begins",
 
         text: `
             About 68 years ago, in 1958, NASA began its journey towards
             the Moon with <b>Pioneer 1</b>, its first spacecraft, targeting
-            lunar orbit.<br>
+            lunar orbit.
+            <br><br>
 
             And about 62 years ago, in 1964, NASA began its journey towards
-            Mars with <b>Mariner 3</b>, its first Mars attempt.<br>
+            Mars with <b>Mariner 3</b>, its first Mars attempt.
+            <br><br>
 
-            Soon after, <b>Mariner 4</b> followed and successfully reached Mars.<br>
+            Soon after, <b>Mariner 4</b> followed and successfully reached Mars.
+            <br><br>
 
             Since then, mission after mission, NASA has continued sending
             spacecraft to explore these worlds.
         `,
 
-        footer: "",
+        footer: "MISSION AFTER MISSION",
 
         images: [
 
@@ -116,7 +102,8 @@ const introStories = [
                 title:
                     "PIONEER 1",
 
-                description: "",
+                description:
+                    "One of NASA's earliest lunar spacecraft missions.",
 
                 link:
                     "https://science.nasa.gov/mission/pioneer-1-able-2/"
@@ -129,7 +116,8 @@ const introStories = [
                 title:
                     "MARINER 3",
 
-                description: "",
+                description:
+                    "NASA's first attempt to reach Mars.",
 
                 link:
                     "https://science.nasa.gov/mission/mariner-3/"
@@ -138,13 +126,8 @@ const introStories = [
         ]
     },
 
-
-    /* =====================================================
-       PAGE 04
-    ====================================================== */
-
     {
-        kicker: "",
+        kicker: "KNOWLEDGE",
 
         title:
             "Every Mission Taught Us More",
@@ -154,7 +137,7 @@ const introStories = [
             on that, we started our journey towards them.
         `,
 
-        footer: "",
+        footer: "KNOWLEDGE BECOMES PROGRESS",
 
         images: [
 
@@ -162,9 +145,11 @@ const introStories = [
                 src:
                     "./images/progressing.png",
 
-                title: "",
+                title:
+                    "THE JOURNEY CONTINUES",
 
-                description: "",
+                description:
+                    "Each mission adds another piece to the story of exploration.",
 
                 link: ""
             }
@@ -172,29 +157,27 @@ const introStories = [
         ]
     },
 
-
-    /* =====================================================
-       PAGE 05
-    ====================================================== */
-
     {
         kicker:
             "YOUR JOURNEY BEGINS",
 
-        title: "",
+        title:
+            "The Machines Are Waiting",
 
         text: `
             <b>
                 But some machines have stopped responding, and some are about to.
 
-                We can't let their contributions be forgotten.<br><br>
+                We can't let their contributions be forgotten.
+                <br><br>
 
                 We believe you are the one who can conquer space.
                 Your journey begins here.
             </b>
         `,
 
-        footer: "",
+        footer:
+            "THE NEXT CHAPTER IS YOURS",
 
         images: [
 
@@ -202,9 +185,11 @@ const introStories = [
                 src:
                     "./images/final.png",
 
-                title: "",
+                title:
+                    "YOUR JOURNEY BEGINS",
 
-                description: "",
+                description:
+                    "Step forward and begin your exploration.",
 
                 link: ""
             }
@@ -214,37 +199,11 @@ const introStories = [
 
 ];
 
-
-/* =========================================================
-   CONFIGURATION
-========================================================= */
-
-
-/*
-   IMPORTANT:
-
-   The main index.html is in the Team_Aurora ROOT.
-
-   Therefore all exhibition images use:
-
-   ./Museum_of_the_Abandoned/story_images/...
-*/
-
 const HOME_MAP_PAGE =
     "./Space/space.html";
 
-
-/*
-   Image rotation.
-*/
-
 const IMAGE_ROTATION_TIME =
     3500;
-
-
-/*
-   Story transition.
-*/
 
 const STORY_EXIT_TIME =
     250;
@@ -252,10 +211,397 @@ const STORY_EXIT_TIME =
 const STORY_ENTER_TIME =
     450;
 
+const SELECTED_VOICE =
+    "Microsoft Zira";
 
-/* =========================================================
-   STATE
-========================================================= */
+const STORY_VOICE_RATE =
+    0.88;
+
+const STORY_VOICE_PITCH =
+    1.05;
+
+const STORY_VOICE_VOLUME =
+    1.0;
+
+const STORY_VOICE_LANGUAGE =
+    "en-US";
+
+const STORY_VOICE_ENABLED =
+    false;
+
+const STORY_VOICE_DELAY =
+    150;
+
+const speechSupported =
+    "speechSynthesis" in window &&
+    "SpeechSynthesisUtterance" in window;
+
+let availableStoryVoices = [];
+
+function loadStoryVoices() {
+
+    if (!speechSupported) {
+        return [];
+    }
+
+    availableStoryVoices =
+        window.speechSynthesis.getVoices();
+
+    console.log(
+        "Available speech voices:",
+        availableStoryVoices
+    );
+
+    return availableStoryVoices;
+}
+
+if (speechSupported && STORY_VOICE_ENABLED) {
+
+    window.speechSynthesis.onvoiceschanged =
+        function () {
+
+            loadStoryVoices();
+
+        };
+
+    loadStoryVoices();
+}
+
+window.addEventListener(
+    "languagechange",
+    () => {
+
+        stopStoryVoice();
+        updateStoryText();
+        updateImageInformation();
+
+        if (!isAnimating) {
+            speakCurrentStory();
+        }
+
+    }
+);
+
+function getStoryVoice() {
+
+    if (!speechSupported) {
+        return null;
+    }
+
+    let voices =
+        window.speechSynthesis.getVoices();
+
+    if (voices.length) {
+
+        availableStoryVoices =
+            voices;
+
+    }
+
+    if (!voices.length) {
+
+        voices =
+            availableStoryVoices;
+
+    }
+
+    if (!voices.length) {
+
+        console.warn(
+            "No speech voices available."
+        );
+
+        return null;
+
+    }
+
+    if (window.ProjectLanguage?.isBangla) {
+
+        return voices.find(
+            voice =>
+                voice.lang
+                    .toLowerCase()
+                    .startsWith("bn")
+        ) || null;
+
+    }
+
+    const selectedVoice =
+        voices.find(
+            function (voice) {
+
+                return voice.name
+                    .toLowerCase()
+                    .includes(
+                        SELECTED_VOICE.toLowerCase()
+                    );
+
+            }
+        );
+
+    if (selectedVoice) {
+
+        console.log(
+            "Selected voice:",
+            selectedVoice.name
+        );
+
+        return selectedVoice;
+
+    }
+
+    const englishUS =
+        voices.find(
+            function (voice) {
+
+                return (
+                    voice.lang ===
+                    STORY_VOICE_LANGUAGE
+                );
+
+            }
+        );
+
+    if (englishUS) {
+
+        console.warn(
+            `Voice "${SELECTED_VOICE}" not found. ` +
+            `Using "${englishUS.name}".`
+        );
+
+        return englishUS;
+
+    }
+
+    const anyEnglish =
+        voices.find(
+            function (voice) {
+
+                return voice.lang
+                    .toLowerCase()
+                    .startsWith("en");
+
+            }
+        );
+
+    if (anyEnglish) {
+
+        console.warn(
+            `Using English voice "${anyEnglish.name}".`
+        );
+
+        return anyEnglish;
+
+    }
+
+    return voices[0] || null;
+
+}
+
+function getSpeechText(html) {
+
+    if (!html) {
+        return "";
+    }
+
+    const temporaryElement =
+        document.createElement("div");
+
+    temporaryElement.innerHTML =
+        html;
+
+    const breaks =
+        temporaryElement.querySelectorAll("br");
+
+    breaks.forEach(
+        function (br) {
+
+            br.replaceWith(" ");
+
+        }
+    );
+
+    let text =
+        temporaryElement.textContent ||
+        temporaryElement.innerText ||
+        "";
+
+    text =
+        text
+            .replace(/\s+/g, " ")
+            .trim();
+
+    return text;
+
+}
+
+function stopStoryVoice() {
+
+    if (!speechSupported) {
+        return;
+    }
+
+    window.speechSynthesis.cancel();
+
+}
+
+function speakCurrentStory() {
+
+    if (!STORY_VOICE_ENABLED) {
+        return;
+    }
+
+    if (!speechSupported) {
+
+        console.warn(
+            "Speech synthesis is not supported."
+        );
+
+        return;
+
+    }
+
+    const story =
+        getCurrentStory();
+
+    const localizedStory =
+        getLocalizedStory(story);
+
+    if (!story) {
+        return;
+    }
+
+    stopStoryVoice();
+
+    const parts = [];
+
+    if (localizedStory.kicker || story.kicker) {
+
+        parts.push(
+            getSpeechText(
+                localizedStory.kicker || story.kicker
+            )
+        );
+
+    }
+
+    if (localizedStory.title || story.title) {
+
+        parts.push(
+            getSpeechText(
+                localizedStory.title || story.title
+            )
+        );
+
+    }
+
+    if (localizedStory.text || story.text) {
+
+        parts.push(
+            getSpeechText(
+                localizedStory.text || story.text
+            )
+        );
+
+    }
+
+    const narration =
+        parts
+            .filter(Boolean)
+            .join(". ");
+
+    if (!narration) {
+        return;
+    }
+
+    setTimeout(
+        function () {
+
+            if (!STORY_VOICE_ENABLED) {
+                return;
+            }
+
+            const currentStoryAtStart =
+                getCurrentStory();
+
+            if (
+                currentStoryAtStart !== story
+            ) {
+
+                return;
+
+            }
+
+            const utterance =
+                new SpeechSynthesisUtterance(
+                    narration
+                );
+
+            utterance.rate =
+                STORY_VOICE_RATE;
+
+            utterance.pitch =
+                STORY_VOICE_PITCH;
+
+            utterance.volume =
+                STORY_VOICE_VOLUME;
+
+            utterance.lang =
+                window.ProjectLanguage?.isBangla
+                    ? "bn-BD"
+                    : STORY_VOICE_LANGUAGE;
+
+            const voice =
+                getStoryVoice();
+
+            if (voice) {
+
+                utterance.voice =
+                    voice;
+
+                if (!window.ProjectLanguage?.isBangla) {
+                    utterance.lang = voice.lang;
+                }
+
+            }
+
+            utterance.onstart =
+                function () {
+
+                    console.log(
+                        "Narration started."
+                    );
+
+                };
+
+            utterance.onend =
+                function () {
+
+                    console.log(
+                        "Narration finished."
+                    );
+
+                };
+
+            utterance.onerror =
+                function (event) {
+
+                    console.warn(
+                        "Speech error:",
+                        event
+                    );
+
+                };
+
+            window.speechSynthesis.speak(
+                utterance
+            );
+
+        },
+        STORY_VOICE_DELAY
+    );
+
+}
 
 let currentStory =
     0;
@@ -269,11 +615,6 @@ let isAnimating =
 let imageTimer =
     null;
 
-
-/*
-   General touch state.
-*/
-
 let touchStartX =
     0;
 
@@ -283,21 +624,11 @@ let touchStartY =
 let touchStartedInImagePanel =
     false;
 
-
-/*
-   Image touch state.
-*/
-
 let imageTouchStartX =
     0;
 
 let imageTouchStartY =
     0;
-
-
-/* =========================================================
-   DOM ELEMENTS
-========================================================= */
 
 let storyPanel;
 let imagePanel;
@@ -322,94 +653,94 @@ let skipButton;
 
 let progressBar;
 
-
-/* =========================================================
-   GET DOM ELEMENTS
-========================================================= */
-
 function getDOMElements() {
 
     storyPanel =
-        document.getElementById("storyPanel");
+        document.getElementById(
+            "storyPanel"
+        );
 
     imagePanel =
-        document.getElementById("imagePanel");
+        document.getElementById(
+            "imagePanel"
+        );
 
     storyKicker =
-        document.getElementById("storyKicker");
+        document.getElementById(
+            "storyKicker"
+        );
 
     storyTitle =
-        document.getElementById("storyTitle");
+        document.getElementById(
+            "storyTitle"
+        );
 
     storyText =
-        document.getElementById("storyText");
+        document.getElementById(
+            "storyText"
+        );
 
     storyFooterText =
-        document.getElementById("storyFooterText");
+        document.getElementById(
+            "storyFooterText"
+        );
 
     storyProgress =
-        document.getElementById("storyProgress");
+        document.getElementById(
+            "storyProgress"
+        );
 
     imageTrack =
-        document.getElementById("imageTrack");
+        document.getElementById(
+            "imageTrack"
+        );
 
     imageCounter =
-        document.getElementById("imageCounter");
+        document.getElementById(
+            "imageCounter"
+        );
 
     imageTitle =
-        document.getElementById("imageTitle");
+        document.getElementById(
+            "imageTitle"
+        );
 
     imageDescription =
-        document.getElementById("imageDescription");
+        document.getElementById(
+            "imageDescription"
+        );
 
     imageDots =
-        document.getElementById("imageDots");
+        document.getElementById(
+            "imageDots"
+        );
 
     nextButton =
-        document.getElementById("nextButton");
+        document.getElementById(
+            "nextButton"
+        );
 
     nextButtonText =
-        document.getElementById("nextButtonText");
+        document.getElementById(
+            "nextButtonText"
+        );
 
     backButton =
-        document.getElementById("backButton");
+        document.getElementById(
+            "backButton"
+        );
 
     skipButton =
-        document.getElementById("skipButton");
+        document.getElementById(
+            "skipButton"
+        );
 
     progressBar =
-        document.getElementById("progressBar");
-
-
-    console.log(
-        "================================="
-    );
-
-    console.log(
-        "MOON EXHIBITION DOM INITIALIZED"
-    );
-
-    console.log(
-        "storyPanel:",
-        storyPanel
-    );
-
-    console.log(
-        "imagePanel:",
-        imagePanel
-    );
-
-    console.log(
-        "imageTrack:",
-        imageTrack
-    );
+        document.getElementById(
+            "progressBar"
+        );
 
 }
-
-
-/* =========================================================
-   PAD NUMBER
-========================================================= */
 
 function padNumber(number) {
 
@@ -417,11 +748,6 @@ function padNumber(number) {
         .padStart(2, "0");
 
 }
-
-
-/* =========================================================
-   GET CURRENT STORY
-========================================================= */
 
 function getCurrentStory() {
 
@@ -433,10 +759,29 @@ function getCurrentStory() {
 
 }
 
+function getLocalizedStory(story = getCurrentStory()) {
 
-/* =========================================================
-   GET CURRENT IMAGES
-========================================================= */
+    if (
+        window.ProjectLanguage?.isBangla &&
+        Array.isArray(window.introStoriesBangla)
+    ) {
+
+        return window.introStoriesBangla[currentStory] || story;
+
+    }
+
+    return story;
+
+}
+
+function getLocalizedImage(image, index) {
+
+    const localizedStory =
+        getLocalizedStory();
+
+    return localizedStory.images?.[index] || image;
+
+}
 
 function getCurrentImages() {
 
@@ -449,101 +794,75 @@ function getCurrentImages() {
 
 }
 
-
-/* =========================================================
-   UPDATE STORY TEXT
-========================================================= */
-
 function updateStoryText() {
 
     const story =
         getCurrentStory();
 
-
-    /*
-       Kicker
-    */
+    const localizedStory =
+        getLocalizedStory(story);
 
     if (storyKicker) {
 
         storyKicker.textContent =
-            story.kicker || "";
+            localizedStory.kicker || story.kicker || "";
 
     }
-
-
-    /*
-       Title
-    */
 
     if (storyTitle) {
 
         storyTitle.innerHTML =
-            story.title || "";
+            localizedStory.title || story.title || "";
 
     }
-
-
-    /*
-       Main text
-    */
 
     if (storyText) {
 
         storyText.innerHTML =
-            story.text || "";
+            localizedStory.text || story.text || "";
 
     }
-
-
-    /*
-       Footer
-    */
 
     if (storyFooterText) {
 
         storyFooterText.textContent =
-            story.footer || "";
+            localizedStory.footer || story.footer || "";
 
     }
-
-
-    /*
-       Story progress
-    */
 
     if (storyProgress) {
 
+        const currentNumber =
+            window.ProjectLanguage?.formatNumber(padNumber(currentStory + 1)) ||
+            padNumber(currentStory + 1);
+
+        const totalNumber =
+            window.ProjectLanguage?.formatNumber(padNumber(introStories.length)) ||
+            padNumber(introStories.length);
+
         storyProgress.textContent =
-            `${padNumber(currentStory + 1)} / ${padNumber(introStories.length)}`;
+            `${currentNumber} / ${totalNumber}`;
 
     }
-
-
-    /*
-       Panel numbers
-    */
 
     const panelNumbers =
         document.querySelectorAll(
             ".panel-number"
         );
 
-
     if (panelNumbers.length >= 2) {
 
+        const storyNumber =
+            window.ProjectLanguage?.formatNumber(padNumber(currentStory + 1)) ||
+            padNumber(currentStory + 1);
+
         panelNumbers[0].textContent =
-            `STORY / ${padNumber(currentStory + 1)}`;
+            `${window.ProjectLanguage?.isBangla ? "গল্প" : "STORY"} / ${storyNumber}`;
 
         panelNumbers[1].textContent =
-            `ARCHIVE / ${padNumber(currentStory + 1)}`;
+            `${window.ProjectLanguage?.isBangla ? "সংরক্ষণাগার" : "ARCHIVE"} / ${storyNumber}`;
 
     }
-
-
-    /*
-       Progress bar
-    */
 
     if (progressBar) {
 
@@ -558,22 +877,15 @@ function updateStoryText() {
 
     }
 
-
-    /*
-       Back button
-    */
-
     if (backButton) {
 
         const disabled =
             currentStory === 0;
 
-
         backButton.classList.toggle(
             "disabled",
             disabled
         );
-
 
         backButton.setAttribute(
             "aria-disabled",
@@ -584,15 +896,9 @@ function updateStoryText() {
 
     }
 
-
-    /*
-       Next button
-    */
-
     const isFinalStory =
         currentStory ===
         introStories.length - 1;
-
 
     if (nextButtonText) {
 
@@ -602,7 +908,6 @@ function updateStoryText() {
                 : "→";
 
     }
-
 
     if (nextButton) {
 
@@ -617,50 +922,36 @@ function updateStoryText() {
 
 }
 
-
-/* =========================================================
-   CREATE IMAGE DESCRIPTION
-========================================================= */
-
 function createImageDescription(image) {
 
     if (!imageDescription) {
-
         return;
-
     }
-
 
     imageDescription.innerHTML =
         "";
 
+    const imageIndex =
+        getCurrentImages().indexOf(image);
 
-    /*
-       Description
-    */
+    const localizedImage =
+        getLocalizedImage(image, imageIndex);
 
-    if (image.description) {
+    if (localizedImage.description || image.description) {
 
         const description =
             document.createElement(
                 "span"
             );
 
-
         description.textContent =
-            image.description;
-
+            localizedImage.description || image.description;
 
         imageDescription.appendChild(
             description
         );
 
     }
-
-
-    /*
-       External source link
-    */
 
     if (image.link) {
 
@@ -669,22 +960,17 @@ function createImageDescription(image) {
                 "a"
             );
 
-
         link.href =
             image.link;
 
-
         link.textContent =
-            "Explore source ↗";
-
+            window.ProjectLanguage?.translate("Explore source ↗") || "Explore source ↗";
 
         link.target =
             "_blank";
 
-
         link.rel =
             "noopener noreferrer";
-
 
         if (image.description) {
 
@@ -694,7 +980,6 @@ function createImageDescription(image) {
 
         }
 
-
         imageDescription.appendChild(
             link
         );
@@ -703,30 +988,21 @@ function createImageDescription(image) {
 
 }
 
-
-/* =========================================================
-   UPDATE IMAGE INFORMATION
-========================================================= */
-
 function updateImageInformation() {
 
     const images =
         getCurrentImages();
-
-
-    /*
-       No images
-    */
 
     if (!images.length) {
 
         if (imageCounter) {
 
             imageCounter.textContent =
-                "IMAGE 00 / 00";
+                window.ProjectLanguage?.isBangla
+                    ? "ছবি ০০ / ০০"
+                    : "IMAGE 00 / 00";
 
         }
-
 
         if (imageTitle) {
 
@@ -735,7 +1011,6 @@ function updateImageInformation() {
 
         }
 
-
         if (imageDescription) {
 
             imageDescription.innerHTML =
@@ -743,61 +1018,39 @@ function updateImageInformation() {
 
         }
 
-
         return;
 
     }
-
 
     const image =
         images[currentImage];
 
-
     if (!image) {
-
         return;
-
     }
-
-
-    /*
-       Counter
-    */
 
     if (imageCounter) {
 
         imageCounter.textContent =
-            `IMAGE ${padNumber(currentImage + 1)} / ${padNumber(images.length)}`;
+            `${window.ProjectLanguage?.isBangla ? "ছবি" : "IMAGE"} ${window.ProjectLanguage?.formatNumber(padNumber(currentImage + 1)) || padNumber(currentImage + 1)} / ${window.ProjectLanguage?.formatNumber(padNumber(images.length)) || padNumber(images.length)}`;
 
     }
-
-
-    /*
-       Title
-    */
 
     if (imageTitle) {
 
+        const localizedImage =
+            getLocalizedImage(image, currentImage);
+
         imageTitle.textContent =
-            image.title || "";
+            localizedImage.title || image.title || "";
 
     }
-
-
-    /*
-       Description
-    */
 
     createImageDescription(
         image
     );
 
 }
-
-
-/* =========================================================
-   STOP IMAGE TIMER
-========================================================= */
 
 function stopImageTimer() {
 
@@ -814,33 +1067,20 @@ function stopImageTimer() {
 
 }
 
-
-/* =========================================================
-   START IMAGE TIMER
-========================================================= */
-
 function startImageTimer() {
 
     stopImageTimer();
 
-
     if (isAnimating) {
-
         return;
-
     }
-
 
     const images =
         getCurrentImages();
 
-
     if (images.length <= 1) {
-
         return;
-
     }
-
 
     imageTimer =
         setTimeout(
@@ -856,35 +1096,15 @@ function startImageTimer() {
 
 }
 
-
-/* =========================================================
-   LOAD STORY IMAGES
-========================================================= */
-
 function loadStoryImages() {
 
     const images =
         getCurrentImages();
 
-
-    /*
-       Stop previous timer
-    */
-
     stopImageTimer();
-
-
-    /*
-       Reset current image
-    */
 
     currentImage =
         0;
-
-
-    /*
-       Clear image track
-    */
 
     if (imageTrack) {
 
@@ -896,22 +1116,12 @@ function loadStoryImages() {
 
     }
 
-
-    /*
-       Clear dots
-    */
-
     if (imageDots) {
 
         imageDots.innerHTML =
             "";
 
     }
-
-
-    /*
-       No images
-    */
 
     if (!images.length) {
 
@@ -921,27 +1131,16 @@ function loadStoryImages() {
 
     }
 
-
-    /*
-       Create images
-    */
-
     images.forEach(
         function (image, index) {
-
-            /*
-               Slide
-            */
 
             const slide =
                 document.createElement(
                     "div"
                 );
 
-
             slide.className =
                 "image-slide";
-
 
             if (index === 0) {
 
@@ -951,83 +1150,35 @@ function loadStoryImages() {
 
             }
 
-
-            /*
-               Image
-            */
-
             const img =
                 document.createElement(
                     "img"
                 );
 
-
-            /*
-               IMPORTANT:
-
-               These paths are relative to
-               the ROOT index.html.
-            */
-
             img.src =
                 image.src;
 
-
             img.alt =
+                getLocalizedImage(image, index).title ||
                 image.title ||
                 "Moon exhibition image";
 
-
             img.draggable =
                 false;
-
 
             img.loading =
                 index === 0
                     ? "eager"
                     : "lazy";
 
-
-            /*
-               Debug
-            */
-
-            console.log(
-                "Loading image:",
-                image.src
-            );
-
-
-            /*
-               Image error
-            */
-
             img.addEventListener(
                 "error",
                 function () {
 
                     console.error(
-                        "================================="
-                    );
-
-                    console.error(
-                        "IMAGE FAILED TO LOAD"
-                    );
-
-                    console.error(
-                        "Path:",
+                        "IMAGE FAILED:",
                         image.src
                     );
-
-                    console.error(
-                        "Full URL:",
-                        img.src
-                    );
-
-                    console.error(
-                        "================================="
-                    );
-
 
                     slide.classList.add(
                         "image-error"
@@ -1038,11 +1189,6 @@ function loadStoryImages() {
                     once: true
                 }
             );
-
-
-            /*
-               Image loaded
-            */
 
             img.addEventListener(
                 "load",
@@ -1059,11 +1205,9 @@ function loadStoryImages() {
                 }
             );
 
-
             slide.appendChild(
                 img
             );
-
 
             if (imageTrack) {
 
@@ -1073,11 +1217,6 @@ function loadStoryImages() {
 
             }
 
-
-            /*
-               Create dot
-            */
-
             if (imageDots) {
 
                 const dot =
@@ -1085,14 +1224,11 @@ function loadStoryImages() {
                         "button"
                     );
 
-
                 dot.type =
                     "button";
 
-
                 dot.className =
                     "image-dot";
-
 
                 if (index === 0) {
 
@@ -1102,12 +1238,10 @@ function loadStoryImages() {
 
                 }
 
-
                 dot.setAttribute(
                     "aria-label",
-                    `View image ${index + 1}`
+                    `${window.ProjectLanguage?.translate("View image") || "View image"} ${index + 1}`
                 );
-
 
                 dot.setAttribute(
                     "aria-current",
@@ -1115,7 +1249,6 @@ function loadStoryImages() {
                         ? "true"
                         : "false"
                 );
-
 
                 dot.addEventListener(
                     "click",
@@ -1130,7 +1263,6 @@ function loadStoryImages() {
                     }
                 );
 
-
                 imageDots.appendChild(
                     dot
                 );
@@ -1140,43 +1272,20 @@ function loadStoryImages() {
         }
     );
 
-
-    /*
-       Update information
-    */
-
     updateImageInformation();
-
-
-    /*
-       Start rotation
-    */
 
     startImageTimer();
 
 }
-
-
-/* =========================================================
-   SHOW IMAGE
-========================================================= */
 
 function showImage(index) {
 
     const images =
         getCurrentImages();
 
-
     if (!images.length) {
-
         return;
-
     }
-
-
-    /*
-       Wrap forward
-    */
 
     if (
         index >= images.length
@@ -1187,11 +1296,6 @@ function showImage(index) {
 
     }
 
-
-    /*
-       Wrap backward
-    */
-
     if (
         index < 0
     ) {
@@ -1201,14 +1305,8 @@ function showImage(index) {
 
     }
 
-
     currentImage =
         index;
-
-
-    /*
-       Move slider
-    */
 
     if (imageTrack) {
 
@@ -1217,18 +1315,12 @@ function showImage(index) {
 
     }
 
-
-    /*
-       Update slides
-    */
-
     if (imageTrack) {
 
         const slides =
             imageTrack.querySelectorAll(
                 ".image-slide"
             );
-
 
         slides.forEach(
             function (slide, slideIndex) {
@@ -1243,11 +1335,6 @@ function showImage(index) {
 
     }
 
-
-    /*
-       Update dots
-    */
-
     if (imageDots) {
 
         const dots =
@@ -1255,19 +1342,16 @@ function showImage(index) {
                 ".image-dot"
             );
 
-
         dots.forEach(
             function (dot, dotIndex) {
 
                 const active =
                     dotIndex === index;
 
-
                 dot.classList.toggle(
                     "active",
                     active
                 );
-
 
                 dot.setAttribute(
                     "aria-current",
@@ -1281,43 +1365,17 @@ function showImage(index) {
 
     }
 
-
-    /*
-       Update information
-    */
-
     updateImageInformation();
-
-
-    /*
-       Restart timer
-    */
 
     startImageTimer();
 
 }
 
-
-/* =========================================================
-   CHANGE STORY
-========================================================= */
-
 function changeStory(direction) {
 
-    /*
-       Prevent multiple actions
-    */
-
     if (isAnimating) {
-
         return;
-
     }
-
-
-    /*
-       Final story
-    */
 
     if (
         direction > 0 &&
@@ -1331,11 +1389,6 @@ function changeStory(direction) {
 
     }
 
-
-    /*
-       Before first story
-    */
-
     if (
         direction < 0 &&
         currentStory <= 0
@@ -1345,25 +1398,12 @@ function changeStory(direction) {
 
     }
 
-
-    /*
-       Lock animation
-    */
+    stopStoryVoice();
 
     isAnimating =
         true;
 
-
-    /*
-       Stop image timer
-    */
-
     stopImageTimer();
-
-
-    /*
-       Remove old enter classes
-    */
 
     if (storyPanel) {
 
@@ -1373,7 +1413,6 @@ function changeStory(direction) {
 
     }
 
-
     if (imagePanel) {
 
         imagePanel.classList.remove(
@@ -1381,11 +1420,6 @@ function changeStory(direction) {
         );
 
     }
-
-
-    /*
-       Exit animation
-    */
 
     if (storyPanel) {
 
@@ -1395,7 +1429,6 @@ function changeStory(direction) {
 
     }
 
-
     if (imagePanel) {
 
         imagePanel.classList.add(
@@ -1404,39 +1437,15 @@ function changeStory(direction) {
 
     }
 
-
-    /*
-       Wait for exit
-    */
-
     setTimeout(
         function () {
-
-            /*
-               Change story
-            */
 
             currentStory +=
                 direction;
 
-
-            /*
-               Update text
-            */
-
             updateStoryText();
 
-
-            /*
-               Load new images
-            */
-
             loadStoryImages();
-
-
-            /*
-               Remove changing
-            */
 
             if (storyPanel) {
 
@@ -1446,7 +1455,6 @@ function changeStory(direction) {
 
             }
 
-
             if (imagePanel) {
 
                 imagePanel.classList.remove(
@@ -1454,11 +1462,6 @@ function changeStory(direction) {
                 );
 
             }
-
-
-            /*
-               Enter animation
-            */
 
             if (storyPanel) {
 
@@ -1468,7 +1471,6 @@ function changeStory(direction) {
 
             }
 
-
             if (imagePanel) {
 
                 imagePanel.classList.add(
@@ -1476,11 +1478,6 @@ function changeStory(direction) {
                 );
 
             }
-
-
-            /*
-               Finish
-            */
 
             setTimeout(
                 function () {
@@ -1493,7 +1490,6 @@ function changeStory(direction) {
 
                     }
 
-
                     if (imagePanel) {
 
                         imagePanel.classList.remove(
@@ -1502,12 +1498,12 @@ function changeStory(direction) {
 
                     }
 
-
                     isAnimating =
                         false;
 
-
                     startImageTimer();
+
+                    speakCurrentStory();
 
                 },
                 STORY_ENTER_TIME
@@ -1519,16 +1515,7 @@ function changeStory(direction) {
 
 }
 
-
-/* =========================================================
-   ENTER MOON MAP
-========================================================= */
-
 function enterMoonMap() {
-
-    /*
-       Don't navigate twice
-    */
 
     if (
         document.body.classList.contains(
@@ -1540,39 +1527,22 @@ function enterMoonMap() {
 
     }
 
-
-    /*
-       Stop timer
-    */
+    stopStoryVoice();
 
     stopImageTimer();
 
-
-    /*
-       Lock
-    */
-
     isAnimating =
         true;
-
-
-    /*
-       Animation
-    */
 
     document.body.classList.add(
         "leaving"
     );
 
-
-    /*
-       Navigate
-    */
-
     setTimeout(
         function () {
 
             window.location.href =
+                window.ProjectLanguage?.withLanguage(HOME_MAP_PAGE) ||
                 HOME_MAP_PAGE;
 
         },
@@ -1581,19 +1551,11 @@ function enterMoonMap() {
 
 }
 
-
-/* =========================================================
-   NEXT BUTTON
-========================================================= */
-
 function setupNextButton() {
 
     if (!nextButton) {
-
         return;
-
     }
-
 
     nextButton.addEventListener(
         "click",
@@ -1608,26 +1570,17 @@ function setupNextButton() {
 
 }
 
-
-/* =========================================================
-   BACK BUTTON
-========================================================= */
-
 function setupBackButton() {
 
     if (!backButton) {
-
         return;
-
     }
-
 
     backButton.addEventListener(
         "click",
         function (event) {
 
             event.preventDefault();
-
 
             if (
                 currentStory === 0 ||
@@ -1638,7 +1591,6 @@ function setupBackButton() {
 
             }
 
-
             changeStory(-1);
 
         }
@@ -1646,19 +1598,11 @@ function setupBackButton() {
 
 }
 
-
-/* =========================================================
-   SKIP BUTTON
-========================================================= */
-
 function setupSkipButton() {
 
     if (!skipButton) {
-
         return;
-
     }
-
 
     skipButton.addEventListener(
         "click",
@@ -1673,11 +1617,6 @@ function setupSkipButton() {
 
 }
 
-
-/* =========================================================
-   KEYBOARD NAVIGATION
-========================================================= */
-
 function setupKeyboardNavigation() {
 
     document.addEventListener(
@@ -1687,13 +1626,11 @@ function setupKeyboardNavigation() {
             const target =
                 event.target;
 
-
             const tagName =
                 target &&
                 target.tagName
                     ? target.tagName.toUpperCase()
                     : "";
-
 
             const isInteractive =
                 tagName === "BUTTON" ||
@@ -1703,21 +1640,13 @@ function setupKeyboardNavigation() {
                 tagName === "SELECT" ||
                 tagName === "OPTION";
 
-
-            /*
-               Right
-            */
-
             if (
                 event.key === "ArrowRight"
             ) {
 
                 if (isInteractive) {
-
                     return;
-
                 }
-
 
                 event.preventDefault();
 
@@ -1727,21 +1656,13 @@ function setupKeyboardNavigation() {
 
             }
 
-
-            /*
-               Left
-            */
-
             if (
                 event.key === "ArrowLeft"
             ) {
 
                 if (isInteractive) {
-
                     return;
-
                 }
-
 
                 event.preventDefault();
 
@@ -1751,21 +1672,13 @@ function setupKeyboardNavigation() {
 
             }
 
-
-            /*
-               Enter
-            */
-
             if (
                 event.key === "Enter"
             ) {
 
                 if (isInteractive) {
-
                     return;
-
                 }
-
 
                 event.preventDefault();
 
@@ -1774,22 +1687,14 @@ function setupKeyboardNavigation() {
                 return;
 
             }
-
-
-            /*
-               Space
-            */
 
             if (
                 event.key === " "
             ) {
 
                 if (isInteractive) {
-
                     return;
-
                 }
-
 
                 event.preventDefault();
 
@@ -1798,11 +1703,6 @@ function setupKeyboardNavigation() {
                 return;
 
             }
-
-
-            /*
-               Escape
-            */
 
             if (
                 event.key === "Escape"
@@ -1819,11 +1719,6 @@ function setupKeyboardNavigation() {
 
 }
 
-
-/* =========================================================
-   GENERAL TOUCH
-========================================================= */
-
 function setupGeneralTouch() {
 
     document.addEventListener(
@@ -1838,18 +1733,14 @@ function setupGeneralTouch() {
 
             }
 
-
             const touch =
                 event.touches[0];
-
 
             touchStartX =
                 touch.clientX;
 
-
             touchStartY =
                 touch.clientY;
-
 
             touchStartedInImagePanel =
                 imagePanel
@@ -1864,7 +1755,6 @@ function setupGeneralTouch() {
         }
     );
 
-
     document.addEventListener(
         "touchend",
         function (event) {
@@ -1877,11 +1767,6 @@ function setupGeneralTouch() {
 
             }
 
-
-            /*
-               Image panel has separate swipe
-            */
-
             if (
                 touchStartedInImagePanel
             ) {
@@ -1893,24 +1778,16 @@ function setupGeneralTouch() {
 
             }
 
-
             const touch =
                 event.changedTouches[0];
-
 
             const deltaX =
                 touch.clientX -
                 touchStartX;
 
-
             const deltaY =
                 touch.clientY -
                 touchStartY;
-
-
-            /*
-               Ignore vertical swipe
-            */
 
             if (
                 Math.abs(deltaX) < 50 ||
@@ -1922,11 +1799,6 @@ function setupGeneralTouch() {
 
             }
 
-
-            /*
-               Swipe left
-            */
-
             if (
                 deltaX < 0
             ) {
@@ -1934,11 +1806,6 @@ function setupGeneralTouch() {
                 changeStory(1);
 
             }
-
-
-            /*
-               Swipe right
-            */
 
             else {
 
@@ -1954,23 +1821,11 @@ function setupGeneralTouch() {
 
 }
 
-
-/* =========================================================
-   IMAGE TOUCH
-========================================================= */
-
 function setupImageTouch() {
 
     if (!imagePanel) {
-
         return;
-
     }
-
-
-    /*
-       Touch start
-    */
 
     imagePanel.addEventListener(
         "touchstart",
@@ -1984,14 +1839,11 @@ function setupImageTouch() {
 
             }
 
-
             const touch =
                 event.touches[0];
 
-
             imageTouchStartX =
                 touch.clientX;
-
 
             imageTouchStartY =
                 touch.clientY;
@@ -2001,11 +1853,6 @@ function setupImageTouch() {
             passive: true
         }
     );
-
-
-    /*
-       Touch end
-    */
 
     imagePanel.addEventListener(
         "touchend",
@@ -2019,24 +1866,16 @@ function setupImageTouch() {
 
             }
 
-
             const touch =
                 event.changedTouches[0];
-
 
             const deltaX =
                 touch.clientX -
                 imageTouchStartX;
 
-
             const deltaY =
                 touch.clientY -
                 imageTouchStartY;
-
-
-            /*
-               Ignore vertical movement
-            */
 
             if (
                 Math.abs(deltaX) < 40 ||
@@ -2048,21 +1887,12 @@ function setupImageTouch() {
 
             }
 
-
             const images =
                 getCurrentImages();
 
-
             if (!images.length) {
-
                 return;
-
             }
-
-
-            /*
-               Swipe left
-            */
 
             if (
                 deltaX < 0
@@ -2073,11 +1903,6 @@ function setupImageTouch() {
                 );
 
             }
-
-
-            /*
-               Swipe right
-            */
 
             else {
 
@@ -2095,23 +1920,11 @@ function setupImageTouch() {
 
 }
 
-
-/* =========================================================
-   IMAGE PROTECTION
-========================================================= */
-
 function setupImageProtection() {
 
     if (!imagePanel) {
-
         return;
-
     }
-
-
-    /*
-       Prevent dragging
-    */
 
     imagePanel.addEventListener(
         "dragstart",
@@ -2121,11 +1934,6 @@ function setupImageProtection() {
 
         }
     );
-
-
-    /*
-       Prevent right-click on images
-    */
 
     imagePanel.addEventListener(
         "contextmenu",
@@ -2145,11 +1953,6 @@ function setupImageProtection() {
 
 }
 
-
-/* =========================================================
-   VISIBILITY CHANGE
-========================================================= */
-
 function setupVisibilityChange() {
 
     document.addEventListener(
@@ -2162,11 +1965,15 @@ function setupVisibilityChange() {
 
                 stopImageTimer();
 
+                stopStoryVoice();
+
             }
 
             else {
 
                 startImageTimer();
+
+                speakCurrentStory();
 
             }
 
@@ -2174,11 +1981,6 @@ function setupVisibilityChange() {
     );
 
 }
-
-
-/* =========================================================
-   INITIALIZE
-========================================================= */
 
 function initializeStorySystem() {
 
@@ -2194,17 +1996,7 @@ function initializeStorySystem() {
         "================================="
     );
 
-
-    /*
-       Get DOM
-    */
-
     getDOMElements();
-
-
-    /*
-       Validate story index
-    */
 
     currentStory =
         Math.max(
@@ -2215,55 +2007,9 @@ function initializeStorySystem() {
             )
         );
 
-
-    /*
-       Check important elements
-    */
-
-    if (!storyPanel) {
-
-        console.warn(
-            "Missing HTML element: #storyPanel"
-        );
-
-    }
-
-
-    if (!imagePanel) {
-
-        console.warn(
-            "Missing HTML element: #imagePanel"
-        );
-
-    }
-
-
-    if (!imageTrack) {
-
-        console.warn(
-            "Missing HTML element: #imageTrack"
-        );
-
-    }
-
-
-    /*
-       Initial story
-    */
-
     updateStoryText();
 
-
-    /*
-       Initial images
-    */
-
     loadStoryImages();
-
-
-    /*
-       Buttons
-    */
 
     setupNextButton();
 
@@ -2271,47 +2017,45 @@ function initializeStorySystem() {
 
     setupSkipButton();
 
-
-    /*
-       Keyboard
-    */
-
     setupKeyboardNavigation();
-
-
-    /*
-       Touch
-    */
 
     setupGeneralTouch();
 
     setupImageTouch();
 
-
-    /*
-       Image protection
-    */
-
     setupImageProtection();
-
-
-    /*
-       Visibility
-    */
 
     setupVisibilityChange();
 
+    setTimeout(
+        function () {
+
+            speakCurrentStory();
+
+        },
+        STORY_VOICE_DELAY
+    );
 
     console.log(
         "Moon Exhibition initialized successfully."
     );
 
+    console.log(
+        "Stories:",
+        introStories.length
+    );
+
+    console.log(
+        "Speech supported:",
+        speechSupported
+    );
+
+    console.log(
+        "Selected voice:",
+        SELECTED_VOICE
+    );
+
 }
-
-
-/* =========================================================
-   START
-========================================================= */
 
 if (
     document.readyState === "loading"
