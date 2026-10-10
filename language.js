@@ -170,6 +170,11 @@
     const translatedText = new WeakMap();
     const translatedAttributes = new WeakMap();
     const storageKey = "teamAuroraLanguage";
+    const languageScriptUrl = document.currentScript?.src || window.location.href;
+    const bengaliFontUrl = new URL(
+        "./Moon/fonts/NotoSansBengali-Variable.ttf",
+        languageScriptUrl
+    ).href;
     const params = new URLSearchParams(window.location.search);
     let language = params.get("lang") === "bn" ? "bn" : "en";
 
@@ -364,14 +369,6 @@
         language = nextLanguage === "bn" ? "bn" : "en";
         document.documentElement.lang = language;
 
-        if (language === "bn" && !document.getElementById("banglaFont")) {
-            const font = document.createElement("link");
-            font.id = "banglaFont";
-            font.rel = "stylesheet";
-            font.href = "https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;600;700&family=Noto+Serif+Bengali:wght@400;500;600;700&display=swap";
-            document.head.appendChild(font);
-        }
-
         try {
             localStorage.setItem(storageKey, language);
         } catch (error) {
@@ -399,6 +396,13 @@
 
     const style = document.createElement("style");
     style.textContent = `
+        @font-face {
+            font-family: "Aurora Bengali";
+            src: url("${bengaliFontUrl}") format("truetype");
+            font-style: normal;
+            font-weight: 100 900;
+            font-display: swap;
+        }
         .language-toggle {
             position: fixed;
             top: max(calc(env(safe-area-inset-top) + 48px), min(62px, 8vh));
@@ -412,7 +416,7 @@
             border-radius: 999px;
             background: rgba(4, 14, 26, .92);
             color: #fff;
-            font: 600 14px/1.2 "Noto Sans Bengali", "Nirmala UI", sans-serif;
+            font: 600 14px/1.2 "Aurora Bengali", "Nirmala UI", sans-serif;
             white-space: nowrap;
             cursor: pointer;
             box-shadow: 0 4px 18px rgba(0, 0, 0, .35), 0 0 12px rgba(80, 223, 255, .16);
@@ -423,11 +427,11 @@
         :lang(bn) button,
         :lang(bn) input,
         :lang(bn) select {
-            font-family: "Noto Sans Bengali", "Nirmala UI", sans-serif;
+            font-family: "Aurora Bengali", "Nirmala UI", sans-serif;
         }
         :lang(bn) .story-content,
         :lang(bn) .story-content #storyText {
-            font-family: "Noto Serif Bengali", "Noto Sans Bengali", "Nirmala UI", serif;
+            font-family: "Aurora Bengali", "Nirmala UI", serif;
             line-height: 1.85;
         }
         @media (max-width: 700px) {
@@ -439,13 +443,6 @@
         }
     `;
     document.head.appendChild(style);
-    if (language === "bn") {
-        const font = document.createElement("link");
-        font.id = "banglaFont";
-        font.rel = "stylesheet";
-        font.href = "https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;600;700&family=Noto+Serif+Bengali:wght@400;500;600;700&display=swap";
-        document.head.appendChild(font);
-    }
     document.documentElement.lang = language;
     translateTree(document.documentElement);
     renderToggle();
