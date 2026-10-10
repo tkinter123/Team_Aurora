@@ -1,5 +1,3 @@
-
-
 const spaceView =
     document.getElementById("spaceView");
 
@@ -1271,6 +1269,13 @@ function closePlanetModal() {
 document
     .querySelectorAll(".planet")
     .forEach(planet => {
+
+        planet.addEventListener(
+            "pointerdown",
+            () => {
+                dragDistance = 0;
+            }
+        );
 
         planet.addEventListener(
             "click",
