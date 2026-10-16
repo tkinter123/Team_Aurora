@@ -70,20 +70,20 @@ const introStories = [
         kicker: "THE FIRST MISSIONS",
 
         title:
-            "The Journey Begins",
+            "",
 
         text: `
             About 68 years ago, in 1958, NASA began its journey towards
             the Moon with <b>Pioneer 1</b>, its first spacecraft, targeting
             lunar orbit.
-            <br><br>
+            <br>
 
             And about 62 years ago, in 1964, NASA began its journey towards
             Mars with <b>Mariner 3</b>, its first Mars attempt.
             <br><br>
 
             Soon after, <b>Mariner 4</b> followed and successfully reached Mars.
-            <br><br>
+            <br>
 
             Since then, mission after mission, NASA has continued sending
             spacecraft to explore these worlds.
@@ -799,6 +799,13 @@ function updateStoryText() {
 
     const localizedStory =
         getLocalizedStory(story);
+
+    if (storyPanel) {
+
+        storyPanel.dataset.storyIndex =
+            String(currentStory);
+
+    }
 
     if (storyKicker) {
 
@@ -1517,7 +1524,7 @@ function enterMoonMap() {
 
     if (
         document.body.classList.contains(
-            "leaving"
+            "hyperspace-launching"
         )
     ) {
 
@@ -1533,19 +1540,349 @@ function enterMoonMap() {
         true;
 
     document.body.classList.add(
-        "leaving"
+        "hyperspace-launching"
     );
 
-    setTimeout(
-        function () {
+    if (nextButton) {
+        nextButton.disabled = true;
+    }
+
+    if (backButton) {
+        backButton.disabled = true;
+    }
+
+    if (skipButton) {
+        skipButton.disabled = true;
+    }
+
+    const navigate =
+        () => {
 
             window.location.href =
                 window.ProjectLanguage?.withLanguage(HOME_MAP_PAGE) ||
                 HOME_MAP_PAGE;
 
-        },
-        350
+        };
+
+    const overlay =
+        document.createElement("div");
+
+    overlay.className =
+        "hyperspace-overlay";
+
+    overlay.setAttribute(
+        "aria-hidden",
+        "true"
     );
+
+    const canvas =
+        document.createElement("canvas");
+
+    overlay.appendChild(canvas);
+    document.body.appendChild(overlay);
+
+    if (
+        window.matchMedia(
+            "(prefers-reduced-motion: reduce)"
+        ).matches
+    ) {
+
+        overlay.classList.add(
+            "hyperspace-reduced"
+        );
+
+        window.setTimeout(
+            navigate,
+            450
+        );
+
+        return;
+
+    }
+
+    const context =
+        canvas.getContext("2d");
+
+    if (!context) {
+        navigate();
+        return;
+    }
+
+    const width =
+        window.innerWidth;
+
+    const height =
+        window.innerHeight;
+
+    const pixelRatio =
+        Math.min(
+            window.devicePixelRatio || 1,
+            1.5
+        );
+
+    canvas.width =
+        Math.round(width * pixelRatio);
+
+    canvas.height =
+        Math.round(height * pixelRatio);
+
+    canvas.style.width =
+        `${width}px`;
+
+    canvas.style.height =
+        `${height}px`;
+
+    context.setTransform(
+        pixelRatio,
+        0,
+        0,
+        pixelRatio,
+        0,
+        0
+    );
+
+    const centerX =
+        width / 2;
+
+    const centerY =
+        height / 2;
+
+    const maxRadius =
+        Math.hypot(width, height) * 0.72;
+
+    const particleCount =
+        width < 700 ? 100 : 190;
+
+    const palette = [
+        "rgba(225, 246, 255, 0.92)",
+        "rgba(101, 218, 255, 0.82)",
+        "rgba(92, 137, 255, 0.7)",
+        "rgba(174, 137, 255, 0.48)"
+    ];
+
+    const createParticle =
+        () => {
+
+            const angle =
+                Math.random() * Math.PI * 2;
+
+            return {
+                x: Math.cos(angle),
+                y: Math.sin(angle),
+                z: 0.18 + Math.random() * 0.82,
+                depth: 0.35 + Math.random() * 0.65,
+                color: palette[
+                    Math.floor(Math.random() * palette.length)
+                ]
+            };
+
+        };
+
+    const particles =
+        Array.from(
+            { length: particleCount },
+            createParticle
+        );
+
+    const startedAt =
+        performance.now();
+
+    let previousTime =
+        startedAt;
+
+    let frameId = 0;
+
+    const render =
+        time => {
+
+            const elapsed =
+                time - startedAt;
+
+            const progress =
+                Math.min(
+                    elapsed / 3200,
+                    1
+                );
+
+            const delta =
+                Math.min(
+                    (time - previousTime) / 1000,
+                    0.04
+                );
+
+            previousTime = time;
+
+            context.clearRect(
+                0,
+                0,
+                width,
+                height
+            );
+
+            const bloom =
+                Math.max(
+                    0,
+                    1 - Math.abs(progress - 0.91) / 0.12
+                );
+
+            const core =
+                context.createRadialGradient(
+                    centerX,
+                    centerY,
+                    0,
+                    centerX,
+                    centerY,
+                    maxRadius * 0.8
+                );
+
+            core.addColorStop(
+                0,
+                `rgba(221, 246, 255, ${0.06 + bloom * 0.3})`
+            );
+
+            core.addColorStop(
+                0.16,
+                `rgba(65, 154, 255, ${0.035 + bloom * 0.12})`
+            );
+
+            core.addColorStop(
+                1,
+                "rgba(1, 3, 14, 0)"
+            );
+
+            context.fillStyle = core;
+            context.fillRect(0, 0, width, height);
+            context.globalCompositeOperation = "lighter";
+
+            const acceleration =
+                0.16 + progress * progress * 1.65;
+
+            for (const particle of particles) {
+
+                const oldZ =
+                    particle.z;
+
+                particle.z -=
+                    delta *
+                    acceleration *
+                    (0.42 + particle.depth * 1.6);
+
+                if (particle.z <= 0.075) {
+                    Object.assign(
+                        particle,
+                        createParticle()
+                    );
+                    continue;
+                }
+
+                const oldRadius =
+                    ((1 - oldZ) / oldZ) *
+                    maxRadius *
+                    0.15;
+
+                const radius =
+                    ((1 - particle.z) / particle.z) *
+                    maxRadius *
+                    0.15;
+
+                const x =
+                    centerX + particle.x * radius;
+
+                const y =
+                    centerY + particle.y * radius;
+
+                const previousX =
+                    centerX + particle.x * oldRadius;
+
+                const previousY =
+                    centerY + particle.y * oldRadius;
+
+                const streak =
+                    (2 + progress * 18) *
+                    particle.depth;
+
+                const dx =
+                    x - previousX;
+
+                const dy =
+                    y - previousY;
+
+                const length =
+                    Math.hypot(dx, dy) || 1;
+
+                context.beginPath();
+                context.moveTo(
+                    previousX - (dx / length) * streak,
+                    previousY - (dy / length) * streak
+                );
+                context.lineTo(x, y);
+                context.strokeStyle =
+                    particle.color;
+                context.globalAlpha =
+                    Math.min(
+                        0.18 + progress * 0.78,
+                        0.9
+                    ) *
+                    Math.min(
+                        1,
+                        (1 - particle.z) * 2.2
+                    );
+                context.lineWidth =
+                    0.55 + particle.depth * (0.6 + progress * 0.9);
+                context.stroke();
+
+            }
+
+            context.globalAlpha =
+                0.12 + progress * 0.2;
+
+            for (let ribbon = 0; ribbon < 4; ribbon += 1) {
+
+                const direction =
+                    ribbon * Math.PI / 2 +
+                    progress * 0.24;
+
+                const spread =
+                    maxRadius *
+                    (0.24 + progress * 0.56);
+
+                context.beginPath();
+                context.moveTo(centerX, centerY);
+                context.bezierCurveTo(
+                    centerX + Math.cos(direction - 0.36) * spread * 0.42,
+                    centerY + Math.sin(direction - 0.36) * spread * 0.42,
+                    centerX + Math.cos(direction + 0.25) * spread * 0.72,
+                    centerY + Math.sin(direction + 0.25) * spread * 0.72,
+                    centerX + Math.cos(direction) * spread,
+                    centerY + Math.sin(direction) * spread
+                );
+                context.strokeStyle =
+                    ribbon % 2
+                        ? "rgba(111, 143, 255, 0.38)"
+                        : "rgba(104, 226, 255, 0.4)";
+                context.lineWidth =
+                    1 + bloom * 1.2;
+                context.stroke();
+
+            }
+
+            context.globalCompositeOperation = "source-over";
+            context.globalAlpha = 1;
+
+            if (progress >= 1) {
+
+                navigate();
+                return;
+
+            }
+
+            frameId =
+                window.requestAnimationFrame(render);
+
+        };
+
+    frameId =
+        window.requestAnimationFrame(render);
 
 }
 
