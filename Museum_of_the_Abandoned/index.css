@@ -561,10 +561,10 @@ button {
 ========================================================= */
 
 #storyAvatar {
-    width: 90px;
-    height: 90px;
+    width: 120px;
+    height: 120px;
 
-    margin-bottom: 22px;
+    margin-bottom: 12px;
 
     position: relative;
 
@@ -573,6 +573,10 @@ button {
     overflow: visible;
 
     flex-shrink: 0;
+
+    filter:
+        drop-shadow(0 8px 16px rgba(0, 0, 0, .38))
+        drop-shadow(0 0 12px rgba(90, 210, 255, .12));
 }
 
 
@@ -619,6 +623,29 @@ button {
         );
 
     pointer-events: none;
+}
+
+#storyPanel[data-story-index="2"] .story-inner {
+    justify-content: flex-start;
+    padding-top: clamp(28px, 3vw, 42px);
+}
+
+#storyPanel[data-story-index="2"] #storyAvatar {
+    width: 76px;
+    height: 76px;
+    margin-bottom: 8px;
+}
+
+#storyPanel[data-story-index="2"] .story-kicker {
+    margin-bottom: 10px;
+}
+
+#storyPanel[data-story-index="2"] .title-divider {
+    margin: 16px 0;
+}
+
+#storyPanel[data-story-index="2"] .story-footer {
+    margin-top: 18px;
 }
 
 
@@ -1410,25 +1437,103 @@ button {
 
 
 /* =========================================================
-   PAGE EXIT
+   HYPERSPACE HANDOFF
 ========================================================= */
 
-body.leaving #storyPage {
-    animation:
-        pageExit .4s ease forwards;
+body.hyperspace-launching #storyPage {
+    animation: hyperspaceIntroFade 650ms ease-in forwards;
 }
 
+@keyframes hyperspaceIntroFade {
+    to {
+        opacity: 0;
+        transform: scale(1.025);
+        filter: brightness(.58);
+    }
+}
 
-@keyframes pageExit {
-    from {
+.hyperspace-overlay {
+    position: fixed;
+    z-index: 10000;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    background:
+        radial-gradient(ellipse at 50% 48%, rgba(21, 41, 86, .36), transparent 55%),
+        #01030b;
+    animation: hyperspaceVeil 3.2s ease-in forwards;
+}
+
+.hyperspace-overlay canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.hyperspace-overlay::before,
+.hyperspace-overlay::after {
+    position: absolute;
+    inset: 0;
+    content: "";
+    pointer-events: none;
+}
+
+.hyperspace-overlay::before {
+    background:
+        radial-gradient(ellipse at center, transparent 18%, rgba(0, 2, 10, .22) 66%, rgba(0, 1, 7, .88) 100%);
+}
+
+.hyperspace-overlay::after {
+    opacity: 0;
+    background:
+        radial-gradient(circle at center, rgba(237, 250, 255, .82), rgba(119, 207, 255, .42) 12%, rgba(91, 108, 255, .14) 32%, transparent 62%);
+    animation: hyperspaceLightBurst 3.2s ease-in-out both;
+}
+
+@keyframes hyperspaceVeil {
+    0% {
+        opacity: 0;
+    }
+    8%, 78% {
         opacity: 1;
     }
-
-    to {
+    100% {
         opacity: 0;
     }
 }
 
+@keyframes hyperspaceLightBurst {
+    0%, 72% {
+        opacity: 0;
+        transform: scale(.28);
+    }
+    88% {
+        opacity: .48;
+        transform: scale(.9);
+    }
+    96% {
+        opacity: .82;
+        transform: scale(1.2);
+    }
+    100% {
+        opacity: .12;
+        transform: scale(1.55);
+    }
+}
+
+.hyperspace-overlay.hyperspace-reduced {
+    animation: hyperspaceReducedFade 450ms ease-out forwards;
+}
+
+.hyperspace-overlay.hyperspace-reduced::after {
+    display: none;
+}
+
+@keyframes hyperspaceReducedFade {
+    to {
+        opacity: 0;
+    }
+}
 
 /* =========================================================
    TABLET
@@ -1557,6 +1662,20 @@ body.leaving #storyPage {
         min-height: 420px;
     }
 
+    #storyAvatar {
+        width: 104px;
+        height: 104px;
+    }
+
+    #storyPanel[data-story-index="2"] .story-inner {
+        padding-top: 24px;
+    }
+
+    #storyPanel[data-story-index="2"] #storyAvatar {
+        width: 68px;
+        height: 68px;
+    }
+
 
     .story-inner {
         padding:
@@ -1651,6 +1770,11 @@ body.leaving #storyPage {
         min-height: 390px;
     }
 
+    #storyAvatar {
+        width: 92px;
+        height: 92px;
+    }
+
 
     #imagePanel {
         height: 300px;
@@ -1707,5 +1831,14 @@ button:focus-visible {
 
         transition-duration:
             .01ms !important;
+    }
+
+    body.hyperspace-launching #storyPage {
+        animation: none;
+        opacity: 0;
+    }
+
+    .hyperspace-overlay:not(.hyperspace-reduced) {
+        animation: none;
     }
 }
