@@ -75,6 +75,10 @@ body {
 
 }
 
+body.lunar-arrival-active {
+    background: #01030a;
+}
+
 button,
 input,
 a {
@@ -109,216 +113,240 @@ input:focus-visible {
 
 .moon-page {
 
+    position: relative;
+    isolation: isolate;
+
     width: 100%;
     min-height: 100vh;
-
 }
 
-#moonTravelEffect {
-
-    position:
-        fixed;
-
-    inset:
-        0;
-
-    display:
-        grid;
-
-    place-items:
-        center;
-
-    overflow:
-        hidden;
-
-    background-color:
-        #01040b;
-
+.lunar-arrival {
+    position: fixed;
+    z-index: 50000;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
     background:
-        radial-gradient(
-            ellipse at 50% 108%,
-            rgba(92, 123, 148, 0.22),
-            transparent 48%
-        ),
-        linear-gradient(
-            180deg,
-            #01040b,
-            #07111d 65%,
-            #101d2a
-        );
-
-    pointer-events:
-        none;
-
-    z-index:
-        20000;
-
-    animation:
-        moonArrivalFade
-        2400ms
-        cubic-bezier(0.65, 0, 0.35, 1)
-        forwards;
-
+        radial-gradient(ellipse at 50% 56%, rgba(18, 29, 44, 0.28), transparent 58%),
+        #01030a;
+    animation: lunarArrivalFade 4.8s ease-in-out forwards;
 }
 
-.moon-arrival-stars {
-
-    position:
-        absolute;
-
-    inset:
-        -45%;
-
-    background:
-        radial-gradient(2px 2px at 9% 19%, #fff, transparent 70%),
-        radial-gradient(1px 1px at 21% 43%, #dcecff, transparent 70%),
-        radial-gradient(2px 2px at 36% 12%, #fff, transparent 70%),
-        radial-gradient(1px 1px at 48% 34%, #dcecff, transparent 70%),
-        radial-gradient(2px 2px at 63% 17%, #fff, transparent 70%),
-        radial-gradient(1px 1px at 76% 39%, #dcecff, transparent 70%),
-        radial-gradient(1px 1px at 88% 14%, #fff, transparent 70%),
-        radial-gradient(2px 2px at 94% 48%, #fff, transparent 70%),
-        repeating-conic-gradient(
-            from 0deg,
-            transparent 0deg 10deg,
-            rgba(160, 200, 235, 0.28) 10.2deg 10.5deg,
-            transparent 10.7deg 19deg
-        );
-
-    -webkit-mask-image:
-        radial-gradient(
-            circle,
-            transparent 0 5%,
-            #000 16% 100%
-        );
-
-    mask-image:
-        radial-gradient(
-            circle,
-            transparent 0 5%,
-            #000 16% 100%
-        );
-
-    opacity:
-        0;
-
-    animation:
-        lunarOrbitWhirl
-        2200ms
-        cubic-bezier(0.18, 0.72, 0.2, 1)
-        forwards;
-
+.arrival-stars {
+    position: absolute;
+    inset: -20%;
+    opacity: 0;
+    background-repeat: repeat;
+    transform-origin: 50% 52%;
+    animation-fill-mode: both;
 }
 
-.moon-arrival-caption {
-
-    position:
-        absolute;
-
-    top:
-        78%;
-
-    color:
-        rgba(235, 243, 247, 0.9);
-
-    font-family:
-        var(--mono);
-
-    font-size:
-        clamp(9px, 1.1vw, 12px);
-
-    letter-spacing:
-        0.24em;
-
-    text-shadow:
-        0 0 16px rgba(190, 220, 235, 0.8);
-
-    animation:
-        lunarCaption
-        2400ms
-        ease-out
-        forwards;
-
+.arrival-stars-distant {
+    background-image:
+        radial-gradient(1px 1px at 12% 18%, rgba(222, 232, 245, 0.74) 50%, transparent 100%),
+        radial-gradient(1px 1px at 63% 42%, rgba(200, 220, 240, 0.6) 50%, transparent 100%),
+        radial-gradient(1px 1px at 32% 78%, rgba(240, 244, 250, 0.52) 50%, transparent 100%),
+        radial-gradient(1px 1px at 88% 69%, rgba(204, 224, 242, 0.65) 50%, transparent 100%);
+    background-size: 310px 280px, 370px 330px, 420px 360px, 510px 440px;
+    animation: lunarStarsApproach 4.5s cubic-bezier(0.58, 0.02, 0.36, 1) both;
 }
 
-body.moon-arrival-active .moon-page {
-
-    animation:
-        moonPageArrival
-        2400ms
-        cubic-bezier(0.16, 0.72, 0.25, 1)
-        both;
-
+.arrival-stars-near {
+    background-image:
+        radial-gradient(1.5px 1.5px at 22% 28%, rgba(225, 237, 249, 0.55) 50%, transparent 100%),
+        radial-gradient(1.5px 1.5px at 77% 21%, rgba(211, 228, 244, 0.48) 50%, transparent 100%),
+        radial-gradient(1px 1px at 47% 73%, rgba(240, 244, 250, 0.5) 50%, transparent 100%);
+    background-size: 470px 390px, 530px 460px, 610px 520px;
+    animation: lunarStarsApproach 3.7s 120ms cubic-bezier(0.58, 0.02, 0.36, 1) both;
 }
 
-@keyframes moonArrivalFade {
+.arrival-moon {
+    position: absolute;
+    top: 52%;
+    left: 50%;
+    width: clamp(190px, 34vmin, 360px);
+    height: auto;
+    opacity: 0;
+    border-radius: 50%;
+    object-fit: contain;
+    transform: translate(-50%, -50%) scale(0.16);
+    transform-origin: 50% 50%;
+    filter: brightness(0.72) contrast(1.08);
+    animation: lunarMoonApproach 4.45s cubic-bezier(0.52, 0.02, 0.32, 1) both;
+}
 
-    0%,
-    70% {
+.arrival-surface {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    background-color: #11151a;
+    background-image:
+        linear-gradient(180deg, rgba(2, 4, 8, 0.18), rgba(2, 4, 8, 0.08)),
+        url("./data/moon_surface.jpg");
+    background-size: cover, 175% auto;
+    background-position: center, 50% 48%;
+    clip-path: ellipse(0 0 at 50% 100%);
+    animation: lunarSurfaceHorizon 4.8s cubic-bezier(0.56, 0, 0.38, 1) both;
+}
+
+@keyframes lunarArrivalFade {
+    0%, 76% {
         opacity: 1;
         visibility: visible;
     }
-
     100% {
         opacity: 0;
         visibility: hidden;
     }
-
 }
 
-@keyframes lunarOrbitWhirl {
-
+@keyframes lunarStarsApproach {
     0% {
-        opacity: 0.35;
-        transform: scale(0.12) rotate(0deg);
+        opacity: 0.22;
+        transform: scale(0.72);
     }
-
-    55% {
-        opacity: 1;
-        transform: scale(1.8) rotate(260deg);
+    56% {
+        opacity: 0.6;
+        transform: scale(0.94);
     }
-
     100% {
         opacity: 0;
-        transform: scale(4.2) rotate(540deg);
+        transform: scale(1.8);
     }
-
 }
 
-@keyframes lunarCaption {
-
-    0%,
-    24% {
+@keyframes lunarMoonApproach {
+    0% {
         opacity: 0;
-        transform: translateY(8px);
+        transform: translate(-50%, -50%) scale(0.16);
     }
-
-    36% {
+    12% {
         opacity: 1;
-        transform: translateY(0);
     }
-
-    68%,
+    58% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1.2);
+    }
+    82% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(6.2);
+    }
     100% {
         opacity: 0;
+        transform: translate(-50%, -50%) scale(8.5);
     }
-
 }
 
-@keyframes moonPageArrival {
+@keyframes lunarSurfaceHorizon {
+    0%, 48% {
+        opacity: 0;
+        clip-path: ellipse(0 0 at 50% 100%);
+    }
+    66% {
+        opacity: 0.82;
+        clip-path: ellipse(56% 38% at 50% 108%);
+    }
+    88% {
+        opacity: 1;
+        clip-path: ellipse(128% 108% at 50% 102%);
+        background-position: center, 50% 48%;
+    }
+    100% {
+        opacity: 0;
+        clip-path: ellipse(160% 145% at 50% 100%);
+        background-position: center, 50% 56%;
+    }
+}
 
+.moon-page::before {
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    content: "";
+    pointer-events: none;
+    opacity: 0.42;
+    background:
+        radial-gradient(1px 1px at 8% 11%, rgba(222, 237, 255, 0.72) 50%, transparent 100%),
+        radial-gradient(1px 1px at 19% 37%, rgba(222, 237, 255, 0.5) 50%, transparent 100%),
+        radial-gradient(1px 1px at 77% 18%, rgba(222, 237, 255, 0.64) 50%, transparent 100%),
+        radial-gradient(1px 1px at 91% 42%, rgba(222, 237, 255, 0.52) 50%, transparent 100%),
+        radial-gradient(1px 1px at 63% 57%, rgba(222, 237, 255, 0.48) 50%, transparent 100%),
+        radial-gradient(1px 1px at 33% 74%, rgba(222, 237, 255, 0.56) 50%, transparent 100%);
+}
+
+.lunar-mist {
+    position: fixed;
+    z-index: 5;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.lunar-mist::before,
+.lunar-mist::after {
+    position: absolute;
+    inset: -24%;
+    content: "";
+    background-repeat: no-repeat;
+    will-change: transform, opacity;
+    animation-fill-mode: both;
+}
+
+.lunar-mist::before {
+    opacity: 0;
+    background-image:
+        radial-gradient(ellipse 38% 18% at 13% 66%, rgba(172, 190, 206, 0.13), transparent 76%),
+        radial-gradient(ellipse 44% 22% at 65% 76%, rgba(156, 179, 198, 0.12), transparent 78%),
+        radial-gradient(ellipse 36% 17% at 91% 61%, rgba(202, 213, 222, 0.09), transparent 78%);
+    filter: blur(14px);
+    animation:
+        lunarMistReveal 3.2s ease-out forwards,
+        lunarMistFarDrift 108s ease-in-out 3.2s infinite;
+}
+
+.lunar-mist::after {
+    opacity: 0;
+    background-image:
+        radial-gradient(ellipse 34% 16% at 21% 88%, rgba(188, 202, 215, 0.12), transparent 76%),
+        radial-gradient(ellipse 48% 19% at 76% 91%, rgba(160, 181, 198, 0.11), transparent 80%),
+        radial-gradient(ellipse 32% 15% at 48% 61%, rgba(218, 225, 231, 0.07), transparent 78%);
+    filter: blur(9px);
+    animation:
+        lunarMistReveal 4.2s 180ms ease-out forwards,
+        lunarMistNearDrift 76s ease-in-out 4.4s infinite;
+}
+
+@keyframes lunarMistReveal {
     from {
-        opacity: 0.55;
-        filter: blur(5px);
-        transform: scale(1.035) translateY(8px);
+        opacity: 0;
     }
-
     to {
-        opacity: 1;
-        filter: blur(0);
-        transform: scale(1) translateY(0);
+        opacity: 0.62;
     }
+}
 
+@keyframes lunarMistFarDrift {
+    0%,
+    100% {
+        opacity: 0.62;
+        transform: translate3d(0, 0, 0);
+    }
+    50% {
+        opacity: 0.76;
+        transform: translate3d(2.2%, -0.5%, 0);
+    }
+}
+
+@keyframes lunarMistNearDrift {
+    0%,
+    100% {
+        opacity: 0.58;
+        transform: translate3d(0, 0, 0);
+    }
+    50% {
+        opacity: 0.74;
+        transform: translate3d(-2.8%, 0.7%, 0);
+    }
 }
 
 .museum-header {
@@ -341,6 +369,25 @@ body.moon-arrival-active .moon-page {
 
     z-index: 100;
 
+    opacity: 1;
+    transform: none;
+}
+
+body.lunar-arrival-active .museum-header {
+    animation:
+        lunarContentReveal 850ms 3.2s ease-out both;
+
+}
+
+@keyframes lunarContentReveal {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .museum-header::after {
@@ -415,6 +462,9 @@ body.moon-arrival-active .moon-page {
 
 .exhibition-bar {
 
+    position: relative;
+    z-index: 20;
+
     display:
         flex;
 
@@ -433,6 +483,13 @@ body.moon-arrival-active .moon-page {
 
     background:
         rgba(3, 5, 10, 0.92);
+
+    opacity: 1;
+}
+
+body.lunar-arrival-active .exhibition-bar {
+    animation:
+        lunarContentReveal 850ms 3.35s ease-out both;
 
 }
 
@@ -512,6 +569,9 @@ body.moon-arrival-active .moon-page {
 
 .museum-main {
 
+    position: relative;
+    z-index: 10;
+
     width:
         min(1500px, 100%);
 
@@ -520,6 +580,13 @@ body.moon-arrival-active .moon-page {
 
     padding:
         25px 28px 60px;
+
+    opacity: 1;
+}
+
+body.lunar-arrival-active .museum-main {
+    animation:
+        lunarContentReveal 850ms 3.5s ease-out both;
 
 }
 
@@ -641,7 +708,7 @@ body.moon-arrival-active .moon-page {
         var(--mono);
 
     font-size:
-        15px;
+        17px;
 
     letter-spacing:
         0.08em;
@@ -1227,7 +1294,7 @@ body.moon-arrival-active .moon-page {
         rgba(255,255,255,0.75);
 
     font-size:
-        13px;
+        15px;
 
     line-height:
         1.5;
@@ -1462,10 +1529,10 @@ body.moon-arrival-active .moon-page {
         relative;
 
     width:
-        24px;
+        32px;
 
     height:
-        24px;
+        32px;
 
     display:
         grid;
@@ -1504,10 +1571,10 @@ body.moon-arrival-active .moon-page {
         50%;
 
     width:
-        40px;
+        50px;
 
     height:
-        40px;
+        50px;
 
     transform:
         translate(-50%, -50%);
@@ -1520,10 +1587,10 @@ body.moon-arrival-active .moon-page {
         50%;
 
     opacity:
-        0.48;
+        0.34;
 
     animation:
-        markerPulse 2.2s ease-out infinite;
+        lunarMarkerBeacon 3.6s ease-out infinite;
 
 }
 
@@ -1536,10 +1603,10 @@ body.moon-arrival-active .moon-page {
         absolute;
 
     width:
-        8px;
+        10px;
 
     height:
-        8px;
+        10px;
 
     border-radius:
         50%;
@@ -1553,16 +1620,16 @@ body.moon-arrival-active .moon-page {
 
 }
 
-@keyframes markerPulse {
+@keyframes lunarMarkerBeacon {
 
     0% {
 
         transform:
             translate(-50%, -50%)
-            scale(0.65);
+            scale(0.78);
 
         opacity:
-            0.55;
+                0.34;
 
     }
 
@@ -1570,7 +1637,7 @@ body.moon-arrival-active .moon-page {
 
         transform:
             translate(-50%, -50%)
-            scale(1.45);
+            scale(1.2);
 
         opacity:
             0;
@@ -1581,7 +1648,7 @@ body.moon-arrival-active .moon-page {
 
         transform:
             translate(-50%, -50%)
-            scale(1.45);
+            scale(1.2);
 
         opacity:
             0;
@@ -2228,8 +2295,8 @@ body.moon-arrival-active .moon-page {
         0 25px 60px rgba(0, 0, 0, 0.55);
 
     transform:
-        translateY(10px)
-        scale(0.98);
+        translateY(12px)
+        scale(0.99);
 
     transition:
         transform 450ms ease,
@@ -2243,6 +2310,46 @@ body.moon-arrival-active .moon-page {
         translateY(0)
         scale(1);
 
+}
+
+#storyOverlay:not(.hidden) #storyImage {
+    animation: lunarStoryImageReveal 850ms ease-out both;
+}
+
+#storyOverlay:not(.hidden) .story-content {
+    animation: lunarStoryTextReveal 560ms 70ms ease-out both;
+}
+
+@keyframes lunarStoryImageReveal {
+    from {
+        opacity: 0.72;
+        transform: scale(1.035);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes lunarStoryTextReveal {
+    from {
+        opacity: 0;
+        transform: translateY(7px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (hover: hover) and (pointer: fine) {
+    #storyImage {
+        transition: transform 700ms ease;
+    }
+
+    .story-image-wrap:hover #storyImage {
+        transform: scale(1.02);
+    }
 }
 
 #storyClose {
@@ -2723,44 +2830,35 @@ body.moon-arrival-active .moon-page {
         0;
 
     transform:
-        translateX(-25px);
+        translateY(5px);
 
 }
 
 .story-slide-enter {
 
     animation:
-        storySlideIn
-        450ms
-        ease
-        forwards;
+        lunarStorySlideReveal 360ms ease-out both;
 
 }
 
-@keyframes storySlideIn {
-
+@keyframes lunarStorySlideReveal {
     from {
-
-        opacity:
-            0;
-
-        transform:
-            translateX(25px);
-
+        opacity: 0;
+        transform: translateY(7px);
     }
-
     to {
-
-        opacity:
-            1;
-
-        transform:
-            translateX(0);
-
+        opacity: 1;
+        transform: translateY(0);
     }
-
 }
 
+#storyPanel.story-slide-enter #storyImage {
+    animation: lunarStoryImageReveal 650ms ease-out both;
+}
+
+#storyPanel.story-slide-enter .story-content {
+    animation: lunarStoryTextReveal 360ms 50ms ease-out both;
+}
 @media (max-width: 850px) {
 
     .museum-header {
@@ -2967,20 +3065,20 @@ body.moon-arrival-active .moon-page {
     .hardware-dot {
 
         width:
-            22px;
+            28px;
 
         height:
-            22px;
+            28px;
 
     }
 
     .hardware-dot::before {
 
         width:
-            36px;
+            44px;
 
         height:
-            36px;
+            44px;
 
     }
 
@@ -3064,7 +3162,7 @@ body.moon-arrival-active .moon-page {
             6px 8px;
 
         font-size:
-            12px;
+            14px;
 
         line-height:
             1.2;
@@ -3074,20 +3172,20 @@ body.moon-arrival-active .moon-page {
     .hardware-dot {
 
         width:
-            21px;
+            26px;
 
         height:
-            21px;
+            26px;
 
     }
 
     .hardware-dot::before {
 
         width:
-            33px;
+            40px;
 
         height:
-            33px;
+            40px;
 
     }
 
@@ -3134,19 +3232,6 @@ body.moon-arrival-active .moon-page {
 
 @media (prefers-reduced-motion: reduce) {
 
-    #moonTravelEffect,
-    .moon-arrival-stars,
-    .moon-arrival-caption,
-    body.moon-arrival-active .moon-page {
-
-        animation-duration:
-            0.01ms !important;
-
-        animation-iteration-count:
-            1 !important;
-
-    }
-
     *,
     *::before,
     *::after {
@@ -3160,6 +3245,18 @@ body.moon-arrival-active .moon-page {
         transition-duration:
             0.01ms !important;
 
+    }
+
+    .lunar-mist::before,
+    .lunar-mist::after {
+        animation: none;
+        opacity: 0.16;
+        transform: none;
+        will-change: auto;
+    }
+
+    .lunar-arrival {
+        display: none;
     }
 
     .hardware-dot::before {
