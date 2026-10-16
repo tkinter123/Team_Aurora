@@ -5,9 +5,56 @@ const MIN_ZOOM_MULTIPLIER = 1.4;
 
 const IMAGE_ROTATION_TIME = 3500;
 
-const STORY_EXIT_TIME = 250;
+const REDUCED_MOTION =
+    window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+    ).matches;
 
-const STORY_ENTER_TIME = 450;
+const lunarArrivalStage =
+    document.querySelector(".lunar-arrival");
+
+if (lunarArrivalStage && REDUCED_MOTION) {
+
+    document.body.classList.remove(
+        "lunar-arrival-active"
+    );
+
+    lunarArrivalStage.remove();
+
+} else if (lunarArrivalStage) {
+
+    const finishLunarArrival =
+        event => {
+
+            if (
+                event.animationName !==
+                "lunarArrivalFade"
+            ) {
+
+                return;
+
+            }
+
+            document.body.classList.remove(
+                "lunar-arrival-active"
+            );
+
+            lunarArrivalStage.remove();
+
+        };
+
+    lunarArrivalStage.addEventListener(
+        "animationend",
+        finishLunarArrival
+    );
+
+}
+
+const STORY_EXIT_TIME =
+    REDUCED_MOTION ? 0 : 250;
+
+const STORY_ENTER_TIME =
+    REDUCED_MOTION ? 0 : 360;
 
 const state = {
 
@@ -2540,16 +2587,6 @@ function openMissionStory(
         "hidden"
     );
 
-    requestAnimationFrame(
-        () => {
-
-            storyPanel?.classList.add(
-                "active"
-            );
-
-        }
-    );
-
     speakCurrentSlide();
 
     restartImageTimer();
@@ -2573,10 +2610,6 @@ function closeMissionStory() {
 
     storyOverlay.classList.add(
         "hidden"
-    );
-
-    storyPanel?.classList.remove(
-        "active"
     );
 
     currentMission =
