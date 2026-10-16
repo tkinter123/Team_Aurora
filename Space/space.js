@@ -1018,106 +1018,6 @@ const planetPages = {
 
 let planetPageTransitioning = false;
 
-function playSpaceWarpEffect() {
-
-    if (
-        window.matchMedia(
-            "(prefers-reduced-motion: reduce)"
-        ).matches
-    ) {
-
-        return;
-
-    }
-
-    const travelEffect =
-        document.getElementById(
-            "spaceTravelEffect"
-        );
-
-    if (!travelEffect) {
-        return;
-    }
-
-    travelEffect.classList.remove(
-        "active"
-    );
-
-    void travelEffect.offsetWidth;
-
-    travelEffect.classList.add(
-        "active"
-    );
-
-}
-
-function animateCameraToMoon(duration) {
-
-    const moon =
-        planetEls.Moon;
-
-    if (!moon || !solarWorld) {
-        return;
-    }
-
-    const startX =
-        solarX;
-
-    const startY =
-        solarY;
-
-    const startZoom =
-        solarZoom;
-
-    const targetX =
-        moon.offsetLeft;
-
-    const targetY =
-        moon.offsetTop;
-
-    const targetZoom =
-        MAX_ZOOM;
-
-    const startTime =
-        performance.now();
-
-    function step(time) {
-
-        const progress =
-            Math.min(
-                (time - startTime) / duration,
-                1
-            );
-
-        const acceleration =
-            progress * progress * progress;
-
-        solarX =
-            startX +
-            (targetX - startX) * acceleration;
-
-        solarY =
-            startY +
-            (targetY - startY) * acceleration;
-
-        solarZoom =
-            startZoom +
-            (targetZoom - startZoom) * acceleration;
-
-        applySolarCamera();
-
-        if (progress < 1) {
-
-            requestAnimationFrame(step);
-
-        }
-
-    }
-
-    requestAnimationFrame(step);
-
-}
-
 function navigateToPlanetPage(name) {
 
     const destination =
@@ -1132,36 +1032,11 @@ function navigateToPlanetPage(name) {
 
     }
 
-    if (
-        name !== "Moon" ||
-        window.matchMedia(
-            "(prefers-reduced-motion: reduce)"
-        ).matches
-    ) {
-
-        window.location.href =
-            window.ProjectLanguage?.withLanguage(destination) || destination;
-
-        return;
-
-    }
-
     planetPageTransitioning =
         true;
 
-    animateCameraToMoon(3800);
-
-    playSpaceWarpEffect();
-
-    window.setTimeout(
-        () => {
-
-            window.location.href =
-                window.ProjectLanguage?.withLanguage(destination) || destination;
-
-        },
-        4000
-    );
+    window.location.href =
+        window.ProjectLanguage?.withLanguage(destination) || destination;
 
 }
 
@@ -1404,8 +1279,6 @@ function animationLoop(time) {
 updateOrbits(0);
 
 applySolarCamera();
-
-playSpaceWarpEffect();
 
 requestAnimationFrame(
     animationLoop
