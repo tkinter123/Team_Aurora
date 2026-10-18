@@ -65,4 +65,4 @@ Team_Aurora/
 └── Space/                      # Solar System page, styles, and behavior
 ```
 
-The Moon page and its Bengali font are served from local project files. The font and its SIL Open Font License are in `Moon/fonts/`. The rest of the project is a static site and does not require a backend.
+The Moon page uses locally available Bengali-capable system fonts when present, without requiring any external network resources. The rest of the project is a static site and does not require a backend.

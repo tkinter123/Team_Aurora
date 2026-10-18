@@ -170,11 +170,6 @@
     const translatedText = new WeakMap();
     const translatedAttributes = new WeakMap();
     const storageKey = "teamAuroraLanguage";
-    const languageScriptUrl = document.currentScript?.src || window.location.href;
-    const bengaliFontUrl = new URL(
-        "./Moon/fonts/NotoSansBengali-Variable.ttf",
-        languageScriptUrl
-    ).href;
     const params = new URLSearchParams(window.location.search);
     let language = params.get("lang") === "bn" ? "bn" : "en";
 
@@ -396,12 +391,8 @@
 
     const style = document.createElement("style");
     style.textContent = `
-        @font-face {
-            font-family: "Aurora Bengali";
-            src: url("${bengaliFontUrl}") format("truetype");
-            font-style: normal;
-            font-weight: 100 900;
-            font-display: swap;
+        :root {
+            --aurora-bengali-font: "Nirmala UI", "Segoe UI", "SutonnyMJ", "SolaimanLipi", sans-serif;
         }
         .language-toggle {
             position: fixed;
@@ -416,7 +407,7 @@
             border-radius: 999px;
             background: rgba(4, 14, 26, .92);
             color: #fff;
-            font: 600 14px/1.2 "Aurora Bengali", "Nirmala UI", sans-serif;
+            font: 600 14px/1.2 var(--aurora-bengali-font);
             white-space: nowrap;
             cursor: pointer;
             box-shadow: 0 4px 18px rgba(0, 0, 0, .35), 0 0 12px rgba(80, 223, 255, .16);
@@ -427,11 +418,11 @@
         :lang(bn) button,
         :lang(bn) input,
         :lang(bn) select {
-            font-family: "Aurora Bengali", "Nirmala UI", sans-serif;
+            font-family: var(--aurora-bengali-font);
         }
         :lang(bn) .story-content,
         :lang(bn) .story-content #storyText {
-            font-family: "Aurora Bengali", "Nirmala UI", serif;
+            font-family: var(--aurora-bengali-font);
             line-height: 1.85;
         }
         @media (max-width: 700px) {
