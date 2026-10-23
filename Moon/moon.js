@@ -1,7 +1,7 @@
 const MAP_WIDTH = 4096;
 const MAP_HEIGHT = 2048;
 
-const MIN_ZOOM_MULTIPLIER = 1.4;
+const MIN_ZOOM_MULTIPLIER = 1;
 
 const IMAGE_ROTATION_TIME = 3500;
 
@@ -90,6 +90,90 @@ let currentMission = null;
 
 const STORY_VOICE_ENABLED = false;
 
+const pioneerStoryPages = [
+    {
+        text: "Hi! I’m Pioneer 1.\nI was America’s first spacecraft, launched just days after NASA was born.\nI was headed for the Moon.",
+        image: "./moon_images/pioneer_1_launch.jpg",
+        alt: "Pioneer 1 on its early lunar mission",
+        catalog: "Pioneer 1"
+    },
+    {
+        text: "On October 11, 1958, a Thor-Able rocket carried me toward the Moon.\nMy goal was to fly past it, study space, and send data home.",
+        image: "./moon_images/pioneer_1_launch.jpg",
+        alt: "Pioneer 1 launch atop a Thor-Able rocket",
+        catalog: "Pioneer 1"
+    },
+    {
+        text: "My rocket’s upper stage shut down too early.\nI climbed to about 114,750 kilometres—not far enough to reach the Moon.",
+        image: "./moon_images/pioneer_1_launch.jpg",
+        alt: "Pioneer 1 on its attempted journey toward the Moon",
+        catalog: "Pioneer 1"
+    },
+    {
+        text: "That was a record distance for the time.\nAlong the way, I confirmed the Van Allen radiation belts.\nI also studied space near Earth.",
+        image: "./moon_images/Pioneer_1_Reconstructed_Replica.jpg",
+        alt: "Reconstructed Pioneer 1 spacecraft",
+        catalog: "Pioneer 1"
+    },
+    {
+        text: "After about 43 hours, I fell back to Earth and burned up over the South Pacific.\nMy signal ended there.",
+        image: "./moon_images/Pioneer_1_Reconstructed_Replica.jpg",
+        alt: "Reconstructed Pioneer 1 spacecraft, part of early lunar exploration",
+        catalog: "Pioneer 1"
+    },
+    {
+        text: "I never touched the Moon.\nMy measurements and lessons helped clear the path for those that did.",
+        image: "./moon_images/Pioneer_1_Reconstructed_Replica.jpg",
+        alt: "Reconstructed Pioneer 1 spacecraft, part of early lunar exploration",
+        catalog: "Pioneer 1"
+    }
+];
+
+const pioneerStoryPagesBangla = [
+    {
+        title: "স্বাগতম",
+        text: "হ্যালো! আমি পাইওনিয়ার ১। চাঁদে পৌঁছানোর জন্য আমেরিকার প্রথম প্রচেষ্টা ছিলাম আমি। আমার সাহসী, যদিও সংক্ষিপ্ত, যাত্রার গল্প শুনবে?",
+        image: "./moon_images/pioneer_1_launch.jpg",
+        alt: "পাইওনিয়ার ১-এর প্রাথমিক চন্দ্র অভিযান",
+        catalog: "পাইওনিয়ার ১ — ভূমিকা"
+    },
+    {
+        title: "উৎক্ষেপণ",
+        text: "১৯৫৮ সালের ১১ অক্টোবরে, নাসা প্রতিষ্ঠার কিছুদিন পর আমাকে উৎক্ষেপণ করা হয়েছিল। থর-এবল রকেট আমাকে উচ্চে উঠিয়ে নিয়ে যায়।",
+        image: "./moon_images/pioneer_1_launch.jpg",
+        alt: "থর-এবল রকেটের ওপর পাইওনিয়ার ১",
+        catalog: "পাইওনিয়ার ১ — উৎক্ষেপণ"
+    },
+    {
+        title: "উচ্চ ascent ও সংক্ষিপ্ত পথ",
+        text: "আমার রকেটের ওপরের ধাপ খুব তাড়াতাড়ি বন্ধ হয়ে যায়। আমি পৃথিবী থেকে প্রায় ১১৪,৭৫০ কিলোমিটার দূর পর্যন্ত উঠেছিলাম, তারপর ফিরে আসি।",
+        image: "./moon_images/pioneer_1_launch.jpg",
+        alt: "চাঁদের দিকে উঠছে পাইওনিয়ার ১",
+        catalog: "পাইওনিয়ার ১ — পথ"
+    },
+    {
+        title: "নীরব অবদান",
+        text: "আমার যাত্রায় আমি বিকিরণ পরিমাপ করেছি এবং বিজ্ঞানীদের ভ্যান অ্যালেন বিকিরণ বলয়ের জায়গা বুঝতে সাহায্য করেছি।",
+        image: "./moon_images/Pioneer_1_Reconstructed_Replica.jpg",
+        alt: "পাইওনিয়ার ১-এর বিকিরণ তথ্য",
+        catalog: "পাইওনিয়ার ১ — বৈজ্ঞানিক তথ্য"
+    },
+    {
+        title: "জ্বলে ওঠা প্রত্যাবর্তন",
+        text: "মহাকাশে ৪৩ ঘণ্টা থাকার পর আমি পৃথিবীর বায়ুমণ্ডলে পুনঃপ্রবেশ করি এবং দক্ষিণ প্রশান্ত মহাসাগরে পুড়ে যাই।",
+        image: "./moon_images/Pioneer_1_Reconstructed_Replica.jpg",
+        alt: "পৃথিবীর বায়ুমণ্ডলে ফিরে আসছে পাইওনিয়ার ১",
+        catalog: "পাইওনিয়ার ১ — প্রত্যাবর্তন"
+    },
+    {
+        title: "উত্তরাধিকার",
+        text: "আমার যাত্রা দেখিয়েছে কী ভুল হতে পারে এবং পরবর্তী যারা সফল হয়েছে, তাদের পথকে সহজ করতে কীভাবে সাহায্য করা যায়।",
+        image: "./moon_images/Pioneer_1_Reconstructed_Replica.jpg",
+        alt: "আর্কাইভ মহাকাশ ঐতিহ্য হিসেবে পাইওনিয়ার ১",
+        catalog: "পাইওনিয়ার ১ — উত্তরাধিকার"
+    }
+];
+
 let currentSlide = 0;
 
 let currentImage = 0;
@@ -115,11 +199,43 @@ const mapViewport =
 const mapLayer =
     document.getElementById("moonMapLayer");
 
+const moonThreeCanvas =
+    document.getElementById("moonThreeCanvas");
+
+const moonThreeContainer =
+    document.getElementById("moonThreeContainer");
+
+const moonThreeLoading =
+    document.getElementById("moonThreeLoading");
+
+const moonThreeError =
+    document.getElementById("moonThreeError");
+
 const moonSurfaceImage =
     document.getElementById("moonSurfaceImage");
 
 const hardwareLayer =
     document.getElementById("hardwareLayer");
+
+const moonThreeState = {
+    renderer: null,
+    scene: null,
+    camera: null,
+    globeGroup: null,
+    sphere: null,
+    raycaster: null,
+    pointer: null,
+    markerGroup: null,
+    markerMap: new Map(),
+    pointerDown: false,
+    webglActive: false,
+    lastPointerX: 0,
+    lastPointerY: 0,
+    animationId: null,
+    isReady: false,
+    textureUrl: "./data/moon-global.jpg",
+    textureLoaded: false
+};
 
 const zoomInButton =
     document.getElementById("zoomIn");
@@ -138,6 +254,9 @@ const miniMapCanvas =
 
 const mapStatus =
     document.getElementById("mapStatus");
+
+const mapCoordinates =
+    document.getElementById("mapCoordinates");
 
 const storyOverlay =
     document.getElementById("storyOverlay");
@@ -192,6 +311,93 @@ const timelineEvents =
 
 const timelinePlay =
     document.getElementById("timelinePlay");
+
+function updateMoonLanguageUI() {
+
+    if (!window.ProjectLanguage) {
+        return;
+    }
+
+    const isBangla =
+        window.ProjectLanguage.isBangla;
+
+    const t =
+        (english, bangla) =>
+            isBangla ? bangla : english;
+
+    if (timelinePlay) {
+        timelinePlay.textContent =
+            state.playing ? "❚❚" : "▶";
+        timelinePlay.setAttribute(
+            "aria-label",
+            t(
+                "Play mission timeline",
+                "অভিযানের সময়রেখা চালান"
+            )
+        );
+    }
+
+    if (timelineRange) {
+        timelineRange.setAttribute(
+            "aria-label",
+            t(
+                "Mission timeline year",
+                "অভিযানের সময়রেখার বছর"
+            )
+        );
+    }
+
+    if (zoomInButton) {
+        zoomInButton.setAttribute(
+            "aria-label",
+            t("Zoom in", "বড় করে দেখুন")
+        );
+    }
+
+    if (zoomOutButton) {
+        zoomOutButton.setAttribute(
+            "aria-label",
+            t("Zoom out", "ছোট করে দেখুন")
+        );
+    }
+
+    if (homeButton) {
+        homeButton.setAttribute(
+            "aria-label",
+            t("Reset lunar map", "চন্দ্র মানচিত্র রিসেট করুন")
+        );
+    }
+
+    const mapLegendText =
+        document.querySelectorAll(
+            ".legend-item"
+        );
+
+    mapLegendText.forEach(
+        item => {
+            if (item.classList.contains("landed")) {
+                item.lastChild.textContent =
+                    isBangla ? "অবতরণ করেছে" : "LANDED";
+            }
+
+            if (item.classList.contains("impacted")) {
+                item.lastChild.textContent =
+                    isBangla ? "আঘাত হেনেছে" : "IMPACTED";
+            }
+        }
+    );
+
+    if (archiveBtn) {
+        const archiveLabel =
+            archiveBtn.querySelector("span:last-child");
+
+        if (archiveLabel) {
+            archiveLabel.textContent =
+                t("Mission Archive", "অভিযান সংরক্ষণাগার");
+        }
+    }
+
+}
 
 let archiveBtn = null;
 
@@ -325,7 +531,7 @@ function calculateFitZoom() {
 
     }
 
-    return Math.min(
+    return Math.max(
         width / MAP_WIDTH,
         height / MAP_HEIGHT
     );
@@ -364,6 +570,13 @@ function resetMapPosition() {
 
     drawMiniMap();
 
+    updateMapCursorCoordinates(
+        mapViewport.getBoundingClientRect().left +
+            mapViewport.clientWidth / 2,
+        mapViewport.getBoundingClientRect().top +
+            mapViewport.clientHeight / 2
+    );
+
 }
 
 function applyMapTransform() {
@@ -378,6 +591,18 @@ function applyMapTransform() {
             calc(-50% + ${state.posY}px),
             0
         ) scale(${state.zoom})`;
+
+    if (hardwareLayer) {
+        hardwareLayer.style.setProperty(
+            "--marker-ui-scale",
+            String(
+                Math.min(
+                    12,
+                    Math.max(0.75, 1 / state.zoom)
+                )
+            )
+        );
+    }
 
 }
 
@@ -519,6 +744,10 @@ function handleWheel(event) {
 
     event.preventDefault();
 
+    if (moonThreeState.webglActive) {
+        return;
+    }
+
     zoomAtPoint(
         event.clientX,
         event.clientY,
@@ -539,6 +768,28 @@ function handlePointerDown(event) {
 
         return;
 
+    }
+
+    if (
+        moonThreeState.webglActive &&
+        updateGlobeCursorCoordinates(event.clientX, event.clientY)
+    ) {
+
+        moonThreeState.pointerDown = true;
+        moonThreeState.lastPointerX = event.clientX;
+        moonThreeState.lastPointerY = event.clientY;
+
+        try {
+            mapViewport.setPointerCapture(event.pointerId);
+        } catch (error) {}
+
+        event.preventDefault();
+        return;
+
+    }
+
+    if (moonThreeState.webglActive) {
+        return;
     }
 
     state.dragging =
@@ -568,6 +819,50 @@ function handlePointerDown(event) {
 
 function handlePointerMove(event) {
 
+    if (moonThreeState.webglActive) {
+
+        if (moonThreeState.pointerDown) {
+
+            const deltaX =
+                event.clientX - moonThreeState.lastPointerX;
+
+            const deltaY =
+                event.clientY - moonThreeState.lastPointerY;
+
+            moonThreeState.globeGroup.rotation.y +=
+                deltaX * 0.006;
+
+            moonThreeState.globeGroup.rotation.x =
+                Math.max(
+                    -1.25,
+                    Math.min(
+                        1.25,
+                        moonThreeState.globeGroup.rotation.x + deltaY * 0.006
+                    )
+                );
+
+            moonThreeState.lastPointerX =
+                event.clientX;
+
+            moonThreeState.lastPointerY =
+                event.clientY;
+
+        }
+
+        updateGlobeCursorCoordinates(
+            event.clientX,
+            event.clientY
+        );
+
+        return;
+
+    }
+
+    updateMapCursorCoordinates(
+        event.clientX,
+        event.clientY
+    );
+
     if (!state.dragging) {
         return;
     }
@@ -596,6 +891,18 @@ function handlePointerMove(event) {
 
 function handlePointerUp(event) {
 
+    if (moonThreeState.pointerDown) {
+
+        moonThreeState.pointerDown = false;
+
+        try {
+            mapViewport.releasePointerCapture(event.pointerId);
+        } catch (error) {}
+
+        return;
+
+    }
+
     state.dragging =
         false;
 
@@ -606,6 +913,167 @@ function handlePointerUp(event) {
         );
 
     } catch (error) {}
+
+}
+
+function updateMapCursorCoordinates(clientX, clientY) {
+
+    if (
+        moonThreeState.webglActive ||
+        !mapCoordinates ||
+        !mapViewport ||
+        state.zoom <= 0
+    ) {
+        return;
+    }
+
+    const rect =
+        mapViewport.getBoundingClientRect();
+
+    const mapX =
+        (
+            clientX -
+            rect.left -
+            rect.width / 2 -
+            state.posX
+        ) / state.zoom +
+        MAP_WIDTH / 2;
+
+    const mapY =
+        (
+            clientY -
+            rect.top -
+            rect.height / 2 -
+            state.posY
+        ) / state.zoom +
+        MAP_HEIGHT / 2;
+
+    if (
+        mapX < 0 ||
+        mapX > MAP_WIDTH ||
+        mapY < 0 ||
+        mapY > MAP_HEIGHT
+    ) {
+        clearMapCursorCoordinates();
+        return;
+    }
+
+    const latitude =
+        90 - mapY / MAP_HEIGHT * 180;
+
+    const longitude =
+        mapX / MAP_WIDTH * 360 - 180;
+
+    setMapCursorCoordinates(latitude, longitude);
+
+}
+
+function setMapCursorCoordinates(latitude, longitude) {
+
+    if (!mapCoordinates) {
+        return;
+    }
+
+    const format = value =>
+        window.ProjectLanguage?.formatNumber(value) || value;
+
+    const latitudeLabel =
+        window.ProjectLanguage?.isBangla ? "অক্ষাংশ" : "LAT";
+
+    const longitudeLabel =
+        window.ProjectLanguage?.isBangla ? "দ্রাঘিমাংশ" : "LON";
+
+    mapCoordinates.textContent =
+        `${latitudeLabel} ${format(latitude.toFixed(4))}° · ${longitudeLabel} ${format(longitude.toFixed(4))}°`;
+
+}
+
+function clearMapCursorCoordinates() {
+
+    if (!mapCoordinates) {
+        return;
+    }
+
+    mapCoordinates.textContent =
+        window.ProjectLanguage?.isBangla
+            ? "অক্ষাংশ -- | দ্রাঘিমাংশ --"
+            : "LAT -- | LON --";
+
+}
+
+function updateGlobeCursorCoordinates(clientX, clientY) {
+
+    if (
+        !moonThreeState.webglActive ||
+        !moonThreeCanvas ||
+        !moonThreeState.camera ||
+        !moonThreeState.sphere ||
+        !moonThreeState.globeGroup ||
+        !moonThreeState.raycaster ||
+        !moonThreeState.pointer
+    ) {
+        return false;
+    }
+
+    const rect =
+        moonThreeCanvas.getBoundingClientRect();
+
+    if (
+        !rect.width ||
+        !rect.height ||
+        clientX < rect.left ||
+        clientX > rect.right ||
+        clientY < rect.top ||
+        clientY > rect.bottom
+    ) {
+        clearMapCursorCoordinates();
+        return false;
+    }
+
+    moonThreeState.pointer.x =
+        ((clientX - rect.left) / rect.width) * 2 - 1;
+
+    moonThreeState.pointer.y =
+        -((clientY - rect.top) / rect.height) * 2 + 1;
+
+    moonThreeState.raycaster.setFromCamera(
+        moonThreeState.pointer,
+        moonThreeState.camera
+    );
+
+    const intersection =
+        moonThreeState.raycaster.intersectObject(
+            moonThreeState.sphere,
+            false
+        )[0];
+
+    if (!intersection) {
+        clearMapCursorCoordinates();
+        return false;
+    }
+
+    const localPoint =
+        moonThreeState.globeGroup.worldToLocal(
+            intersection.point.clone()
+        ).normalize();
+
+    const latitude =
+        90 - Math.acos(
+            Math.max(-1, Math.min(1, localPoint.y))
+        ) * 180 / Math.PI;
+
+    let theta =
+        Math.atan2(localPoint.z, -localPoint.x);
+
+    if (theta < 0) {
+        theta += Math.PI * 2;
+    }
+
+    const longitude =
+        theta * 180 / Math.PI - 180;
+
+    setMapCursorCoordinates(latitude, longitude);
+    return true;
 
 }
 
@@ -731,8 +1199,18 @@ function createMarker(mission) {
     label.className =
         "hardware-label";
 
+    label.dataset.position =
+        "bottom";
+
     label.textContent =
         getMissionName(mission);
+
+    dot.innerHTML = `
+        <svg class="hardware-pin-icon" viewBox="0 0 24 28" aria-hidden="true" focusable="false">
+            <path class="hardware-pin-body" d="M12 27S2 17.2 2 10.5a10 10 0 1 1 20 0C22 17.2 12 27 12 27Z" />
+            <circle class="hardware-pin-center" cx="12" cy="10.5" r="4" />
+        </svg>
+    `;
 
     marker.appendChild(dot);
 
@@ -750,6 +1228,175 @@ function createMarker(mission) {
     );
 
     return marker;
+
+}
+
+function projectLatLonToSphere(latitude, longitude) {
+
+    const lat = Number(latitude);
+    const lon = Number(longitude);
+
+    if (
+        !Number.isFinite(lat) ||
+        !Number.isFinite(lon)
+    ) {
+
+        return null;
+
+    }
+
+    const phi =
+        (90 - lat) * (Math.PI / 180);
+
+    const theta =
+        (lon + 180) * (Math.PI / 180);
+
+    const x =
+        -Math.sin(phi) * Math.cos(theta);
+
+    const y =
+        Math.cos(phi);
+
+    const z =
+        Math.sin(phi) * Math.sin(theta);
+
+    return {
+        x,
+        y,
+        z
+    };
+
+}
+
+function updateThreeMoonMarkerPositions() {
+
+    if (
+        !moonThreeState.markerGroup ||
+        !moonThreeState.sphere
+    ) {
+
+        return;
+
+    }
+
+    const missions =
+        getMappableMissions();
+
+    missions.forEach(
+        mission => {
+
+            const marker =
+                moonThreeState.markerMap.get(mission.id);
+
+            if (!marker) {
+                return;
+            }
+
+            const spherePosition =
+                projectLatLonToSphere(
+                    mission.latitude,
+                    mission.longitude
+                );
+
+            if (!spherePosition) {
+                marker.visible = false;
+                return;
+            }
+
+            const direction =
+                new THREE.Vector3(
+                    spherePosition.x,
+                    spherePosition.y,
+                    spherePosition.z
+                ).normalize();
+
+            const radius =
+                1.215;
+
+            const markerPosition =
+                direction.multiplyScalar(radius);
+
+            marker.position.copy(markerPosition);
+            marker.lookAt(0, 0, 0);
+            marker.rotateX(Math.PI / 2);
+            marker.visible =
+                Number(mission.year) <=
+                Number(state.timelineYear);
+
+        }
+    );
+
+}
+
+function createThreeMoonMarker(mission) {
+
+    if (!window.THREE) {
+        return null;
+    }
+
+    const group =
+        new THREE.Group();
+
+    const dot =
+        new THREE.Mesh(
+            new THREE.SphereGeometry(0.024, 12, 12),
+            new THREE.MeshBasicMaterial({
+                color: mission.status?.toLowerCase().includes("impact") ? 0xff4d4d : mission.status?.toLowerCase().includes("orbit") ? 0xffd84d : 0x4dff88,
+                transparent: true,
+                opacity: 0.95
+            })
+        );
+
+    const halo =
+        new THREE.Mesh(
+            new THREE.SphereGeometry(0.042, 12, 12),
+            new THREE.MeshBasicMaterial({
+                color: mission.status?.toLowerCase().includes("impact") ? 0xff4d4d : mission.status?.toLowerCase().includes("orbit") ? 0xffd84d : 0x4dff88,
+                transparent: true,
+                opacity: 0.22
+            })
+        );
+
+    group.add(halo);
+    group.add(dot);
+
+    group.userData = {
+        missionId: mission.id
+    };
+
+    group.visible = false;
+
+    const position =
+        projectLatLonToSphere(
+            mission.latitude,
+            mission.longitude
+        );
+
+    if (position) {
+
+        group.position.set(
+            position.x,
+            position.y,
+            position.z
+        ).multiplyScalar(1.215);
+
+        group.lookAt(0, 0, 0);
+        group.rotateX(Math.PI / 2);
+        group.visible = true;
+
+    }
+
+    group.traverse(
+        child => {
+
+            if (child.isMesh) {
+                child.userData.missionId = mission.id;
+            }
+
+        }
+    );
+
+    return group;
 
 }
 
@@ -779,6 +1426,27 @@ function renderMarkers() {
 
         }
     );
+
+    if (moonThreeState.markerGroup) {
+
+        moonThreeState.markerGroup.clear();
+        moonThreeState.markerMap.clear();
+
+        missions.forEach(
+            mission => {
+
+                const marker =
+                    createThreeMoonMarker(mission);
+
+                if (marker) {
+                    moonThreeState.markerGroup.add(marker);
+                    moonThreeState.markerMap.set(mission.id, marker);
+                }
+
+            }
+        );
+
+    }
 
     updateMarkerVisibility();
 
@@ -822,6 +1490,13 @@ function updateMarkerVisibility() {
                 "timeline-hidden",
                 !visible
             );
+
+            const threeMarker =
+                moonThreeState.markerMap.get(mission.id);
+
+            if (threeMarker) {
+                threeMarker.visible = visible;
+            }
 
         }
     );
@@ -1434,6 +2109,15 @@ function setupMapInteractions() {
         handlePointerUp
     );
 
+    mapViewport.addEventListener(
+        "pointerleave",
+        () => {
+            if (!state.dragging && !moonThreeState.pointerDown) {
+                clearMapCursorCoordinates();
+            }
+        }
+    );
+
     if (miniMapCanvas) {
 
         miniMapCanvas.addEventListener(
@@ -1507,6 +2191,16 @@ function setupHomeButton() {
 }
 
 function getStorySlides(mission) {
+
+    if (
+        mission &&
+        Array.isArray(mission.slides) &&
+        mission.slides.length
+    ) {
+
+        return mission.slides;
+
+    }
 
     const missionStory =
         getMissionText(mission, "story");
@@ -1620,6 +2314,33 @@ function getStorySlides(mission) {
             }
         );
 
+        const imageScenes =
+            Array.isArray(mission.slides)
+                ? mission.slides
+                : [];
+
+        const getStorySceneImages =
+            index => {
+
+                if (!imageScenes.length) {
+                    return getSlideImages(mission, null);
+                }
+
+                const imageSceneIndex =
+                    Math.min(
+                        Math.floor(
+                            index * imageScenes.length / storySlides.length
+                        ),
+                        imageScenes.length - 1
+                    );
+
+                return getSlideImages(
+                    mission,
+                    imageScenes[imageSceneIndex]
+                );
+
+            };
+
         return [
             {
                 text:
@@ -1627,32 +2348,17 @@ function getStorySlides(mission) {
                     (window.ProjectLanguage?.isBangla ? "নাসা সংরক্ষণাগার" : "NASA ARCHIVE"),
                 science: [],
                 images:
-                    getSlideImages(
-                        mission,
-                        null
-                    )
+                    getStorySceneImages(0)
             },
             ...storySlides.map(
-                text => ({
+                (text, index) => ({
                     text,
                     science: [],
                     images:
-                        getSlideImages(
-                            mission,
-                            null
-                        )
+                        getStorySceneImages(index)
                 })
             )
         ];
-
-    }
-
-    if (
-        Array.isArray(mission.slides) &&
-        mission.slides.length
-    ) {
-
-        return mission.slides;
 
     }
 
@@ -1823,8 +2529,7 @@ function getSlideImages(
 
     if (
         slide &&
-        Array.isArray(slide.images) &&
-        slide.images.length
+        Array.isArray(slide.images)
     ) {
 
         return slide.images;
@@ -1981,6 +2686,133 @@ function createImageInfo() {
 
 }
 
+function isPioneerMission(mission) {
+    return Boolean(
+        mission &&
+        mission.id === "pioneer-1"
+    );
+}
+
+
+function getLocalizedPioneerStoryPage(pageIndex) {
+
+    if (window.ProjectLanguage?.isBangla) {
+        return pioneerStoryPagesBangla[pageIndex] || pioneerStoryPagesBangla[0];
+    }
+
+    return pioneerStoryPages[pageIndex] || pioneerStoryPages[0];
+
+}
+
+function renderPioneerStoryPage() {
+
+    if (!isPioneerMission(currentMission)) {
+        return;
+    }
+
+    const page =
+        getLocalizedPioneerStoryPage(currentSlide);
+
+    if (storyGreeting) {
+        storyGreeting.textContent =
+            "";
+        storyGreeting.style.display =
+            "none";
+    }
+
+    if (storyTitle) {
+        storyTitle.textContent =
+            "";
+        storyTitle.style.display =
+            "none";
+    }
+
+    if (storyMeta) {
+        storyMeta.textContent =
+            "";
+        storyMeta.style.display =
+            "none";
+    }
+
+    if (storyText) {
+        storyText.textContent =
+            page.text;
+    }
+
+    if (storyImage) {
+        storyImage.src = page.image;
+        storyImage.alt = page.alt;
+    }
+
+    const counter =
+        document.getElementById(
+            "missionImageCounter"
+        );
+
+    if (counter) {
+        counter.textContent =
+            `${currentSlide + 1} / ${pioneerStoryPages.length}`;
+    }
+
+    const title =
+        document.getElementById(
+            "missionImageTitle"
+        );
+
+    if (title) {
+        title.textContent =
+            page.catalog;
+    }
+
+    const info =
+        document.getElementById(
+            "missionImageInfo"
+        );
+
+    if (info) {
+        info.hidden = false;
+    }
+
+    const previous =
+        document.getElementById(
+            "missionStoryPrevious"
+        );
+
+    const next =
+        document.getElementById(
+            "missionStoryNext"
+        );
+
+    if (previous) {
+        previous.disabled =
+            currentSlide === 0;
+    }
+
+    if (next) {
+        next.disabled =
+            currentSlide >= pioneerStoryPages.length - 1;
+        next.setAttribute(
+            "aria-label",
+            currentSlide >= pioneerStoryPages.length - 1
+                ? "No further Pioneer 1 pages"
+                : "Next Pioneer story page"
+        );
+    }
+
+    if (storySource) {
+        storySource.href =
+            currentMission.source;
+        storySource.textContent =
+            currentMission.sourceTitle ||
+            "NASA Science — Pioneer 1 (Able 2)";
+        storySource.style.display =
+            "inline-block";
+    }
+
+    storyPanel?.classList.add("pioneer-story");
+
+}
+
 function updateStoryImage() {
 
     if (
@@ -2011,6 +2843,11 @@ function updateStoryImage() {
             "missionImageCounter"
         );
 
+    const info =
+        document.getElementById(
+            "missionImageInfo"
+        );
+
     if (counter) {
 
         counter.textContent =
@@ -2024,8 +2861,19 @@ function updateStoryImage() {
             "src"
         );
 
+        storyImage.alt =
+            "";
+
+        if (info) {
+            info.hidden = true;
+        }
+
         return;
 
+    }
+
+    if (info) {
+        info.hidden = false;
     }
 
     if (
@@ -2189,6 +3037,31 @@ function updateStoryArrows() {
         return;
     }
 
+    if (isPioneerMission(currentMission)) {
+
+        const finalPageIndex =
+            pioneerStoryPages.length - 1;
+
+        if (previous) {
+            previous.disabled =
+                currentSlide === 0;
+        }
+
+        if (next) {
+            next.disabled =
+                currentSlide >= finalPageIndex;
+            next.setAttribute(
+                "aria-label",
+                currentSlide >= finalPageIndex
+                    ? "No further Pioneer 1 pages"
+                    : "Next Pioneer story page"
+            );
+        }
+
+        return;
+
+    }
+
     const slides =
         getStorySlides(
             currentMission
@@ -2218,10 +3091,44 @@ function updateStoryArrows() {
 
 }
 
+function getLocalizedStoryText(mission, slide, slideIndex) {
+
+    if (!mission || !window.ProjectLanguage?.isBangla) {
+        return slide?.text || slide?.story || "";
+    }
+
+    const translations =
+        window.moonMissionTranslations?.[mission.id];
+
+    if (translations?.slides?.[slideIndex]) {
+        return (
+            translations.slides[slideIndex].text ||
+            translations.slides[slideIndex].story ||
+            slide?.text ||
+            slide?.story ||
+            ""
+        );
+    }
+
+    if (translations?.story && slideIndex === 0) {
+        return translations.story;
+    }
+
+    return slide?.text || slide?.story || "";
+}
+
 function updateStoryContent() {
 
     if (!currentMission) {
         return;
+    }
+
+    if (isPioneerMission(currentMission)) {
+
+        storyPanel?.classList.add("pioneer-story");
+        renderPioneerStoryPage();
+        return;
+
     }
 
     const slides =
@@ -2265,9 +3172,11 @@ function updateStoryContent() {
     if (storyText) {
 
         storyText.textContent =
-            slide.text ||
-            slide.story ||
-            "";
+            getLocalizedStoryText(
+                currentMission,
+                slide,
+                currentSlide
+            );
 
     }
 
@@ -2381,16 +3290,14 @@ function updateStoryContent() {
 
     if (storySource) {
 
-        if (
-            currentMission.source &&
-            currentSlide === slides.length - 1
-        ) {
+        if (currentMission.source) {
 
             storySource.href =
                 currentMission.source;
 
             storySource.textContent =
-                `${window.ProjectLanguage?.formatNumber(1) || 1}. ${currentMission.source}`;
+                currentMission.sourceTitle ||
+                "NASA mission source";
 
             storySource.style.display =
                 "inline-block";
@@ -2577,6 +3484,12 @@ function openMissionStory(
 
     createImageInfo();
 
+    if (isPioneerMission(mission)) {
+        storyPanel?.classList.add("pioneer-story");
+    } else {
+        storyPanel?.classList.remove("pioneer-story");
+    }
+
     stopStoryVoice();
 
     stopImageTimer();
@@ -2587,9 +3500,10 @@ function openMissionStory(
         "hidden"
     );
 
-    speakCurrentSlide();
-
-    restartImageTimer();
+    if (!isPioneerMission(mission)) {
+        speakCurrentSlide();
+        restartImageTimer();
+    }
 
     console.log(
         "Opened mission:",
@@ -2623,6 +3537,78 @@ function closeMissionStory() {
 
 }
 
+function animateStoryPageChange(
+    newIndex,
+    onAfterChange
+) {
+
+    if (
+        !storyPanel ||
+        storyAnimating
+    ) {
+
+        return;
+
+    }
+
+    storyAnimating =
+        true;
+
+    stopStoryVoice();
+
+    stopImageTimer();
+
+    storyPanel.classList.add(
+        "story-slide-exit"
+    );
+
+    setTimeout(
+        () => {
+
+            currentSlide =
+                newIndex;
+
+            currentImage =
+                0;
+
+            if (typeof onAfterChange === "function") {
+                onAfterChange();
+            }
+
+            storyPanel.classList.remove(
+                "story-slide-exit"
+            );
+
+            storyPanel.classList.add(
+                "story-slide-enter"
+            );
+
+            if (!isPioneerMission(currentMission)) {
+                speakCurrentSlide();
+            }
+
+            restartImageTimer();
+
+            setTimeout(
+                () => {
+
+                    storyPanel.classList.remove(
+                        "story-slide-enter"
+                    );
+
+                    storyAnimating =
+                        false;
+
+                },
+                STORY_ENTER_TIME
+            );
+
+        },
+        STORY_EXIT_TIME
+    );
+
+}
+
 function changeMissionSlide(
     direction
 ) {
@@ -2631,6 +3617,31 @@ function changeMissionSlide(
         !currentMission ||
         storyAnimating
     ) {
+
+        return;
+
+    }
+
+    if (isPioneerMission(currentMission)) {
+
+        const newIndex =
+            currentSlide +
+            direction;
+
+        if (
+            newIndex < 0 ||
+            newIndex >= pioneerStoryPages.length
+        ) {
+            return;
+        }
+
+        animateStoryPageChange(
+            newIndex,
+            () => {
+                updateStoryContent();
+                updateStoryArrows();
+            }
+        );
 
         return;
 
@@ -2664,56 +3675,12 @@ function changeMissionSlide(
 
     }
 
-    storyAnimating =
-        true;
-
-    stopStoryVoice();
-
-    stopImageTimer();
-
-    storyPanel?.classList.add(
-        "story-slide-exit"
-    );
-
-    setTimeout(
+    animateStoryPageChange(
+        newIndex,
         () => {
-
-            currentSlide =
-                newIndex;
-
-            currentImage =
-                0;
-
             updateStoryContent();
-
-            storyPanel?.classList.remove(
-                "story-slide-exit"
-            );
-
-            storyPanel?.classList.add(
-                "story-slide-enter"
-            );
-
-            speakCurrentSlide();
-
-            restartImageTimer();
-
-            setTimeout(
-                () => {
-
-                    storyPanel?.classList.remove(
-                        "story-slide-enter"
-                    );
-
-                    storyAnimating =
-                        false;
-
-                },
-                STORY_ENTER_TIME
-            );
-
-        },
-        STORY_EXIT_TIME
+            updateStoryArrows();
+        }
     );
 
 }
@@ -3393,6 +4360,489 @@ function setupMoonImage() {
 
 }
 
+function fallbackTo2DMap(reason = "WebGL unavailable") {
+
+    moonThreeState.webglActive = false;
+
+    if (moonThreeState.animationId) {
+        cancelAnimationFrame(moonThreeState.animationId);
+        moonThreeState.animationId = null;
+    }
+
+    if (hardwareLayer) {
+        hardwareLayer
+            .querySelectorAll(".hardware-marker")
+            .forEach(marker => {
+                const mission =
+                    getMissionById(marker.dataset.missionId);
+
+                marker.style.visibility = "";
+
+                if (!mission) {
+                    return;
+                }
+
+                marker.style.left =
+                    `${((Number(mission.longitude) + 180) / 360) * 100}%`;
+
+                marker.style.top =
+                    `${((90 - Number(mission.latitude)) / 180) * 100}%`;
+            });
+    }
+
+    if (moonThreeCanvas) {
+        moonThreeCanvas.style.display = "none";
+    }
+
+    if (moonThreeContainer) {
+        moonThreeContainer.style.display = "none";
+        moonThreeContainer.setAttribute("aria-hidden", "true");
+    }
+
+    if (moonThreeLoading) {
+        moonThreeLoading.classList.add("hidden");
+    }
+
+    if (moonThreeError) {
+        moonThreeError.classList.add("hidden");
+        moonThreeError.textContent = "";
+    }
+
+    if (moonSurfaceImage) {
+        moonSurfaceImage.style.display = "block";
+        moonSurfaceImage.style.opacity = "1";
+    }
+
+    if (hardwareLayer) {
+        hardwareLayer.style.pointerEvents = "auto";
+    }
+
+    console.warn(
+        "Three.js Moon fallback enabled:",
+        reason
+    );
+
+}
+
+function setupThreeMoon() {
+
+    if (
+        !moonThreeCanvas ||
+        !moonThreeContainer
+    ) {
+
+        return;
+
+    }
+
+    if (!window.THREE) {
+        fallbackTo2DMap("Three.js not loaded");
+        return;
+    }
+
+    let canvasContext = null;
+
+    try {
+
+        canvasContext =
+            moonThreeCanvas.getContext("webgl") ||
+            moonThreeCanvas.getContext("experimental-webgl");
+
+    } catch (error) {
+
+        console.warn(
+            "WebGL context probe failed:",
+            error
+        );
+
+    }
+
+    if (!canvasContext) {
+        fallbackTo2DMap("WebGL context unavailable");
+        return;
+    }
+
+    if (moonThreeState.isReady) {
+        return;
+    }
+
+    let renderer;
+
+    const handleWebGLFailure = reason => {
+
+        if (moonThreeState.animationId) {
+            cancelAnimationFrame(moonThreeState.animationId);
+            moonThreeState.animationId = null;
+        }
+
+        if (moonThreeState.renderer) {
+            try {
+                moonThreeState.renderer.dispose();
+            } catch (error) {
+                console.warn(
+                    "Renderer disposal failed:",
+                    error
+                );
+            }
+        }
+
+        fallbackTo2DMap(reason);
+
+    };
+
+    try {
+
+        renderer =
+            new THREE.WebGLRenderer({
+                canvas: moonThreeCanvas,
+                alpha: true,
+                antialias: true,
+                powerPreference: "low-power"
+            });
+
+    } catch (error) {
+
+        console.error(
+            "Failed to create WebGL renderer for the Moon globe:",
+            error
+        );
+
+        fallbackTo2DMap("WebGL renderer creation failed");
+        return;
+
+    }
+
+    if (!renderer) {
+
+        fallbackTo2DMap("WebGL renderer unavailable");
+        return;
+
+    }
+
+    renderer.setPixelRatio(
+        Math.min(
+            window.devicePixelRatio || 1,
+            2
+        )
+    );
+
+    renderer.setClearColor(
+        0x000000,
+        0
+    );
+
+    const scene =
+        new THREE.Scene();
+
+    const camera =
+        new THREE.PerspectiveCamera(
+            32,
+            1,
+            0.1,
+            1000
+        );
+
+    camera.position.z = 3.25;
+
+    const ambient =
+        new THREE.AmbientLight(
+            0xffffff,
+            0.85
+        );
+
+    const directional =
+        new THREE.DirectionalLight(
+            0xeaf3ff,
+            0.95
+        );
+
+    directional.position.set(
+        1.8,
+        1.2,
+        2.3
+    );
+
+    scene.add(ambient);
+    scene.add(directional);
+
+    const sphereGeometry =
+        new THREE.SphereGeometry(
+            1.2,
+            96,
+            96
+        );
+
+    const sphereMaterial =
+        new THREE.MeshStandardMaterial({
+            roughness: 1,
+            metalness: 0,
+            emissive: 0x0b0d12,
+            emissiveIntensity: 0.25
+        });
+
+    const sphere =
+        new THREE.Mesh(
+            sphereGeometry,
+            sphereMaterial
+        );
+
+    const globeGroup =
+        new THREE.Group();
+
+    globeGroup.rotation.y =
+        -70 * Math.PI / 180;
+
+    globeGroup.add(sphere);
+    scene.add(globeGroup);
+
+    const markerGroup =
+        new THREE.Group();
+
+    globeGroup.add(markerGroup);
+
+    const raycaster =
+        new THREE.Raycaster();
+
+    const pointer =
+        new THREE.Vector2();
+
+    moonThreeState.renderer = renderer;
+    moonThreeState.scene = scene;
+    moonThreeState.camera = camera;
+    moonThreeState.globeGroup = globeGroup;
+    moonThreeState.sphere = sphere;
+    moonThreeState.markerGroup = markerGroup;
+    moonThreeState.raycaster = raycaster;
+    moonThreeState.pointer = pointer;
+    moonThreeState.webglActive = true;
+
+    getMappableMissions().forEach(mission => {
+        const marker = createThreeMoonMarker(mission);
+
+        if (marker) {
+            markerGroup.add(marker);
+            moonThreeState.markerMap.set(mission.id, marker);
+        }
+    });
+
+    moonThreeCanvas.addEventListener(
+        "webglcontextlost",
+        event => {
+            event.preventDefault();
+            handleWebGLFailure("WebGL context lost");
+        },
+        { passive: false }
+    );
+
+    const updateCanvasSize = () => {
+
+        if (!moonThreeContainer) {
+            return;
+        }
+
+        const width =
+            moonThreeContainer.clientWidth || mapViewport?.clientWidth || 600;
+
+        const height =
+            moonThreeContainer.clientHeight || mapViewport?.clientHeight || 430;
+
+        renderer.setSize(
+            width,
+            height,
+            false
+        );
+
+        camera.aspect =
+            width / height;
+
+        camera.updateProjectionMatrix();
+
+    };
+
+    const textureLoader =
+        new THREE.TextureLoader();
+
+    const showError = message => {
+
+        if (moonThreeLoading) {
+            moonThreeLoading.classList.add("hidden");
+        }
+
+        if (moonThreeError) {
+            moonThreeError.textContent = "";
+            moonThreeError.classList.add("hidden");
+        }
+
+        fallbackTo2DMap(message);
+        console.error(message);
+
+    };
+
+    const moonTextureUrl =
+        new URL(
+            moonThreeState.textureUrl,
+            window.location.href
+        ).href;
+
+    textureLoader.load(
+        moonTextureUrl,
+        texture => {
+
+            texture.colorSpace = THREE.SRGBColorSpace;
+            texture.wrapS = THREE.RepeatWrapping;
+            texture.wrapT = THREE.ClampToEdgeWrapping;
+            texture.anisotropy = Math.min(
+                renderer.capabilities.getMaxAnisotropy(),
+                4
+            );
+
+            sphereMaterial.map = texture;
+            sphereMaterial.needsUpdate = true;
+            moonThreeState.textureLoaded = true;
+
+            if (moonThreeLoading) {
+                moonThreeLoading.classList.add("hidden");
+            }
+
+        },
+        undefined,
+        error => {
+
+            showError(
+                "Unable to load lunar texture from Moon/data/moon-global.jpg."
+            );
+            console.error(
+                "Moon texture failed to load:",
+                error
+            );
+
+        }
+    );
+
+    moonThreeContainer.addEventListener(
+        "wheel",
+        event => {
+
+            event.preventDefault();
+            event.stopPropagation();
+
+            const nextZoom =
+                Math.min(
+                    5.5,
+                    Math.max(
+                        2.2,
+                        camera.position.z +
+                        (event.deltaY > 0 ? 0.22 : -0.22)
+                    )
+                );
+
+            camera.position.z = nextZoom;
+
+        },
+        { passive: false }
+    );
+
+    const syncMarkerPositions = () => {
+
+        if (
+            !moonThreeState.webglActive ||
+            !moonThreeState.markerGroup ||
+            !moonThreeState.camera ||
+            !moonThreeState.renderer
+        ) {
+
+            return;
+
+        }
+
+        const width =
+            moonThreeContainer.clientWidth || 1;
+
+        const height =
+            moonThreeContainer.clientHeight || 1;
+
+        const cameraPosition =
+            globeGroup.worldToLocal(
+                camera.getWorldPosition(new THREE.Vector3())
+            ).normalize();
+
+        const missions =
+            getMappableMissions();
+
+        missions.forEach(
+            mission => {
+
+                const htmlMarker =
+                    hardwareLayer.querySelector(
+                        `.hardware-marker[data-mission-id="${mission.id}"]`
+                    );
+
+                if (!htmlMarker) {
+                    return;
+                }
+
+                const marker =
+                    moonThreeState.markerMap.get(mission.id);
+
+                if (!marker) {
+                    return;
+                }
+
+                const worldPosition =
+                    marker.getWorldPosition(
+                        new THREE.Vector3()
+                    );
+
+                const markerDirection =
+                    marker.position.clone().normalize();
+
+                const onVisibleHemisphere =
+                    markerDirection.dot(cameraPosition) > 0.04;
+
+                htmlMarker.style.visibility =
+                    onVisibleHemisphere ? "" : "hidden";
+
+                if (!onVisibleHemisphere) {
+                    return;
+                }
+
+                const projected =
+                    worldPosition.clone().project(camera);
+
+                const screenX =
+                    (projected.x * 0.5 + 0.5) * width;
+
+                const screenY =
+                    (-projected.y * 0.5 + 0.5) * height;
+
+                htmlMarker.style.left =
+                    `${(screenX / width) * 100}%`;
+
+                htmlMarker.style.top =
+                    `${(screenY / height) * 100}%`;
+
+            }
+        );
+
+    };
+
+    const animate = () => {
+
+        moonThreeState.animationId =
+            requestAnimationFrame(animate);
+
+        syncMarkerPositions();
+        renderer.render(scene, camera);
+
+    };
+
+    updateCanvasSize();
+    animate();
+    window.addEventListener("resize", updateCanvasSize);
+    moonThreeState.isReady = true;
+
+}
+
 function initializeMoonMuseum() {
 
     console.log(
@@ -3465,7 +4915,11 @@ function initializeMoonMuseum() {
 
     setupArchive();
 
+    updateMoonLanguageUI();
+
     setupMoonImage();
+
+    setupThreeMoon();
 
     resetMapPosition();
 
@@ -3536,6 +4990,8 @@ window.addEventListener(
         }
 
         updateTimeline();
+
+        updateMoonLanguageUI();
 
         if (currentMission) {
             updateStoryContent();
