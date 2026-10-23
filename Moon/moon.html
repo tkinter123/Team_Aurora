@@ -141,6 +141,12 @@
 
                         <div id="moonMapLayer">
 
+                            <div id="moonThreeContainer" class="moon-three-container" aria-live="polite">
+                                <canvas id="moonThreeCanvas" aria-label="3D Moon globe"></canvas>
+                                <div id="moonThreeLoading" class="moon-three-status">Loading lunar texture…</div>
+                                <div id="moonThreeError" class="moon-three-status moon-three-error hidden" role="alert"></div>
+                            </div>
+
                             <img
                                 id="moonSurfaceImage"
                                 src="./data/moon_surface.jpg"
@@ -157,7 +163,9 @@
                     </div>
 
                     <div class="map-hud">
-
+                        <div id="mapCoordinates" class="map-coordinates">
+                            LAT -- | LON --
+                        </div>
                     </div>
 
                     <div class="map-instruction">
@@ -369,6 +377,8 @@
 </div>
 
     <script src="../language.js"></script>
+
+    <script src="./vendor/three.min.js"></script>
 
     <script src="./moon_data.js"></script>
 
