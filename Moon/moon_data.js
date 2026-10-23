@@ -22,14 +22,18 @@ const moonMissions = [
         landingSite: "Did not reach the Moon",
 
         image:
-            "./moon stories/moon stories/1958_november_pioneer_1.jpg",
+            "./moon_images/pioneer_1_launch.jpg",
 
         images: [
-            "./moon stories/moon stories/1958_november_pioneer_1.jpg"
+            "./moon_images/pioneer_1_launch.jpg",
+            "./moon_images/Pioneer_1_Reconstructed_Replica.jpg"
         ],
 
         source:
             "https://science.nasa.gov/mission/pioneer-1-able-2/",
+
+        sourceTitle:
+            "NASA Science — Pioneer 1 (Able 2)",
 
         greeting:
             "Hi! I’m Pioneer 1. I was America’s first try at reaching the Moon. Want to hear about my brave but short journey?",
@@ -39,7 +43,7 @@ const moonMissions = [
 
 A Thor-Able rocket carried me into the sky. For a short time, everything went well. I climbed higher and higher, leaving most of Earth’s atmosphere behind.
 
-But my rocket’s third stage did not burn long enough. Instead of flying all the way to the Moon, I reached a highest point of about 113,000 kilometers before falling back toward Earth.
+But my rocket’s upper stage shut down too early. Instead of flying all the way to the Moon, I reached a highest point of about 114,750 kilometers before falling back toward Earth.
 
 Even though I did not reach the Moon, I still did important work. During my flight, I measured radiation around Earth and sent data about the space environment. This information helped scientists understand the region we now call the Van Allen radiation belts.
 
@@ -73,7 +77,9 @@ I was launched on October 11, 1958, just days after NASA was created.
 
 My goal was to fly close to the Moon, study space along the way, and send information back to Earth.`,
 
-                images: [],
+                images: [
+                    "./moon_images/pioneer_1_launch.jpg"
+                ],
 
                 science: [
                     "First U.S. lunar mission attempt after NASA was created.",
@@ -87,18 +93,18 @@ My goal was to fly close to the Moon, study space along the way, and send inform
                 title: "Leaving Earth",
 
                 text:
-`A Thor-Able rocket carried me into the sky.
+`A Thor-Able rocket carried me toward the Moon.
 
-For a short time, everything went well. I climbed higher and higher, leaving most of Earth’s atmosphere behind.
+My upper stage shut down too early.
 
-But my rocket’s third stage did not burn long enough.
+I climbed to about 114,750 kilometers before falling back toward Earth.`,
 
-Instead of flying all the way to the Moon, I reached a highest point of about 113,000 kilometers before falling back toward Earth.`,
-
-                images: [],
+                images: [
+                    "./moon_images/pioneer_1_launch.jpg"
+                ],
 
                 science: [
-                    "Reached approximately 113,000 kilometers from Earth.",
+                    "Reached approximately 114,750 kilometers from Earth.",
                     "Demonstrated the challenges of early lunar navigation and propulsion."
                 ]
             },
@@ -115,7 +121,9 @@ During my flight, I measured radiation around Earth and sent data about the spac
 
 This information helped scientists understand the region we now call the Van Allen radiation belts.`,
 
-                images: [],
+                images: [
+                    "./moon_images/Pioneer_1_Reconstructed_Replica.jpg"
+                ],
 
                 science: [
                     "Measured radiation in Earth's space environment.",
@@ -135,7 +143,9 @@ My journey was short, but I was an important first step.
 
 I showed what could go wrong and what could be learned, even from a mission that did not fully succeed.`,
 
-                images: [],
+                images: [
+                    "./moon_images/Pioneer_1_Reconstructed_Replica.jpg"
+                ],
 
                 science: [
                     "Returned scientific measurements before reentry.",
@@ -153,7 +163,9 @@ I showed what could go wrong and what could be learned, even from a mission that
 
 I may not have touched the lunar surface, but I helped clear the path for those who did.`,
 
-                images: [],
+                images: [
+                    "./moon_images/Pioneer_1_Reconstructed_Replica.jpg"
+                ],
 
                 science: [
                     "Pioneer 1 became part of NASA's early lunar exploration history.",
@@ -183,21 +195,20 @@ I may not have touched the lunar surface, but I helped clear the path for those 
 
         longitude: -20.6770,
 
-        landingSite: "Mare Nubium",
+        landingSite: "Sea of Clouds (Mare Nubium)",
 
         image:
-            "./moon stories/moon stories/ranger_1.jpg",
+            "./moon_images/ranger_7_first_picture_moon.jpeg",
 
         images: [
-
-            "./moon stories/moon stories/ranger_1.jpg",
-            "./moon stories/moon stories/ranger_2.jpeg",
-            "./moon stories/moon stories/ranger_3.webp"
-
+            "./moon_images/ranger_7_first_picture_moon.jpeg"
         ],
 
         source:
             "https://science.nasa.gov/mission/ranger-7/",
+
+        sourceTitle:
+            "NASA Science — Ranger 7",
 
         greeting:
             "Hi! I’m Ranger 7. I was sent to take the first close-up pictures of the Moon. Want to see what I saw?",
@@ -233,15 +244,11 @@ I did not simply reach the Moon. I helped humanity see it clearly for the first 
 
                 text:
 `Hi! I’m Ranger 7.
-
-I was sent to take the first close-up pictures of the Moon.
-
-I was built with six television cameras. They were my eyes.
-
-NASA launched me on July 28, 1964, with one important job: fly close to the Moon and send detailed pictures back to Earth.`,
+NASA launched me on July 28, 1964, to take America’s first close-up television pictures of the Moon.
+I carried six cameras—my eyes for the final journey.`,
 
                 images: [
-                    "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/solar/2023/07/1378_Ranger_768.jpg?w=768&h=534&fit=clip&crop=faces%2Cfocalpoint"
+                    "./moon_images/ranger_7_spacecraft_lab.png"
                 ],
 
                 science: [
@@ -256,16 +263,12 @@ NASA launched me on July 28, 1964, with one important job: fly close to the Moon
                 title: "Closer and Closer",
 
                 text:
-`For most of my trip, the Moon looked small and far away.
-
-But on July 31, I came much closer.
-
-About 17 minutes before I reached the surface, my cameras turned on.
-
-The Moon’s craters and dusty ground became clearer with every image.`,
+`On July 31, I began photographing the Moon.
+During my final 17 minutes, I sent back 4,316 images.
+The surface grew clearer with every picture.`,
 
                 images: [
-                    "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/solar/internal_resources/3632/Cratered_surface_of_the_Moon_from_above-1.jpeg?w=1280&h=1259&fit=clip&crop=faces%2Cfocalpoint"
+                    "./moon_images/ranger_7_first_picture_moon.jpeg"
                 ],
 
                 science: [
@@ -280,16 +283,12 @@ The Moon’s craters and dusty ground became clearer with every image.`,
                 title: "4,316 Photographs",
 
                 text:
-`Scientists had never seen the lunar surface in such detail before.
-
-I sent 4,316 photographs in total.
-
-My last picture arrived just 2.3 seconds before I hit the Moon.
-
-My mission ended with an impact—but the information I sent home survived.`,
+`My final photograph arrived just 2.3 seconds before impact.
+It showed the lunar surface in sharper detail than ever before.
+Then I struck the Moon near the Sea of Clouds.`,
 
                 images: [
-                    "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/solar/2023/07/1378_Ranger_768.jpg?w=768&h=534&fit=clip&crop=faces%2Cfocalpoint"
+                    "./moon_images/ranger_7_first_picture_moon.jpeg"
                 ],
 
                 science: [
@@ -304,14 +303,12 @@ My mission ended with an impact—but the information I sent home survived.`,
                 title: "Preparing Future Explorers",
 
                 text:
-`I did not survive the impact, but my mission was a success.
-
-My photographs helped scientists understand the Moon’s surface and plan future missions.
-
-The details I revealed helped turn an unknown landscape into a place future spacecraft could safely explore.`,
+`I did not survive the impact.
+My pictures helped scientists study the surface and prepare for future missions.
+They made the Moon less of an unknown.`,
 
                 images: [
-                    "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/solar/internal_resources/3632/Cratered_surface_of_the_Moon_from_above-1.jpeg?w=1280&h=1259&fit=clip&crop=faces%2Cfocalpoint"
+                    "./moon_images/ranger_7_first_picture_moon.jpeg"
                 ],
 
                 science: [
@@ -326,16 +323,12 @@ The details I revealed helped turn an unknown landscape into a place future spac
                 title: "Beneath the Lunar Dust",
 
                 text:
-`Today, my cameras are silent, and I rest beneath the lunar dust.
-
-But the pictures I sent home are still helping people learn about the Moon.
-
-I did not simply reach the Moon.
-
-I helped humanity see it clearly for the first time.`,
+`I never came back, but my pictures did.
+They helped prepare the way for future lunar explorers.
+My mission showed the Moon up close for the first time.`,
 
                 images: [
-                    "https://www.nasa.gov/wp-content/uploads/2019/07/ranger_1_spacecraft.jpg"
+                    "./moon_images/ranger_7_first_picture_moon.jpeg"
                 ],
 
                 science: [
@@ -369,16 +362,18 @@ I helped humanity see it clearly for the first time.`,
         landingSite: "Ocean of Storms",
 
         image:
-            "./moon stories/moon stories/apollo12 (2).jpg",
+            "./moon_images/surveyor_3_in_crater.jpg",
 
         images: [
-            "./moon stories/moon stories/apollo12 (2).jpg",
-            "./moon stories/moon stories/apollo12 (3).jpg",
-            "./moon stories/moon stories/apollo12 (4).jpg"
+            "./moon_images/surveyor_3_in_crater.jpg",
+            "./moon_images/apollo_12_surveyor_3_moon.jpg"
         ],
 
         source:
             "https://science.nasa.gov/mission/surveyor-3/",
+
+        sourceTitle:
+            "NASA Science — Surveyor 3",
 
         greeting:
             "Hello! I’m Surveyor 3. I made a bumpy landing on the Moon, but I still did important work. Ready to hear my story?",
@@ -414,15 +409,11 @@ Even a bumpy landing can lead to an important mission.`,
 
                 text:
 `Hello! I’m Surveyor 3.
-
-I made a bumpy landing on the Moon, but I still did important work.
-
-I was a robotic spacecraft sent to study the Moon before astronauts arrived.
-
-My job was to land gently, take pictures, and test the lunar soil.`,
+I was built to land softly and test whether the Moon could support future explorers.
+I launched on April 17, 1967.`,
 
                 images: [
-                    "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/lunar-science/2023/08/detail_as12-48-7121_orig.jpg?w=1200&h=1200&fit=clip&crop=faces%2Cfocalpoint"
+                    "./moon_images/surveyor_3_in_crater.jpg"
                 ],
 
                 science: [
@@ -437,16 +428,12 @@ My job was to land gently, take pictures, and test the lunar soil.`,
                 title: "A Bumpy Landing",
 
                 text:
-`On April 17, 1967, a rocket carried me toward the Moon.
-
-Three days later, I reached the Ocean of Storms.
-
-When I touched down, I bounced a couple of times before settling inside a small crater.
-
-Once I was steady, I began working.`,
+`Three days after launch, I reached the Ocean of Storms.
+My landing was rough: I bounced twice before settling inside a small crater.
+Then I began exploring.`,
 
                 images: [
-                    "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/lunar-science/2023/08/detail_as12-48-7121_orig.jpg?w=1200&h=1200&fit=clip&crop=faces%2Cfocalpoint"
+                    "./moon_images/surveyor_3_in_crater.jpg"
                 ],
 
                 science: [
@@ -461,14 +448,12 @@ Once I was steady, I began working.`,
                 title: "Testing the Soil",
 
                 text:
-`I opened my camera and sent 6,326 pictures back to Earth.
-
-I also used a mechanical arm with a small scoop to dig into the soil.
-
-My tests showed that the ground was strong enough to support an Apollo lunar module.`,
+`I sent 6,326 pictures to Earth.
+My mechanical arm dug into the soil and measured its properties.
+The tests helped assess the surface for future landings.`,
 
                 images: [
-                    "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/solar/2023/07/as12-48-7134_1280.jpg?w=1280&h=1280&fit=clip&crop=faces%2Cfocalpoint"
+                    "./moon_images/surveyor_3_in_crater.jpg"
                 ],
 
                 science: [
@@ -485,15 +470,11 @@ My tests showed that the ground was strong enough to support an Apollo lunar mod
 
                 text:
 `Two years later, Apollo 12 astronauts landed nearby.
-
-They walked over to visit me, photographed my body, and removed my camera and scoop to study on Earth.
-
-My silent body became something scientists could examine directly after years on the Moon.`,
+They visited me, took photographs, and brought parts of me back to Earth.
+My camera and scoop could be studied after years on the Moon.`,
 
                 images: [
-                    "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/lunar-science/2023/08/detail_as12-48-7121_orig.jpg?w=1200&h=1200&fit=clip&crop=faces%2Cfocalpoint",
-
-                    "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/solar/2023/07/as12-48-7134_1280.jpg?w=1280&h=1280&fit=clip&crop=faces%2Cfocalpoint"
+                    "./moon_images/apollo_12_surveyor_3_moon.jpg"
                 ],
 
                 science: [
@@ -508,14 +489,12 @@ My silent body became something scientists could examine directly after years on
                 title: "Still Part of the Moon",
 
                 text:
-`My main body still rests in the crater where I landed.
-
-My signals stopped long ago, but I am not forgotten.
-
-Even a bumpy landing can lead to an important mission.`,
+`My body still rests on the Moon.
+My signals stopped, but my data helped prepare for Apollo.
+Even a bumpy landing can become an important part of exploration.`,
 
                 images: [
-                    "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/lunar-science/2023/08/detail_as12-48-7121_orig.jpg?w=1200&h=1200&fit=clip&crop=faces%2Cfocalpoint"
+                    "./moon_images/surveyor_3_in_crater.jpg"
                 ],
 
                 science: [
@@ -542,22 +521,26 @@ Even a bumpy landing can lead to an important mission.`,
 
         archiveOnly: false,
 
-        latitude: 0,
+        latitude: -2.79,
 
-        longitude: -70,
+        longitude: -83.04,
 
-        landingSite: "Lunar surface impact site",
+        landingSite: "Intentional impact, 2.79° S, 83.04° W",
 
         image:
-            "./moon stories/moon stories/lunar-orbiter-moon-jf.webp",
+            "./moon_images/lunar_orbiter_moon.png",
 
         images: [
-            "./moon stories/moon stories/lunar-orbiter-moon-jf.webp",
-            "./moon stories/moon stories/lunar_orbiter_1_launch_7_first_view_of_earth_from_moon.webp"
+            "./moon_images/lunar_orbiter_moon.png",
+            "./moon_images/Lunal Oriber.png",
+            "./moon_images/lunar_orbiter_1_launch_7_first_view_of_earth_from_moon.png"
         ],
 
         source:
-            "https://www.nasa.gov/gallery/lunar-orbiter/",
+            "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=1967-075A",
+
+        sourceTitle:
+            "NASA NSSDCA — Lunar Orbiter 5",
 
         greeting:
             "Hi there! I’m Lunar Orbiter 5. I never landed, but I mapped the Moon from above. Want to know how I helped future astronauts?",
@@ -594,15 +577,13 @@ I helped draw the first detailed maps of the Moon. Every map I left behind point
                 title: "The Moon Mapper",
 
                 text:
-`Hi there! I’m Lunar Orbiter 5.
+`Hi! I’m Lunar Orbiter 5.
+I mapped the Moon from above, helping scientists study landing sites and the far side.
+I launched on August 1, 1967, and reached lunar orbit two days later.`,
 
-I never landed, but I mapped the Moon from above.
-
-I was sent to orbit the Moon and take detailed photographs of its surface.
-
-NASA launched me on August 1, 1967, to help prepare for the Apollo missions.`,
-
-                images: [],
+                images: [
+                    "./moon_images/Lunal Oriber.png"
+                ],
 
                 science: [
                     "Orbital spacecraft used to photograph and map the Moon.",
@@ -616,13 +597,13 @@ NASA launched me on August 1, 1967, to help prepare for the Apollo missions.`,
                 title: "A World Beneath Me",
 
                 text:
-`From orbit, I watched the Moon spin beneath me.
+`My cameras began photographing the surface on August 6.
+I captured 633 high-resolution and 211 medium-resolution images.
+My pictures revealed parts of the Moon’s far side.`,
 
-I photographed wide plains, deep craters, tall mountains, and parts of the far side that few people had ever seen.
-
-The Moon was becoming a place scientists could study in detail rather than a distant object in the sky.`,
-
-                images: [],
+                images: [
+                    "./moon_images/lunar_orbiter_moon.png"
+                ],
 
                 science: [
                     "Provided detailed orbital observations of lunar terrain.",
@@ -636,13 +617,13 @@ The Moon was becoming a place scientists could study in detail rather than a dis
                 title: "Finding Safe Places",
 
                 text:
-`My pictures helped scientists choose safe landing sites for future astronauts.
+`My images helped scientists assess landing sites.
+One famous view showed Earth rising above the lunar horizon.
+It reminded people how small and precious our home is.`,
 
-I also studied places where other spacecraft, like Surveyor, had landed.
-
-One of my most famous images showed Earth floating in space like a bright blue home.`,
-
-                images: [],
+                images: [
+                    "./moon_images/lunar_orbiter_1_launch_7_first_view_of_earth_from_moon.png"
+                ],
 
                 science: [
                     "Supported selection and evaluation of Apollo landing sites.",
@@ -656,13 +637,13 @@ One of my most famous images showed Earth floating in space like a bright blue h
                 title: "The Final Descent",
 
                 text:
-`I could not walk on the Moon or collect rocks, but I showed scientists where future explorers might go.
+`I never landed gently; my work was mapping from orbit.
+On January 31, 1968, controllers sent my final command.
+I intentionally impacted the Moon.`,
 
-After several months of work, Earth sent me one final command.
-
-I descended toward the lunar surface, my signals faded, and my orbit ended.`,
-
-                images: [],
+                images: [
+                    "./moon_images/lunar_orbiter_moon.png"
+                ],
 
                 science: [
                     "Completed an extended lunar orbital survey.",
@@ -676,13 +657,13 @@ I descended toward the lunar surface, my signals faded, and my orbit ended.`,
                 title: "Every Map Points Somewhere",
 
                 text:
-`The Moon I had photographed from above became my final resting place.
+`My mission ended where my work had begun.
+My maps helped scientists study landing sites and the far side.
+I left the Moon better charted for future explorers.`,
 
-I helped draw the first detailed maps of the Moon.
-
-Every map I left behind pointed the way to new adventures.`,
-
-                images: [],
+                images: [
+                    "./moon_images/lunar_orbiter_1_launch_7_first_view_of_earth_from_moon.png"
+                ],
 
                 science: [
                     "Lunar Orbiter imagery became an important resource for lunar exploration.",
@@ -715,16 +696,19 @@ Every map I left behind pointed the way to new adventures.`,
         landingSite: "Near Tycho Crater",
 
         image:
-            "./moon stories/moon stories/surveyor_7_2.webp",
+            "./moon_images/surveyor_7_moon_surface.png",
 
         images: [
-            "./moon stories/moon stories/surveyor_7_2.webp",
-            "./moon stories/moon stories/surveyor_7_3.webp",
-            "./moon stories/moon stories/image3_lunarhighlands.webp"
+            "./moon_images/Surveyor 7.png",
+            "./moon_images/surveyor_7_moon_surface.png",
+            "./moon_images/image3_lunarhighlands.png"
         ],
 
         source:
             "https://science.nasa.gov/mission/surveyor-7/",
+
+        sourceTitle:
+            "NASA Science — Surveyor 7",
 
         greeting:
             "Hello! I’m Surveyor 7. I landed in a rough, rocky part of the Moon called the highlands. Curious about what I found there?",
@@ -761,16 +745,12 @@ I went to the Moon to learn its secrets—and I brought some of them home.`,
                 title: "The Highland Scientist",
 
                 text:
-`Hello! I’m Surveyor 7.
-
-I landed in a rough, rocky part of the Moon called the highlands.
-
-I was the last of NASA’s original Surveyor landers.
-
-My mission was to explore a new kind of lunar landscape and study its soil.`,
+`Hello! I’m Surveyor 7, the last of NASA’s original Surveyor landers.
+I was the only one sent to the lunar highlands.
+I launched on January 7, 1968.`,
 
                 images: [
-                    "https://www.nasa.gov/wp-content/uploads/2018/01/surveyor_7_landing_site.png"
+                    "./moon_images/Surveyor 7.png"
                 ],
 
                 science: [
@@ -785,14 +765,12 @@ My mission was to explore a new kind of lunar landscape and study its soil.`,
                 title: "The Highland Landscape",
 
                 text:
-`On January 7, 1968, a rocket carried me toward the Moon.
-
-Three days later, I landed in the highlands near Tycho Crater.
-
-The area was filled with rocks, slopes, and distant hills.`,
+`Three days after launch, I landed about 29 miles north of Tycho Crater.
+The highlands were rough, bright, and covered with rocks.
+They differed from the dark plains explored by earlier Surveyors.`,
 
                 images: [
-                    "https://www.nasa.gov/wp-content/uploads/2018/01/surveyor_7_landing_site.png"
+                    "./moon_images/surveyor_7_moon_surface.png"
                 ],
 
                 science: [
@@ -807,14 +785,12 @@ The area was filled with rocks, slopes, and distant hills.`,
                 title: "More Than 21,000 Pictures",
 
                 text:
-`As soon as I arrived, I opened my camera and sent more than 21,000 photographs to Earth.
-
-I also used a mechanical arm and scientific instruments to examine the soil.
-
-Every image gave scientists another piece of the lunar landscape.`,
+`I returned 21,274 photographs.
+My mechanical arm and instruments examined the highland soil.
+The images revealed a rugged landscape.`,
 
                 images: [
-                    "https://www.nasa.gov/wp-content/uploads/2018/01/surveyor_7_panorama.jpg"
+                    "./moon_images/surveyor_7_moon_surface.png"
                 ],
 
                 science: [
@@ -829,12 +805,12 @@ Every image gave scientists another piece of the lunar landscape.`,
                 title: "Different Ground, Different Story",
 
                 text:
-`My tests showed that the highland soil contained less iron than the darker soil found on the Moon’s plains.
-
-This helped scientists understand that different parts of the Moon were made of different materials.`,
+`My tests found less iron in highland soil than in the lunar maria.
+The difference helped scientists compare the Moon’s ancient terrains.
+I also helped measure the Earth–Moon distance with reflected laser light.`,
 
                 images: [
-                    "https://www.nasa.gov/wp-content/uploads/2018/01/surveyor_7_panorama.jpg"
+                    "./moon_images/image3_lunarhighlands.png"
                 ],
 
                 science: [
@@ -849,18 +825,12 @@ This helped scientists understand that different parts of the Moon were made of 
                 title: "Signals Fade",
 
                 text:
-`For several days, I worked beneath the bright lunar Sun.
-
-When darkness came, my power became weak.
-
-My signals stopped, briefly returned, and then faded for good.
-
-My instruments are silent now, but my pictures and data still tell the story of a world shaped by billions of years of history.
-
-I went to the Moon to learn its secrets—and I brought some of them home.`,
+`When lunar night came, my power faded and my signals stopped.
+I never came home, but my pictures and data still teach us about the highlands.
+I went looking for answers—and found them in the rocks.`,
 
                 images: [
-                    "https://www.nasa.gov/wp-content/uploads/2018/01/surveyor_7_landing_site.png"
+                    "./moon_images/surveyor_7_moon_surface.png"
                 ],
 
                 science: [
@@ -895,22 +865,20 @@ I went to the Moon to learn its secrets—and I brought some of them home.`,
             "Did not land on the Moon",
 
         image:
-            "./moon stories/moon stories/apollo10.jpg",
+            "./moon_images/apollo_10_spacecraft_on_moon.jpg",
 
         images: [
-            "./moon stories/moon stories/apollo10.jpg",
-            "./moon stories/moon stories/apollo10.webp",
-            "./moon stories/moon stories/apollo10 (2).jpg",
-            "./moon stories/moon stories/apollo10 (3).jpg",
-            "./moon stories/moon stories/apollo10 (4).jpg",
-            "./moon stories/moon stories/apollo10 (5).jpg",
-            "./moon stories/moon stories/apollo10 (6).jpg",
-            "./moon stories/moon stories/apollo10 (7).jpg",
-            "./moon stories/moon stories/apollo_10_patch_s69-31959.webp"
+            "./moon_images/apollo_10_launching.jpg",
+            "./moon_images/apollo_10_spacecraft_in_lab.png",
+            "./moon_images/apollo_10_spacecraft_on_moon.jpg",
+            "./moon_images/apollo_10_moon_surface.jpg"
         ],
 
         source:
             "https://www.nasa.gov/gallery/apollo-10/",
+
+        sourceTitle:
+            "NASA — Apollo 10 mission gallery",
 
         greeting:
             "Hi! I’m Apollo 10. I practised almost everything needed for a Moon landing, without actually touching the surface. Want to hear how I helped make history?",
@@ -947,13 +915,13 @@ I was not the mission that made the first footprints. I was the rehearsal that h
                 title: "The Dress Rehearsal",
 
                 text:
-`Hi! I’m Apollo 10.
+`Hi! I’m Apollo 10, the final rehearsal before humans landed on the Moon.
+I tested the systems and procedures needed for a real landing.
+I would not touch the surface.`,
 
-I practised almost everything needed for a Moon landing, without actually touching the surface.
-
-My job was to test the final steps before humans landed on the Moon.`,
-
-                images: [],
+                images: [
+                    "./moon_images/apollo_10_spacecraft_in_lab.png"
+                ],
 
                 science: [
                     "Full-scale rehearsal for the first crewed lunar landing.",
@@ -967,13 +935,13 @@ My job was to test the final steps before humans landed on the Moon.`,
                 title: "Toward the Moon",
 
                 text:
-`On May 18, 1969, a Saturn V rocket launched me into space with astronauts Thomas Stafford, John Young, and Eugene Cernan.
+`On May 18, 1969, Saturn V carried Thomas Stafford, John Young, and Eugene Cernan toward the Moon.
+Stafford and Cernan entered lunar module Snoopy.
+Young stayed in command module Charlie Brown.`,
 
-After reaching the Moon, Stafford and Cernan entered the lunar module, named Snoopy.
-
-Young stayed in the command module, Charlie Brown, orbiting above them.`,
-
-                images: [],
+                images: [
+                    "./moon_images/apollo_10_launching.jpg"
+                ],
 
                 science: [
                     "Crewed lunar mission launched aboard Saturn V.",
@@ -987,13 +955,13 @@ Young stayed in the command module, Charlie Brown, orbiting above them.`,
                 title: "Almost to the Surface",
 
                 text:
-`Snoopy separated and flew down toward the lunar surface.
+`Snoopy descended to about 15 kilometres—roughly nine miles—above the Moon.
+We tested landing radar, procedures, and systems.
+The lunar surface was close, but we did not land.`,
 
-The Moon’s craters and rocky ground grew larger beneath us.
-
-We descended to about nine miles above the ground while testing the spacecraft, instruments, and landing procedures.`,
-
-                images: [],
+                images: [
+                    "./moon_images/apollo_10_moon_surface.jpg"
+                ],
 
                 science: [
                     "Tested lunar-module descent operations.",
@@ -1007,15 +975,13 @@ We descended to about nine miles above the ground while testing the spacecraft, 
                 title: "The Rehearsal Works",
 
                 text:
-`But we did not land.
+`We climbed back to Charlie Brown, rendezvoused, and docked safely.
+Apollo 10 proved the final steps were possible.
+Two months later, Apollo 11 used what we had learned.`,
 
-We turned around and climbed back toward Charlie Brown.
-
-The two spacecraft carefully met and docked.
-
-The practice had worked.`,
-
-                images: [],
+                images: [
+                    "./moon_images/apollo_10_spacecraft_on_moon.jpg"
+                ],
 
                 science: [
                     "Demonstrated lunar-orbit rendezvous and docking.",
@@ -1029,15 +995,13 @@ The practice had worked.`,
                 title: "Before the First Footprints",
 
                 text:
-`Apollo 10 showed that the equipment and procedures were ready.
+`I did not land, but I proved the landing plan worked.
+Apollo 11 followed two months later.
+My rehearsal helped make those first footprints possible.`,
 
-Just two months later, Apollo 11 would use what we had learned to land humans on the Moon.
-
-I was not the mission that made the first footprints.
-
-I was the rehearsal that helped make those footprints possible.`,
-
-                images: [],
+                images: [
+                    "./moon_images/apollo_10_spacecraft_in_lab.png"
+                ],
 
                 science: [
                     "Validated key systems and procedures used by Apollo 11.",
@@ -1076,6 +1040,9 @@ I was the rehearsal that helped make those footprints possible.`,
 
         source:
             "https://images.nasa.gov/details/Apollo_11_moonwalk_montage_720p",
+
+        sourceTitle:
+            "NASA — Apollo 11 mission materials",
 
         greeting:
             "Hello! I’m Apollo 11. I carried the first humans to walk on the Moon. Would you like to hear how that giant leap happened?",
@@ -1119,10 +1086,8 @@ My mission proved that a dream once thought impossible could become real.`,
 
                 text:
 `Hello! I’m Apollo 11.
-
-I carried the first humans to walk on the Moon.
-
-On July 16, 1969, a Saturn V rocket launched astronauts Neil Armstrong, Buzz Aldrin, and Michael Collins toward the Moon.`,
+I carried the first humans to walk on another world.
+On July 16, 1969, Saturn V launched Neil Armstrong, Buzz Aldrin, and Michael Collins toward the Moon.`,
 
                 images: [],
 
@@ -1138,15 +1103,9 @@ On July 16, 1969, a Saturn V rocket launched astronauts Neil Armstrong, Buzz Ald
                 title: "Tranquility Base",
 
                 text:
-`After three days, we arrived.
-
-Armstrong and Aldrin entered the lunar module, Eagle, while Collins remained in the command module, Columbia, orbiting above.
-
-Then Eagle began its descent.
-
-The landing was difficult. Alarms sounded, and the first landing area was filled with rocks.
-
-Armstrong took control and guided Eagle toward a safer place.`,
+`Armstrong and Aldrin descended in Eagle; Collins stayed in orbit aboard Columbia.
+Alarms sounded, and the planned landing site was too rocky.
+Armstrong took manual control and guided Eagle to a safer spot.`,
 
                 images: [],
 
@@ -1162,12 +1121,8 @@ Armstrong took control and guided Eagle toward a safer place.`,
                 title: "Humans on Another World",
 
                 text:
-`“Houston, Tranquility Base here. The Eagle has landed.”
-
-On July 20, Armstrong climbed down the ladder and stepped onto the lunar surface.
-
-Buzz Aldrin joined him soon afterward.
-
+`On July 20, 1969, Eagle landed at Tranquility Base in the Sea of Tranquility.
+“Houston, Tranquility Base here. The Eagle has landed.”
 For the first time, humans had walked on another world.`,
 
                 images: [],
@@ -1184,11 +1139,9 @@ For the first time, humans had walked on another world.`,
                 title: "More Than a Footprint",
 
                 text:
-`They spent more than two hours exploring, collecting rocks and soil, taking photographs, and setting up scientific instruments.
-
-They also planted a flag and left a plaque carrying a message of peace.
-
-The mission was not only about reaching the Moon—it was about learning from it.`,
+`Armstrong and Aldrin spent about two and a half hours outside.
+They collected samples, took photographs, and deployed scientific instruments.
+The mission brought lunar science to the surface.`,
 
                 images: [],
 
@@ -1205,15 +1158,9 @@ The mission was not only about reaching the Moon—it was about learning from it
                 title: "A Base for Memory",
 
                 text:
-`After about 21 hours on the Moon, Armstrong and Aldrin lifted off and reunited with Collins.
-
-Together, we began the journey home.
-
-On July 24, 1969, we splashed down safely in the Pacific Ocean.
-
-The lunar module’s descent stage, scientific equipment, and other hardware remained behind.
-
-My mission proved that a dream once thought impossible could become real.`,
+`After about 21 hours and 36 minutes, Armstrong and Aldrin lifted off and rejoined Collins.
+They returned safely to Earth on July 24.
+Their footprints became a symbol of what exploration can achieve.`,
 
                 images: [],
 
@@ -1249,16 +1196,19 @@ My mission proved that a dream once thought impossible could become real.`,
             "Ocean of Storms",
 
         image:
-            "./moon stories/moon stories/apollo12.jpg",
+            "./moon_images/apollo_12_surveyor_3_moon.jpg",
 
         images: [
-            "./moon stories/moon stories/apollo12.jpg",
-            "./moon stories/moon stories/apollo12 (4).jpg",
-            "./moon stories/moon stories/apollo12 (5).jpg"
+            "./moon_images/apollo_12_launch.jpg",
+            "./moon_images/apollo_12_landed_on_moon.jpg",
+            "./moon_images/apollo_12_surveyor_3_moon.jpg"
         ],
 
         source:
-            "https://www.nasa.gov/gallery/apollo-12/?st_source=ai_overview",
+            "https://www.nasa.gov/gallery/apollo-12/",
+
+        sourceTitle:
+            "NASA — Apollo 12 mission gallery",
 
         greeting:
             "Hi! I’m Apollo 12. I landed on the Moon and visited an old robot friend who was already there. Want to meet them?",
@@ -1300,13 +1250,11 @@ Sometimes, exploration means discovering something new. Sometimes, it means visi
 
                 text:
 `Hi! I’m Apollo 12.
-
-I landed on the Moon and visited an old robot friend who was already there.
-
-I had two goals: land accurately on the Moon and visit a spacecraft that had arrived years earlier.`,
+I proved astronauts could land precisely—and visit an old robotic friend.
+My destination was Surveyor 3.`,
 
                 images: [
-                    "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/lunar-science/2023/08/detail_as12-48-7121_orig.jpg?w=1200&h=1200&fit=clip&crop=faces%2Cfocalpoint"
+                    "./moon_images/apollo_12_surveyor_3_moon.jpg"
                 ],
 
                 science: [
@@ -1321,15 +1269,13 @@ I had two goals: land accurately on the Moon and visit a spacecraft that had arr
                 title: "A Precise Landing",
 
                 text:
-`On November 14, 1969, astronauts Charles Conrad, Alan Bean, and Richard Gordon launched aboard a Saturn V rocket.
+`On November 14, 1969, Charles Conrad, Alan Bean, and Richard Gordon launched toward the Moon.
+Conrad and Bean landed Intrepid in the Ocean of Storms on November 19.
+Gordon remained in orbit aboard Yankee Clipper.`,
 
-Five days later, Conrad and Bean descended in the lunar module, Intrepid.
-
-Gordon stayed in lunar orbit inside Yankee Clipper.
-
-We landed in the Ocean of Storms, close to the planned location.`,
-
-                images: [],
+                images: [
+                    "./moon_images/apollo_12_landed_on_moon.jpg"
+                ],
 
                 science: [
                     "Demonstrated improved lunar landing precision.",
@@ -1343,14 +1289,12 @@ We landed in the Ocean of Storms, close to the planned location.`,
                 title: "Meeting an Old Robot",
 
                 text:
-`Nearby stood Surveyor 3, a robotic spacecraft that had arrived more than two years earlier.
-
-Its signals had stopped, but its body still rested on the Moon.
-
-Conrad and Bean walked across the surface to meet it.`,
+`Surveyor 3 had arrived more than two years earlier.
+Conrad and Bean walked across the Moon to visit the silent robot.
+It was a rare meeting of human and robotic explorers.`,
 
                 images: [
-                    "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/lunar-science/2023/08/detail_as12-48-7121_orig.jpg?w=1200&h=1200&fit=clip&crop=faces%2Cfocalpoint"
+                    "./moon_images/apollo_12_surveyor_3_moon.jpg"
                 ],
 
                 science: [
@@ -1366,13 +1310,11 @@ Conrad and Bean walked across the surface to meet it.`,
 
                 text:
 `They photographed Surveyor 3 and removed its camera, scoop, and other parts.
-
-Scientists brought those pieces back to Earth to discover how the lunar environment had affected them.
-
-The astronauts also collected rocks, carried out experiments, and explored the surface.`,
+Scientists returned those pieces to Earth for study.
+The crew also collected rocks and carried out experiments.`,
 
                 images: [
-                    "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/solar/2023/07/as12-48-7134_1280.jpg?w=1280&h=1280&fit=clip&crop=faces%2Cfocalpoint"
+                    "./moon_images/apollo_12_surveyor_3_moon.jpg"
                 ],
 
                 science: [
@@ -1388,18 +1330,12 @@ The astronauts also collected rocks, carried out experiments, and explored the s
                 title: "Two Generations of Explorers",
 
                 text:
-`Apollo 12 showed that astronauts could land close to a chosen location.
-
-It also created a remarkable meeting between two generations of explorers: a human mission visiting a robotic one.
-
-On November 24, 1969, we returned safely to Earth.
-
-Sometimes, exploration means discovering something new.
-
-Sometimes, it means visiting someone who arrived before you.`,
+`Apollo 12 showed astronauts could reach a chosen target.
+It connected two generations of lunar explorers.
+The crew returned safely to Earth on November 24, 1969.`,
 
                 images: [
-                    "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/lunar-science/2023/08/detail_as12-48-7121_orig.jpg?w=1200&h=1200&fit=clip&crop=faces%2Cfocalpoint"
+                    "./moon_images/apollo_12_surveyor_3_moon.jpg"
                 ],
 
                 science: [
@@ -1434,22 +1370,17 @@ Sometimes, it means visiting someone who arrived before you.`,
             "Hadley–Apennine region",
 
         image:
-            "./moon stories/moon stories/apollo15.jpg",
+            "./moon_images/apollo_15_moon_landing.png",
 
         images: [
-            "./moon stories/moon stories/apollo15.jpg",
-            "./moon stories/moon stories/apollo15.webp",
-            "./moon stories/moon stories/apollo15 (2).jpg",
-            "./moon stories/moon stories/apollo15 (2).webp",
-            "./moon stories/moon stories/apollo15 (3).webp",
-            "./moon stories/moon stories/apollo15 (4).webp",
-            "./moon stories/moon stories/apollo15lunarrover2.webp",
-            "./moon stories/moon stories/apollo_15.jpg",
-            "./moon stories/moon stories/apollo_15_moon_landing_29_eva3_irwin_w_us_flag_as15-88-11866hr.webp"
+            "./moon_images/apollo_15_moon_landing.png"
         ],
 
         source:
             "https://www.nasa.gov/gallery/apollo-15/",
+
+        sourceTitle:
+            "NASA — Apollo 15 mission gallery",
 
         greeting:
             "Hello! I’m Apollo 15. I brought the first lunar rover to the Moon. Ready for a drive across another world?",
@@ -1491,12 +1422,12 @@ I helped turn the Moon into a place humans could travel across—not just a plac
 
                 text:
 `Hello! I’m Apollo 15.
+I brought the first Lunar Roving Vehicle to the Moon.
+On July 26, 1971, Saturn V carried David Scott, James Irwin, and Alfred Worden toward the Moon.`,
 
-I was the mission that gave astronauts their first set of wheels on the Moon.
-
-On July 26, 1971, a Saturn V rocket carried astronauts David Scott, James Irwin, and Alfred Worden toward the Moon.`,
-
-                images: [],
+                images: [
+                    "./moon_images/apollo_15_moon_landing.png"
+                ],
 
                 science: [
                     "Introduced the Lunar Roving Vehicle.",
@@ -1510,15 +1441,13 @@ On July 26, 1971, a Saturn V rocket carried astronauts David Scott, James Irwin,
                 title: "A Rugged Landscape",
 
                 text:
-`Scott and Irwin landed in the lunar module, Falcon, near the Hadley–Apennine region.
-
+`Scott and Irwin landed Falcon near the Hadley–Apennine region.
 Worden stayed in orbit aboard Endeavour.
+Mountains, valleys, and ancient rocks made the landscape rugged.`,
 
-The landscape was rugged, with mountains, valleys, and ancient rocks.
-
-Walking everywhere would have taken too long.`,
-
-                images: [],
+                images: [
+                    "./moon_images/apollo_15_moon_landing.png"
+                ],
 
                 science: [
                     "Explored geologically diverse terrain.",
@@ -1532,13 +1461,13 @@ Walking everywhere would have taken too long.`,
                 title: "Humanity Gets Wheels",
 
                 text:
-`The astronauts unfolded a small four-wheeled vehicle: the Lunar Roving Vehicle.
+`Scott and Irwin unfolded the four-wheeled Lunar Roving Vehicle.
+They drove across the surface, travelling farther than walking allowed.
+Humans could now explore more of another world.`,
 
-Scott and Irwin climbed aboard and drove across the Moon.
-
-For the first time, humans travelled far from their landing site on another world.`,
-
-                images: [],
+                images: [
+                    "./moon_images/apollo_15_moon_landing.png"
+                ],
 
                 science: [
                     "First crewed use of a lunar rover.",
@@ -1552,11 +1481,13 @@ For the first time, humans travelled far from their landing site on another worl
                 title: "Exploring Hadley Rille",
 
                 text:
-`They explored Hadley Rille, collected rocks, photographed the landscape, and set up scientific experiments.
+`They drove to Hadley Rille, collected rocks, and photographed the landscape.
+The rover carried tools and samples across more terrain.
+Apollo 15 expanded human exploration on the Moon.`,
 
-The rover allowed them to carry more tools and samples than they could have managed on foot.`,
-
-                images: [],
+                images: [
+                    "./moon_images/apollo_15_moon_landing.png"
+                ],
 
                 science: [
                     "Collected lunar samples from a wider area.",
@@ -1571,15 +1502,13 @@ The rover allowed them to carry more tools and samples than they could have mana
                 title: "The First Lunar Vehicle",
 
                 text:
-`After three days, they returned to Falcon and lifted off.
+`After three days, Scott and Irwin lifted off from Falcon and rejoined Worden.
+The rover, experiments, and descent stage remained behind.
+The Moon became a landscape humans could travel across.`,
 
-On August 7, 1971, we splashed down safely in the Pacific Ocean.
-
-The rover remained on the Moon, along with the scientific equipment and the lunar module’s descent stage.
-
-I helped turn the Moon into a place humans could travel across—not just a place they could visit.`,
-
-                images: [],
+                images: [
+                    "./moon_images/apollo_15_moon_landing.png"
+                ],
 
                 science: [
                     "The Lunar Roving Vehicle remains at the Apollo 15 site.",
@@ -1612,21 +1541,15 @@ I helped turn the Moon into a place humans could travel across—not just a plac
         landingSite:
             "Taurus–Littrow Valley",
 
-        image:
-            "./moon stories/moon stories/apollo17.jpg",
+        image: null,
 
-        images: [
-            "./moon stories/moon stories/apollo17.jpg",
-            "./moon stories/moon stories/apollo17 (2).jpg",
-            "./moon stories/moon stories/apollo17 (3).jpg",
-            "./moon stories/moon stories/apollo17 (4).jpg",
-            "./moon stories/moon stories/apollo17 (5).jpg",
-            "./moon stories/moon stories/apollo17 (6).jpg",
-            "./moon stories/moon stories/apollo17 (7).jpg"
-        ],
+        images: [],
 
         source:
             "https://www.nasa.gov/gallery/apollo-17/",
+
+        sourceTitle:
+            "NASA — Apollo 17 mission gallery",
 
         greeting:
             "Hi there! I’m Apollo 17, the last Apollo mission to land astronauts on the Moon. Want to hear about our final journey?",
@@ -1669,13 +1592,9 @@ Apollo 17 was the final Apollo landing—but curiosity did not end there. The sa
                 title: "The Last Lunar Landing",
 
                 text:
-`Hi there! I’m Apollo 17.
-
-I was the last Apollo mission to land astronauts on the Moon.
-
-Some journeys are beginnings.
-
-Others become farewells.`,
+`Hi! I’m Apollo 17, the final Apollo mission to land humans on the Moon.
+I launched on December 7, 1972.
+The journey brought a chapter to a close.`,
 
                 images: [],
 
@@ -1691,13 +1610,9 @@ Others become farewells.`,
                 title: "A Geologist Goes to the Moon",
 
                 text:
-`On December 7, 1972, a Saturn V rocket launched astronauts Eugene Cernan, Ronald Evans, and Harrison Schmitt.
-
-Schmitt was a trained geologist, so he knew how to read clues hidden inside lunar rocks.
-
-Four days later, Cernan and Schmitt landed in the Taurus–Littrow Valley aboard Challenger.
-
-Evans remained in orbit inside America.`,
+`Saturn V carried Eugene Cernan, Ronald Evans, and geologist Harrison Schmitt.
+Cernan and Schmitt landed Challenger in Taurus–Littrow Valley.
+Evans remained in orbit aboard America.`,
 
                 images: [],
 
@@ -1713,11 +1628,9 @@ Evans remained in orbit inside America.`,
                 title: "Reading Ancient Rocks",
 
                 text:
-`The valley was surrounded by mountains and filled with ancient material.
-
-Cernan and Schmitt drove the lunar rover across the surface, collected samples, and studied the landscape.
-
-They gathered more lunar material than any previous Apollo crew.`,
+`Cernan and Schmitt drove the rover across the valley.
+They explored, studied the landscape, and collected about 110 kilograms of samples.
+It was the Apollo program’s largest lunar collection.`,
 
                 images: [],
 
@@ -1734,13 +1647,9 @@ They gathered more lunar material than any previous Apollo crew.`,
                 title: "Science That Continued",
 
                 text:
-`They also installed scientific instruments that continued studying the Moon after they left.
-
-For three days, the astronauts explored the valley.
-
-Then they climbed back into Challenger and lifted off.
-
-The instruments stayed behind to continue collecting information.`,
+`They deployed instruments that continued studying the Moon after the crew left.
+After three days on the surface, they lifted off in Challenger.
+The experiments stayed behind.`,
 
                 images: [],
 
@@ -1756,17 +1665,9 @@ The instruments stayed behind to continue collecting information.`,
                 title: "The Final Footprints",
 
                 text:
-`After reuniting with Evans, we began the journey home.
-
-On December 19, 1972, we safely splashed down in the Pacific Ocean.
-
-Eugene Cernan became the last person to walk on the Moon during the Apollo missions.
-
-Our lunar module, rover, experiments, and footprints remained behind.
-
-Apollo 17 was the final Apollo landing—but curiosity did not end there.
-
-The samples and discoveries from the mission still help scientists understand the Moon’s ancient history.`,
+`We splashed down safely in the Pacific on December 19, 1972.
+Cernan became the last person to walk on the Moon during the Apollo era.
+Apollo 17 was an ending—but lunar discovery was not.`,
 
                 images: [],
 
@@ -1803,15 +1704,18 @@ The samples and discoveries from the mission still help scientists understand th
             "Cabeus Crater",
 
         image:
-            "./moon stories/moon stories/lcross.jpg",
+            "./moon_images/lcross_in_space.jpg",
 
         images: [
-            "./moon stories/moon stories/lcross.jpg",
-            "./moon stories/moon stories/hayn-crater-large-for-lunar-hydrogen-story.webp"
+            "./moon_images/LCROSS.png",
+            "./moon_images/lcross_in_space.jpg"
         ],
 
         source:
             "https://science.nasa.gov/mission/lcross/",
+
+        sourceTitle:
+            "NASA Science — LCROSS",
 
         greeting:
             "Hello! I’m LCROSS. I came to find a secret hidden in the Moon’s dark craters. Want to help me uncover it?",
@@ -1854,16 +1758,12 @@ Sometimes, one final act can open the door to a brand-new adventure.`,
                 title: "The Secret Finder",
 
                 text:
-`Hello! I’m LCROSS.
-
-I came to find a secret hidden in the Moon’s dark craters.
-
-My full name is Lunar Crater Observation and Sensing Satellite.
-
-I was built for a one-way mission.`,
+`Hello! I’m LCROSS—Lunar Crater Observation and Sensing Satellite.
+I was designed for a one-way mission.
+Could water ice hide in the Moon’s dark polar craters?`,
 
                 images: [
-                    "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/solar/2023/07/226580main_2007-08-02_On_Way_In.jpg?w=1280&h=1280&fit=clip&crop=faces%2Cfocalpoint"
+                    "./moon_images/LCROSS.png"
                 ],
 
                 science: [
@@ -1878,16 +1778,12 @@ I was built for a one-way mission.`,
                 title: "Water in the Darkness?",
 
                 text:
-`I was sent to investigate a mystery:
-
-Could water ice be hiding in the Moon’s permanently shadowed craters?
-
-Our destination was Cabeus Crater, near the lunar south pole.
-
-Sunlight barely reaches its deepest regions, so frozen water might survive there.`,
+`I launched with the Lunar Reconnaissance Orbiter on June 18, 2009.
+My target was Cabeus Crater near the lunar south pole.
+Sunlight almost never reaches its deepest floor.`,
 
                 images: [
-                    "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/solar/2023/07/226580main_2007-08-02_On_Way_In.jpg?w=1280&h=1280&fit=clip&crop=faces%2Cfocalpoint"
+                    "./moon_images/lcross_in_space.jpg"
                 ],
 
                 science: [
@@ -1902,16 +1798,11 @@ Sunlight barely reaches its deepest regions, so frozen water might survive there
                 title: "The Impact",
 
                 text:
-`On October 9, the Centaur rocket stage crashed into the crater.
-
-The impact threw a cloud of dust and material above the surface.
-
-I flew through the cloud, using my cameras and instruments to study it.
-
-I had only a few minutes to work.`,
-
+`On October 9, 2009, the spent Centaur stage struck Cabeus.
+The impact threw dust, debris, and vapor above the surface.
+I flew through the plume and sent my observations home.`,
                 images: [
-                    "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/solar/2023/07/226580main_2007-08-02_On_Way_In.jpg?w=1280&h=1280&fit=clip&crop=faces%2Cfocalpoint"
+                    "./moon_images/lcross_in_space.jpg"
                 ],
 
                 science: [
@@ -1926,14 +1817,12 @@ I had only a few minutes to work.`,
                 title: "Data Before Impact",
 
                 text:
-`Then I crashed into the Moon, too.
-
-But before my mission ended, I sent my observations back to Earth.
-
-Scientists studied the information and found evidence of water in the lunar soil inside Cabeus Crater.`,
+`Then I, too, impacted the Moon.
+Scientists later found evidence of water in the ejected material.
+The shadowed craters were not completely dry.`,
 
                 images: [
-                    "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/solar/2023/07/226580main_2007-08-02_On_Way_In.jpg?w=1280&h=1280&fit=clip&crop=faces%2Cfocalpoint"
+                    "./moon_images/lcross_in_space.jpg"
                 ],
 
                 science: [
@@ -1948,18 +1837,12 @@ Scientists studied the information and found evidence of water in the lunar soil
                 title: "A New Lunar Resource",
 
                 text:
-`That discovery changed how people viewed the Moon.
-
-Its shadowy polar regions were not completely dry.
-
-They contained water and other materials that future explorers might one day use.
-
-My spacecraft was destroyed, but my data survived.
-
-Sometimes, one final act can open the door to a brand-new adventure.`,
+`I was destroyed, but my data survived.
+The findings helped reveal a possible resource for future exploration.
+Sometimes, one final act can open the door to discovery.`,
 
                 images: [
-                    "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/solar/2023/07/226580main_2007-08-02_On_Way_In.jpg?w=1280&h=1280&fit=clip&crop=faces%2Cfocalpoint"
+                    "./moon_images/lcross_in_space.jpg"
                 ],
 
                 science: [
