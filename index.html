@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Museum of the Abandoned — Explorer</title>
+    <link rel="stylesheet" href="./Intro/index.css">
+</head>
+<body>
+    <main id="intro" class="intro" aria-live="polite">
+        <header class="museum-header">
+            <span class="header-line"></span>
+        </header>
+
+        <div id="space-travel" class="space-travel" aria-hidden="true"></div>
+
+        <section class="exhibition-shell">
+            <button class="nav-arrow nav-arrow--prev" type="button" aria-label="Return to the previous introduction slide">‹</button>
+            <article class="exhibition-card" id="stage-card">
+                <div class="stage-copy">
+                    <p class="kicker" id="stage-kicker"></p>
+                    <h1 id="stage-title"></h1>
+                    <div class="stage-text" id="stage-text"></div>
+                </div>
+                <div class="artifact-grid" id="artifact-grid"></div>
+            </article>
+            <button class="nav-arrow nav-arrow--next" type="button" aria-label="Next stage">›</button>
+        </section>
+
+        <footer class="stage-footer">
+            <span id="stage-footer"></span>
+            <div class="stage-dots" id="stage-dots" aria-label="Introduction stages"></div>
+        </footer>
+    </main>
+    <script src="./Intro/index.js"></script>
+</body>
+</html>
