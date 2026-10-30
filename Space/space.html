@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Museum of the Abandoned — Explore Space</title>
+  <link rel="stylesheet" href="./space.css">
+</head>
+<body>
+  <main id="space-system" class="space-system">
+    <canvas id="solar-canvas" aria-label="Interactive solar system"></canvas>
+    <nav class="destination-nav" aria-label="Destination selection">
+      <button type="button" data-destination="SPACE" class="active">SPACE</button>
+      <button type="button" data-destination="MOON">MOON</button>
+      <button type="button" data-destination="MARS">MARS</button>
+    </nav>
+    <section id="space-controls" class="space-controls" aria-label="Solar system controls">
+      <button type="button" id="zoom-out" aria-label="Zoom out">−</button>
+      <button type="button" id="zoom-in" aria-label="Zoom in">+</button>
+      <button type="button" id="reset-view">RESET VIEW</button>
+      <button type="button" id="toggle-orbits" aria-pressed="true">ORBIT PATHS: ON</button>
+    </section>
+    <aside id="planet-info" class="planet-info" hidden aria-live="polite"></aside>
+    <aside id="mission-panel" class="mission-panel" hidden aria-live="polite"></aside>
+  </main>
+  <script src="./space.js"></script>
+</body>
+</html>
