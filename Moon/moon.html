@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en" class="storytelling-active">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#000000">
+  <title>Moon Chronicle — Museum of the Abandoned</title>
+  <link rel="stylesheet" href="storytelling.css?v=manual-position-controls-20261107">
+  <link rel="stylesheet" href="moon.css?v=moon-image-layer-20261113b">
+  <link rel="stylesheet" href="../location-view.css?v=atlas-mobile-layout-20261111b">
+  <link rel="stylesheet" href="../Audio/background-music.css">
+</head>
+<body class="storytelling-active">
+  <audio id="backgroundMusic" class="background-music-audio" src="../Audio/Piano.mp3" loop preload="auto"></audio>
+  <main class="museum-exhibit">
+    <section id="ranger-story" class="ranger-story" aria-labelledby="story-title">
+      <div class="museum-architecture" aria-hidden="true">
+        <span class="museum-column"></span>
+        <span class="museum-column"></span>
+        <span class="museum-column"></span>
+        <span class="museum-column"></span>
+        <span class="museum-column"></span>
+        <span class="museum-column"></span>
+      </div>
+      <header class="story-topbar">
+        <a class="story-back-link" href="../Space/space.html">← Space Library</a>
+        <div class="story-heading">
+          <p>Moon missions</p>
+          <h1 id="story-title" tabindex="-1">The Ranger 7 story</h1>
+        </div>
+        <div class="story-topbar-actions">
+          <button id="story-mission-index-button" class="story-mission-index-button" type="button" aria-expanded="false" aria-controls="story-mission-index">Mission Index</button>
+          <button id="landing-location-button" class="story-mission-index-button" type="button">LANDING LOCATION</button>
+          <button id="soundToggleBtn" class="story-mission-index-button story-sound-toggle" type="button" aria-label="Play background music" aria-pressed="false" onclick="window.backgroundMusic.toggle()"><span id="soundStatusText">Audio</span></button>
+        </div>
+      </header>
+      <nav id="story-mission-index" class="mission-index" aria-label="Story mission selection" hidden></nav>
+      <div class="mission-image-layer">
+        <div class="story-image-frame" role="region" aria-label="Moon mission display">
+          <div class="mission-image-layout">
+            <div id="mission-image-visual" class="mission-image-visual">
+              <img class="story-hardware" src="./moon_images/Prologue/Sl1.jpg" alt="Global map showing the Moon's geological regions">
+              <p id="scene-credit" class="scene-credit"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="story-stage">
+        <section class="story-display">
+          <p id="story-mission-indicator" class="story-mission-indicator" aria-live="polite"></p>
+        </section>
+        <div class="story-conversation">
+          <div id="guide-stage" class="story-character-row story-guide-row">
+            <figure class="story-guide">
+              <img src="../Space/space_images/Guide.png" alt="Dr. Avery Vance speaking">
+              <figcaption>Dr. Avery Vance</figcaption>
+            </figure>
+            <section class="story-dialogue" aria-label="Moon mission story">
+              <p class="dialogue-eyebrow"><span id="dialogue-speaker">Dr. Avery Vance</span><span id="dialogue-progress"></span></p>
+              <p id="ranger-dialogue" class="dialogue-copy" aria-live="polite"></p>
+              <p id="speech-status" class="speech-status" role="status" aria-live="polite"></p>
+              <div class="dialogue-actions">
+                <button id="play-narration" class="dialogue-play" type="button" hidden>Play voice narration</button>
+                <button id="continue-reading" class="dialogue-reading" type="button" hidden>Continue reading</button>
+                <button id="repeat-dialogue" class="dialogue-repeat" type="button">Repeat message</button>
+              </div>
+            </section>
+          </div>
+          <div id="student-stage" class="story-character-row story-user-row" hidden>
+            <div class="story-listeners" aria-label="You listening to Dr. Avery Vance">
+              <figure class="story-listener">
+                <img id="visitor-character" src="../images/Girl_user_listening.png" alt="You listening to Dr. Avery Vance">
+                <figcaption id="visitor-caption"></figcaption>
+              </figure>
+            </div>
+            <div id="response-panel" class="story-response-panel"></div>
+          </div>
+        </div>
+        <nav class="story-controls" aria-label="Story navigation">
+          <button id="story-previous-slide" class="story-control-button story-control-button--previous" type="button">Previous</button>
+          <p id="story-status" class="story-status" aria-live="polite"></p>
+          <button id="story-advance-slide" class="story-control-button story-control-button--next" type="button">Next</button>
+        </nav>
+      </div>
+    </section>
+
+    <div id="archive-interface" inert aria-hidden="true">
+    <header class="exhibit-header">
+      <a class="home-link" href="../Space/space.html" aria-label="Return to the Space Library">← Space Library</a>
+      <div class="exhibit-heading">
+        <p class="eyebrow">Museum of the Abandoned</p>
+        <h1>Lunar Hardware Chronicle</h1>
+      </div>
+      <div class="exhibit-actions">
+        <button id="story-toggle" class="index-toggle story-toggle" type="button" hidden>Ranger 7 story</button>
+        <button id="index-toggle" class="index-toggle" type="button" aria-expanded="false">Mission index</button>
+      </div>
+    </header>
+    <nav id="mission-index" class="mission-index" aria-label="Mission index" hidden></nav>
+
+    <section class="book-experience" aria-label="Interactive lunar museum book">
+      <div class="book-frame">
+        <div id="book" class="flip-book" aria-live="polite"></div>
+        <noscript>This museum book requires JavaScript to display its mission chapters.</noscript>
+      </div>
+
+      <div class="book-controls" aria-label="Book controls">
+        <button id="prev-page" class="arrow-button" type="button" aria-label="Previous page">←</button>
+        <div class="page-status" aria-live="polite">
+          <span id="current-page">Page 1</span>
+          <span id="page-count" aria-hidden="true"></span>
+        </div>
+        <button id="next-page" class="arrow-button" type="button" aria-label="Next page">→</button>
+      </div>
+    </section>
+    </div>
+  </main>
+
+  <a id="mission-image-source-link" class="mission-image-source-control" target="_blank" rel="noopener noreferrer" hidden>
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M14 4h6v6m-.5-5.5L11 13M18 13v6H5V6h6" /></svg>
+    <span></span>
+  </a>
+
+  <dialog id="trivia-dialog" class="trivia-dialog" aria-labelledby="trivia-title">
+    <button id="trivia-close" class="dialog-close" type="button" aria-label="Close curator question">×</button>
+    <p class="eyebrow">Curator's Question</p>
+    <h2 id="trivia-title">Mission question</h2>
+    <p id="trivia-question"></p>
+    <button id="trivia-reveal" type="button">Reveal answer</button>
+    <p id="trivia-answer" class="trivia-answer" tabindex="-1" hidden></p>
+    <p id="trivia-explanation" class="trivia-explanation" hidden></p>
+  </dialog>
+
+  <section id="landing-location-view" class="location-view" role="dialog" aria-modal="true" aria-label="Interactive Moon mission atlas" aria-hidden="true" hidden>
+    <header class="atlas-header">
+      <span class="atlas-world-label" data-atlas-world-label>MOON ATLAS</span>
+      <div class="atlas-header-actions">
+        <button type="button" data-atlas-reset-view aria-label="Reset globe orientation">Reset view</button>
+        <button class="location-close" type="button" data-location-close aria-label="Return to mission exhibit">×</button>
+      </div>
+    </header>
+    <div class="atlas-map-stage" data-atlas-map-stage>
+      <canvas class="location-globe" aria-label="Interactive three-dimensional Moon globe; drag to rotate"></canvas>
+      <div class="atlas-marker-layer" data-atlas-marker-layer></div>
+      <div class="atlas-selection-overlay" data-atlas-selection hidden>
+        <strong data-atlas-selection-name></strong>
+        <span data-atlas-selection-details></span>
+        <button type="button" data-atlas-exhibit-link>OPEN MISSION EXHIBIT ↗</button>
+      </div>
+      <span class="atlas-visualization-note" data-atlas-visualization-note hidden></span>
+    </div>
+    <section class="atlas-timeline" aria-label="Mission event timeline">
+      <div class="atlas-timeline-heading">
+        <span data-atlas-year-label aria-live="polite"></span>
+        <span data-atlas-event-count></span>
+      </div>
+      <div class="atlas-year-controls">
+        <button type="button" data-atlas-year-previous aria-label="Previous year">‹</button>
+        <label><span class="sr-only">Mission timeline year</span><input data-atlas-year-slider type="range" min="1964" max="2009" step="1" value="1964"></label>
+        <button type="button" data-atlas-year-next aria-label="Next year">›</button>
+      </div>
+      <div class="atlas-timeline-rail" data-atlas-timeline-rail aria-label="Mission events across history"></div>
+      <div class="atlas-event-strip" data-atlas-year-events aria-live="polite"></div>
+    </section>
+  </section>
+
+  <script src="../location-view.js?v=moon-mission-reference-label-20261112"></script>
+  <script src="./mission-atlas-data.js"></script>
+  <script src="../mission-atlas.js"></script>
+  <script src="lib/page-flip.browser.js"></script>
+  <script src="missions.js"></script>
+  <script src="ranger7-story.js"></script>
+  <script src="../Audio/background-music.js"></script>
+  <script src="../voice-selection.js"></script>
+  <script src="storytelling.js?v=moon-image-layer-20261113b"></script>
+  <script src="moon.js"></script>
+</body>
+</html>
